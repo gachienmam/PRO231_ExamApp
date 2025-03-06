@@ -4,17 +4,29 @@ using System.Text;
 
 namespace ExamLibrary.Remote
 {
-    internal class RegisterData
+    public class AuthRequest
     {
-        public string Login
+        public DateTime StartDate
         {
             get
             {
-                return this._login;
+                return this._startTime;
             }
             set
             {
-                this._login = value;
+                this._startTime = value;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return this._username;
+            }
+            set
+            {
+                this._username = value;
             }
         }
 
@@ -27,18 +39,6 @@ namespace ExamLibrary.Remote
             set
             {
                 this._password = value;
-            }
-        }
-
-        public DateTime StartDate
-        {
-            get
-            {
-                return this._startTime;
-            }
-            set
-            {
-                this._startTime = value;
             }
         }
 
@@ -65,12 +65,11 @@ namespace ExamLibrary.Remote
                 this._examCode = value;
             }
         }
+        private DateTime _startTime;
 
-        private string _login;
+        private string _username;
 
         private string _password;
-
-        private DateTime _startTime;
 
         private string _machine;
 

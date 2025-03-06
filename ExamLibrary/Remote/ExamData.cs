@@ -1,22 +1,19 @@
 ﻿using System;
+using ExamLibrary.Enum;
 using ExamLibrary.Question;
 
 namespace ExamLibrary.Remote
 {
     public class ExamData
     {
-        public RegisterStatus RegStatus;
+        public GenericResponse RegStatus;
 
         public Paper ExamPaper;
-
-        public SubmitPaper SubmitPaper;
-
-        public byte[] GUI;
+            
+        public byte[] ExamForm;
 
         public int OriginSize;
 
         public ServerInformation ServerInfo;
-
-        public RegisterData RegData;
     }
 }

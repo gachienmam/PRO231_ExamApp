@@ -1,85 +1,61 @@
-﻿using System;
+﻿using ExamLibrary.Question.Types;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ExamLibrary.Question
 {
-    internal class Paper
+    public class Paper
     {
-        public bool IsShuffleReading
-        {
-            get
-            {
-                return _isShuffleReading;
-            }
-            set
-            {
-                _isShuffleReading = value;
-            }
-        }
-
-        public bool IsShuffleGrammer
-        {
-            get
-            {
-                return _isShuffleGrammer;
-            }
-            set
-            {
-                _isShuffleGrammer = value;
-            }
-        }
-
-        public bool IsShuffleMatch
-        {
-            get
-            {
-                return _isShuffleMatch;
-            }
-            set
-            {
-                _isShuffleMatch = value;
-            }
-        }
-
-        public QuestionDistribution QD { get; set; }
-
-        public bool IsShuffleIndicateMistake
-        {
-            get
-            {
-                return _isShuffleIndicateMistake;
-            }
-            set
-            {
-                _isShuffleIndicateMistake = value;
-            }
-        }
-
-        public bool IsShuffleFillBlank
-        {
-            get
-            {
-                return _isShuffleFillBlank;
-            }
-            set
-            {
-                _isShuffleFillBlank = value;
-            }
-        }
-
         public Paper()
         {
-            _reading = new ArrayList();
-            _grammar = new ArrayList();
-            _match = new ArrayList();
-            _indicateMistake = new ArrayList();
-            _fillBlank = new ArrayList();
-            TestType = TestTypeEnum.NOT_WRITING;
+            _testName = string.Empty;
+            _testImage = new byte[0];
+            _examCode = string.Empty;
+            _listAudio = new List<Data.Audio>();
+            _notes = string.Empty;
+            _listenCode = string.Empty;
+            _q_multipleChoice = new List<Types.MultipleChoice>();
+            _duration = 600;
+        }
+        public bool ShuffleMultipleChoice
+        {
+            get
+            {
+                return _shuffleMultipleChoice;
+            }
+            set
+            {
+                _shuffleMultipleChoice = value;
+            }
         }
 
-        public int Duration
+        public string TestName
+        {
+            get
+            {
+                return _testName;
+            }
+            set
+            {
+                _testName = value;
+            }
+        }
+
+        public byte[] ExamImage
+        {
+            get
+            {
+                return _testImage;
+            }
+            set
+            {
+                _testImage = value;
+            }
+        }
+
+        public int Duration // in seconds
         {
             get
             {
@@ -88,6 +64,18 @@ namespace ExamLibrary.Question
             set
             {
                 _duration = value;
+            }
+        }
+
+        public string ExamNotes
+        {
+            get
+            {
+                return _notes;
+            }
+            set
+            {
+                _notes = value;
             }
         }
 
@@ -119,95 +107,23 @@ namespace ExamLibrary.Question
         {
             get
             {
-                return _noOfQuestion;
+                return _noOfQuestions;
             }
             set
             {
-                _noOfQuestion = value;
+                _noOfQuestions = value;
             }
         }
 
-        public ArrayList ReadingQuestions
+        public List<Types.MultipleChoice> MultipleChoiceQuestions // in seconds
         {
             get
             {
-                return _reading;
+                return _q_multipleChoice;
             }
             set
             {
-                _reading = value;
-            }
-        }
-
-        public ArrayList GrammarQuestions
-        {
-            get
-            {
-                return _grammar;
-            }
-            set
-            {
-                _grammar = value;
-            }
-        }
-
-        public ArrayList MatchQuestions
-        {
-            get
-            {
-                return _match;
-            }
-            set
-            {
-                _match = value;
-            }
-        }
-
-        public ArrayList IndicateMQuestions
-        {
-            get
-            {
-                return _indicateMistake;
-            }
-            set
-            {
-                _indicateMistake = value;
-            }
-        }
-
-        public ArrayList FillBlankQuestions
-        {
-            get
-            {
-                return _fillBlank;
-            }
-            set
-            {
-                _fillBlank = value;
-            }
-        }
-
-        public EssayQuestion EssayQuestion
-        {
-            get
-            {
-                return _essay;
-            }
-            set
-            {
-                _essay = value;
-            }
-        }
-
-        public string StudentGuide
-        {
-            get
-            {
-                return _studentGuide;
-            }
-            set
-            {
-                _studentGuide = value;
+                _q_multipleChoice = value;
             }
         }
 
@@ -223,43 +139,7 @@ namespace ExamLibrary.Question
             }
         }
 
-        public string Password
-        {
-            get
-            {
-                return _pwd;
-            }
-            set
-            {
-                _pwd = value;
-            }
-        }
-
-        public TestTypeEnum TestType
-        {
-            get
-            {
-                return _testType;
-            }
-            set
-            {
-                _testType = value;
-            }
-        }
-
-        public ImagePaper ImgPaper
-        {
-            get
-            {
-                return _imagePaper;
-            }
-            set
-            {
-                _imagePaper = value;
-            }
-        }
-
-        public List<AudioInPaper> ListAudio
+        public List<Data.Audio> ListAudio
         {
             get
             {
@@ -271,60 +151,26 @@ namespace ExamLibrary.Question
             }
         }
 
-        public byte[] OneSecSilence
-        {
-            get
-            {
-                return _oneSecSilence;
-            }
-            set
-            {
-                _oneSecSilence = value;
-            }
-        }
+        private string _testName;
 
-        private TestTypeEnum _testType;
+        private byte[] _testImage;
 
         private string _examCode;
 
-        private int _duration;
+        private string _notes;
+
+        private int _duration; // in seconds
 
         private float _mark;
 
-        private int _noOfQuestion;
+        private int _noOfQuestions;
 
-        private ArrayList _reading;
+        private List<Types.MultipleChoice> _q_multipleChoice;
 
-        private ArrayList _grammar;
-
-        private ArrayList _match;
-
-        private ArrayList _indicateMistake;
-
-        private ArrayList _fillBlank;
-
-        private EssayQuestion _essay;
-
-        private bool _isShuffleReading;
-
-        private bool _isShuffleGrammer;
-
-        private bool _isShuffleMatch;
-
-        private bool _isShuffleIndicateMistake;
-
-        private bool _isShuffleFillBlank;
-
-        private string _studentGuide;
+        private bool _shuffleMultipleChoice;
 
         private string _listenCode;
 
-        private string _pwd;
-
-        private List<AudioInPaper> _listAudio;
-
-        private byte[] _oneSecSilence;
-
-        private ImagePaper _imagePaper;
+        private List<Data.Audio> _listAudio;
     }
 }

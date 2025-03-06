@@ -5,7 +5,7 @@ using System.Xml.Schema;
 
 namespace ExamLibrary.Remote
 {
-    internal class ServerInformation
+    public class ServerInformation
     {
         public ServerInformation() { }
 
@@ -46,11 +46,11 @@ namespace ExamLibrary.Remote
         {
             get
             {
-                return this._name;
+                return this._serverName;
             }
             set
             {
-                this._name = value;
+                this._serverName = value;
             }
         }
 
@@ -106,7 +106,7 @@ namespace ExamLibrary.Remote
 
         private int _port;
 
-        private string _name;
+        private string _serverName;
 
         private string _version;
 

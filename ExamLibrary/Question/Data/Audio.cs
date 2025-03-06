@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ExamLibrary.Question.Paper
+namespace ExamLibrary.Question.Data
 {
-    internal class Audio : IComparable<Audio>
+    public class Audio : IComparable<Audio>
     {
         public int AudioSize
         {

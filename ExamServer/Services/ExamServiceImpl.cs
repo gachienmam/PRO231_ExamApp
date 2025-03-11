@@ -13,14 +13,14 @@ using System.Threading.Tasks;
 
 namespace ExamServer.Services
 {
-    internal class ExamService
+    internal class ExamServiceImpl
     {
 
-        private readonly ILogger<ExamService> _logger;
+        private readonly ILogger<ExamServiceImpl> _logger;
         private readonly JWTService jwtService;
         private readonly Dictionary<int, AsyncServerStreamingCall<ExamUpdate>> _subscribers = new();
 
-        public ExamService(ILogger<ExamService> logger)
+        public ExamServiceImpl(ILogger<ExamServiceImpl> logger)
         {
             _logger = logger;
         }

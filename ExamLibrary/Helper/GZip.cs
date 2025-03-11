@@ -26,12 +26,10 @@ namespace ExamLibrary.Helper
             return result;
         }
 
-        // Token: 0x06000002 RID: 2 RVA: 0x000020A4 File Offset: 0x000010A4
         public static byte[] Decompress(byte[] compressedInput, int originSize)
         {
-            Stream stream = new GZipStream(new MemoryStream(compressedInput), CompressionMode.Decompress);
             byte[] array = new byte[originSize];
-            stream.Read(array, 0, originSize);
+            new GZipStream(new MemoryStream(compressedInput), CompressionMode.Decompress).Read(array, 0, originSize);
             return array;
         }
     }

@@ -48,7 +48,7 @@ namespace ExamServer
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapGrpcService<Services.ExamService>();
+            app.MapGrpcService<Services.ExamServiceImpl>();
 
             app.Run();
         }

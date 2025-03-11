@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamServer", "ExamServer\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementApp", "ManagementApp\ManagementApp.csproj", "{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupManagementApp", "SetupManagementApp\SetupManagementApp.vdproj", "{EBF2785F-09C4-45D4-A991-5C193B3CB917}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupAuthClient", "SetupAuthClient\SetupAuthClient.vdproj", "{0C219804-9CDB-46A2-930B-630991ED7EAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF2785F-09C4-45D4-A991-5C193B3CB917}.Debug|Any CPU.ActiveCfg = Debug
+		{EBF2785F-09C4-45D4-A991-5C193B3CB917}.Release|Any CPU.ActiveCfg = Release
+		{0C219804-9CDB-46A2-930B-630991ED7EAA}.Debug|Any CPU.ActiveCfg = Debug
+		{0C219804-9CDB-46A2-930B-630991ED7EAA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

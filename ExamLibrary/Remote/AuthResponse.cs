@@ -12,6 +12,6 @@ namespace ExamLibrary.Remote
 
         private int _responseCode {  get; set; }
 
-        private string? _token { get; set; }
+        private string _token { get; set; }
     }
 }

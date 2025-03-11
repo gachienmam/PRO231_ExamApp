@@ -15,6 +15,6 @@ namespace ExamLibrary.Remote
 
         public DateTime Timestamp;
 
-        public byte[]? ResponseMessage;
+        public byte[] ResponseMessage;
     }
 }

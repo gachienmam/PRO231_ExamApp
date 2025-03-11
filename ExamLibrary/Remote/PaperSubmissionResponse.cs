@@ -8,6 +8,6 @@ namespace ExamLibrary.Remote
     {
         public Enum.PaperSubmitResponse ResponseCode;
 
-        public string? ResponseMessage;
+        public string ResponseMessage;
     }
 }

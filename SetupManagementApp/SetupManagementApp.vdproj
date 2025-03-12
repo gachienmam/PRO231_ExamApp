@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_9BDAF4D706934425AAFC0E688CCE7BF4"
+        "MsmKey" = "8:_696F88A4EABB46C7B5BA4EA180A428B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -37,6 +37,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -53,6 +61,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -70,6 +86,16 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_8FF8DD37DB154D068284DA44DBCDE041"
+                {
+                "Name" = "8:.NET Core"
+                "Message" = "8:[VSDNETCOREMSG]"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:https://dotnet.microsoft.com/download/dotnet-core/[NetCoreVerMajorDotMinor]"
+                "IsNETCore" = "11:TRUE"
+                "Architecture" = "2:0"
+                "Runtime" = "2:0"
+                }
             }
         }
         "File"
@@ -259,7 +285,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_9BDAF4D706934425AAFC0E688CCE7BF4"
+            "Target" = "8:"
             "Folder" = "8:_C9890E0A5FA847078DB891B4600C76FD"
             "WorkingFolder" = "8:_DD9B135B1F694B4186226A9F88402A03"
             "Icon" = "8:"
@@ -664,7 +690,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9BDAF4D706934425AAFC0E688CCE7BF4"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_696F88A4EABB46C7B5BA4EA180A428B9"
             {
             "SourcePath" = "8:..\\ManagementApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"

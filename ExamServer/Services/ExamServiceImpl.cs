@@ -31,11 +31,11 @@ namespace ExamServer.Services
             if (request.Username == "admin" && request.Password == "password")
             {
                 string token = jwtService.GenerateJwtToken(request.Username);
-                return Task.FromResult(new AuthResponse { Token = token, Response = (int)GenericResponse.AUTH_SUCCESS });
+                return Task.FromResult(new AuthResponse { ResponseCode = (int)GenericResponse.AUTH_SUCCESS, Token = token,  });
             }
             else
             {
-                return Task.FromResult(new AuthResponse { Token = "", Response = (int)GenericResponse.AUTH_STUDENT_LOGIN_FAILED });
+                return Task.FromResult(new AuthResponse { Token = "", ResponseCode = (int)GenericResponse.AUTH_STUDENT_LOGIN_FAILED });
             }
         }
 

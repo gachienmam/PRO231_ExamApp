@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthClient", "AuthClient\AuthClient.csproj", "{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamClient", "ExamClient\ExamClient.csproj", "{89122E5B-D6AC-43BB-BEB7-CCD8E29FE940}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamLibrary", "ExamLibrary\ExamLibrary.csproj", "{2B4EAE5F-5C68-4A3E-8A3B-17D86E69CF30}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamServer", "ExamServer\ExamServer.csproj", "{BB308683-65E5-4125-AF85-D41CA35F3343}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementApp", "ManagementApp\ManagementApp.csproj", "{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagementApp", "ManagementApp\ManagementApp.csproj", "{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupManagementApp", "SetupManagementApp\SetupManagementApp.vdproj", "{EBF2785F-09C4-45D4-A991-5C193B3CB917}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupAuthClient", "SetupAuthClient\SetupAuthClient.vdproj", "{0C219804-9CDB-46A2-930B-630991ED7EAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentClient", "StudentClient\StudentClient.csproj", "{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupStudentClient", "SetupStudentClient\SetupStudentClient.vdproj", "{B1E371F7-DED6-4093-AC27-7B16A3893B78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89122E5B-D6AC-43BB-BEB7-CCD8E29FE940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89122E5B-D6AC-43BB-BEB7-CCD8E29FE940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89122E5B-D6AC-43BB-BEB7-CCD8E29FE940}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,8 +41,14 @@ Global
 		{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBF2785F-09C4-45D4-A991-5C193B3CB917}.Debug|Any CPU.ActiveCfg = Debug
 		{EBF2785F-09C4-45D4-A991-5C193B3CB917}.Release|Any CPU.ActiveCfg = Release
-		{0C219804-9CDB-46A2-930B-630991ED7EAA}.Debug|Any CPU.ActiveCfg = Debug
-		{0C219804-9CDB-46A2-930B-630991ED7EAA}.Release|Any CPU.ActiveCfg = Release
+		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E371F7-DED6-4093-AC27-7B16A3893B78}.Debug|Any CPU.ActiveCfg = Debug
+		{B1E371F7-DED6-4093-AC27-7B16A3893B78}.Debug|Any CPU.Build.0 = Debug
+		{B1E371F7-DED6-4093-AC27-7B16A3893B78}.Release|Any CPU.ActiveCfg = Release
+		{B1E371F7-DED6-4093-AC27-7B16A3893B78}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

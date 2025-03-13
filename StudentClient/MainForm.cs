@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AuthClient
 {
-    public partial class AuthForm : Form
+    public partial class MainForm : Form
     {
-        public AuthForm()
+        public MainForm()
         {
             InitializeComponent();
         }

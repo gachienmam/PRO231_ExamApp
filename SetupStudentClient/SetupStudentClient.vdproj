@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4CEE365593A74A4BAF8CF16635D635D4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5D011ADEC0CA3D23C8EE1D404E3B4CFD"
         "OwnerKey" = "8:_CC19716A8A489E01762398D9BC7FCD94"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_61532CD56517FD08268801995DE47699"
-        "OwnerKey" = "8:_A44541FB9808475FB9187DBB99B5C385"
+        "OwnerKey" = "8:_4CEE365593A74A4BAF8CF16635D635D4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,19 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_92092CDF0E2DA0D82211AF7C20919C74"
-        "OwnerKey" = "8:_A44541FB9808475FB9187DBB99B5C385"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A44541FB9808475FB9187DBB99B5C385"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4CEE365593A74A4BAF8CF16635D635D4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_CC19716A8A489E01762398D9BC7FCD94"
-        "OwnerKey" = "8:_A44541FB9808475FB9187DBB99B5C385"
+        "OwnerKey" = "8:_4CEE365593A74A4BAF8CF16635D635D4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +88,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A44541FB9808475FB9187DBB99B5C385"
+        "OwnerKey" = "8:_4CEE365593A74A4BAF8CF16635D635D4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1076,6 +1076,34 @@
                 {
                 }
             }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4CEE365593A74A4BAF8CF16635D635D4"
+            {
+            "SourcePath" = "8:..\\StudentClient\\obj\\Debug\\AuthClient.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A1DE769F434B4A3F8E24B819611B133C"
             {
             "SourcePath" = "8:"
@@ -1099,34 +1127,6 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{2B4EAE5F-5C68-4A3E-8A3B-17D86E69CF30}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A44541FB9808475FB9187DBB99B5C385"
-            {
-            "SourcePath" = "8:..\\StudentClient\\obj\\Debug\\AuthClient.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{7B8F8B65-34D4-4DF7-8F89-EBF0E2B5DF67}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

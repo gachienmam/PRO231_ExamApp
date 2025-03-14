@@ -8,9 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protobuffer\UserExamService.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="Google.Protobuf" Version="3.29.3" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
     <PackageReference Include="Grpc.AspNetCore.Server" Version="2.67.0" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.70.0" />
     <PackageReference Include="Grpc.Tools" Version="2.70.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,12 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protobuffer\ExamService.proto" GrpcServices="Both" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Database\DAL\" />
-    <Folder Include="Database\BUS\" />
+    <Protobuf Include="Protobuffer\UserExamService.proto" GrpcServices="Server" />
+    <Protobuf Include="Protobuffer\AdminExamService.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

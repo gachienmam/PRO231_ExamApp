@@ -1,4 +1,4 @@
-﻿using ExamLibrary.Remote;
+﻿using ReaLTaiizor.Docking.Crown;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,13 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AuthClient
+namespace ManagementApp.CustomControls
 {
-    public partial class MainForm : Form
+    public partial class TreeViewControl : CrownToolWindow
     {
-        public MainForm()
+        public TreeViewControl()
         {
             InitializeComponent();
+
+
         }
     }
 }

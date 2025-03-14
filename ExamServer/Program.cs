@@ -27,6 +27,8 @@ namespace ExamServer
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
+                    options.RequireHttpsMetadata = true;
+                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,
@@ -45,10 +47,14 @@ namespace ExamServer
 
             var app = builder.Build();
 
+            app.UseGrpcWeb();
+            app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapGrpcService<Services.ExamServiceImpl>();
+            app.MapGrpcService<Services.UserExamServiceImpl>().EnableGrpcWeb();
+            app.MapGrpcService<Services.AdminExamServiceImpl>().EnableGrpcWeb();
 
             app.Run();
         }

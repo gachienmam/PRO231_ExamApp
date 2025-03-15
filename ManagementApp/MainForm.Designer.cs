@@ -53,12 +53,13 @@
             // 
             mainMenuStrip.BackColor = Color.FromArgb(60, 63, 65);
             mainMenuStrip.ForeColor = Color.FromArgb(220, 220, 220);
+            mainMenuStrip.ImageScalingSize = new Size(28, 28);
             mainMenuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, quảnLýToolStripMenuItem, thốngKêToolStripMenuItem, giớiThiệuToolStripMenuItem, usernameToolStripMenuItem });
             mainMenuStrip.Location = new Point(0, 0);
-            mainMenuStrip.Margin = new Padding(0, 4, 0, 4);
+            mainMenuStrip.Margin = new Padding(0, 8, 0, 8);
             mainMenuStrip.Name = "mainMenuStrip";
-            mainMenuStrip.Padding = new Padding(4, 6, 4, 6);
-            mainMenuStrip.Size = new Size(800, 35);
+            mainMenuStrip.Padding = new Padding(7, 12, 7, 12);
+            mainMenuStrip.Size = new Size(1371, 62);
             mainMenuStrip.TabIndex = 0;
             mainMenuStrip.Text = "crownMenuStrip1";
             // 
@@ -69,7 +70,7 @@
             fileToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Padding = new Padding(4, 2, 2, 0);
-            fileToolStripMenuItem.Size = new Size(67, 23);
+            fileToolStripMenuItem.Size = new Size(110, 38);
             fileToolStripMenuItem.Text = "&Hệ thống";
             // 
             // đăngNhậpToolStripMenuItem
@@ -78,7 +79,7 @@
             đăngNhậpToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             đăngNhậpToolStripMenuItem.Name = "đăngNhậpToolStripMenuItem";
             đăngNhậpToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.L;
-            đăngNhậpToolStripMenuItem.Size = new Size(172, 22);
+            đăngNhậpToolStripMenuItem.Size = new Size(303, 40);
             đăngNhậpToolStripMenuItem.Text = "Đăng nhập";
             // 
             // đăngXuấtToolStripMenuItem
@@ -87,7 +88,7 @@
             đăngXuấtToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             đăngXuấtToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            đăngXuấtToolStripMenuItem.Size = new Size(172, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(303, 40);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
@@ -97,7 +98,7 @@
             thoátToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
             thoátToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-            thoátToolStripMenuItem.Size = new Size(172, 22);
+            thoátToolStripMenuItem.Size = new Size(303, 40);
             thoátToolStripMenuItem.Text = "Thoát";
             // 
             // quảnLýToolStripMenuItem
@@ -107,16 +108,17 @@
             quảnLýToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             quảnLýToolStripMenuItem.Padding = new Padding(4, 2, 4, 2);
-            quảnLýToolStripMenuItem.Size = new Size(60, 23);
+            quảnLýToolStripMenuItem.Size = new Size(97, 38);
             quảnLýToolStripMenuItem.Text = "&Quản lý";
             // 
             // đềThiToolStripMenuItem
             // 
             đềThiToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             đềThiToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
+            đềThiToolStripMenuItem.Image = Properties.Resources.Collection_16xLG;
             đềThiToolStripMenuItem.Name = "đềThiToolStripMenuItem";
             đềThiToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D;
-            đềThiToolStripMenuItem.Size = new Size(213, 22);
+            đềThiToolStripMenuItem.Size = new Size(374, 40);
             đềThiToolStripMenuItem.Text = "Đề thi";
             đềThiToolStripMenuItem.Click += đềThiToolStripMenuItem_Click;
             // 
@@ -124,18 +126,20 @@
             // 
             thíSinhToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             thíSinhToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
+            thíSinhToolStripMenuItem.Image = Properties.Resources.RefactoringLog_12810;
             thíSinhToolStripMenuItem.Name = "thíSinhToolStripMenuItem";
             thíSinhToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.T;
-            thíSinhToolStripMenuItem.Size = new Size(213, 22);
+            thíSinhToolStripMenuItem.Size = new Size(374, 40);
             thíSinhToolStripMenuItem.Text = "Thí sinh";
             // 
             // ngườiDùngToolStripMenuItem
             // 
             ngườiDùngToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             ngườiDùngToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
+            ngườiDùngToolStripMenuItem.Image = Properties.Resources.properties_16xLG;
             ngườiDùngToolStripMenuItem.Name = "ngườiDùngToolStripMenuItem";
             ngườiDùngToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.N;
-            ngườiDùngToolStripMenuItem.Size = new Size(213, 22);
+            ngườiDùngToolStripMenuItem.Size = new Size(374, 40);
             ngườiDùngToolStripMenuItem.Text = "Người dùng";
             // 
             // thốngKêToolStripMenuItem
@@ -145,16 +149,17 @@
             thốngKêToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
             thốngKêToolStripMenuItem.Padding = new Padding(4, 2, 4, 2);
-            thốngKêToolStripMenuItem.Size = new Size(68, 23);
+            thốngKêToolStripMenuItem.Size = new Size(111, 38);
             thốngKêToolStripMenuItem.Text = "&Thống kê";
             // 
             // điểmTheoThíSinhToolStripMenuItem
             // 
             điểmTheoThíSinhToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             điểmTheoThíSinhToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
+            điểmTheoThíSinhToolStripMenuItem.Image = Properties.Resources.document_16xLG;
             điểmTheoThíSinhToolStripMenuItem.Name = "điểmTheoThíSinhToolStripMenuItem";
             điểmTheoThíSinhToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Alt | Keys.P;
-            điểmTheoThíSinhToolStripMenuItem.Size = new Size(235, 22);
+            điểmTheoThíSinhToolStripMenuItem.Size = new Size(413, 40);
             điểmTheoThíSinhToolStripMenuItem.Text = "Điểm theo thí sinh";
             // 
             // giớiThiệuToolStripMenuItem
@@ -164,7 +169,7 @@
             giớiThiệuToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             giớiThiệuToolStripMenuItem.Name = "giớiThiệuToolStripMenuItem";
             giớiThiệuToolStripMenuItem.Padding = new Padding(4, 2, 4, 2);
-            giớiThiệuToolStripMenuItem.Size = new Size(70, 23);
+            giớiThiệuToolStripMenuItem.Size = new Size(115, 38);
             giớiThiệuToolStripMenuItem.Text = "&Giới thiệu";
             // 
             // vềPolyTestToolStripMenuItem
@@ -172,7 +177,7 @@
             vềPolyTestToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             vềPolyTestToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             vềPolyTestToolStripMenuItem.Name = "vềPolyTestToolStripMenuItem";
-            vềPolyTestToolStripMenuItem.Size = new Size(159, 22);
+            vềPolyTestToolStripMenuItem.Size = new Size(280, 40);
             vềPolyTestToolStripMenuItem.Text = "Về PolyTest";
             // 
             // xemHướngDẫnToolStripMenuItem
@@ -180,7 +185,7 @@
             xemHướngDẫnToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             xemHướngDẫnToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             xemHướngDẫnToolStripMenuItem.Name = "xemHướngDẫnToolStripMenuItem";
-            xemHướngDẫnToolStripMenuItem.Size = new Size(159, 22);
+            xemHướngDẫnToolStripMenuItem.Size = new Size(280, 40);
             xemHướngDẫnToolStripMenuItem.Text = "Xem hướng dẫn";
             // 
             // usernameToolStripMenuItem
@@ -192,7 +197,7 @@
             usernameToolStripMenuItem.Name = "usernameToolStripMenuItem";
             usernameToolStripMenuItem.Padding = new Padding(4, 2, 4, 2);
             usernameToolStripMenuItem.RightToLeft = RightToLeft.No;
-            usernameToolStripMenuItem.Size = new Size(202, 23);
+            usernameToolStripMenuItem.Size = new Size(344, 38);
             usernameToolStripMenuItem.Text = "Xin chào, Vũ Thiên Trường (admin)";
             usernameToolStripMenuItem.TextDirection = ToolStripTextDirection.Horizontal;
             // 
@@ -201,7 +206,7 @@
             thôngTinCủaTôiToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             thôngTinCủaTôiToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thôngTinCủaTôiToolStripMenuItem.Name = "thôngTinCủaTôiToolStripMenuItem";
-            thôngTinCủaTôiToolStripMenuItem.Size = new Size(180, 22);
+            thôngTinCủaTôiToolStripMenuItem.Size = new Size(289, 40);
             thôngTinCủaTôiToolStripMenuItem.Text = "Thông tin của tôi";
             // 
             // themeToggleToolStripMenuItem
@@ -209,29 +214,32 @@
             themeToggleToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             themeToggleToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             themeToggleToolStripMenuItem.Name = "themeToggleToolStripMenuItem";
-            themeToggleToolStripMenuItem.Size = new Size(180, 22);
+            themeToggleToolStripMenuItem.Size = new Size(289, 40);
             themeToggleToolStripMenuItem.Text = "Chế độ tối";
             themeToggleToolStripMenuItem.Click += themeToggleToolStripMenuItem_Click;
             // 
             // formView
             // 
             formView.Dock = DockStyle.Fill;
-            formView.Location = new Point(0, 35);
+            formView.Location = new Point(0, 62);
+            formView.Margin = new Padding(5, 6, 5, 6);
+            formView.MinimumSize = new Size(1371, 838);
             formView.Name = "formView";
-            formView.Size = new Size(800, 415);
+            formView.Size = new Size(1371, 838);
             formView.TabIndex = 1;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1371, 900);
             Controls.Add(formView);
             Controls.Add(mainMenuStrip);
             DoubleBuffered = true;
             MainMenuStrip = mainMenuStrip;
+            Margin = new Padding(5, 6, 5, 6);
             MdiChildrenMinimizedAnchorBottom = false;
-            MinimumSize = new Size(816, 489);
+            MinimumSize = new Size(1395, 964);
             Name = "MainForm";
             Text = "PolyTest Manager";
             Load += MainForm_Load;

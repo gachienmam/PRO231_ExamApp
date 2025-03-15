@@ -49,7 +49,7 @@
             BackColor = Color.White;
             Controls.Add(TreeView);
             DockText = "Danh sách đề";
-            Icon = Properties.Resources.Collection_16xLG;
+            //Icon = Properties.Resources.Collection_16xLG;
             Name = "TreeViewControl";
             Size = new Size(275, 497);
             ResumeLayout(false);

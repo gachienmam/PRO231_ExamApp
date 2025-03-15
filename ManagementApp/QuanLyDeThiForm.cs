@@ -28,32 +28,24 @@ namespace ManagementApp
             // Add the control scroll message filter to re-route all mousewheel events
             // to the control the user is currently hovering over with their cursor.
             Application.AddMessageFilter(new ControlScrollFilter());
-
-            // Add the dock content drag message filter to handle moving dock content around.
-            Application.AddMessageFilter(DockPanel.DockContentDragFilter);
-
-            // Add the dock panel message filter to filter through for dock panel splitter
-            // input before letting events pass through to the rest of the application.
-            Application.AddMessageFilter(DockPanel.DockResizeFilter);
-
         }
 
         private void QuanLyDeThiForm_Load(object sender, EventArgs e)
         {
             int childCount = 0;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 9; i++)
             {
-                CrownTreeNode node = new($"Root node #{i}")
+                CrownTreeNode node = new($"SD180{i}")
                 {
-                    //ExpandedIcon = Properties.Resources.folder,
-                    //Icon = Properties.Resources.folder_Closed_16xLG
+                    ExpandedIcon = Properties.Resources.folder_16x,
+                    Icon = Properties.Resources.folder_Closed_16xLG
                 };
 
                 for (int x = 0; x < 10; x++)
                 {
-                    CrownTreeNode childNode = new($"Child node #{childCount}")
+                    CrownTreeNode childNode = new($"SD180{i}-De{childCount}")
                     {
-                        //Icon = Properties.Resources.Files_7954
+                        Icon = Properties.Resources.document_16xLG
                     };
                     childCount++;
                     node.Nodes.Add(childNode);

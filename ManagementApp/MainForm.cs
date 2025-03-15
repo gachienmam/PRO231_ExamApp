@@ -18,12 +18,15 @@ namespace ManagementApp
             }
         }
 
-        private readonly List<Control> _openedForms = new();
+        private Control? _currentForm = null;
+
+        private readonly string DefaultFormText = "PolyTest Manager";
 
         private QuanLyDeThiForm quanLyDeThiForm = new QuanLyDeThiForm();
-        private int _pos_QuanLyDeThiForm = -1;
+        private QuanLyThiSinhForm quanLyThiSinhForm = new QuanLyThiSinhForm();
+        private QuanLyNguoiDungForm quanLyNguoiDungForm = new QuanLyNguoiDungForm();
 
-
+        #region Constructor
         public MainForm()
         {
             InitializeComponent();
@@ -31,19 +34,33 @@ namespace ManagementApp
             // Add the control scroll message filter to re-route all mousewheel events
             // to the control the user is currently hovering over with their cursor.
             Application.AddMessageFilter(new ControlScrollFilter());
-            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             ChangeTheme(false);
+            this.Text = DefaultFormText;
         }
+        #endregion
 
+        #region Main Menu Strip
         private void đềThiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Checked => is open
             đềThiToolStripMenuItem.Checked = !đềThiToolStripMenuItem.Checked;
-            ChangeToForm(quanLyDeThiForm);
+            ClearAllCheckedAndChangeToForm(quanLyDeThiForm, đềThiToolStripMenuItem);
+        }
+
+        private void thíSinhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            thíSinhToolStripMenuItem.Checked = !thíSinhToolStripMenuItem.Checked;
+            ClearAllCheckedAndChangeToForm(quanLyThiSinhForm, thíSinhToolStripMenuItem);
+        }
+
+        private void ngườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ngườiDùngToolStripMenuItem.Checked = !ngườiDùngToolStripMenuItem.Checked;
+            ClearAllCheckedAndChangeToForm(quanLyNguoiDungForm, ngườiDùngToolStripMenuItem);
         }
 
         private void themeToggleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,9 +72,9 @@ namespace ManagementApp
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CloseAllForms();
+            CloseAllForms(true);
         }
-
+        #endregion
 
         #region Functions
         private void ChangeTheme(bool isChangingToLightTheme)
@@ -102,27 +119,68 @@ namespace ManagementApp
             }
         }
 
-        private void ChangeToForm(Form form)
+        private void ClearAllCheckedAndChangeToForm(Form form, ToolStripMenuItem itemToBeChecked)
         {
-            if (_openedForms.Count == 0)
+            // Tắt hết tất cả dấu tick
+            foreach (ToolStripMenuItem tool in mainMenuStrip.Items)
             {
-                form.TopLevel = false;
-                formView.Controls.Add(form);
-                form.Show();
-                form.Dock = DockStyle.Fill;
-                _openedForms.Add(form);
+                foreach (ToolStripMenuItem dropdowntool in tool.DropDownItems)
+                {
+                    // Kiểm tra có phải nút đổi chủ đề để không đụng tới
+                    if (dropdowntool.Name != "themeToggleToolStripMenuItem")
+                    {
+                        dropdowntool.Checked = false;
+                    }
+                }
             }
-            else
+            
+            // Nếu form đang bật thì bật dấu tick của ToolStripMenuItem mở form
+            if (ToggleChangeToForm(form))
             {
-                formView.Controls.Remove(form);
-                _openedForms.Clear();
+                itemToBeChecked.Checked = true;
             }
         }
 
-        private void CloseAllForms()
+        private bool ToggleChangeToForm(Form form)
         {
-            formView.Controls.Clear();
-            _openedForms.Clear();
+            // false -> is closing, true -> is opening
+            // false -> đang đóng form, true -> mở form
+            if (_currentForm == form)
+            {
+                formView.Controls.Clear();
+                _currentForm = null;
+                this.Text = DefaultFormText;
+                return false;
+            }
+            else
+            {
+                formView.Controls.Clear();
+                form.TopLevel = false;
+                formView.Controls.Add(form);
+                form.Show();
+                this.Text = DefaultFormText + " - " + form.Text;
+                form.Dock = DockStyle.Fill;
+                _currentForm = form;
+                return true;
+            }
+        }
+
+        private void CloseAllForms(bool clearAllForms)
+        {
+            if (clearAllForms)
+            {
+                quanLyDeThiForm = new();
+                quanLyNguoiDungForm = new();
+                quanLyThiSinhForm = new();
+
+                formView.Controls.Clear();
+                _currentForm = null;
+            }
+            else
+            {
+                formView.Controls.Clear();
+                _currentForm = null;
+            }
         }
         #endregion
     }

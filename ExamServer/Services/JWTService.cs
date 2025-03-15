@@ -26,9 +26,9 @@ namespace ExamServer.Services
         {
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub, user.TenNguoiDung),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim("Role", user.VaiTro) // Add user role
+                new Claim(JwtRegisteredClaimNames.Sub, user.TenNguoiDung),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"] ?? "DefaultKey"));

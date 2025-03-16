@@ -1,6 +1,6 @@
 ﻿namespace ManagementApp
 {
-    partial class Formquanlythisinh
+    partial class QuanLyThiSinhForm
     {
         /// <summary>
         /// Required designer variable.

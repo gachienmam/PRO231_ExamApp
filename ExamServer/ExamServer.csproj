@@ -8,10 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protobuffer\UserExamService.proto" />
+    <None Remove="Protobuffer\ExamService.proto" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="Google.Protobuf" Version="3.29.3" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.67.0" />
@@ -30,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protobuffer\UserExamService.proto" GrpcServices="Server" />
-    <Protobuf Include="Protobuffer\AdminExamService.proto" GrpcServices="Server" />
+    <Protobuf Include="Protobuffer\ExamService.proto" GrpcServices="Server" />
+    <Protobuf Include="Protobuffer\AdminService.proto" GrpcServices="Server" />
   </ItemGroup>
 
 </Project>

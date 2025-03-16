@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ManagementApp
 {
-    public partial class Formnguoidung : Form
+    public partial class QuanLyNguoiDungForm : Form
     {
-        public Formnguoidung()
+        public QuanLyNguoiDungForm()
         {
             InitializeComponent();
         }

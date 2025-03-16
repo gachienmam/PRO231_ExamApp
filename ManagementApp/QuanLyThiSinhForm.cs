@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ManagementApp
 {
-    public partial class Formquanlythisinh : Form
+    public partial class QuanLyThiSinhForm : Form
     {
-        public Formquanlythisinh()
+        public QuanLyThiSinhForm()
         {
             InitializeComponent();
         }

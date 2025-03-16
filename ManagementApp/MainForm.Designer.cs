@@ -118,7 +118,7 @@
             đềThiToolStripMenuItem.Image = Properties.Resources.Collection_16xLG;
             đềThiToolStripMenuItem.Name = "đềThiToolStripMenuItem";
             đềThiToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.D;
-            đềThiToolStripMenuItem.Size = new Size(225, 34);
+            đềThiToolStripMenuItem.Size = new Size(213, 22);
             đềThiToolStripMenuItem.Text = "Đề thi";
             đềThiToolStripMenuItem.Click += đềThiToolStripMenuItem_Click;
             // 
@@ -129,7 +129,7 @@
             thíSinhToolStripMenuItem.Image = Properties.Resources.RefactoringLog_12810;
             thíSinhToolStripMenuItem.Name = "thíSinhToolStripMenuItem";
             thíSinhToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.T;
-            thíSinhToolStripMenuItem.Size = new Size(225, 34);
+            thíSinhToolStripMenuItem.Size = new Size(213, 22);
             thíSinhToolStripMenuItem.Text = "Thí sinh";
             thíSinhToolStripMenuItem.Click += thíSinhToolStripMenuItem_Click;
             // 
@@ -140,7 +140,7 @@
             ngườiDùngToolStripMenuItem.Image = Properties.Resources.properties_16xLG;
             ngườiDùngToolStripMenuItem.Name = "ngườiDùngToolStripMenuItem";
             ngườiDùngToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.N;
-            ngườiDùngToolStripMenuItem.Size = new Size(225, 34);
+            ngườiDùngToolStripMenuItem.Size = new Size(213, 22);
             ngườiDùngToolStripMenuItem.Text = "Người dùng";
             ngườiDùngToolStripMenuItem.Click += ngườiDùngToolStripMenuItem_Click;
             // 
@@ -161,8 +161,9 @@
             điểmTheoThíSinhToolStripMenuItem.Image = Properties.Resources.document_16xLG;
             điểmTheoThíSinhToolStripMenuItem.Name = "điểmTheoThíSinhToolStripMenuItem";
             điểmTheoThíSinhToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Alt | Keys.P;
-            điểmTheoThíSinhToolStripMenuItem.Size = new Size(235, 22);
+            điểmTheoThíSinhToolStripMenuItem.Size = new Size(247, 34);
             điểmTheoThíSinhToolStripMenuItem.Text = "Điểm theo thí sinh";
+            điểmTheoThíSinhToolStripMenuItem.Click += điểmTheoThíSinhToolStripMenuItem_Click;
             // 
             // giớiThiệuToolStripMenuItem
             // 
@@ -208,7 +209,7 @@
             thôngTinCủaTôiToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             thôngTinCủaTôiToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thôngTinCủaTôiToolStripMenuItem.Name = "thôngTinCủaTôiToolStripMenuItem";
-            thôngTinCủaTôiToolStripMenuItem.Size = new Size(164, 22);
+            thôngTinCủaTôiToolStripMenuItem.Size = new Size(180, 22);
             thôngTinCủaTôiToolStripMenuItem.Text = "Thông tin của tôi";
             // 
             // themeToggleToolStripMenuItem
@@ -216,7 +217,7 @@
             themeToggleToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             themeToggleToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             themeToggleToolStripMenuItem.Name = "themeToggleToolStripMenuItem";
-            themeToggleToolStripMenuItem.Size = new Size(164, 22);
+            themeToggleToolStripMenuItem.Size = new Size(180, 22);
             themeToggleToolStripMenuItem.Text = "Chế độ tối";
             themeToggleToolStripMenuItem.Click += themeToggleToolStripMenuItem_Click;
             // 

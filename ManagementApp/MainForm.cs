@@ -63,6 +63,11 @@ namespace ManagementApp
             ClearAllCheckedAndChangeToForm(quanLyNguoiDungForm, ngườiDùngToolStripMenuItem);
         }
 
+        private void điểmTheoThíSinhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void themeToggleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             themeToggleToolStripMenuItem.Checked = !themeToggleToolStripMenuItem.Checked;
@@ -133,7 +138,7 @@ namespace ManagementApp
                     }
                 }
             }
-            
+
             // Nếu form đang bật thì bật dấu tick của ToolStripMenuItem mở form
             if (ToggleChangeToForm(form))
             {

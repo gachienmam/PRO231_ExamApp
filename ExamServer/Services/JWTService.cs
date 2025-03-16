@@ -22,20 +22,22 @@ namespace ExamServer.Services
             Configuration = configuration;
         }
 
-        public string GenerateJwtToken(NguoiDung user)
+        public string GenerateJwtToken(NguoiDung user, ServerCallContext context)
         {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.TenNguoiDung),
+                new Claim(JwtRegisteredClaimNames.Sub, user.HoTen),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"] ?? "DefaultKey"));
+            var userContext = context.GetHttpContext().User;
+            string role = userContext.IsInRole("Admin") == true || userContext.IsInRole("GiangVien") == true ? "Management" : "User";
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt{role}:Key"] ?? "DefaultPolyTestExamServerKey"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
-                Configuration["Jwt:Issuer"],
-                Configuration["Jwt:Audience"],
+                issuer: Configuration[$"Jwt{role}:Issuer"],
+                audience: Configuration[$"Jwt{role}:Audience"],
                 claims,
                 expires: DateTime.UtcNow.AddHours(6),
                 signingCredentials: creds
@@ -44,10 +46,12 @@ namespace ExamServer.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public ClaimsPrincipal? ValidateToken(string token)
+        public ClaimsPrincipal? ValidateToken(string token, ServerCallContext context)
         {
+            var userContext = context.GetHttpContext().User;
+            string role = userContext.IsInRole("Admin") == true || userContext.IsInRole("GiangVien") == true ? "Management" : "User";
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(Configuration["Jwt:Key"] ?? "DefaultKey");
+            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt{role}:Key"] ?? "DefaultPolyTestExamServerKey");
 
             try
             {
@@ -57,8 +61,8 @@ namespace ExamServer.Services
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Audience"],
+                    ValidIssuer = Configuration[$"Jwt{role}:Issuer"],
+                    ValidAudience = Configuration[$"Jwt{role}:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 }, out _);
 

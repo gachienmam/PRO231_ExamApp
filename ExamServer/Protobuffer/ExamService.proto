@@ -1,0 +1,70 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "ExamServer.ExamService";
+
+service ExamService {
+    rpc AuthenticateUser (AuthRequest) returns (AuthResponse);
+    rpc GetExamData (ExamRequest) returns (ExamData);
+    rpc SubmitPaper (PaperSubmission) returns (PaperSubmissionResponse);
+    rpc StreamExamUpdates (ExamUpdateRequest) returns (stream ExamUpdate);
+}
+
+// Authentication request
+message AuthRequest {
+    google.protobuf.Timestamp timestamp = 1;
+    string username = 2; // dual purpose: OAuth or normal username and password
+    string password = 3; 
+    string machine = 4; // Current computer name
+    string examCode = 5;
+}
+
+// Response for authentication
+message AuthResponse {
+    int32 responseCode = 1; // send error code if wrong or failure, send success code if correct auth
+    string responseMessage = 2; // custom error message (could change)
+    string accessToken = 3; // send back a token if successful
+}
+
+// Request an exam
+message ExamRequest {
+    string accessToken = 1; // current user accessToken
+    string examId = 2; // the requesting exam id
+}
+
+// Exam data response
+message ExamData {
+    int32 responseCode = 1; 
+    bytes examPaper = 2; // send exam questions based on custom C# class
+    bytes examForm = 3; // send back the examination client
+    int32 examFormSize = 4; // size of exam client
+    bytes serverInformation = 5; // server information (server name, etc..)
+}
+
+// Request to submit answer sheet
+message PaperSubmission {
+    int32 submissionType = 1; // types: "final submission: Student complete exam", "submission: Student saves current copy of answers"
+    bytes studentSubmitPaper = 2; // the submission paper (copy of answers)
+}
+
+// Response to submission of answer sheet
+message PaperSubmissionResponse {
+    int32 responseCode = 1; 
+    string responseMessage = 2;
+}
+
+// Request real-time exam updates
+message ExamUpdateRequest {
+    string accessToken = 1;
+    string examId = 2;
+}
+
+// Real-time exam updates for clients
+message ExamUpdate {
+    int32 responseCode = 1;
+    string examId = 2;
+    string recipientId = 3; // If empty, applies to all
+    google.protobuf.Timestamp timestamp = 4;
+    bytes responseMessage = 5;
+}

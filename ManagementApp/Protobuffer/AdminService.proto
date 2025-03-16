@@ -1,0 +1,53 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "ExamServer.AdminService";
+
+service AdminService {
+    rpc AuthenticateUser (AuthRequest) returns (AuthResponse);
+    rpc UploadExamPaper (stream UploadExamFileChunk) returns (UploadResponse);
+    rpc ExecuteRemoteCommand (CommandRequest) returns (CommandResponse);
+}
+
+// Authentication request
+message AuthRequest {
+    google.protobuf.Timestamp timestamp = 1;
+    string username = 2; // dual purpose: OAuth or normal username and password
+    string password = 3; 
+    string machine = 4; // Current computer name
+    string examCode = 5;
+}
+
+// Response for authentication
+message AuthResponse {
+    int32 responseCode = 1; // send error code if wrong or failure, send success code if correct auth
+    string responseMessage = 2; // custom error message (could change)
+    string accessToken = 3; // send back a token if successful
+}
+
+message UploadExamFileChunk {
+    string accessToken = 1;
+    string examId = 2;
+    bytes data = 3;
+    bool isLastChunk = 4;
+}
+
+message UploadResponse {
+    int32 responseCode = 1;
+    string responseMessage = 2;
+}
+
+// Admin command request
+message CommandRequest {
+    int32 responseCode = 1;
+    string command = 2;
+    string targetUserId = 3; // If empty, applies to all users
+    string examId = 4; // Targeted exam
+}
+
+// Command response (success or failure)
+message CommandResponse {
+    int32 responseCode = 1;
+    string responseMessage = 2;
+}

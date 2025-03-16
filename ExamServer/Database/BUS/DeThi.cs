@@ -10,7 +10,12 @@ namespace ExamServer.Database.BUS
 {
     internal class DeThi
     {
-        Database.DAL.DeThi dalDeThi = new Database.DAL.DeThi();
+        private readonly DAL.DeThi _DAL_deThi;
+
+        public DeThi(DAL.DeThi deThi)
+        {
+            _DAL_deThi = deThi;
+        }
 
         public ExamLibrary.Question.Paper GetDeThiFromID()
         {

@@ -1,0 +1,120 @@
+﻿using ExamLibrary.Enum;
+using ExamServer.AdminService;
+using ExamServer.Helper;
+using Google.Protobuf;
+using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ExamServer.Services
+{
+    internal class AdminServiceImpl
+    {
+        private readonly string _uploadPath = "ExamPapers/";
+
+        private readonly ILogger<AdminServiceImpl> _logger;
+        // Cho phần mềm quản lý kết nối vô để xử lý SQL trực tiếp
+        private Database.DAL.DatabaseHelper _databaseHelper;
+
+        // Cho server
+        private Database.BUS.DeThi _busDeThi;
+        private Database.BUS.NguoiDung _busNguoiDung;
+        private PolyTestJWT _jwtHelper;
+
+        public AdminServiceImpl(ILogger<AdminServiceImpl> logger, Database.BUS.DeThi _BUS_DeThi, Database.BUS.NguoiDung _BUS_NguoiDung)
+        {
+            _logger = logger;
+            _busDeThi = _BUS_DeThi;
+            _busNguoiDung = _BUS_NguoiDung;
+            //_dbContext = dbContext;
+        }
+
+        public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
+        {
+            // Validate user (simplified example)
+            var user = await _busDeThi.
+                .FirstOrDefaultAsync(u => u.Username == request.Username && u.Password == request.Password);
+
+            if (request.Username == null)
+            {
+                return new AdminService.AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+            }
+
+            string token = _jwtHelper.GenerateJwtToken(request.Username, user.VaiTro); // Implement token generation
+            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
+        }
+
+        [Authorize]
+        public async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
+        {
+            string examId = null;
+            string filePath = null;
+            FileStream fileStream = null;
+
+            try
+            {
+                await foreach (var chunk in requestStream.ReadAllAsync())
+                {
+                    if (examId == null)
+                    {
+                        examId = chunk.ExamId;
+                        Directory.CreateDirectory(_uploadPath);
+                        filePath = Path.Combine(_uploadPath, $"{examId}.xlsx");
+                        fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+                    }
+
+                    await fileStream.WriteAsync(chunk.Data.ToByteArray(), 0, chunk.Data.Length);
+
+                    if (chunk.IsLastChunk)
+                    {
+                        break;
+                    }
+                }
+
+                fileStream?.Close();
+                return new UploadResponse { ResponseCode = (int)StatusCode.OK, ResponseMessage = "File uploaded successfully" };
+            }
+            catch (Exception ex)
+            {
+                return new UploadResponse { ResponseCode = (int)StatusCode.Internal, ResponseMessage = $"Error: {ex.Message}" };
+            }
+        }
+
+        [Authorize]
+        public async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
+        {
+            var user = context.GetHttpContext().User;
+            if (!user.IsInRole("Admin"))
+            {
+                throw new RpcException(new Status(StatusCode.PermissionDenied, "Access denied"));
+            }
+
+            if (request.RequestCode.Equals((int)RemoteCommandType.SQL))
+            {
+                try
+                {
+                    string json = _databaseHelper.ExecuteRawSqlQuery(request.Command);
+                    await Task.Delay(1000);
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = json };
+                }
+                catch (Exception ex)
+                {
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"Error: {ex.Message}"};
+                }
+            }
+
+            return new CommandResponse { ResponseCode = (int)HttpStatusCode.NotImplemented, ResponseMessage = $"Not implemented" };
+        }
+    }
+}

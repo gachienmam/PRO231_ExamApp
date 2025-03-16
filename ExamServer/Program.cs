@@ -53,8 +53,8 @@ namespace ExamServer
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapGrpcService<Services.UserExamServiceImpl>().EnableGrpcWeb();
-            app.MapGrpcService<Services.AdminExamServiceImpl>().EnableGrpcWeb();
+            app.MapGrpcService<Services.ExamServiceImpl>().EnableGrpcWeb();
+            app.MapGrpcService<Services.AdminServiceImpl>().EnableGrpcWeb();
 
             app.Run();
         }

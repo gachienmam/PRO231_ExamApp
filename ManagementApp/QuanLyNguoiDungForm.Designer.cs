@@ -35,8 +35,8 @@
             label5 = new Label();
             label6 = new Label();
             groupBox1 = new GroupBox();
-            radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
@@ -60,9 +60,9 @@
             label1.Font = new Font("Times New Roman", 12F);
             label1.Location = new Point(67, 98);
             label1.Name = "label1";
-            label1.Size = new Size(33, 19);
+            label1.Size = new Size(127, 19);
             label1.TabIndex = 0;
-            label1.Text = "Mã:";
+            label1.Text = "Quản lý người dùng";
             // 
             // label2
             // 
@@ -125,17 +125,6 @@
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(6, 18);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(61, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Admin";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
             // radioButton2
             // 
             radioButton2.AutoSize = true;
@@ -147,6 +136,17 @@
             radioButton2.Text = "Giáo viên";
             radioButton2.UseVisualStyleBackColor = true;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(6, 18);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(61, 19);
+            radioButton1.TabIndex = 0;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Admin";
+            radioButton1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -261,7 +261,7 @@
             button7.Text = "Lưu";
             button7.UseVisualStyleBackColor = true;
             // 
-            // Formnguoidung
+            // QuanLyNguoiDungForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -286,8 +286,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Formnguoidung";
-            Text = "Formnguoidung";
+            Name = "QuanLyNguoiDungForm";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace ExamServer.Database.DTO
 {
-    internal class NguoiDung
+    internal class ThiSinh
     {
-        public NguoiDung(string maNguoiDung, string hoTen, string email, string matKhau, string vaiTro)
+        public ThiSinh(string maThiSinh, string hoTen, string email, string matKhau, DateOnly ngaySinh, string soDienThoai, int trangThai)
         {
-            MaNguoiDung = maNguoiDung;
+            MaThiSinh = maThiSinh;
             HoTen = hoTen;
             Email = email;
             MatKhau = matKhau;
-            VaiTro = vaiTro;
+            NgaySinh = ngaySinh;
+            SoDienThoai = soDienThoai;
+            TrangThai = trangThai;
         }
 
         [MaxLength(50)]
-        public string MaNguoiDung { get; set; }
+        public string MaThiSinh { get; set; }
 
         [MaxLength(50)]
         public string HoTen { get; set; }
@@ -30,7 +32,11 @@ namespace ExamServer.Database.DTO
         [MaxLength(255)]
         public string MatKhau { get; set; }
 
-        [MaxLength(10)]
-        public string VaiTro { get; set; }
+        public DateOnly NgaySinh {  get; set; }
+
+        [MaxLength(15)]
+        public string SoDienThoai {  get; set; }
+
+        public int TrangThai { get; set; }
     }
 }

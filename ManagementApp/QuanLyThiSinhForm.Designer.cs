@@ -248,7 +248,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(70, 228);
             label2.Name = "label2";
-            label2.Size = new Size(63, 15);
+            label2.Size = new Size(62, 15);
             label2.TabIndex = 21;
             label2.Text = "Trạng thái:";
             // 
@@ -297,7 +297,7 @@
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 44;
             // 
-            // Formquanlythisinh
+            // QuanLyThiSinhForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -326,8 +326,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "Formquanlythisinh";
-            Text = "Formquanlythisinh";
+            Name = "QuanLyThiSinhForm";
+            Text = "Quản lý thí sinh";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

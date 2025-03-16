@@ -18,7 +18,7 @@ namespace ExamServer.Database
 
         public string? GetConnectionString()
         {
-            return Configuration.GetConnectionString("ExamDatabase");
+            return Configuration.GetConnectionString("ExamDatabase") ?? "";
         }
     }
 }

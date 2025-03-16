@@ -22,13 +22,5 @@ namespace ExamLibrary.Enum
         AUTH_SUCCESS = 20,
         AUTH_STUDENT_LOGIN_FAILED = 21,
         AUTH_STUDENT_DOES_NOT_EXIST = 22,
-
-        // Admin: Commands
-        CMD_SUCCESS = 30,
-        CMD_FAILED = 31,
-
-        // Admin: Upload
-        UPLOAD_SUCCESS = 40,
-        UPLOAD_FAILED = 41
     }
 }

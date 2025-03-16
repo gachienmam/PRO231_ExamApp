@@ -10,25 +10,16 @@ namespace ExamLibrary.Question
     {
         public Paper()
         {
+            _examCode = string.Empty;
             _testName = string.Empty;
             _testImage = new byte[0];
             _examCode = string.Empty;
             _listAudio = new List<Data.Audio>();
             _notes = string.Empty;
             _listenCode = string.Empty;
+            _option_shuffleMultipleChoice = true;
             _q_multipleChoice = new List<Types.MultipleChoice>();
             _duration = 600;
-        }
-        public bool ShuffleMultipleChoice
-        {
-            get
-            {
-                return _shuffleMultipleChoice;
-            }
-            set
-            {
-                _shuffleMultipleChoice = value;
-            }
         }
 
         public string TestName
@@ -115,6 +106,18 @@ namespace ExamLibrary.Question
             }
         }
 
+        public bool option_ShuffleMultipleChoice
+        {
+            get
+            {
+                return _option_shuffleMultipleChoice;
+            }
+            set
+            {
+                _option_shuffleMultipleChoice = value;
+            }
+        }
+
         public List<Types.MultipleChoice> MultipleChoiceQuestions // in seconds
         {
             get
@@ -167,7 +170,7 @@ namespace ExamLibrary.Question
 
         private List<Types.MultipleChoice> _q_multipleChoice;
 
-        private bool _shuffleMultipleChoice;
+        private bool _option_shuffleMultipleChoice;
 
         private string _listenCode;
 

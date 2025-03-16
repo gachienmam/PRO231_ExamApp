@@ -35,41 +35,41 @@
             label5 = new Label();
             label6 = new Label();
             groupBox1 = new GroupBox();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            dataGridView1 = new DataGridView();
-            textBox5 = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
+            radioButtonGV = new RadioButton();
+            radioButtonAdmin = new RadioButton();
+            textBoxMaND = new TextBox();
+            textBoxMKND = new TextBox();
+            textBoxHoTenND = new TextBox();
+            textBoxEmailND = new TextBox();
+            adioButtonGridviewND = new DataGridView();
+            textBoxTimKiem = new TextBox();
+            buttonTimKiem = new Button();
+            buttonThemND = new Button();
+            buttonSuaND = new Button();
+            buttonXoaND = new Button();
+            buttonThoat = new Button();
+            buttonDanhSachND = new Button();
+            buttonLuuND = new Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)adioButtonGridviewND).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F);
-            label1.Location = new Point(67, 98);
+            label1.Location = new Point(77, 131);
             label1.Name = "label1";
-            label1.Size = new Size(127, 19);
+            label1.Size = new Size(42, 22);
             label1.TabIndex = 0;
             label1.Text = "Quản lý người dùng";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(67, 192);
+            label2.Location = new Point(77, 256);
             label2.Name = "label2";
-            label2.Size = new Size(43, 15);
+            label2.Size = new Size(55, 20);
             label2.TabIndex = 1;
             label2.Text = "Vai trò:";
             // 
@@ -77,9 +77,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F);
-            label3.Location = new Point(67, 144);
+            label3.Location = new Point(77, 192);
             label3.Name = "label3";
-            label3.Size = new Size(71, 19);
+            label3.Size = new Size(92, 22);
             label3.TabIndex = 2;
             label3.Text = "Họ và tên:";
             // 
@@ -87,9 +87,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F);
-            label4.Location = new Point(441, 98);
+            label4.Location = new Point(504, 131);
             label4.Name = "label4";
-            label4.Size = new Size(45, 19);
+            label4.Size = new Size(63, 22);
             label4.TabIndex = 3;
             label4.Text = "Email:";
             // 
@@ -98,9 +98,9 @@
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Blue;
-            label5.Location = new Point(276, 24);
+            label5.Location = new Point(315, 32);
             label5.Name = "label5";
-            label5.Size = new Size(246, 31);
+            label5.Size = new Size(309, 38);
             label5.TabIndex = 4;
             label5.Text = "Quản lý người dùng";
             // 
@@ -108,177 +108,199 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F);
-            label6.Location = new Point(441, 144);
+            label6.Location = new Point(504, 192);
             label6.Name = "label6";
-            label6.Size = new Size(70, 19);
+            label6.Size = new Size(88, 22);
             label6.TabIndex = 5;
             label6.Text = "Mật khẩu:";
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(radioButton2);
-            groupBox1.Controls.Add(radioButton1);
-            groupBox1.Location = new Point(116, 173);
+            groupBox1.Controls.Add(radioButtonGV);
+            groupBox1.Controls.Add(radioButtonAdmin);
+            groupBox1.Location = new Point(133, 231);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(189, 48);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(216, 64);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // radioButton2
+            // radioButtonGV
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(93, 18);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(74, 19);
-            radioButton2.TabIndex = 7;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Giáo viên";
-            radioButton2.UseVisualStyleBackColor = true;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            radioButtonGV.AutoSize = true;
+            radioButtonGV.Location = new Point(106, 24);
+            radioButtonGV.Margin = new Padding(3, 4, 3, 4);
+            radioButtonGV.Name = "radioButtonGV";
+            radioButtonGV.Size = new Size(92, 24);
+            radioButtonGV.TabIndex = 7;
+            radioButtonGV.TabStop = true;
+            radioButtonGV.Text = "Giáo viên";
+            radioButtonGV.UseVisualStyleBackColor = true;
+            radioButtonGV.CheckedChanged += radioButton2_CheckedChanged;
             // 
-            // radioButton1
+            // radioButtonAdmin
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(6, 18);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(61, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Admin";
-            radioButton1.UseVisualStyleBackColor = true;
+            radioButtonAdmin.AutoSize = true;
+            radioButtonAdmin.Location = new Point(7, 24);
+            radioButtonAdmin.Margin = new Padding(3, 4, 3, 4);
+            radioButtonAdmin.Name = "radioButtonAdmin";
+            radioButtonAdmin.Size = new Size(74, 24);
+            radioButtonAdmin.TabIndex = 0;
+            radioButtonAdmin.TabStop = true;
+            radioButtonAdmin.Text = "Admin";
+            radioButtonAdmin.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxMaND
             // 
-            textBox1.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(106, 95);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(248, 22);
-            textBox1.TabIndex = 7;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textBoxMaND.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxMaND.Location = new Point(121, 127);
+            textBoxMaND.Margin = new Padding(3, 4, 3, 4);
+            textBoxMaND.Name = "textBoxMaND";
+            textBoxMaND.Size = new Size(283, 26);
+            textBoxMaND.TabIndex = 7;
+            textBoxMaND.TextChanged += textBox1_TextChanged;
             // 
-            // textBox2
+            // textBoxMKND
             // 
-            textBox2.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(517, 141);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(210, 22);
-            textBox2.TabIndex = 8;
+            textBoxMKND.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxMKND.Location = new Point(591, 188);
+            textBoxMKND.Margin = new Padding(3, 4, 3, 4);
+            textBoxMKND.Name = "textBoxMKND";
+            textBoxMKND.Size = new Size(239, 26);
+            textBoxMKND.TabIndex = 8;
             // 
-            // textBox3
+            // textBoxHoTenND
             // 
-            textBox3.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(144, 141);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(210, 22);
-            textBox3.TabIndex = 9;
+            textBoxHoTenND.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxHoTenND.Location = new Point(165, 188);
+            textBoxHoTenND.Margin = new Padding(3, 4, 3, 4);
+            textBoxHoTenND.Name = "textBoxHoTenND";
+            textBoxHoTenND.Size = new Size(239, 26);
+            textBoxHoTenND.TabIndex = 9;
             // 
-            // textBox4
+            // textBoxEmailND
             // 
-            textBox4.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox4.Location = new Point(492, 95);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(235, 22);
-            textBox4.TabIndex = 10;
+            textBoxEmailND.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxEmailND.Location = new Point(562, 127);
+            textBoxEmailND.Margin = new Padding(3, 4, 3, 4);
+            textBoxEmailND.Name = "textBoxEmailND";
+            textBoxEmailND.Size = new Size(268, 26);
+            textBoxEmailND.TabIndex = 10;
             // 
-            // dataGridView1
+            // adioButtonGridviewND
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 227);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(797, 208);
-            dataGridView1.TabIndex = 11;
+            adioButtonGridviewND.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            adioButtonGridviewND.Location = new Point(3, 303);
+            adioButtonGridviewND.Margin = new Padding(3, 4, 3, 4);
+            adioButtonGridviewND.Name = "adioButtonGridviewND";
+            adioButtonGridviewND.RowHeadersWidth = 51;
+            adioButtonGridviewND.Size = new Size(911, 277);
+            adioButtonGridviewND.TabIndex = 11;
             // 
-            // textBox5
+            // textBoxTimKiem
             // 
-            textBox5.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox5.Location = new Point(209, 453);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(248, 22);
-            textBox5.TabIndex = 12;
-            textBox5.Text = "Tìm kiếm theo email";
+            textBoxTimKiem.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxTimKiem.Location = new Point(239, 604);
+            textBoxTimKiem.Margin = new Padding(3, 4, 3, 4);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.Size = new Size(283, 26);
+            textBoxTimKiem.TabIndex = 12;
+            textBoxTimKiem.Text = "Tìm kiếm theo email";
+            textBoxTimKiem.TextChanged += textBoxTimKiem_TextChanged;
             // 
-            // button1
+            // buttonTimKiem
             // 
-            button1.Location = new Point(492, 453);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 13;
-            button1.Text = "Tìm kiếm";
-            button1.UseVisualStyleBackColor = true;
+            buttonTimKiem.Location = new Point(562, 604);
+            buttonTimKiem.Margin = new Padding(3, 4, 3, 4);
+            buttonTimKiem.Name = "buttonTimKiem";
+            buttonTimKiem.Size = new Size(86, 31);
+            buttonTimKiem.TabIndex = 13;
+            buttonTimKiem.Text = "Tìm kiếm";
+            buttonTimKiem.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonThemND
             // 
-            button2.Location = new Point(56, 501);
-            button2.Name = "button2";
-            button2.Size = new Size(82, 50);
-            button2.TabIndex = 14;
-            button2.Text = "Thêm";
-            button2.UseVisualStyleBackColor = true;
+            buttonThemND.Location = new Point(64, 668);
+            buttonThemND.Margin = new Padding(3, 4, 3, 4);
+            buttonThemND.Name = "buttonThemND";
+            buttonThemND.Size = new Size(94, 67);
+            buttonThemND.TabIndex = 14;
+            buttonThemND.Text = "Thêm";
+            buttonThemND.UseVisualStyleBackColor = true;
+            buttonThemND.Click += buttonThemND_Click;
             // 
-            // button3
+            // buttonSuaND
             // 
-            button3.Location = new Point(169, 501);
-            button3.Name = "button3";
-            button3.Size = new Size(82, 50);
-            button3.TabIndex = 15;
-            button3.Text = "Sửa";
-            button3.UseVisualStyleBackColor = true;
+            buttonSuaND.Location = new Point(193, 668);
+            buttonSuaND.Margin = new Padding(3, 4, 3, 4);
+            buttonSuaND.Name = "buttonSuaND";
+            buttonSuaND.Size = new Size(94, 67);
+            buttonSuaND.TabIndex = 15;
+            buttonSuaND.Text = "Sửa";
+            buttonSuaND.UseVisualStyleBackColor = true;
+            buttonSuaND.Click += buttonSuaND_Click;
             // 
-            // button4
+            // buttonXoaND
             // 
-            button4.Location = new Point(276, 501);
-            button4.Name = "button4";
-            button4.Size = new Size(82, 50);
-            button4.TabIndex = 16;
-            button4.Text = "Xóa";
-            button4.UseVisualStyleBackColor = true;
+            buttonXoaND.Location = new Point(315, 668);
+            buttonXoaND.Margin = new Padding(3, 4, 3, 4);
+            buttonXoaND.Name = "buttonXoaND";
+            buttonXoaND.Size = new Size(94, 67);
+            buttonXoaND.TabIndex = 16;
+            buttonXoaND.Text = "Xóa";
+            buttonXoaND.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonThoat
             // 
-            button5.Location = new Point(679, 501);
-            button5.Name = "button5";
-            button5.Size = new Size(82, 50);
-            button5.TabIndex = 17;
-            button5.Text = "Thoát";
-            button5.UseVisualStyleBackColor = true;
+            buttonThoat.Location = new Point(776, 668);
+            buttonThoat.Margin = new Padding(3, 4, 3, 4);
+            buttonThoat.Name = "buttonThoat";
+            buttonThoat.Size = new Size(94, 67);
+            buttonThoat.TabIndex = 17;
+            buttonThoat.Text = "Thoát";
+            buttonThoat.UseVisualStyleBackColor = true;
+            buttonThoat.Click += buttonThoat_Click;
             // 
-            // button6
+            // buttonDanhSachND
             // 
-            button6.Location = new Point(529, 501);
-            button6.Name = "button6";
-            button6.Size = new Size(82, 50);
-            button6.TabIndex = 18;
-            button6.Text = "Danh sách";
-            button6.UseVisualStyleBackColor = true;
+            buttonDanhSachND.Location = new Point(605, 668);
+            buttonDanhSachND.Margin = new Padding(3, 4, 3, 4);
+            buttonDanhSachND.Name = "buttonDanhSachND";
+            buttonDanhSachND.Size = new Size(94, 67);
+            buttonDanhSachND.TabIndex = 18;
+            buttonDanhSachND.Text = "Danh sách";
+            buttonDanhSachND.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // buttonLuuND
             // 
-            button7.Location = new Point(375, 501);
-            button7.Name = "button7";
-            button7.Size = new Size(82, 50);
-            button7.TabIndex = 19;
-            button7.Text = "Lưu";
-            button7.UseVisualStyleBackColor = true;
+            buttonLuuND.Location = new Point(429, 668);
+            buttonLuuND.Margin = new Padding(3, 4, 3, 4);
+            buttonLuuND.Name = "buttonLuuND";
+            buttonLuuND.Size = new Size(94, 67);
+            buttonLuuND.TabIndex = 19;
+            buttonLuuND.Text = "Lưu";
+            buttonLuuND.UseVisualStyleBackColor = true;
             // 
             // QuanLyNguoiDungForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 578);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(textBox5);
-            Controls.Add(dataGridView1);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(914, 740);
+            Controls.Add(buttonLuuND);
+            Controls.Add(buttonDanhSachND);
+            Controls.Add(buttonThoat);
+            Controls.Add(buttonXoaND);
+            Controls.Add(buttonSuaND);
+            Controls.Add(buttonThemND);
+            Controls.Add(buttonTimKiem);
+            Controls.Add(textBoxTimKiem);
+            Controls.Add(adioButtonGridviewND);
+            Controls.Add(textBoxEmailND);
+            Controls.Add(textBoxHoTenND);
+            Controls.Add(textBoxMKND);
+            Controls.Add(textBoxMaND);
             Controls.Add(groupBox1);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -286,10 +308,12 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "QuanLyNguoiDungForm";
+            Text = "Quản lý người dùng";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)adioButtonGridviewND).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -303,20 +327,20 @@
         private Label label5;
         private Label label6;
         private GroupBox groupBox1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private DataGridView dataGridView1;
-        private TextBox textBox5;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
+        private RadioButton radioButtonGV;
+        private RadioButton radioButtonAdmin;
+        private TextBox textBoxMaND;
+        private TextBox textBoxMKND;
+        private TextBox textBoxHoTenND;
+        private TextBox textBoxEmailND;
+        private DataGridView adioButtonGridviewND;
+        private TextBox textBoxTimKiem;
+        private Button buttonTimKiem;
+        private Button buttonThemND;
+        private Button buttonSuaND;
+        private Button buttonXoaND;
+        private Button buttonThoat;
+        private Button buttonDanhSachND;
+        private Button buttonLuuND;
     }
 }

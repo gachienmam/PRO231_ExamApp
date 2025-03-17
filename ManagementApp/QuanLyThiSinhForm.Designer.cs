@@ -28,363 +28,364 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonLuuTS = new Button();
-            buttonDanhSachTS = new Button();
-            buttonThoat = new Button();
-            buttonXoaTS = new Button();
-            buttonSuaTS = new Button();
-            buttonThemTS = new Button();
-            buttonTimKiemTS = new Button();
-            textBoxTimKiemTS = new TextBox();
-            dataGridViewTS = new DataGridView();
-            textBoxEmailTS = new TextBox();
-            textBoxHoTenTS = new TextBox();
-            textBoxMKTS = new TextBox();
-            textBoxMaTS = new TextBox();
-            groupBox1 = new GroupBox();
-            radioButtonKhoaTS = new RadioButton();
-            radioButtonHDTS = new RadioButton();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBoxSDTTS = new TextBox();
-            label7 = new Label();
-            label8 = new Label();
+            crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            crownTextBox6 = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMaTS = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxHoTenTS = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxSDTTS = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxEmailTS = new ReaLTaiizor.Controls.CrownTextBox();
+            crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
+            radioButtonKhoaTS = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonHDTS = new ReaLTaiizor.Controls.CrownRadioButton();
+            crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            textBoxMKTS = new ReaLTaiizor.Controls.CrownTextBox();
+            buttonThemTS = new ReaLTaiizor.Controls.CrownButton();
             dateTimePickerNgaySinhTS = new DateTimePicker();
+            buttonLuuTS = new ReaLTaiizor.Controls.CrownButton();
+            buttonDanhSachTS = new ReaLTaiizor.Controls.CrownButton();
+            buttonThoat = new ReaLTaiizor.Controls.CrownButton();
+            buttonXoaTS = new ReaLTaiizor.Controls.CrownButton();
+            buttonSuaTS = new ReaLTaiizor.Controls.CrownButton();
+            buttonTimKiemTS = new ReaLTaiizor.Controls.CrownButton();
+            dataGridViewTS = new DataGridView();
+            crownSectionPanel1.SuspendLayout();
+            crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTS).BeginInit();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // buttonLuuTS
+            // crownSectionPanel1
             // 
-            buttonLuuTS.Location = new Point(405, 440);
-            buttonLuuTS.Margin = new Padding(3, 4, 3, 4);
-            buttonLuuTS.Name = "buttonLuuTS";
-            buttonLuuTS.Size = new Size(94, 67);
-            buttonLuuTS.TabIndex = 39;
-            buttonLuuTS.Text = "Lưu";
-            buttonLuuTS.UseVisualStyleBackColor = true;
+            crownSectionPanel1.Controls.Add(crownTextBox6);
+            crownSectionPanel1.Controls.Add(textBoxMaTS);
+            crownSectionPanel1.Controls.Add(textBoxHoTenTS);
+            crownSectionPanel1.Controls.Add(textBoxSDTTS);
+            crownSectionPanel1.Controls.Add(textBoxEmailTS);
+            crownSectionPanel1.Controls.Add(crownGroupBox1);
+            crownSectionPanel1.Controls.Add(crownTitle7);
+            crownSectionPanel1.Controls.Add(crownTitle6);
+            crownSectionPanel1.Controls.Add(crownTitle5);
+            crownSectionPanel1.Controls.Add(crownTitle4);
+            crownSectionPanel1.Controls.Add(crownTitle3);
+            crownSectionPanel1.Controls.Add(crownTitle2);
+            crownSectionPanel1.Controls.Add(crownTitle1);
+            crownSectionPanel1.Controls.Add(textBoxMKTS);
+            crownSectionPanel1.Controls.Add(buttonThemTS);
+            crownSectionPanel1.Controls.Add(dateTimePickerNgaySinhTS);
+            crownSectionPanel1.Controls.Add(buttonLuuTS);
+            crownSectionPanel1.Controls.Add(buttonDanhSachTS);
+            crownSectionPanel1.Controls.Add(buttonThoat);
+            crownSectionPanel1.Controls.Add(buttonXoaTS);
+            crownSectionPanel1.Controls.Add(buttonSuaTS);
+            crownSectionPanel1.Controls.Add(buttonTimKiemTS);
+            crownSectionPanel1.Controls.Add(dataGridViewTS);
+            crownSectionPanel1.Dock = DockStyle.Fill;
+            crownSectionPanel1.Location = new Point(0, 0);
+            crownSectionPanel1.Name = "crownSectionPanel1";
+            crownSectionPanel1.SectionHeader = "Quản Lý Thí Sinh";
+            crownSectionPanel1.Size = new Size(914, 559);
+            crownSectionPanel1.TabIndex = 0;
             // 
-            // buttonDanhSachTS
+            // crownTextBox6
             // 
-            buttonDanhSachTS.Location = new Point(581, 440);
-            buttonDanhSachTS.Margin = new Padding(3, 4, 3, 4);
-            buttonDanhSachTS.Name = "buttonDanhSachTS";
-            buttonDanhSachTS.Size = new Size(94, 67);
-            buttonDanhSachTS.TabIndex = 38;
-            buttonDanhSachTS.Text = "Danh sách";
-            buttonDanhSachTS.UseVisualStyleBackColor = true;
-            // 
-            // buttonThoat
-            // 
-            buttonThoat.Location = new Point(753, 440);
-            buttonThoat.Margin = new Padding(3, 4, 3, 4);
-            buttonThoat.Name = "buttonThoat";
-            buttonThoat.Size = new Size(94, 67);
-            buttonThoat.TabIndex = 37;
-            buttonThoat.Text = "Thoát";
-            buttonThoat.UseVisualStyleBackColor = true;
-            buttonThoat.Click += buttonThoat_Click;
-            // 
-            // buttonXoaTS
-            // 
-            buttonXoaTS.Location = new Point(292, 440);
-            buttonXoaTS.Margin = new Padding(3, 4, 3, 4);
-            buttonXoaTS.Name = "buttonXoaTS";
-            buttonXoaTS.Size = new Size(94, 67);
-            buttonXoaTS.TabIndex = 36;
-            buttonXoaTS.Text = "Xóa";
-            buttonXoaTS.UseVisualStyleBackColor = true;
-            // 
-            // buttonSuaTS
-            // 
-            buttonSuaTS.Location = new Point(170, 440);
-            buttonSuaTS.Margin = new Padding(3, 4, 3, 4);
-            buttonSuaTS.Name = "buttonSuaTS";
-            buttonSuaTS.Size = new Size(94, 67);
-            buttonSuaTS.TabIndex = 35;
-            buttonSuaTS.Text = "Sửa";
-            buttonSuaTS.UseVisualStyleBackColor = true;
-            // 
-            // buttonThemTS
-            // 
-            buttonThemTS.Location = new Point(41, 440);
-            buttonThemTS.Margin = new Padding(3, 4, 3, 4);
-            buttonThemTS.Name = "buttonThemTS";
-            buttonThemTS.Size = new Size(94, 67);
-            buttonThemTS.TabIndex = 34;
-            buttonThemTS.Text = "Thêm";
-            buttonThemTS.UseVisualStyleBackColor = true;
-            buttonThemTS.Click += buttonThemTS_Click;
-            // 
-            // buttonTimKiemTS
-            // 
-            buttonTimKiemTS.Location = new Point(539, 380);
-            buttonTimKiemTS.Margin = new Padding(3, 4, 3, 4);
-            buttonTimKiemTS.Name = "buttonTimKiemTS";
-            buttonTimKiemTS.Size = new Size(86, 31);
-            buttonTimKiemTS.TabIndex = 33;
-            buttonTimKiemTS.Text = "Tìm kiếm";
-            buttonTimKiemTS.UseVisualStyleBackColor = true;
-            // 
-            // textBoxTimKiemTS
-            // 
-            textBoxTimKiemTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxTimKiemTS.Location = new Point(216, 380);
-            textBoxTimKiemTS.Margin = new Padding(3, 4, 3, 4);
-            textBoxTimKiemTS.Name = "textBoxTimKiemTS";
-            textBoxTimKiemTS.Size = new Size(283, 26);
-            textBoxTimKiemTS.TabIndex = 32;
-            textBoxTimKiemTS.Text = "Tìm kiếm theo mã thí sinh";
-            // 
-            // dataGridViewTS
-            // 
-            dataGridViewTS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTS.Location = new Point(3, 288);
-            dataGridViewTS.Margin = new Padding(3, 4, 3, 4);
-            dataGridViewTS.Name = "dataGridViewTS";
-            dataGridViewTS.RowHeadersWidth = 51;
-            dataGridViewTS.Size = new Size(889, 75);
-            dataGridViewTS.TabIndex = 31;
-            // 
-            // textBoxEmailTS
-            // 
-            textBoxEmailTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxEmailTS.Location = new Point(584, 69);
-            textBoxEmailTS.Margin = new Padding(3, 4, 3, 4);
-            textBoxEmailTS.Name = "textBoxEmailTS";
-            textBoxEmailTS.Size = new Size(268, 26);
-            textBoxEmailTS.TabIndex = 30;
-            // 
-            // textBoxHoTenTS
-            // 
-            textBoxHoTenTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxHoTenTS.Location = new Point(169, 130);
-            textBoxHoTenTS.Margin = new Padding(3, 4, 3, 4);
-            textBoxHoTenTS.Name = "textBoxHoTenTS";
-            textBoxHoTenTS.Size = new Size(239, 26);
-            textBoxHoTenTS.TabIndex = 29;
-            // 
-            // textBoxMKTS
-            // 
-            textBoxMKTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxMKTS.Location = new Point(595, 130);
-            textBoxMKTS.Margin = new Padding(3, 4, 3, 4);
-            textBoxMKTS.Name = "textBoxMKTS";
-            textBoxMKTS.Size = new Size(239, 26);
-            textBoxMKTS.TabIndex = 28;
+            crownTextBox6.BackColor = Color.FromArgb(69, 73, 74);
+            crownTextBox6.BorderStyle = BorderStyle.FixedSingle;
+            crownTextBox6.ForeColor = Color.FromArgb(220, 220, 220);
+            crownTextBox6.Location = new Point(252, 392);
+            crownTextBox6.Name = "crownTextBox6";
+            crownTextBox6.PlaceholderText = "Tìm kiếm thí sinh theo số điện thoại";
+            crownTextBox6.Size = new Size(257, 27);
+            crownTextBox6.TabIndex = 84;
             // 
             // textBoxMaTS
             // 
-            textBoxMaTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxMaTS.Location = new Point(169, 69);
-            textBoxMaTS.Margin = new Padding(3, 4, 3, 4);
+            textBoxMaTS.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMaTS.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMaTS.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMaTS.Location = new Point(226, 40);
             textBoxMaTS.Name = "textBoxMaTS";
-            textBoxMaTS.Size = new Size(239, 26);
-            textBoxMaTS.TabIndex = 27;
+            textBoxMaTS.Size = new Size(193, 27);
+            textBoxMaTS.TabIndex = 83;
             // 
-            // groupBox1
+            // textBoxHoTenTS
             // 
-            groupBox1.Controls.Add(radioButtonKhoaTS);
-            groupBox1.Controls.Add(radioButtonHDTS);
-            groupBox1.Location = new Point(160, 216);
-            groupBox1.Margin = new Padding(3, 4, 3, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 4, 3, 4);
-            groupBox1.Size = new Size(216, 64);
-            groupBox1.TabIndex = 26;
-            groupBox1.TabStop = false;
+            textBoxHoTenTS.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxHoTenTS.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHoTenTS.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxHoTenTS.Location = new Point(226, 98);
+            textBoxHoTenTS.Name = "textBoxHoTenTS";
+            textBoxHoTenTS.Size = new Size(193, 27);
+            textBoxHoTenTS.TabIndex = 82;
+            // 
+            // textBoxSDTTS
+            // 
+            textBoxSDTTS.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxSDTTS.BorderStyle = BorderStyle.FixedSingle;
+            textBoxSDTTS.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxSDTTS.Location = new Point(226, 160);
+            textBoxSDTTS.Name = "textBoxSDTTS";
+            textBoxSDTTS.Size = new Size(193, 27);
+            textBoxSDTTS.TabIndex = 81;
+            // 
+            // textBoxEmailTS
+            // 
+            textBoxEmailTS.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxEmailTS.BorderStyle = BorderStyle.FixedSingle;
+            textBoxEmailTS.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxEmailTS.Location = new Point(609, 44);
+            textBoxEmailTS.Name = "textBoxEmailTS";
+            textBoxEmailTS.Size = new Size(227, 27);
+            textBoxEmailTS.TabIndex = 80;
+            // 
+            // crownGroupBox1
+            // 
+            crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
+            crownGroupBox1.Controls.Add(radioButtonKhoaTS);
+            crownGroupBox1.Controls.Add(radioButtonHDTS);
+            crownGroupBox1.Location = new Point(199, 204);
+            crownGroupBox1.Name = "crownGroupBox1";
+            crownGroupBox1.Size = new Size(220, 52);
+            crownGroupBox1.TabIndex = 79;
+            crownGroupBox1.TabStop = false;
             // 
             // radioButtonKhoaTS
             // 
             radioButtonKhoaTS.AutoSize = true;
-            radioButtonKhoaTS.Location = new Point(106, 24);
-            radioButtonKhoaTS.Margin = new Padding(3, 4, 3, 4);
+            radioButtonKhoaTS.Location = new Point(114, 14);
             radioButtonKhoaTS.Name = "radioButtonKhoaTS";
-            radioButtonKhoaTS.Size = new Size(62, 24);
-            radioButtonKhoaTS.TabIndex = 7;
+            radioButtonKhoaTS.Size = new Size(64, 24);
+            radioButtonKhoaTS.TabIndex = 80;
             radioButtonKhoaTS.TabStop = true;
-            radioButtonKhoaTS.Text = "khóa";
-            radioButtonKhoaTS.UseVisualStyleBackColor = true;
+            radioButtonKhoaTS.Text = "Khóa";
             // 
             // radioButtonHDTS
             // 
             radioButtonHDTS.AutoSize = true;
-            radioButtonHDTS.Location = new Point(0, 24);
-            radioButtonHDTS.Margin = new Padding(3, 4, 3, 4);
+            radioButtonHDTS.Location = new Point(6, 14);
             radioButtonHDTS.Name = "radioButtonHDTS";
             radioButtonHDTS.Size = new Size(102, 24);
-            radioButtonHDTS.TabIndex = 0;
+            radioButtonHDTS.TabIndex = 72;
             radioButtonHDTS.TabStop = true;
             radioButtonHDTS.Text = "Hoạt động";
-            radioButtonHDTS.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // crownTitle7
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 12F);
-            label6.Location = new Point(508, 134);
-            label6.Name = "label6";
-            label6.Size = new Size(88, 22);
-            label6.TabIndex = 25;
-            label6.Text = "Mật khẩu:";
+            crownTitle7.AutoSize = true;
+            crownTitle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle7.Location = new Point(505, 39);
+            crownTitle7.Name = "crownTitle7";
+            crownTitle7.Size = new Size(63, 28);
+            crownTitle7.TabIndex = 78;
+            crownTitle7.Text = "Email:";
             // 
-            // label5
+            // crownTitle6
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Blue;
-            label5.Location = new Point(314, 27);
-            label5.Name = "label5";
-            label5.Size = new Size(250, 38);
-            label5.TabIndex = 24;
-            label5.Text = "Quản lý thí sinh";
+            crownTitle6.AutoSize = true;
+            crownTitle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle6.Location = new Point(91, 98);
+            crownTitle6.Name = "crownTitle6";
+            crownTitle6.Size = new Size(100, 28);
+            crownTitle6.TabIndex = 77;
+            crownTitle6.Text = "Họ và tên:";
             // 
-            // label4
+            // crownTitle5
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 12F);
-            label4.Location = new Point(508, 73);
-            label4.Name = "label4";
-            label4.Size = new Size(63, 22);
-            label4.TabIndex = 23;
-            label4.Text = "Email:";
+            crownTitle5.AutoSize = true;
+            crownTitle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle5.Location = new Point(505, 98);
+            crownTitle5.Name = "crownTitle5";
+            crownTitle5.Size = new Size(98, 28);
+            crownTitle5.TabIndex = 76;
+            crownTitle5.Text = "Mật khẩu:";
             // 
-            // label3
+            // crownTitle4
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 12F);
-            label3.Location = new Point(81, 134);
-            label3.Name = "label3";
-            label3.Size = new Size(92, 22);
-            label3.TabIndex = 22;
-            label3.Text = "Họ và tên:";
+            crownTitle4.AutoSize = true;
+            crownTitle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle4.Location = new Point(91, 160);
+            crownTitle4.Name = "crownTitle4";
+            crownTitle4.Size = new Size(132, 28);
+            crownTitle4.TabIndex = 75;
+            crownTitle4.Text = "Số điện thoại:";
             // 
-            // label2
+            // crownTitle3
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(81, 241);
-            label2.Name = "label2";
-            label2.Size = new Size(78, 20);
-            label2.TabIndex = 21;
-            label2.Text = "Trạng thái:";
+            crownTitle3.AutoSize = true;
+            crownTitle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle3.Location = new Point(505, 155);
+            crownTitle3.Name = "crownTitle3";
+            crownTitle3.Size = new Size(103, 28);
+            crownTitle3.TabIndex = 74;
+            crownTitle3.Text = "Ngày sinh:";
             // 
-            // label1
+            // crownTitle2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 12F);
-            label1.Location = new Point(81, 73);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 22);
-            label1.TabIndex = 20;
-            label1.Text = "Mã TS:";
+            crownTitle2.AutoSize = true;
+            crownTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle2.Location = new Point(91, 213);
+            crownTitle2.Name = "crownTitle2";
+            crownTitle2.Size = new Size(102, 28);
+            crownTitle2.TabIndex = 73;
+            crownTitle2.Text = "Trạng thái:";
             // 
-            // textBoxSDTTS
+            // crownTitle1
             // 
-            textBoxSDTTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxSDTTS.Location = new Point(192, 190);
-            textBoxSDTTS.Margin = new Padding(3, 4, 3, 4);
-            textBoxSDTTS.Name = "textBoxSDTTS";
-            textBoxSDTTS.Size = new Size(217, 26);
-            textBoxSDTTS.TabIndex = 43;
+            crownTitle1.AutoSize = true;
+            crownTitle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle1.Location = new Point(91, 39);
+            crownTitle1.Name = "crownTitle1";
+            crownTitle1.Size = new Size(70, 28);
+            crownTitle1.TabIndex = 71;
+            crownTitle1.Text = "Mã TS:";
             // 
-            // label7
+            // textBoxMKTS
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Times New Roman", 12F);
-            label7.Location = new Point(508, 194);
-            label7.Name = "label7";
-            label7.Size = new Size(94, 22);
-            label7.TabIndex = 41;
-            label7.Text = "Ngày sinh:";
+            textBoxMKTS.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMKTS.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMKTS.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMKTS.Location = new Point(609, 103);
+            textBoxMKTS.Name = "textBoxMKTS";
+            textBoxMKTS.Size = new Size(227, 27);
+            textBoxMKTS.TabIndex = 70;
             // 
-            // label8
+            // buttonThemTS
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Times New Roman", 12F);
-            label8.Location = new Point(81, 194);
-            label8.Name = "label8";
-            label8.Size = new Size(120, 22);
-            label8.TabIndex = 40;
-            label8.Text = "Số điện thoại:";
+            buttonThemTS.Location = new Point(56, 452);
+            buttonThemTS.Name = "buttonThemTS";
+            buttonThemTS.Padding = new Padding(5);
+            buttonThemTS.Size = new Size(94, 67);
+            buttonThemTS.TabIndex = 69;
+            buttonThemTS.Text = "Thêm";
             // 
             // dateTimePickerNgaySinhTS
             // 
-            dateTimePickerNgaySinhTS.Location = new Point(598, 190);
+            dateTimePickerNgaySinhTS.Location = new Point(608, 160);
             dateTimePickerNgaySinhTS.Margin = new Padding(3, 4, 3, 4);
             dateTimePickerNgaySinhTS.Name = "dateTimePickerNgaySinhTS";
             dateTimePickerNgaySinhTS.Size = new Size(228, 27);
-            dateTimePickerNgaySinhTS.TabIndex = 44;
+            dateTimePickerNgaySinhTS.TabIndex = 68;
+            // 
+            // buttonLuuTS
+            // 
+            buttonLuuTS.Location = new Point(415, 452);
+            buttonLuuTS.Margin = new Padding(3, 4, 3, 4);
+            buttonLuuTS.Name = "buttonLuuTS";
+            buttonLuuTS.Padding = new Padding(5);
+            buttonLuuTS.Size = new Size(94, 67);
+            buttonLuuTS.TabIndex = 64;
+            buttonLuuTS.Text = "Lưu";
+            // 
+            // buttonDanhSachTS
+            // 
+            buttonDanhSachTS.Location = new Point(591, 452);
+            buttonDanhSachTS.Margin = new Padding(3, 4, 3, 4);
+            buttonDanhSachTS.Name = "buttonDanhSachTS";
+            buttonDanhSachTS.Padding = new Padding(5);
+            buttonDanhSachTS.Size = new Size(94, 67);
+            buttonDanhSachTS.TabIndex = 63;
+            buttonDanhSachTS.Text = "Danh sách";
+            // 
+            // buttonThoat
+            // 
+            buttonThoat.Location = new Point(763, 452);
+            buttonThoat.Margin = new Padding(3, 4, 3, 4);
+            buttonThoat.Name = "buttonThoat";
+            buttonThoat.Padding = new Padding(5);
+            buttonThoat.Size = new Size(94, 67);
+            buttonThoat.TabIndex = 62;
+            buttonThoat.Text = "Thoát";
+            // 
+            // buttonXoaTS
+            // 
+            buttonXoaTS.Location = new Point(302, 452);
+            buttonXoaTS.Margin = new Padding(3, 4, 3, 4);
+            buttonXoaTS.Name = "buttonXoaTS";
+            buttonXoaTS.Padding = new Padding(5);
+            buttonXoaTS.Size = new Size(94, 67);
+            buttonXoaTS.TabIndex = 61;
+            buttonXoaTS.Text = "Xóa";
+            // 
+            // buttonSuaTS
+            // 
+            buttonSuaTS.Location = new Point(180, 452);
+            buttonSuaTS.Margin = new Padding(3, 4, 3, 4);
+            buttonSuaTS.Name = "buttonSuaTS";
+            buttonSuaTS.Padding = new Padding(5);
+            buttonSuaTS.Size = new Size(94, 67);
+            buttonSuaTS.TabIndex = 60;
+            buttonSuaTS.Text = "Sửa";
+            // 
+            // buttonTimKiemTS
+            // 
+            buttonTimKiemTS.Location = new Point(548, 388);
+            buttonTimKiemTS.Margin = new Padding(3, 4, 3, 4);
+            buttonTimKiemTS.Name = "buttonTimKiemTS";
+            buttonTimKiemTS.Padding = new Padding(5);
+            buttonTimKiemTS.Size = new Size(86, 31);
+            buttonTimKiemTS.TabIndex = 58;
+            buttonTimKiemTS.Text = "Tìm kiếm";
+            // 
+            // dataGridViewTS
+            // 
+            dataGridViewTS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTS.Location = new Point(13, 277);
+            dataGridViewTS.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewTS.Name = "dataGridViewTS";
+            dataGridViewTS.RowHeadersWidth = 51;
+            dataGridViewTS.Size = new Size(889, 75);
+            dataGridViewTS.TabIndex = 56;
             // 
             // QuanLyThiSinhForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 512);
-            Controls.Add(dateTimePickerNgaySinhTS);
-            Controls.Add(textBoxSDTTS);
-            Controls.Add(label7);
-            Controls.Add(label8);
-            Controls.Add(buttonLuuTS);
-            Controls.Add(buttonDanhSachTS);
-            Controls.Add(buttonThoat);
-            Controls.Add(buttonXoaTS);
-            Controls.Add(buttonSuaTS);
-            Controls.Add(buttonThemTS);
-            Controls.Add(buttonTimKiemTS);
-            Controls.Add(textBoxTimKiemTS);
-            Controls.Add(dataGridViewTS);
-            Controls.Add(textBoxEmailTS);
-            Controls.Add(textBoxHoTenTS);
-            Controls.Add(textBoxMKTS);
-            Controls.Add(textBoxMaTS);
-            Controls.Add(groupBox1);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new Size(914, 559);
+            Controls.Add(crownSectionPanel1);
+            FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(914, 559);
             Name = "QuanLyThiSinhForm";
             Text = "Quản lý thí sinh";
+            Load += QuanLyThiSinhForm_Load;
+            crownSectionPanel1.ResumeLayout(false);
+            crownSectionPanel1.PerformLayout();
+            crownGroupBox1.ResumeLayout(false);
+            crownGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTS).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button buttonLuuTS;
-        private Button buttonDanhSachTS;
-        private Button buttonThoat;
-        private Button buttonXoaTS;
-        private Button buttonSuaTS;
-        private Button buttonThemTS;
-        private Button buttonTimKiemTS;
-        private TextBox textBoxTimKiemTS;
-        private DataGridView dataGridViewTS;
-        private TextBox textBoxEmailTS;
-        private TextBox textBoxHoTenTS;
-        private TextBox textBoxMKTS;
-        private TextBox textBoxMaTS;
-        private GroupBox groupBox1;
-        private RadioButton radioButtonKhoaTS;
-        private RadioButton radioButtonHDTS;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private TextBox textBoxSDTTS;
-        private Label label7;
-        private Label label8;
+        private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
+        private ReaLTaiizor.Controls.CrownRadioButton radioButtonHDTS;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle1;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMKTS;
+        private ReaLTaiizor.Controls.CrownButton buttonThemTS;
         private DateTimePicker dateTimePickerNgaySinhTS;
+        private ReaLTaiizor.Controls.CrownButton buttonLuuTS;
+        private ReaLTaiizor.Controls.CrownButton buttonDanhSachTS;
+        private ReaLTaiizor.Controls.CrownButton buttonThoat;
+        private ReaLTaiizor.Controls.CrownButton buttonXoaTS;
+        private ReaLTaiizor.Controls.CrownButton buttonSuaTS;
+        private ReaLTaiizor.Controls.CrownButton buttonTimKiemTS;
+        private DataGridView dataGridViewTS;
+        private ReaLTaiizor.Controls.CrownTextBox crownTextBox6;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMaTS;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxHoTenTS;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxSDTTS;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxEmailTS;
+        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
+        private ReaLTaiizor.Controls.CrownRadioButton radioButtonKhoaTS;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle7;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle6;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle5;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle4;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle3;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle2;
     }
 }

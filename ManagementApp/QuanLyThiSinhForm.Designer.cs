@@ -350,7 +350,7 @@
             Controls.Add(label1);
             Name = "QuanLyThiSinhForm";
             Text = "Quản lý thí sinh";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTS).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

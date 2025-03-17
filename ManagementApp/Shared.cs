@@ -9,7 +9,7 @@ namespace ManagementApp
 {
     class Shared
     {
-        public static string AccessToken = null;
+        public static string? AccessToken = null;
         public static string ServerIP = "https://localhost:5000";
 
         public static bool ValidateToken(string token)

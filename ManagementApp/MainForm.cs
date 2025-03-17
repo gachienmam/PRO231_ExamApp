@@ -1,4 +1,7 @@
+using ExamServer.AdminService;
+using Grpc.Net.Client;
 using ManagementApp.CustomControls;
+using Newtonsoft.Json.Linq;
 using ReaLTaiizor.Docking.Crown;
 using ReaLTaiizor.Native;
 using System.Windows.Forms;
@@ -22,17 +25,29 @@ namespace ManagementApp
 
         private readonly string DefaultFormText = "PolyTest Manager";
 
+        // Lưu trữ thông tin máy chủ
+        private readonly AdminService.AdminServiceClient _client;
+        private readonly string _serverAddress;
+        private readonly string _accessToken;
+
+        private DangNhapForm dangNhapForm = new DangNhapForm();
+
         private QuanLyDeThiForm quanLyDeThiForm = new QuanLyDeThiForm();
         private QuanLyThiSinhForm quanLyThiSinhForm = new QuanLyThiSinhForm();
         private QuanLyNguoiDungForm quanLyNguoiDungForm = new QuanLyNguoiDungForm();
 
         #region Constructor
-        public MainForm()
+        public MainForm(string serverAddress, string accessToken)
         {
             InitializeComponent();
 
-            // Add the control scroll message filter to re-route all mousewheel events
-            // to the control the user is currently hovering over with their cursor.
+            // Đăng nhập vào máy chủ dùng thông tin đăng nhập từ cái DangNhapForm
+            _serverAddress = serverAddress;
+            _accessToken = accessToken;
+            var channel = GrpcChannel.ForAddress(_serverAddress);
+            _client = new AdminService.AdminServiceClient(channel);
+
+            // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
             Application.AddMessageFilter(new ControlScrollFilter());
         }
 
@@ -44,6 +59,11 @@ namespace ManagementApp
         #endregion
 
         #region Main Menu Strip
+
+        private void đăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClearAllCheckedAndChangeToForm(dangNhapForm);
+        }
         private void đềThiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Checked => is open
@@ -78,6 +98,15 @@ namespace ManagementApp
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseAllForms(true);
+        }
+
+        private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllForms(true);
+
+            // TODO: Cho lệnh log out ở giữa
+
+            Application.Exit();
         }
         #endregion
 
@@ -144,6 +173,24 @@ namespace ManagementApp
             {
                 itemToBeChecked.Checked = true;
             }
+        }
+
+        private void ClearAllCheckedAndChangeToForm(Form form)
+        {
+            // Tắt hết tất cả dấu tick
+            foreach (ToolStripMenuItem tool in mainMenuStrip.Items)
+            {
+                foreach (ToolStripMenuItem dropdowntool in tool.DropDownItems)
+                {
+                    // Kiểm tra có phải nút đổi chủ đề để không đụng tới
+                    if (dropdowntool.Name != "themeToggleToolStripMenuItem")
+                    {
+                        dropdowntool.Checked = false;
+                    }
+                }
+            }
+
+            ToggleChangeToForm(form);
         }
 
         private bool ToggleChangeToForm(Form form)

@@ -2,8 +2,6 @@
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "ExamServer.AdminService";
-
 service AdminService {
     rpc AuthenticateUser (AuthRequest) returns (AuthResponse);
     rpc UploadExamPaper (stream UploadExamFileChunk) returns (UploadResponse);
@@ -27,10 +25,9 @@ message AuthResponse {
 }
 
 message UploadExamFileChunk {
-    string accessToken = 1;
-    string examId = 2;
-    bytes data = 3;
-    bool isLastChunk = 4;
+    string examId = 1;
+    bytes data = 2;
+    bool isLastChunk = 3;
 }
 
 message UploadResponse {
@@ -40,7 +37,7 @@ message UploadResponse {
 
 // Admin command request
 message CommandRequest {
-    int32 responseCode = 1;
+    int32 requestCode = 1;
     string command = 2;
     string targetUserId = 3; // If empty, applies to all users
     string examId = 4; // Targeted exam

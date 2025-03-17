@@ -29,8 +29,7 @@ message AuthResponse {
 
 // Request an exam
 message ExamRequest {
-    string accessToken = 1; // current user accessToken
-    string examId = 2; // the requesting exam id
+    string examId = 1; // the requesting exam id
 }
 
 // Exam data response
@@ -56,8 +55,7 @@ message PaperSubmissionResponse {
 
 // Request real-time exam updates
 message ExamUpdateRequest {
-    string accessToken = 1;
-    string examId = 2;
+    string examId = 1;
 }
 
 // Real-time exam updates for clients

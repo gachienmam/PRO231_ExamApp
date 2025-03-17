@@ -27,10 +27,9 @@ message AuthResponse {
 }
 
 message UploadExamFileChunk {
-    string accessToken = 1;
-    string examId = 2;
-    bytes data = 3;
-    bool isLastChunk = 4;
+    string examId = 1;
+    bytes data = 2;
+    bool isLastChunk = 3;
 }
 
 message UploadResponse {

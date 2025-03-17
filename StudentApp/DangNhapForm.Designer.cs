@@ -38,6 +38,10 @@
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             txtEmail = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTextBox1 = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTextBox2 = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
             SuspendLayout();
@@ -81,6 +85,10 @@
             // 
             // crownSectionPanel2
             // 
+            crownSectionPanel2.Controls.Add(crownTitle6);
+            crownSectionPanel2.Controls.Add(crownTitle5);
+            crownSectionPanel2.Controls.Add(crownTextBox2);
+            crownSectionPanel2.Controls.Add(crownTextBox1);
             crownSectionPanel2.Controls.Add(crownTitle4);
             crownSectionPanel2.Controls.Add(btnLogin);
             crownSectionPanel2.Controls.Add(crownTitle3);
@@ -101,12 +109,12 @@
             crownTitle4.Anchor = AnchorStyles.None;
             crownTitle4.AutoSize = true;
             crownTitle4.Font = new Font("Segoe UI Semilight", 8.2F);
-            crownTitle4.Location = new Point(123, 126);
+            crownTitle4.Location = new Point(123, 96);
             crownTitle4.MinimumSize = new Size(163, 15);
             crownTitle4.Name = "crownTitle4";
             crownTitle4.Size = new Size(163, 15);
             crownTitle4.TabIndex = 5;
-            crownTitle4.Text = "Nhập email và mật khẩu của bạn";
+            crownTitle4.Text = "Hãy điền thông tin của bạn";
             // 
             // btnLogin
             // 
@@ -114,10 +122,10 @@
             btnLogin.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             btnLogin.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLogin.ImagePadding = 6;
-            btnLogin.Location = new Point(146, 287);
+            btnLogin.Location = new Point(157, 381);
             btnLogin.Name = "btnLogin";
             btnLogin.Padding = new Padding(5);
-            btnLogin.Size = new Size(113, 28);
+            btnLogin.Size = new Size(98, 38);
             btnLogin.TabIndex = 0;
             btnLogin.Text = "Đăng nhập";
             // 
@@ -125,11 +133,12 @@
             // 
             crownTitle3.Anchor = AnchorStyles.None;
             crownTitle3.AutoSize = true;
-            crownTitle3.Location = new Point(106, 216);
+            crownTitle3.Location = new Point(106, 196);
             crownTitle3.Name = "crownTitle3";
-            crownTitle3.Size = new Size(57, 15);
+            crownTitle3.Size = new Size(76, 15);
             crownTitle3.TabIndex = 4;
-            crownTitle3.Text = "Mật khẩu";
+            crownTitle3.Text = "Mật khẩu đề:";
+            crownTitle3.Click += crownTitle3_Click;
             // 
             // txtPassword
             // 
@@ -137,9 +146,8 @@
             txtPassword.BackColor = Color.FromArgb(69, 73, 74);
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.ForeColor = Color.FromArgb(220, 220, 220);
-            txtPassword.Location = new Point(106, 234);
+            txtPassword.Location = new Point(106, 214);
             txtPassword.Name = "txtPassword";
-            txtPassword.PlaceholderText = "Email";
             txtPassword.Size = new Size(193, 23);
             txtPassword.TabIndex = 3;
             // 
@@ -147,11 +155,11 @@
             // 
             crownTitle2.Anchor = AnchorStyles.None;
             crownTitle2.AutoSize = true;
-            crownTitle2.Location = new Point(106, 154);
+            crownTitle2.Location = new Point(106, 133);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(36, 15);
+            crownTitle2.Size = new Size(43, 15);
             crownTitle2.TabIndex = 2;
-            crownTitle2.Text = "Email";
+            crownTitle2.Text = "Mã đề:";
             // 
             // txtEmail
             // 
@@ -159,9 +167,8 @@
             txtEmail.BackColor = Color.FromArgb(69, 73, 74);
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            txtEmail.Location = new Point(106, 172);
+            txtEmail.Location = new Point(106, 151);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "Email";
             txtEmail.Size = new Size(193, 23);
             txtEmail.TabIndex = 1;
             // 
@@ -170,11 +177,54 @@
             crownTitle1.Anchor = AnchorStyles.None;
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            crownTitle1.Location = new Point(157, 85);
+            crownTitle1.Location = new Point(114, 46);
             crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(98, 32);
+            crownTitle1.Size = new Size(185, 32);
             crownTitle1.TabIndex = 0;
-            crownTitle1.Text = "Quản lý";
+            crownTitle1.Text = "Thi trắc nghiệm";
+            crownTitle1.Click += crownTitle1_Click;
+            // 
+            // crownTextBox1
+            // 
+            crownTextBox1.Anchor = AnchorStyles.None;
+            crownTextBox1.BackColor = Color.FromArgb(69, 73, 74);
+            crownTextBox1.BorderStyle = BorderStyle.FixedSingle;
+            crownTextBox1.ForeColor = Color.FromArgb(220, 220, 220);
+            crownTextBox1.Location = new Point(106, 276);
+            crownTextBox1.Name = "crownTextBox1";
+            crownTextBox1.Size = new Size(193, 23);
+            crownTextBox1.TabIndex = 6;
+            // 
+            // crownTextBox2
+            // 
+            crownTextBox2.Anchor = AnchorStyles.None;
+            crownTextBox2.BackColor = Color.FromArgb(69, 73, 74);
+            crownTextBox2.BorderStyle = BorderStyle.FixedSingle;
+            crownTextBox2.ForeColor = Color.FromArgb(220, 220, 220);
+            crownTextBox2.Location = new Point(106, 335);
+            crownTextBox2.Name = "crownTextBox2";
+            crownTextBox2.Size = new Size(193, 23);
+            crownTextBox2.TabIndex = 7;
+            // 
+            // crownTitle5
+            // 
+            crownTitle5.Anchor = AnchorStyles.None;
+            crownTitle5.AutoSize = true;
+            crownTitle5.Location = new Point(106, 258);
+            crownTitle5.Name = "crownTitle5";
+            crownTitle5.Size = new Size(39, 15);
+            crownTitle5.TabIndex = 8;
+            crownTitle5.Text = "Email:";
+            // 
+            // crownTitle6
+            // 
+            crownTitle6.Anchor = AnchorStyles.None;
+            crownTitle6.AutoSize = true;
+            crownTitle6.Location = new Point(106, 317);
+            crownTitle6.Name = "crownTitle6";
+            crownTitle6.Size = new Size(92, 15);
+            crownTitle6.TabIndex = 9;
+            crownTitle6.Text = "Mật khẩu email:";
             // 
             // DangNhapForm
             // 
@@ -202,5 +252,9 @@
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownButton btnLogin;
+        private ReaLTaiizor.Controls.CrownTextBox crownTextBox2;
+        private ReaLTaiizor.Controls.CrownTextBox crownTextBox1;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle6;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle5;
     }
 }

@@ -6,5 +6,15 @@ namespace StudentApp
         {
             InitializeComponent();
         }
+
+        private void crownTitle3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crownTitle1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

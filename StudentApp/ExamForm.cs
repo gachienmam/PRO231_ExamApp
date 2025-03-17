@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExamClient
+namespace StudentApp
 {
     public partial class ExamForm : Form
     {

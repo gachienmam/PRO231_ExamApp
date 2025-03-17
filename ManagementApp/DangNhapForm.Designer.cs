@@ -34,9 +34,9 @@
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
             btnLogin = new ReaLTaiizor.Controls.CrownButton();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            tbPassword = new ReaLTaiizor.Controls.CrownTextBox();
+            txtPassword = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            tbEmail = new ReaLTaiizor.Controls.CrownTextBox();
+            txtEmail = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
@@ -84,9 +84,9 @@
             crownSectionPanel2.Controls.Add(crownTitle4);
             crownSectionPanel2.Controls.Add(btnLogin);
             crownSectionPanel2.Controls.Add(crownTitle3);
-            crownSectionPanel2.Controls.Add(tbPassword);
+            crownSectionPanel2.Controls.Add(txtPassword);
             crownSectionPanel2.Controls.Add(crownTitle2);
-            crownSectionPanel2.Controls.Add(tbEmail);
+            crownSectionPanel2.Controls.Add(txtEmail);
             crownSectionPanel2.Controls.Add(crownTitle1);
             crownSectionPanel2.Dock = DockStyle.Fill;
             crownSectionPanel2.Location = new Point(400, 0);
@@ -132,17 +132,17 @@
             crownTitle3.TabIndex = 4;
             crownTitle3.Text = "Mật khẩu";
             // 
-            // tbPassword
+            // txtPassword
             // 
-            tbPassword.Anchor = AnchorStyles.None;
-            tbPassword.BackColor = Color.FromArgb(69, 73, 74);
-            tbPassword.BorderStyle = BorderStyle.FixedSingle;
-            tbPassword.ForeColor = Color.FromArgb(220, 220, 220);
-            tbPassword.Location = new Point(106, 234);
-            tbPassword.Name = "tbPassword";
-            tbPassword.PlaceholderText = "Email";
-            tbPassword.Size = new Size(193, 23);
-            tbPassword.TabIndex = 3;
+            txtPassword.Anchor = AnchorStyles.None;
+            txtPassword.BackColor = Color.FromArgb(69, 73, 74);
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.ForeColor = Color.FromArgb(220, 220, 220);
+            txtPassword.Location = new Point(106, 234);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PlaceholderText = "Email";
+            txtPassword.Size = new Size(193, 23);
+            txtPassword.TabIndex = 3;
             // 
             // crownTitle2
             // 
@@ -154,17 +154,17 @@
             crownTitle2.TabIndex = 2;
             crownTitle2.Text = "Email";
             // 
-            // tbEmail
+            // txtEmail
             // 
-            tbEmail.Anchor = AnchorStyles.None;
-            tbEmail.BackColor = Color.FromArgb(69, 73, 74);
-            tbEmail.BorderStyle = BorderStyle.FixedSingle;
-            tbEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            tbEmail.Location = new Point(106, 172);
-            tbEmail.Name = "tbEmail";
-            tbEmail.PlaceholderText = "Email";
-            tbEmail.Size = new Size(193, 23);
-            tbEmail.TabIndex = 1;
+            txtEmail.Anchor = AnchorStyles.None;
+            txtEmail.BackColor = Color.FromArgb(69, 73, 74);
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.ForeColor = Color.FromArgb(220, 220, 220);
+            txtEmail.Location = new Point(106, 172);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "Email";
+            txtEmail.Size = new Size(193, 23);
+            txtEmail.TabIndex = 1;
             // 
             // crownTitle1
             // 
@@ -195,11 +195,11 @@
 
         private TableLayoutPanel layoutPanel;
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel2;
-        private ReaLTaiizor.Controls.CrownTextBox tbEmail;
+        private ReaLTaiizor.Controls.CrownTextBox txtEmail;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTextBox tbPassword;
+        private ReaLTaiizor.Controls.CrownTextBox txtPassword;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownButton btnLogin;

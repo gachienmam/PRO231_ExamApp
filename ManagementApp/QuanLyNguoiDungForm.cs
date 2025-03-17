@@ -39,8 +39,8 @@ namespace ManagementApp
 
         private void buttonThemND_Click(object sender, EventArgs e)
         {
-            textBoxMaND.Text = null;
-            textBoxMaND.Enabled = true;
+            textBoxHoTenND.Text = null;
+            textBoxHoTenND.Enabled = true;
             textBoxMKND.Text = null;
             textBoxMKND.Enabled = true;
             textBoxEmailND.Text = null;
@@ -66,8 +66,8 @@ namespace ManagementApp
             textBoxTimKiem.Text = "Nhập tên email người dùng";
             textBoxEmailND.Text = null;
             textBoxHoTenND.Text = null;
-            textBoxMaND.Text = null;
-            textBoxMaND.Enabled = false;
+            textBoxHoTenND.Text = null;
+            textBoxHoTenND.Enabled = false;
             textBoxEmailND.Enabled = false;
             textBoxHoTenND.Enabled = false;
             textBoxMKND.Text = null;

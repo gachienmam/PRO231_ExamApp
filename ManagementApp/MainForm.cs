@@ -37,6 +37,13 @@ namespace ManagementApp
         private QuanLyNguoiDungForm quanLyNguoiDungForm = new QuanLyNguoiDungForm();
 
         #region Constructor
+        public MainForm()
+        {
+            InitializeComponent();
+            // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
+            Application.AddMessageFilter(new ControlScrollFilter());
+        }
+
         public MainForm(string serverAddress, string accessToken)
         {
             InitializeComponent();

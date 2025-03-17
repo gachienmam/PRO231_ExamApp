@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownButtonThemND = new ReaLTaiizor.Controls.CrownButton();
-            crownTextBox5 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBox4 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBox3 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBox2 = new ReaLTaiizor.Controls.CrownTextBox();
+            buttonThemND = new ReaLTaiizor.Controls.CrownButton();
+            textBoxHoTenND = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMKND = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxEmailND = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
             crownButton2 = new ReaLTaiizor.Controls.CrownButton();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
-            crownRadioButton2 = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownRadioButton1 = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonGV = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonAdmin = new ReaLTaiizor.Controls.CrownRadioButton();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox1 = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMaND = new ReaLTaiizor.Controls.CrownTextBox();
             buttonLuuND = new ReaLTaiizor.Controls.CrownButton();
             buttonDanhSachND = new ReaLTaiizor.Controls.CrownButton();
             buttonThoat = new ReaLTaiizor.Controls.CrownButton();
@@ -57,11 +57,11 @@
             // 
             // crownSectionPanel1
             // 
-            crownSectionPanel1.Controls.Add(crownButtonThemND);
-            crownSectionPanel1.Controls.Add(crownTextBox5);
-            crownSectionPanel1.Controls.Add(crownTextBox4);
-            crownSectionPanel1.Controls.Add(crownTextBox3);
-            crownSectionPanel1.Controls.Add(crownTextBox2);
+            crownSectionPanel1.Controls.Add(buttonThemND);
+            crownSectionPanel1.Controls.Add(textBoxHoTenND);
+            crownSectionPanel1.Controls.Add(textBoxMKND);
+            crownSectionPanel1.Controls.Add(textBoxEmailND);
+            crownSectionPanel1.Controls.Add(textBoxTimKiem);
             crownSectionPanel1.Controls.Add(crownButton2);
             crownSectionPanel1.Controls.Add(crownTitle5);
             crownSectionPanel1.Controls.Add(crownTitle4);
@@ -69,7 +69,7 @@
             crownSectionPanel1.Controls.Add(crownTitle2);
             crownSectionPanel1.Controls.Add(crownGroupBox1);
             crownSectionPanel1.Controls.Add(crownTitle1);
-            crownSectionPanel1.Controls.Add(crownTextBox1);
+            crownSectionPanel1.Controls.Add(textBoxMaND);
             crownSectionPanel1.Controls.Add(buttonLuuND);
             crownSectionPanel1.Controls.Add(buttonDanhSachND);
             crownSectionPanel1.Controls.Add(buttonThoat);
@@ -78,70 +78,77 @@
             crownSectionPanel1.Controls.Add(adioButtonGridviewND);
             crownSectionPanel1.Dock = DockStyle.Fill;
             crownSectionPanel1.Location = new Point(0, 0);
+            crownSectionPanel1.Margin = new Padding(3, 2, 3, 2);
             crownSectionPanel1.Name = "crownSectionPanel1";
             crownSectionPanel1.SectionHeader = "Quản Lý Người Dùng";
-            crownSectionPanel1.Size = new Size(914, 559);
+            crownSectionPanel1.Size = new Size(800, 419);
             crownSectionPanel1.TabIndex = 0;
             crownSectionPanel1.Paint += crownSectionPanel1_Paint;
             // 
-            // crownButtonThemND
+            // buttonThemND
             // 
-            crownButtonThemND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            crownButtonThemND.Location = new Point(65, 436);
-            crownButtonThemND.Name = "crownButtonThemND";
-            crownButtonThemND.Padding = new Padding(5);
-            crownButtonThemND.Size = new Size(94, 67);
-            crownButtonThemND.TabIndex = 54;
-            crownButtonThemND.Text = "Thêm";
+            buttonThemND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            buttonThemND.Location = new Point(57, 327);
+            buttonThemND.Margin = new Padding(3, 2, 3, 2);
+            buttonThemND.Name = "buttonThemND";
+            buttonThemND.Padding = new Padding(4, 4, 4, 4);
+            buttonThemND.Size = new Size(82, 50);
+            buttonThemND.TabIndex = 54;
+            buttonThemND.Text = "Thêm";
             // 
-            // crownTextBox5
+            // textBoxHoTenND
             // 
-            crownTextBox5.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox5.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox5.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox5.Location = new Point(186, 115);
-            crownTextBox5.Name = "crownTextBox5";
-            crownTextBox5.Size = new Size(125, 27);
-            crownTextBox5.TabIndex = 53;
+            textBoxHoTenND.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxHoTenND.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHoTenND.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxHoTenND.Location = new Point(163, 86);
+            textBoxHoTenND.Margin = new Padding(3, 2, 3, 2);
+            textBoxHoTenND.Name = "textBoxHoTenND";
+            textBoxHoTenND.Size = new Size(110, 23);
+            textBoxHoTenND.TabIndex = 53;
             // 
-            // crownTextBox4
+            // textBoxMKND
             // 
-            crownTextBox4.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox4.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox4.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox4.Location = new Point(606, 121);
-            crownTextBox4.Name = "crownTextBox4";
-            crownTextBox4.Size = new Size(125, 27);
-            crownTextBox4.TabIndex = 52;
+            textBoxMKND.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMKND.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMKND.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMKND.Location = new Point(530, 91);
+            textBoxMKND.Margin = new Padding(3, 2, 3, 2);
+            textBoxMKND.Name = "textBoxMKND";
+            textBoxMKND.Size = new Size(110, 23);
+            textBoxMKND.TabIndex = 52;
             // 
-            // crownTextBox3
+            // textBoxEmailND
             // 
-            crownTextBox3.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox3.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox3.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox3.Location = new Point(598, 58);
-            crownTextBox3.Name = "crownTextBox3";
-            crownTextBox3.Size = new Size(125, 27);
-            crownTextBox3.TabIndex = 51;
+            textBoxEmailND.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxEmailND.BorderStyle = BorderStyle.FixedSingle;
+            textBoxEmailND.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxEmailND.Location = new Point(523, 44);
+            textBoxEmailND.Margin = new Padding(3, 2, 3, 2);
+            textBoxEmailND.Name = "textBoxEmailND";
+            textBoxEmailND.Size = new Size(110, 23);
+            textBoxEmailND.TabIndex = 51;
             // 
-            // crownTextBox2
+            // textBoxTimKiem
             // 
-            crownTextBox2.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox2.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox2.Location = new Point(253, 375);
-            crownTextBox2.Name = "crownTextBox2";
-            crownTextBox2.Size = new Size(263, 27);
-            crownTextBox2.TabIndex = 50;
-            crownTextBox2.Text = "Tìm kiếm người dùng theo email";
+            textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
+            textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxTimKiem.Location = new Point(221, 281);
+            textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.Size = new Size(230, 23);
+            textBoxTimKiem.TabIndex = 50;
+            textBoxTimKiem.Text = "Tìm kiếm người dùng theo email";
             // 
             // crownButton2
             // 
             crownButton2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            crownButton2.Location = new Point(558, 375);
+            crownButton2.Location = new Point(488, 281);
+            crownButton2.Margin = new Padding(3, 2, 3, 2);
             crownButton2.Name = "crownButton2";
-            crownButton2.Padding = new Padding(5);
-            crownButton2.Size = new Size(123, 27);
+            crownButton2.Padding = new Padding(4, 4, 4, 4);
+            crownButton2.Size = new Size(108, 20);
             crownButton2.TabIndex = 49;
             crownButton2.Text = "Tìm kiếm";
             // 
@@ -149,9 +156,9 @@
             // 
             crownTitle5.AutoSize = true;
             crownTitle5.Font = new Font("Segoe UI", 12F);
-            crownTitle5.Location = new Point(502, 55);
+            crownTitle5.Location = new Point(439, 41);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(63, 28);
+            crownTitle5.Size = new Size(51, 21);
             crownTitle5.TabIndex = 48;
             crownTitle5.Text = "Email:";
             // 
@@ -159,9 +166,9 @@
             // 
             crownTitle4.AutoSize = true;
             crownTitle4.Font = new Font("Segoe UI", 12F);
-            crownTitle4.Location = new Point(502, 116);
+            crownTitle4.Location = new Point(439, 87);
             crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(98, 28);
+            crownTitle4.Size = new Size(78, 21);
             crownTitle4.TabIndex = 47;
             crownTitle4.Text = "Mật khẩu:";
             // 
@@ -169,9 +176,9 @@
             // 
             crownTitle3.AutoSize = true;
             crownTitle3.Font = new Font("Segoe UI", 12F);
-            crownTitle3.Location = new Point(91, 114);
+            crownTitle3.Location = new Point(80, 86);
             crownTitle3.Name = "crownTitle3";
-            crownTitle3.Size = new Size(100, 28);
+            crownTitle3.Size = new Size(79, 21);
             crownTitle3.TabIndex = 46;
             crownTitle3.Text = "Họ và tên:";
             // 
@@ -179,138 +186,136 @@
             // 
             crownTitle2.AutoSize = true;
             crownTitle2.Font = new Font("Segoe UI", 12F);
-            crownTitle2.Location = new Point(86, 188);
+            crownTitle2.Location = new Point(75, 141);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(73, 28);
+            crownTitle2.Size = new Size(58, 21);
             crownTitle2.TabIndex = 45;
             crownTitle2.Text = "Vai trò:";
             // 
             // crownGroupBox1
             // 
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
-            crownGroupBox1.Controls.Add(crownRadioButton2);
-            crownGroupBox1.Controls.Add(crownRadioButton1);
-            crownGroupBox1.Location = new Point(165, 177);
+            crownGroupBox1.Controls.Add(radioButtonGV);
+            crownGroupBox1.Controls.Add(radioButtonAdmin);
+            crownGroupBox1.Location = new Point(144, 133);
+            crownGroupBox1.Margin = new Padding(3, 2, 3, 2);
             crownGroupBox1.Name = "crownGroupBox1";
-            crownGroupBox1.Size = new Size(234, 56);
+            crownGroupBox1.Padding = new Padding(3, 2, 3, 2);
+            crownGroupBox1.Size = new Size(205, 42);
             crownGroupBox1.TabIndex = 44;
             crownGroupBox1.TabStop = false;
             // 
-            // crownRadioButton2
+            // radioButtonGV
             // 
-            crownRadioButton2.AutoSize = true;
-            crownRadioButton2.Location = new Point(121, 16);
-            crownRadioButton2.Name = "crownRadioButton2";
-            crownRadioButton2.Size = new Size(92, 24);
-            crownRadioButton2.TabIndex = 50;
-            crownRadioButton2.TabStop = true;
-            crownRadioButton2.Text = "Giáo viên";
+            radioButtonGV.AutoSize = true;
+            radioButtonGV.Location = new Point(106, 12);
+            radioButtonGV.Margin = new Padding(3, 2, 3, 2);
+            radioButtonGV.Name = "radioButtonGV";
+            radioButtonGV.Size = new Size(74, 19);
+            radioButtonGV.TabIndex = 50;
+            radioButtonGV.TabStop = true;
+            radioButtonGV.Text = "Giáo viên";
             // 
-            // crownRadioButton1
+            // radioButtonAdmin
             // 
-            crownRadioButton1.AutoSize = true;
-            crownRadioButton1.Location = new Point(21, 16);
-            crownRadioButton1.Name = "crownRadioButton1";
-            crownRadioButton1.Size = new Size(74, 24);
-            crownRadioButton1.TabIndex = 43;
-            crownRadioButton1.TabStop = true;
-            crownRadioButton1.Text = "Admin";
+            radioButtonAdmin.AutoSize = true;
+            radioButtonAdmin.Location = new Point(18, 12);
+            radioButtonAdmin.Margin = new Padding(3, 2, 3, 2);
+            radioButtonAdmin.Name = "radioButtonAdmin";
+            radioButtonAdmin.Size = new Size(61, 19);
+            radioButtonAdmin.TabIndex = 43;
+            radioButtonAdmin.TabStop = true;
+            radioButtonAdmin.Text = "Admin";
             // 
             // crownTitle1
             // 
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI", 12F);
-            crownTitle1.Location = new Point(91, 53);
+            crownTitle1.Location = new Point(80, 40);
             crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(78, 28);
+            crownTitle1.Size = new Size(62, 21);
             crownTitle1.TabIndex = 42;
             crownTitle1.Text = "Mã ND:";
             crownTitle1.Click += crownTitle1_Click;
             // 
-            // crownTextBox1
+            // textBoxMaND
             // 
-            crownTextBox1.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox1.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox1.Location = new Point(186, 54);
-            crownTextBox1.Name = "crownTextBox1";
-            crownTextBox1.Size = new Size(125, 27);
-            crownTextBox1.TabIndex = 41;
+            textBoxMaND.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMaND.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMaND.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMaND.Location = new Point(163, 40);
+            textBoxMaND.Margin = new Padding(3, 2, 3, 2);
+            textBoxMaND.Name = "textBoxMaND";
+            textBoxMaND.Size = new Size(110, 23);
+            textBoxMaND.TabIndex = 41;
             // 
             // buttonLuuND
             // 
             buttonLuuND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonLuuND.Location = new Point(422, 436);
-            buttonLuuND.Margin = new Padding(3, 4, 3, 4);
+            buttonLuuND.Location = new Point(369, 327);
             buttonLuuND.Name = "buttonLuuND";
-            buttonLuuND.Padding = new Padding(5);
-            buttonLuuND.Size = new Size(94, 67);
+            buttonLuuND.Padding = new Padding(4, 4, 4, 4);
+            buttonLuuND.Size = new Size(82, 50);
             buttonLuuND.TabIndex = 39;
             buttonLuuND.Text = "Lưu";
             // 
             // buttonDanhSachND
             // 
             buttonDanhSachND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonDanhSachND.Location = new Point(573, 436);
-            buttonDanhSachND.Margin = new Padding(3, 4, 3, 4);
+            buttonDanhSachND.Location = new Point(501, 327);
             buttonDanhSachND.Name = "buttonDanhSachND";
-            buttonDanhSachND.Padding = new Padding(5);
-            buttonDanhSachND.Size = new Size(119, 67);
+            buttonDanhSachND.Padding = new Padding(4, 4, 4, 4);
+            buttonDanhSachND.Size = new Size(104, 50);
             buttonDanhSachND.TabIndex = 38;
             buttonDanhSachND.Text = "Danh sách";
             // 
             // buttonThoat
             // 
             buttonThoat.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonThoat.Location = new Point(769, 436);
-            buttonThoat.Margin = new Padding(3, 4, 3, 4);
+            buttonThoat.Location = new Point(673, 327);
             buttonThoat.Name = "buttonThoat";
-            buttonThoat.Padding = new Padding(5);
-            buttonThoat.Size = new Size(94, 67);
+            buttonThoat.Padding = new Padding(4, 4, 4, 4);
+            buttonThoat.Size = new Size(82, 50);
             buttonThoat.TabIndex = 37;
             buttonThoat.Text = "Thoát";
             // 
             // buttonXoaND
             // 
             buttonXoaND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonXoaND.Location = new Point(308, 436);
-            buttonXoaND.Margin = new Padding(3, 4, 3, 4);
+            buttonXoaND.Location = new Point(270, 327);
             buttonXoaND.Name = "buttonXoaND";
-            buttonXoaND.Padding = new Padding(5);
-            buttonXoaND.Size = new Size(94, 67);
+            buttonXoaND.Padding = new Padding(4, 4, 4, 4);
+            buttonXoaND.Size = new Size(82, 50);
             buttonXoaND.TabIndex = 36;
             buttonXoaND.Text = "Xóa";
             // 
             // buttonSuaND
             // 
             buttonSuaND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonSuaND.Location = new Point(186, 436);
-            buttonSuaND.Margin = new Padding(3, 4, 3, 4);
+            buttonSuaND.Location = new Point(163, 327);
             buttonSuaND.Name = "buttonSuaND";
-            buttonSuaND.Padding = new Padding(5);
-            buttonSuaND.Size = new Size(94, 67);
+            buttonSuaND.Padding = new Padding(4, 4, 4, 4);
+            buttonSuaND.Size = new Size(82, 50);
             buttonSuaND.TabIndex = 35;
             buttonSuaND.Text = "Sửa";
             // 
             // adioButtonGridviewND
             // 
             adioButtonGridviewND.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            adioButtonGridviewND.Location = new Point(12, 281);
-            adioButtonGridviewND.Margin = new Padding(3, 4, 3, 4);
+            adioButtonGridviewND.Location = new Point(10, 211);
             adioButtonGridviewND.Name = "adioButtonGridviewND";
             adioButtonGridviewND.RowHeadersWidth = 51;
-            adioButtonGridviewND.Size = new Size(890, 83);
+            adioButtonGridviewND.Size = new Size(779, 62);
             adioButtonGridviewND.TabIndex = 31;
             // 
             // QuanLyNguoiDungForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 559);
+            ClientSize = new Size(800, 419);
             Controls.Add(crownSectionPanel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
-            MinimumSize = new Size(914, 559);
+            MinimumSize = new Size(800, 419);
             Name = "QuanLyNguoiDungForm";
             Text = "Quản lý người dùng";
             crownSectionPanel1.ResumeLayout(false);
@@ -331,19 +336,19 @@
         private ReaLTaiizor.Controls.CrownButton buttonSuaND;
         private DataGridView adioButtonGridviewND;
         private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton1;
+        private ReaLTaiizor.Controls.CrownRadioButton radioButtonAdmin;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox1;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMaND;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownButton crownButton2;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton2;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox5;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox4;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox3;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox2;
-        private ReaLTaiizor.Controls.CrownButton crownButtonThemND;
+        private ReaLTaiizor.Controls.CrownRadioButton radioButtonGV;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxHoTenND;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMKND;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxEmailND;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiem;
+        private ReaLTaiizor.Controls.CrownButton buttonThemND;
     }
 }

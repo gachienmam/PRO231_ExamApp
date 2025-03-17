@@ -2,7 +2,7 @@
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "ExamServer.AdminService";
+option csharp_namespace = "ExamServer";
 
 service AdminService {
     rpc AuthenticateUser (AuthRequest) returns (AuthResponse);
@@ -13,7 +13,7 @@ service AdminService {
 // Authentication request
 message AuthRequest {
     google.protobuf.Timestamp timestamp = 1;
-    string username = 2; // dual purpose: OAuth or normal username and password
+    string email = 2; // dual purpose: OAuth or normal username and password
     string password = 3; 
     string machine = 4; // Current computer name
     string examCode = 5;

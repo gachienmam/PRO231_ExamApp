@@ -23,8 +23,8 @@ namespace ManagementApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtEmail.Text;
-            string password = txtPassword.Text;
+            string email = TEXTBOX_EMAIL.Text;
+            string password = TEXTBOX_MATKHAU.Text;
 
             try
             {

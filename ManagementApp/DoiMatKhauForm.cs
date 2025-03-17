@@ -16,5 +16,10 @@ namespace ManagementApp
         {
             InitializeComponent();
         }
+
+        private void crownTitle1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

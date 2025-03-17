@@ -18,6 +18,7 @@ namespace ExamServer.Database.DAL
             _connectionString = connectionString;
         }
 
+        // Chạy lệnh SQL trả về dữ liệu (SELECT, ...)
         public DataTable ExecuteQuery(string query, SqlParameter[] parameters = null)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -40,6 +41,7 @@ namespace ExamServer.Database.DAL
             }
         }
 
+        // Chạy lệnh SQL không trả về dữ liệu (INSERT, UPDATE, DELETE, ...)
         public int ExecuteNonQuery(string query, SqlParameter[] parameters = null)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -57,6 +59,7 @@ namespace ExamServer.Database.DAL
             }
         }
 
+        // Cho phép trực tiếp chạy lệnh SQL (lệnh từ phần mềm quản lý)
         public string ExecuteRawSqlQuery(string sqlCommand)
         {
             try
@@ -90,6 +93,7 @@ namespace ExamServer.Database.DAL
             }
         }
 
+        // Chuyển dữ liệu SQL sang JSON
         private string SerializeDataReader(SqlDataReader reader)
         {
             List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();

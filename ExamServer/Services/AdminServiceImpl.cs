@@ -21,9 +21,11 @@ namespace ExamServer.Services
 {
     internal class AdminServiceImpl
     {
+        #region Constructor
         private readonly string _uploadPath = "ExamPapers/";
 
         private readonly ILogger<AdminServiceImpl> _logger;
+
         // Cho phần mềm quản lý kết nối vô để xử lý SQL trực tiếp
         private Database.DAL.DatabaseHelper _databaseHelper;
 
@@ -39,6 +41,7 @@ namespace ExamServer.Services
             _busNguoiDung = _BUS_NguoiDung;
             //_dbContext = dbContext;
         }
+        #endregion
 
         public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
         {
@@ -83,7 +86,7 @@ namespace ExamServer.Services
                 }
 
                 fileStream?.Close();
-                return new UploadResponse { ResponseCode = (int)StatusCode.OK, ResponseMessage = "File uploaded successfully" };
+                return new UploadResponse { ResponseCode = (int)StatusCode.OK, ResponseMessage = $"File uploaded successfully at: {filePath}" };
             }
             catch (Exception ex)
             {
@@ -95,7 +98,7 @@ namespace ExamServer.Services
         public async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
         {
             var user = context.GetHttpContext().User;
-            if (!user.IsInRole("Admin"))
+            if (!user.IsInRole("Admin") || !user.IsInRole("GiangVien"))
             {
                 throw new RpcException(new Status(StatusCode.PermissionDenied, "Access denied"));
             }

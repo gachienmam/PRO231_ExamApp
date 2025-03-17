@@ -60,7 +60,7 @@
             // 
             // buttonLuuTS
             // 
-            buttonLuuTS.Location = new Point(427, 716);
+            buttonLuuTS.Location = new Point(405, 440);
             buttonLuuTS.Margin = new Padding(3, 4, 3, 4);
             buttonLuuTS.Name = "buttonLuuTS";
             buttonLuuTS.Size = new Size(94, 67);
@@ -70,7 +70,7 @@
             // 
             // buttonDanhSachTS
             // 
-            buttonDanhSachTS.Location = new Point(603, 716);
+            buttonDanhSachTS.Location = new Point(581, 440);
             buttonDanhSachTS.Margin = new Padding(3, 4, 3, 4);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
             buttonDanhSachTS.Size = new Size(94, 67);
@@ -80,7 +80,7 @@
             // 
             // buttonThoat
             // 
-            buttonThoat.Location = new Point(775, 716);
+            buttonThoat.Location = new Point(753, 440);
             buttonThoat.Margin = new Padding(3, 4, 3, 4);
             buttonThoat.Name = "buttonThoat";
             buttonThoat.Size = new Size(94, 67);
@@ -91,7 +91,7 @@
             // 
             // buttonXoaTS
             // 
-            buttonXoaTS.Location = new Point(314, 716);
+            buttonXoaTS.Location = new Point(292, 440);
             buttonXoaTS.Margin = new Padding(3, 4, 3, 4);
             buttonXoaTS.Name = "buttonXoaTS";
             buttonXoaTS.Size = new Size(94, 67);
@@ -101,7 +101,7 @@
             // 
             // buttonSuaTS
             // 
-            buttonSuaTS.Location = new Point(192, 716);
+            buttonSuaTS.Location = new Point(170, 440);
             buttonSuaTS.Margin = new Padding(3, 4, 3, 4);
             buttonSuaTS.Name = "buttonSuaTS";
             buttonSuaTS.Size = new Size(94, 67);
@@ -111,7 +111,7 @@
             // 
             // buttonThemTS
             // 
-            buttonThemTS.Location = new Point(63, 716);
+            buttonThemTS.Location = new Point(41, 440);
             buttonThemTS.Margin = new Padding(3, 4, 3, 4);
             buttonThemTS.Name = "buttonThemTS";
             buttonThemTS.Size = new Size(94, 67);
@@ -122,7 +122,7 @@
             // 
             // buttonTimKiemTS
             // 
-            buttonTimKiemTS.Location = new Point(561, 656);
+            buttonTimKiemTS.Location = new Point(539, 380);
             buttonTimKiemTS.Margin = new Padding(3, 4, 3, 4);
             buttonTimKiemTS.Name = "buttonTimKiemTS";
             buttonTimKiemTS.Size = new Size(86, 31);
@@ -133,7 +133,7 @@
             // textBoxTimKiemTS
             // 
             textBoxTimKiemTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxTimKiemTS.Location = new Point(238, 656);
+            textBoxTimKiemTS.Location = new Point(216, 380);
             textBoxTimKiemTS.Margin = new Padding(3, 4, 3, 4);
             textBoxTimKiemTS.Name = "textBoxTimKiemTS";
             textBoxTimKiemTS.Size = new Size(283, 26);
@@ -143,17 +143,17 @@
             // dataGridViewTS
             // 
             dataGridViewTS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTS.Location = new Point(2, 355);
+            dataGridViewTS.Location = new Point(3, 288);
             dataGridViewTS.Margin = new Padding(3, 4, 3, 4);
             dataGridViewTS.Name = "dataGridViewTS";
             dataGridViewTS.RowHeadersWidth = 51;
-            dataGridViewTS.Size = new Size(911, 277);
+            dataGridViewTS.Size = new Size(889, 75);
             dataGridViewTS.TabIndex = 31;
             // 
             // textBoxEmailTS
             // 
             textBoxEmailTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxEmailTS.Location = new Point(583, 104);
+            textBoxEmailTS.Location = new Point(584, 69);
             textBoxEmailTS.Margin = new Padding(3, 4, 3, 4);
             textBoxEmailTS.Name = "textBoxEmailTS";
             textBoxEmailTS.Size = new Size(268, 26);
@@ -162,7 +162,7 @@
             // textBoxHoTenTS
             // 
             textBoxHoTenTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxHoTenTS.Location = new Point(168, 165);
+            textBoxHoTenTS.Location = new Point(169, 130);
             textBoxHoTenTS.Margin = new Padding(3, 4, 3, 4);
             textBoxHoTenTS.Name = "textBoxHoTenTS";
             textBoxHoTenTS.Size = new Size(239, 26);
@@ -171,7 +171,7 @@
             // textBoxMKTS
             // 
             textBoxMKTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxMKTS.Location = new Point(594, 165);
+            textBoxMKTS.Location = new Point(595, 130);
             textBoxMKTS.Margin = new Padding(3, 4, 3, 4);
             textBoxMKTS.Name = "textBoxMKTS";
             textBoxMKTS.Size = new Size(239, 26);
@@ -180,7 +180,7 @@
             // textBoxMaTS
             // 
             textBoxMaTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxMaTS.Location = new Point(168, 104);
+            textBoxMaTS.Location = new Point(169, 69);
             textBoxMaTS.Margin = new Padding(3, 4, 3, 4);
             textBoxMaTS.Name = "textBoxMaTS";
             textBoxMaTS.Size = new Size(239, 26);
@@ -190,7 +190,7 @@
             // 
             groupBox1.Controls.Add(radioButtonKhoaTS);
             groupBox1.Controls.Add(radioButtonHDTS);
-            groupBox1.Location = new Point(159, 279);
+            groupBox1.Location = new Point(160, 216);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 4, 3, 4);
@@ -213,7 +213,7 @@
             // radioButtonHDTS
             // 
             radioButtonHDTS.AutoSize = true;
-            radioButtonHDTS.Location = new Point(7, 24);
+            radioButtonHDTS.Location = new Point(0, 24);
             radioButtonHDTS.Margin = new Padding(3, 4, 3, 4);
             radioButtonHDTS.Name = "radioButtonHDTS";
             radioButtonHDTS.Size = new Size(102, 24);
@@ -226,7 +226,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 12F);
-            label6.Location = new Point(507, 169);
+            label6.Location = new Point(508, 134);
             label6.Name = "label6";
             label6.Size = new Size(88, 22);
             label6.TabIndex = 25;
@@ -247,7 +247,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 12F);
-            label4.Location = new Point(507, 108);
+            label4.Location = new Point(508, 73);
             label4.Name = "label4";
             label4.Size = new Size(63, 22);
             label4.TabIndex = 23;
@@ -257,7 +257,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F);
-            label3.Location = new Point(80, 169);
+            label3.Location = new Point(81, 134);
             label3.Name = "label3";
             label3.Size = new Size(92, 22);
             label3.TabIndex = 22;
@@ -266,7 +266,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(80, 304);
+            label2.Location = new Point(81, 241);
             label2.Name = "label2";
             label2.Size = new Size(78, 20);
             label2.TabIndex = 21;
@@ -276,7 +276,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 12F);
-            label1.Location = new Point(80, 108);
+            label1.Location = new Point(81, 73);
             label1.Name = "label1";
             label1.Size = new Size(70, 22);
             label1.TabIndex = 20;
@@ -285,7 +285,7 @@
             // textBoxSDTTS
             // 
             textBoxSDTTS.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxSDTTS.Location = new Point(191, 225);
+            textBoxSDTTS.Location = new Point(192, 190);
             textBoxSDTTS.Margin = new Padding(3, 4, 3, 4);
             textBoxSDTTS.Name = "textBoxSDTTS";
             textBoxSDTTS.Size = new Size(217, 26);
@@ -295,7 +295,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 12F);
-            label7.Location = new Point(507, 229);
+            label7.Location = new Point(508, 194);
             label7.Name = "label7";
             label7.Size = new Size(94, 22);
             label7.TabIndex = 41;
@@ -305,7 +305,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Times New Roman", 12F);
-            label8.Location = new Point(80, 229);
+            label8.Location = new Point(81, 194);
             label8.Name = "label8";
             label8.Size = new Size(120, 22);
             label8.TabIndex = 40;
@@ -313,7 +313,7 @@
             // 
             // dateTimePickerNgaySinhTS
             // 
-            dateTimePickerNgaySinhTS.Location = new Point(597, 225);
+            dateTimePickerNgaySinhTS.Location = new Point(598, 190);
             dateTimePickerNgaySinhTS.Margin = new Padding(3, 4, 3, 4);
             dateTimePickerNgaySinhTS.Name = "dateTimePickerNgaySinhTS";
             dateTimePickerNgaySinhTS.Size = new Size(228, 27);
@@ -323,7 +323,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 785);
+            ClientSize = new Size(896, 512);
             Controls.Add(dateTimePickerNgaySinhTS);
             Controls.Add(textBoxSDTTS);
             Controls.Add(label7);
@@ -348,6 +348,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            MinimumSize = new Size(914, 559);
             Name = "QuanLyThiSinhForm";
             Text = "Quản lý thí sinh";
             ((System.ComponentModel.ISupportInitialize)dataGridViewTS).EndInit();

@@ -28,93 +28,93 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            textBox1 = new TextBox();
-            button3 = new Button();
-            button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dataGridViewTKD = new DataGridView();
+            buttonTimKiem = new Button();
+            BUTTON_XEMDS = new Button();
+            textBoxTimKiem = new TextBox();
+            BUTTON_XUATDS = new Button();
+            BUTTON_THOAT = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTKD).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewTKD
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-1, -1);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(802, 236);
-            dataGridView1.TabIndex = 0;
+            dataGridViewTKD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTKD.Location = new Point(-1, -1);
+            dataGridViewTKD.Name = "dataGridViewTKD";
+            dataGridViewTKD.Size = new Size(802, 236);
+            dataGridViewTKD.TabIndex = 0;
             // 
-            // button1
+            // buttonTimKiem
             // 
-            button1.Location = new Point(116, 266);
-            button1.Name = "button1";
-            button1.Size = new Size(132, 30);
-            button1.TabIndex = 1;
-            button1.Text = "Tìm kiếm";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonTimKiem.Location = new Point(116, 266);
+            buttonTimKiem.Name = "buttonTimKiem";
+            buttonTimKiem.Size = new Size(132, 30);
+            buttonTimKiem.TabIndex = 1;
+            buttonTimKiem.Text = "Tìm kiếm";
+            buttonTimKiem.UseVisualStyleBackColor = true;
+            buttonTimKiem.Click += button1_Click;
             // 
-            // button2
+            // BUTTON_XEMDS
             // 
-            button2.Location = new Point(116, 361);
-            button2.Name = "button2";
-            button2.Size = new Size(132, 45);
-            button2.TabIndex = 2;
-            button2.Text = "Xem danh sách";
-            button2.UseVisualStyleBackColor = true;
+            BUTTON_XEMDS.Location = new Point(116, 361);
+            BUTTON_XEMDS.Name = "BUTTON_XEMDS";
+            BUTTON_XEMDS.Size = new Size(132, 45);
+            BUTTON_XEMDS.TabIndex = 2;
+            BUTTON_XEMDS.Text = "Xem danh sách";
+            BUTTON_XEMDS.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxTimKiem
             // 
-            textBox1.Location = new Point(309, 271);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Tìm kiếm theo mã thí sinh";
-            textBox1.Size = new Size(305, 23);
-            textBox1.TabIndex = 5;
+            textBoxTimKiem.Location = new Point(309, 271);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm theo mã thí sinh";
+            textBoxTimKiem.Size = new Size(305, 23);
+            textBoxTimKiem.TabIndex = 5;
             // 
-            // button3
+            // BUTTON_XUATDS
             // 
-            button3.Location = new Point(322, 361);
-            button3.Name = "button3";
-            button3.Size = new Size(132, 45);
-            button3.TabIndex = 6;
-            button3.Text = "Xuất danh sách";
-            button3.UseVisualStyleBackColor = true;
+            BUTTON_XUATDS.Location = new Point(322, 361);
+            BUTTON_XUATDS.Name = "BUTTON_XUATDS";
+            BUTTON_XUATDS.Size = new Size(132, 45);
+            BUTTON_XUATDS.TabIndex = 6;
+            BUTTON_XUATDS.Text = "Xuất danh sách";
+            BUTTON_XUATDS.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // BUTTON_THOAT
             // 
-            button4.Location = new Point(514, 361);
-            button4.Name = "button4";
-            button4.Size = new Size(91, 45);
-            button4.TabIndex = 7;
-            button4.Text = "Thoát";
-            button4.UseVisualStyleBackColor = true;
+            BUTTON_THOAT.Location = new Point(514, 361);
+            BUTTON_THOAT.Name = "BUTTON_THOAT";
+            BUTTON_THOAT.Size = new Size(91, 45);
+            BUTTON_THOAT.TabIndex = 7;
+            BUTTON_THOAT.Text = "Thoát";
+            BUTTON_THOAT.UseVisualStyleBackColor = true;
             // 
             // ThongKeDiemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(textBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(BUTTON_THOAT);
+            Controls.Add(BUTTON_XUATDS);
+            Controls.Add(textBoxTimKiem);
+            Controls.Add(BUTTON_XEMDS);
+            Controls.Add(buttonTimKiem);
+            Controls.Add(dataGridViewTKD);
             Name = "ThongKeDiemForm";
             Text = "Thống kê báo cáo điểm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTKD).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Button button1;
-        private Button button2;
-        private TextBox textBox1;
-        private Button button3;
-        private Button button4;
+        private DataGridView dataGridViewTKD;
+        private Button buttonTimKiem;
+        private Button BUTTON_XEMDS;
+        private TextBox textBoxTimKiem;
+        private Button BUTTON_XUATDS;
+        private Button BUTTON_THOAT;
     }
 }

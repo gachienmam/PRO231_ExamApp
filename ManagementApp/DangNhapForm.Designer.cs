@@ -32,11 +32,11 @@
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
-            btnLogin = new ReaLTaiizor.Controls.CrownButton();
+            BUTTON_DANGNHAP = new ReaLTaiizor.Controls.CrownButton();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            txtPassword = new ReaLTaiizor.Controls.CrownTextBox();
+            TEXTBOX_MATKHAU = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            txtEmail = new ReaLTaiizor.Controls.CrownTextBox();
+            TEXTBOX_EMAIL = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
@@ -82,11 +82,11 @@
             // crownSectionPanel2
             // 
             crownSectionPanel2.Controls.Add(crownTitle4);
-            crownSectionPanel2.Controls.Add(btnLogin);
+            crownSectionPanel2.Controls.Add(BUTTON_DANGNHAP);
             crownSectionPanel2.Controls.Add(crownTitle3);
-            crownSectionPanel2.Controls.Add(txtPassword);
+            crownSectionPanel2.Controls.Add(TEXTBOX_MATKHAU);
             crownSectionPanel2.Controls.Add(crownTitle2);
-            crownSectionPanel2.Controls.Add(txtEmail);
+            crownSectionPanel2.Controls.Add(TEXTBOX_EMAIL);
             crownSectionPanel2.Controls.Add(crownTitle1);
             crownSectionPanel2.Dock = DockStyle.Fill;
             crownSectionPanel2.Location = new Point(400, 0);
@@ -108,19 +108,19 @@
             crownTitle4.TabIndex = 5;
             crownTitle4.Text = "Nhập email và mật khẩu của bạn";
             // 
-            // btnLogin
+            // BUTTON_DANGNHAP
             // 
-            btnLogin.Anchor = AnchorStyles.None;
-            btnLogin.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnLogin.ImagePadding = 6;
-            btnLogin.Location = new Point(146, 287);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Padding = new Padding(5);
-            btnLogin.Size = new Size(113, 28);
-            btnLogin.TabIndex = 0;
-            btnLogin.Text = "Đăng nhập";
-            btnLogin.Click += btnLogin_Click;
+            BUTTON_DANGNHAP.Anchor = AnchorStyles.None;
+            BUTTON_DANGNHAP.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            BUTTON_DANGNHAP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BUTTON_DANGNHAP.ImagePadding = 6;
+            BUTTON_DANGNHAP.Location = new Point(146, 287);
+            BUTTON_DANGNHAP.Name = "BUTTON_DANGNHAP";
+            BUTTON_DANGNHAP.Padding = new Padding(5);
+            BUTTON_DANGNHAP.Size = new Size(113, 28);
+            BUTTON_DANGNHAP.TabIndex = 0;
+            BUTTON_DANGNHAP.Text = "Đăng nhập";
+            BUTTON_DANGNHAP.Click += btnLogin_Click;
             // 
             // crownTitle3
             // 
@@ -132,17 +132,17 @@
             crownTitle3.TabIndex = 4;
             crownTitle3.Text = "Mật khẩu";
             // 
-            // txtPassword
+            // TEXTBOX_MATKHAU
             // 
-            txtPassword.Anchor = AnchorStyles.None;
-            txtPassword.BackColor = Color.FromArgb(69, 73, 74);
-            txtPassword.BorderStyle = BorderStyle.FixedSingle;
-            txtPassword.ForeColor = Color.FromArgb(220, 220, 220);
-            txtPassword.Location = new Point(106, 234);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PlaceholderText = "Email";
-            txtPassword.Size = new Size(193, 23);
-            txtPassword.TabIndex = 3;
+            TEXTBOX_MATKHAU.Anchor = AnchorStyles.None;
+            TEXTBOX_MATKHAU.BackColor = Color.FromArgb(69, 73, 74);
+            TEXTBOX_MATKHAU.BorderStyle = BorderStyle.FixedSingle;
+            TEXTBOX_MATKHAU.ForeColor = Color.FromArgb(220, 220, 220);
+            TEXTBOX_MATKHAU.Location = new Point(106, 234);
+            TEXTBOX_MATKHAU.Name = "TEXTBOX_MATKHAU";
+            TEXTBOX_MATKHAU.PlaceholderText = "Email";
+            TEXTBOX_MATKHAU.Size = new Size(193, 23);
+            TEXTBOX_MATKHAU.TabIndex = 3;
             // 
             // crownTitle2
             // 
@@ -154,17 +154,17 @@
             crownTitle2.TabIndex = 2;
             crownTitle2.Text = "Email";
             // 
-            // txtEmail
+            // TEXTBOX_EMAIL
             // 
-            txtEmail.Anchor = AnchorStyles.None;
-            txtEmail.BackColor = Color.FromArgb(69, 73, 74);
-            txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            txtEmail.Location = new Point(106, 172);
-            txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "Email";
-            txtEmail.Size = new Size(193, 23);
-            txtEmail.TabIndex = 1;
+            TEXTBOX_EMAIL.Anchor = AnchorStyles.None;
+            TEXTBOX_EMAIL.BackColor = Color.FromArgb(69, 73, 74);
+            TEXTBOX_EMAIL.BorderStyle = BorderStyle.FixedSingle;
+            TEXTBOX_EMAIL.ForeColor = Color.FromArgb(220, 220, 220);
+            TEXTBOX_EMAIL.Location = new Point(106, 172);
+            TEXTBOX_EMAIL.Name = "TEXTBOX_EMAIL";
+            TEXTBOX_EMAIL.PlaceholderText = "Email";
+            TEXTBOX_EMAIL.Size = new Size(193, 23);
+            TEXTBOX_EMAIL.TabIndex = 1;
             // 
             // crownTitle1
             // 
@@ -195,13 +195,13 @@
 
         private TableLayoutPanel layoutPanel;
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel2;
-        private ReaLTaiizor.Controls.CrownTextBox txtEmail;
+        private ReaLTaiizor.Controls.CrownTextBox TEXTBOX_EMAIL;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTextBox txtPassword;
+        private ReaLTaiizor.Controls.CrownTextBox TEXTBOX_MATKHAU;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
-        private ReaLTaiizor.Controls.CrownButton btnLogin;
+        private ReaLTaiizor.Controls.CrownButton BUTTON_DANGNHAP;
     }
 }

@@ -33,6 +33,16 @@ namespace StudentApp
                 Application.Exit(); // Thoát toàn bộ ứng dụng
             }
         }
+
+        private void crownButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crownTitle1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
     }

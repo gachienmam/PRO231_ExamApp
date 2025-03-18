@@ -31,17 +31,17 @@
             layoutPanel = new TableLayoutPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
-            btnLogin = new ReaLTaiizor.Controls.CrownButton();
-            crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            txtPassword = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            txtEmail = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox1 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBox2 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTextBoxMKEmail = new ReaLTaiizor.Controls.CrownTextBox();
+            TEXTBOXEMAIL = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
+            BUTTONDANGNHAP = new ReaLTaiizor.Controls.CrownButton();
+            crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
+            TEXTBOXMATKHAUDE = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
+            TEXTBOXMADE = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
             SuspendLayout();
@@ -87,14 +87,14 @@
             // 
             crownSectionPanel2.Controls.Add(crownTitle6);
             crownSectionPanel2.Controls.Add(crownTitle5);
-            crownSectionPanel2.Controls.Add(crownTextBox2);
-            crownSectionPanel2.Controls.Add(crownTextBox1);
+            crownSectionPanel2.Controls.Add(crownTextBoxMKEmail);
+            crownSectionPanel2.Controls.Add(TEXTBOXEMAIL);
             crownSectionPanel2.Controls.Add(crownTitle4);
-            crownSectionPanel2.Controls.Add(btnLogin);
+            crownSectionPanel2.Controls.Add(BUTTONDANGNHAP);
             crownSectionPanel2.Controls.Add(crownTitle3);
-            crownSectionPanel2.Controls.Add(txtPassword);
+            crownSectionPanel2.Controls.Add(TEXTBOXMATKHAUDE);
             crownSectionPanel2.Controls.Add(crownTitle2);
-            crownSectionPanel2.Controls.Add(txtEmail);
+            crownSectionPanel2.Controls.Add(TEXTBOXMADE);
             crownSectionPanel2.Controls.Add(crownTitle1);
             crownSectionPanel2.Dock = DockStyle.Fill;
             crownSectionPanel2.Location = new Point(400, 0);
@@ -103,6 +103,48 @@
             crownSectionPanel2.SectionHeader = "Đăng nhập";
             crownSectionPanel2.Size = new Size(400, 419);
             crownSectionPanel2.TabIndex = 2;
+            // 
+            // crownTitle6
+            // 
+            crownTitle6.Anchor = AnchorStyles.None;
+            crownTitle6.AutoSize = true;
+            crownTitle6.Location = new Point(106, 317);
+            crownTitle6.Name = "crownTitle6";
+            crownTitle6.Size = new Size(92, 15);
+            crownTitle6.TabIndex = 9;
+            crownTitle6.Text = "Mật khẩu email:";
+            // 
+            // crownTitle5
+            // 
+            crownTitle5.Anchor = AnchorStyles.None;
+            crownTitle5.AutoSize = true;
+            crownTitle5.Location = new Point(106, 258);
+            crownTitle5.Name = "crownTitle5";
+            crownTitle5.Size = new Size(39, 15);
+            crownTitle5.TabIndex = 8;
+            crownTitle5.Text = "Email:";
+            // 
+            // crownTextBoxMKEmail
+            // 
+            crownTextBoxMKEmail.Anchor = AnchorStyles.None;
+            crownTextBoxMKEmail.BackColor = Color.FromArgb(69, 73, 74);
+            crownTextBoxMKEmail.BorderStyle = BorderStyle.FixedSingle;
+            crownTextBoxMKEmail.ForeColor = Color.FromArgb(220, 220, 220);
+            crownTextBoxMKEmail.Location = new Point(106, 335);
+            crownTextBoxMKEmail.Name = "crownTextBoxMKEmail";
+            crownTextBoxMKEmail.Size = new Size(193, 23);
+            crownTextBoxMKEmail.TabIndex = 7;
+            // 
+            // TEXTBOXEMAIL
+            // 
+            TEXTBOXEMAIL.Anchor = AnchorStyles.None;
+            TEXTBOXEMAIL.BackColor = Color.FromArgb(69, 73, 74);
+            TEXTBOXEMAIL.BorderStyle = BorderStyle.FixedSingle;
+            TEXTBOXEMAIL.ForeColor = Color.FromArgb(220, 220, 220);
+            TEXTBOXEMAIL.Location = new Point(106, 276);
+            TEXTBOXEMAIL.Name = "TEXTBOXEMAIL";
+            TEXTBOXEMAIL.Size = new Size(193, 23);
+            TEXTBOXEMAIL.TabIndex = 6;
             // 
             // crownTitle4
             // 
@@ -116,18 +158,18 @@
             crownTitle4.TabIndex = 5;
             crownTitle4.Text = "Hãy điền thông tin của bạn";
             // 
-            // btnLogin
+            // BUTTONDANGNHAP
             // 
-            btnLogin.Anchor = AnchorStyles.None;
-            btnLogin.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnLogin.ImagePadding = 6;
-            btnLogin.Location = new Point(157, 381);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Padding = new Padding(5);
-            btnLogin.Size = new Size(98, 38);
-            btnLogin.TabIndex = 0;
-            btnLogin.Text = "Đăng nhập";
+            BUTTONDANGNHAP.Anchor = AnchorStyles.None;
+            BUTTONDANGNHAP.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            BUTTONDANGNHAP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BUTTONDANGNHAP.ImagePadding = 6;
+            BUTTONDANGNHAP.Location = new Point(157, 381);
+            BUTTONDANGNHAP.Name = "BUTTONDANGNHAP";
+            BUTTONDANGNHAP.Padding = new Padding(5);
+            BUTTONDANGNHAP.Size = new Size(98, 38);
+            BUTTONDANGNHAP.TabIndex = 0;
+            BUTTONDANGNHAP.Text = "Đăng nhập";
             // 
             // crownTitle3
             // 
@@ -140,16 +182,16 @@
             crownTitle3.Text = "Mật khẩu đề:";
             crownTitle3.Click += crownTitle3_Click;
             // 
-            // txtPassword
+            // TEXTBOXMATKHAUDE
             // 
-            txtPassword.Anchor = AnchorStyles.None;
-            txtPassword.BackColor = Color.FromArgb(69, 73, 74);
-            txtPassword.BorderStyle = BorderStyle.FixedSingle;
-            txtPassword.ForeColor = Color.FromArgb(220, 220, 220);
-            txtPassword.Location = new Point(106, 214);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(193, 23);
-            txtPassword.TabIndex = 3;
+            TEXTBOXMATKHAUDE.Anchor = AnchorStyles.None;
+            TEXTBOXMATKHAUDE.BackColor = Color.FromArgb(69, 73, 74);
+            TEXTBOXMATKHAUDE.BorderStyle = BorderStyle.FixedSingle;
+            TEXTBOXMATKHAUDE.ForeColor = Color.FromArgb(220, 220, 220);
+            TEXTBOXMATKHAUDE.Location = new Point(106, 214);
+            TEXTBOXMATKHAUDE.Name = "TEXTBOXMATKHAUDE";
+            TEXTBOXMATKHAUDE.Size = new Size(193, 23);
+            TEXTBOXMATKHAUDE.TabIndex = 3;
             // 
             // crownTitle2
             // 
@@ -161,16 +203,16 @@
             crownTitle2.TabIndex = 2;
             crownTitle2.Text = "Mã đề:";
             // 
-            // txtEmail
+            // TEXTBOXMADE
             // 
-            txtEmail.Anchor = AnchorStyles.None;
-            txtEmail.BackColor = Color.FromArgb(69, 73, 74);
-            txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            txtEmail.Location = new Point(106, 151);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(193, 23);
-            txtEmail.TabIndex = 1;
+            TEXTBOXMADE.Anchor = AnchorStyles.None;
+            TEXTBOXMADE.BackColor = Color.FromArgb(69, 73, 74);
+            TEXTBOXMADE.BorderStyle = BorderStyle.FixedSingle;
+            TEXTBOXMADE.ForeColor = Color.FromArgb(220, 220, 220);
+            TEXTBOXMADE.Location = new Point(106, 151);
+            TEXTBOXMADE.Name = "TEXTBOXMADE";
+            TEXTBOXMADE.Size = new Size(193, 23);
+            TEXTBOXMADE.TabIndex = 1;
             // 
             // crownTitle1
             // 
@@ -183,48 +225,6 @@
             crownTitle1.TabIndex = 0;
             crownTitle1.Text = "Thi trắc nghiệm";
             crownTitle1.Click += crownTitle1_Click;
-            // 
-            // crownTextBox1
-            // 
-            crownTextBox1.Anchor = AnchorStyles.None;
-            crownTextBox1.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox1.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox1.Location = new Point(106, 276);
-            crownTextBox1.Name = "crownTextBox1";
-            crownTextBox1.Size = new Size(193, 23);
-            crownTextBox1.TabIndex = 6;
-            // 
-            // crownTextBox2
-            // 
-            crownTextBox2.Anchor = AnchorStyles.None;
-            crownTextBox2.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox2.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox2.Location = new Point(106, 335);
-            crownTextBox2.Name = "crownTextBox2";
-            crownTextBox2.Size = new Size(193, 23);
-            crownTextBox2.TabIndex = 7;
-            // 
-            // crownTitle5
-            // 
-            crownTitle5.Anchor = AnchorStyles.None;
-            crownTitle5.AutoSize = true;
-            crownTitle5.Location = new Point(106, 258);
-            crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(39, 15);
-            crownTitle5.TabIndex = 8;
-            crownTitle5.Text = "Email:";
-            // 
-            // crownTitle6
-            // 
-            crownTitle6.Anchor = AnchorStyles.None;
-            crownTitle6.AutoSize = true;
-            crownTitle6.Location = new Point(106, 317);
-            crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(92, 15);
-            crownTitle6.TabIndex = 9;
-            crownTitle6.Text = "Mật khẩu email:";
             // 
             // DangNhapForm
             // 
@@ -244,16 +244,16 @@
 
         private TableLayoutPanel layoutPanel;
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel2;
-        private ReaLTaiizor.Controls.CrownTextBox txtEmail;
+        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMADE;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTextBox txtPassword;
+        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMATKHAUDE;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
-        private ReaLTaiizor.Controls.CrownButton btnLogin;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox2;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox1;
+        private ReaLTaiizor.Controls.CrownButton BUTTONDANGNHAP;
+        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxMKEmail;
+        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXEMAIL;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
     }

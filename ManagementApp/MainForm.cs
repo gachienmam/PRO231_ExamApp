@@ -1,10 +1,10 @@
-using ExamServer.AdminService;
 using Grpc.Net.Client;
 using ManagementApp.CustomControls;
 using Newtonsoft.Json.Linq;
 using ReaLTaiizor.Docking.Crown;
 using ReaLTaiizor.Native;
 using System.Windows.Forms;
+using static ExamServer.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
 
 namespace ManagementApp
@@ -26,7 +26,7 @@ namespace ManagementApp
         private readonly string DefaultFormText = "PolyTest Manager";
 
         // Lưu trữ thông tin máy chủ
-        private readonly AdminService.AdminServiceClient _client;
+        private readonly AdminServiceClient _client;
         private readonly string _serverAddress;
         private readonly string _accessToken;
 
@@ -52,7 +52,7 @@ namespace ManagementApp
             _serverAddress = serverAddress;
             _accessToken = accessToken;
             var channel = GrpcChannel.ForAddress(_serverAddress);
-            _client = new AdminService.AdminServiceClient(channel);
+            _client = new AdminServiceClient(channel);
 
             // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
             Application.AddMessageFilter(new ControlScrollFilter());

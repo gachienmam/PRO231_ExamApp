@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace ManagementApp
 {
-    public partial class DoiMatKhauForm : Form
+    public partial class GioiThieuForm : Form
     {
-        public DoiMatKhauForm()
+        public GioiThieuForm()
         {
             InitializeComponent();
         }
 
         private void crownTitle1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crownTitle1_Click_1(object sender, EventArgs e)
         {
 
         }

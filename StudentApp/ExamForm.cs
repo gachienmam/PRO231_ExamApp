@@ -34,16 +34,11 @@ namespace StudentApp
             }
         }
 
-        private void crownButton2_Click(object sender, EventArgs e)
+        private void crownButtonFinish_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void crownTitle1_Click(object sender, EventArgs e)
-        {
-
+            crownGroupBoxCauHoi.Hide();
         }
     }
 }
-    }
-}
+    
+

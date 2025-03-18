@@ -42,7 +42,7 @@
             // 
             // Button1
             // 
-            Button1.Location = new Point(45, 477);
+            Button1.Location = new Point(91, 354);
             Button1.Name = "Button1";
             Button1.Size = new Size(75, 23);
             Button1.TabIndex = 1;
@@ -52,7 +52,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(850, 477);
+            button2.Location = new Point(630, 354);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 2;
@@ -128,7 +128,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(979, 525);
+            ClientSize = new Size(823, 397);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
@@ -141,7 +141,6 @@
             Controls.Add(Button1);
             Name = "ExamForm";
             Text = "ExamForm";
-
             ResumeLayout(false);
             PerformLayout();
         }

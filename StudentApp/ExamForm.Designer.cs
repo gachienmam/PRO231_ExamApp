@@ -181,9 +181,9 @@
             crownTitle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             crownTitle6.Location = new Point(107, 14);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(236, 21);
+            crownTitle6.Size = new Size(245, 21);
             crownTitle6.TabIndex = 20;
-            crownTitle6.Text = "Văn thành có bình tường không?";
+            crownTitle6.Text = "Văn thành có bình thường không?";
             // 
             // crownRadioButtonD
             // 

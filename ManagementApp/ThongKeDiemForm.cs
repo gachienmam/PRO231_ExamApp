@@ -21,5 +21,15 @@ namespace ManagementApp
         {
 
         }
+
+        private void BUTTON_THOAT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void crownGroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

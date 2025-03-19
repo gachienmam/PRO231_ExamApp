@@ -132,7 +132,7 @@
         private ReaLTaiizor.Controls.CrownButton buttonTimKiem;
         private Button BUTTON_THOAT;
         private DataGridView dataGridViewTKD;
-        private ReaLTaiizor.Controls.CrownButton BUTTON_THOAT;
+        
         private ReaLTaiizor.Controls.CrownButton BUTTON_XUATDS;
         private ReaLTaiizor.Controls.CrownButton BUTTON_XEMDS;
     }

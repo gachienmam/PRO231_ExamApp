@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
+            crownGroupBox2 = new ReaLTaiizor.Controls.CrownGroupBox();
+            crownRadioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
+            crownRadioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
             buttonThemND = new ReaLTaiizor.Controls.CrownButton();
             textBoxHoTenND = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxMKND = new ReaLTaiizor.Controls.CrownTextBox();
@@ -50,14 +54,10 @@
             buttonXoaND = new ReaLTaiizor.Controls.CrownButton();
             buttonSuaND = new ReaLTaiizor.Controls.CrownButton();
             adioButtonGridviewND = new DataGridView();
-            crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
-            crownGroupBox2 = new ReaLTaiizor.Controls.CrownGroupBox();
-            crownRadioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownRadioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
             crownSectionPanel1.SuspendLayout();
+            crownGroupBox2.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)adioButtonGridviewND).BeginInit();
-            crownGroupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // crownSectionPanel1
@@ -92,14 +92,59 @@
             crownSectionPanel1.TabIndex = 0;
             crownSectionPanel1.Paint += crownSectionPanel1_Paint;
             // 
+            // crownTitle6
+            // 
+            crownTitle6.AutoSize = true;
+            crownTitle6.Font = new Font("Segoe UI", 12F);
+            crownTitle6.Location = new Point(439, 145);
+            crownTitle6.Name = "crownTitle6";
+            crownTitle6.Size = new Size(82, 21);
+            crownTitle6.TabIndex = 56;
+            crownTitle6.Text = "Trạng thái:";
+            // 
+            // crownGroupBox2
+            // 
+            crownGroupBox2.BorderColor = Color.FromArgb(51, 51, 51);
+            crownGroupBox2.Controls.Add(crownRadioButtonKHD);
+            crownGroupBox2.Controls.Add(crownRadioButtonHD);
+            crownGroupBox2.Location = new Point(530, 133);
+            crownGroupBox2.Margin = new Padding(3, 2, 3, 2);
+            crownGroupBox2.Name = "crownGroupBox2";
+            crownGroupBox2.Padding = new Padding(3, 2, 3, 2);
+            crownGroupBox2.Size = new Size(225, 42);
+            crownGroupBox2.TabIndex = 55;
+            crownGroupBox2.TabStop = false;
+            // 
+            // crownRadioButtonKHD
+            // 
+            crownRadioButtonKHD.AutoSize = true;
+            crownRadioButtonKHD.Location = new Point(106, 11);
+            crownRadioButtonKHD.Margin = new Padding(3, 2, 3, 2);
+            crownRadioButtonKHD.Name = "crownRadioButtonKHD";
+            crownRadioButtonKHD.Size = new Size(118, 19);
+            crownRadioButtonKHD.TabIndex = 50;
+            crownRadioButtonKHD.TabStop = true;
+            crownRadioButtonKHD.Text = "Không hoạt động";
+            // 
+            // crownRadioButtonHD
+            // 
+            crownRadioButtonHD.AutoSize = true;
+            crownRadioButtonHD.Location = new Point(18, 11);
+            crownRadioButtonHD.Margin = new Padding(3, 2, 3, 2);
+            crownRadioButtonHD.Name = "crownRadioButtonHD";
+            crownRadioButtonHD.Size = new Size(82, 19);
+            crownRadioButtonHD.TabIndex = 43;
+            crownRadioButtonHD.TabStop = true;
+            crownRadioButtonHD.Text = "Hoạt động";
+            // 
             // buttonThemND
             // 
             buttonThemND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonThemND.Location = new Point(57, 327);
+            buttonThemND.Location = new Point(58, 371);
             buttonThemND.Margin = new Padding(3, 2, 3, 2);
             buttonThemND.Name = "buttonThemND";
             buttonThemND.Padding = new Padding(4);
-            buttonThemND.Size = new Size(82, 50);
+            buttonThemND.Size = new Size(61, 36);
             buttonThemND.TabIndex = 54;
             buttonThemND.Text = "Thêm";
             // 
@@ -141,7 +186,7 @@
             textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxTimKiem.Location = new Point(221, 281);
+            textBoxTimKiem.Location = new Point(221, 329);
             textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.Size = new Size(230, 23);
@@ -151,7 +196,7 @@
             // crownButton2
             // 
             crownButton2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            crownButton2.Location = new Point(488, 281);
+            crownButton2.Location = new Point(488, 329);
             crownButton2.Margin = new Padding(3, 2, 3, 2);
             crownButton2.Name = "crownButton2";
             crownButton2.Padding = new Padding(4);
@@ -259,106 +304,61 @@
             // buttonLuuND
             // 
             buttonLuuND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonLuuND.Location = new Point(369, 327);
+            buttonLuuND.Location = new Point(370, 371);
             buttonLuuND.Name = "buttonLuuND";
             buttonLuuND.Padding = new Padding(4);
-            buttonLuuND.Size = new Size(82, 50);
+            buttonLuuND.Size = new Size(61, 36);
             buttonLuuND.TabIndex = 39;
             buttonLuuND.Text = "Lưu";
             // 
             // buttonDanhSachND
             // 
             buttonDanhSachND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonDanhSachND.Location = new Point(501, 327);
+            buttonDanhSachND.Location = new Point(502, 371);
             buttonDanhSachND.Name = "buttonDanhSachND";
             buttonDanhSachND.Padding = new Padding(4);
-            buttonDanhSachND.Size = new Size(104, 50);
+            buttonDanhSachND.Size = new Size(105, 36);
             buttonDanhSachND.TabIndex = 38;
             buttonDanhSachND.Text = "Danh sách";
             // 
             // buttonThoat
             // 
             buttonThoat.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonThoat.Location = new Point(673, 327);
+            buttonThoat.Location = new Point(674, 371);
             buttonThoat.Name = "buttonThoat";
             buttonThoat.Padding = new Padding(4);
-            buttonThoat.Size = new Size(82, 50);
+            buttonThoat.Size = new Size(61, 36);
             buttonThoat.TabIndex = 37;
             buttonThoat.Text = "Thoát";
             // 
             // buttonXoaND
             // 
             buttonXoaND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonXoaND.Location = new Point(270, 327);
+            buttonXoaND.Location = new Point(271, 371);
             buttonXoaND.Name = "buttonXoaND";
             buttonXoaND.Padding = new Padding(4);
-            buttonXoaND.Size = new Size(82, 50);
+            buttonXoaND.Size = new Size(61, 36);
             buttonXoaND.TabIndex = 36;
             buttonXoaND.Text = "Xóa";
             // 
             // buttonSuaND
             // 
             buttonSuaND.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            buttonSuaND.Location = new Point(163, 327);
+            buttonSuaND.Location = new Point(164, 371);
             buttonSuaND.Name = "buttonSuaND";
             buttonSuaND.Padding = new Padding(4);
-            buttonSuaND.Size = new Size(82, 50);
+            buttonSuaND.Size = new Size(61, 36);
             buttonSuaND.TabIndex = 35;
             buttonSuaND.Text = "Sửa";
             // 
             // adioButtonGridviewND
             // 
             adioButtonGridviewND.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            adioButtonGridviewND.Location = new Point(10, 211);
+            adioButtonGridviewND.Location = new Point(10, 180);
             adioButtonGridviewND.Name = "adioButtonGridviewND";
             adioButtonGridviewND.RowHeadersWidth = 51;
-            adioButtonGridviewND.Size = new Size(779, 62);
+            adioButtonGridviewND.Size = new Size(779, 144);
             adioButtonGridviewND.TabIndex = 31;
-            // 
-            // crownTitle6
-            // 
-            crownTitle6.AutoSize = true;
-            crownTitle6.Font = new Font("Segoe UI", 12F);
-            crownTitle6.Location = new Point(439, 145);
-            crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(82, 21);
-            crownTitle6.TabIndex = 56;
-            crownTitle6.Text = "Trạng thái:";
-            // 
-            // crownGroupBox2
-            // 
-            crownGroupBox2.BorderColor = Color.FromArgb(51, 51, 51);
-            crownGroupBox2.Controls.Add(crownRadioButtonKHD);
-            crownGroupBox2.Controls.Add(crownRadioButtonHD);
-            crownGroupBox2.Location = new Point(530, 133);
-            crownGroupBox2.Margin = new Padding(3, 2, 3, 2);
-            crownGroupBox2.Name = "crownGroupBox2";
-            crownGroupBox2.Padding = new Padding(3, 2, 3, 2);
-            crownGroupBox2.Size = new Size(225, 42);
-            crownGroupBox2.TabIndex = 55;
-            crownGroupBox2.TabStop = false;
-            // 
-            // crownRadioButtonKHD
-            // 
-            crownRadioButtonKHD.AutoSize = true;
-            crownRadioButtonKHD.Location = new Point(106, 11);
-            crownRadioButtonKHD.Margin = new Padding(3, 2, 3, 2);
-            crownRadioButtonKHD.Name = "crownRadioButtonKHD";
-            crownRadioButtonKHD.Size = new Size(118, 19);
-            crownRadioButtonKHD.TabIndex = 50;
-            crownRadioButtonKHD.TabStop = true;
-            crownRadioButtonKHD.Text = "Không hoạt động";
-            // 
-            // crownRadioButtonHD
-            // 
-            crownRadioButtonHD.AutoSize = true;
-            crownRadioButtonHD.Location = new Point(18, 11);
-            crownRadioButtonHD.Margin = new Padding(3, 2, 3, 2);
-            crownRadioButtonHD.Name = "crownRadioButtonHD";
-            crownRadioButtonHD.Size = new Size(82, 19);
-            crownRadioButtonHD.TabIndex = 43;
-            crownRadioButtonHD.TabStop = true;
-            crownRadioButtonHD.Text = "Hoạt động";
             // 
             // QuanLyNguoiDungForm
             // 
@@ -372,11 +372,11 @@
             Text = "Quản lý người dùng";
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
+            crownGroupBox2.ResumeLayout(false);
+            crownGroupBox2.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)adioButtonGridviewND).EndInit();
-            crownGroupBox2.ResumeLayout(false);
-            crownGroupBox2.PerformLayout();
             ResumeLayout(false);
         }
 

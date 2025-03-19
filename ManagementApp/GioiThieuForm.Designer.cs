@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             crownSectionPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,25 +49,15 @@
             crownSectionPanel1.Size = new Size(784, 380);
             crownSectionPanel1.TabIndex = 0;
             // 
-            // crownTitle2
+            // crownTitle4
             // 
-            crownTitle2.AutoSize = true;
-            crownTitle2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle2.Location = new Point(220, 145);
-            crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(360, 21);
-            crownTitle2.TabIndex = 1;
-            crownTitle2.Text = "Nhà phát hành: Philip Vũ và những thành viên Team";
-            // 
-            // crownTitle3
-            // 
-            crownTitle3.AutoSize = true;
-            crownTitle3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle3.Location = new Point(220, 95);
-            crownTitle3.Name = "crownTitle3";
-            crownTitle3.Size = new Size(277, 21);
-            crownTitle3.TabIndex = 3;
-            crownTitle3.Text = "Tên phần mềm: Thi Trắc nghiệm PolyTest";
+            crownTitle4.AutoSize = true;
+            crownTitle4.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle4.Location = new Point(104, 247);
+            crownTitle4.Name = "crownTitle4";
+            crownTitle4.Size = new Size(568, 13);
+            crownTitle4.TabIndex = 6;
+            crownTitle4.Text = "Hệ thống cung cấp đầy đủ các chức năng như tạo đề thị, chấm điểm tự động và hiển thị kết quả ngay lập tức";
             // 
             // crownTitle1
             // 
@@ -80,15 +70,25 @@
             crownTitle1.Text = "Phần mềm thi trắc nghiệm là một ứng dụng hỗ trợ tổ chức và thực hiện các bài kiểm tra trắc nghiệm trực tuyến hoặc ofline.";
             crownTitle1.Click += crownTitle1_Click_1;
             // 
-            // crownTitle4
+            // crownTitle3
             // 
-            crownTitle4.AutoSize = true;
-            crownTitle4.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle4.Location = new Point(104, 247);
-            crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(568, 13);
-            crownTitle4.TabIndex = 6;
-            crownTitle4.Text = "Hệ thống cung cấp đầy đủ các chức năng như tạo đề thị, chấm điểm tự động và hiển thị kết quả ngay lập tức";
+            crownTitle3.AutoSize = true;
+            crownTitle3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle3.Location = new Point(220, 95);
+            crownTitle3.Name = "crownTitle3";
+            crownTitle3.Size = new Size(277, 21);
+            crownTitle3.TabIndex = 3;
+            crownTitle3.Text = "Tên phần mềm: Thi Trắc nghiệm PolyTest";
+            // 
+            // crownTitle2
+            // 
+            crownTitle2.AutoSize = true;
+            crownTitle2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle2.Location = new Point(220, 145);
+            crownTitle2.Name = "crownTitle2";
+            crownTitle2.Size = new Size(349, 21);
+            crownTitle2.TabIndex = 1;
+            crownTitle2.Text = "Nhà phát hành: Pupu chacha và những người bạn";
             // 
             // GioiThieuForm
             // 

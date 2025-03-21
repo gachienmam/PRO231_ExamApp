@@ -98,7 +98,7 @@
             crownTextBox6.BackColor = Color.FromArgb(69, 73, 74);
             crownTextBox6.BorderStyle = BorderStyle.FixedSingle;
             crownTextBox6.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox6.Location = new Point(220, 294);
+            crownTextBox6.Location = new Point(218, 338);
             crownTextBox6.Margin = new Padding(3, 2, 3, 2);
             crownTextBox6.Name = "crownTextBox6";
             crownTextBox6.PlaceholderText = "Tìm kiếm thí sinh theo số điện thoại";
@@ -267,11 +267,11 @@
             // 
             // buttonThemTS
             // 
-            buttonThemTS.Location = new Point(87, 384);
+            buttonThemTS.Location = new Point(107, 374);
             buttonThemTS.Margin = new Padding(3, 2, 3, 2);
             buttonThemTS.Name = "buttonThemTS";
             buttonThemTS.Padding = new Padding(4);
-            buttonThemTS.Size = new Size(82, 23);
+            buttonThemTS.Size = new Size(51, 33);
             buttonThemTS.TabIndex = 69;
             buttonThemTS.Text = "Thêm";
             // 
@@ -284,52 +284,52 @@
             // 
             // buttonLuuTS
             // 
-            buttonLuuTS.Location = new Point(401, 384);
+            buttonLuuTS.Location = new Point(390, 374);
             buttonLuuTS.Name = "buttonLuuTS";
             buttonLuuTS.Padding = new Padding(4);
-            buttonLuuTS.Size = new Size(82, 23);
+            buttonLuuTS.Size = new Size(51, 33);
             buttonLuuTS.TabIndex = 64;
             buttonLuuTS.Text = "Lưu";
             // 
             // buttonDanhSachTS
             // 
-            buttonDanhSachTS.Location = new Point(555, 384);
+            buttonDanhSachTS.Location = new Point(513, 374);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
             buttonDanhSachTS.Padding = new Padding(4);
-            buttonDanhSachTS.Size = new Size(82, 23);
+            buttonDanhSachTS.Size = new Size(73, 33);
             buttonDanhSachTS.TabIndex = 63;
             buttonDanhSachTS.Text = "Danh sách";
             // 
             // buttonThoat
             // 
-            buttonThoat.Location = new Point(706, 384);
+            buttonThoat.Location = new Point(664, 374);
             buttonThoat.Name = "buttonThoat";
             buttonThoat.Padding = new Padding(4);
-            buttonThoat.Size = new Size(82, 23);
+            buttonThoat.Size = new Size(51, 33);
             buttonThoat.TabIndex = 62;
             buttonThoat.Text = "Thoát";
             // 
             // buttonXoaTS
             // 
-            buttonXoaTS.Location = new Point(302, 384);
+            buttonXoaTS.Location = new Point(299, 374);
             buttonXoaTS.Name = "buttonXoaTS";
             buttonXoaTS.Padding = new Padding(4);
-            buttonXoaTS.Size = new Size(82, 23);
+            buttonXoaTS.Size = new Size(51, 33);
             buttonXoaTS.TabIndex = 61;
             buttonXoaTS.Text = "Xóa";
             // 
             // buttonSuaTS
             // 
-            buttonSuaTS.Location = new Point(196, 384);
+            buttonSuaTS.Location = new Point(206, 374);
             buttonSuaTS.Name = "buttonSuaTS";
             buttonSuaTS.Padding = new Padding(4);
-            buttonSuaTS.Size = new Size(82, 23);
+            buttonSuaTS.Size = new Size(51, 33);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
             // 
             // buttonTimKiemTS
             // 
-            buttonTimKiemTS.Location = new Point(480, 291);
+            buttonTimKiemTS.Location = new Point(478, 335);
             buttonTimKiemTS.Name = "buttonTimKiemTS";
             buttonTimKiemTS.Padding = new Padding(4);
             buttonTimKiemTS.Size = new Size(75, 23);
@@ -342,7 +342,7 @@
             dataGridViewTS.Location = new Point(11, 208);
             dataGridViewTS.Name = "dataGridViewTS";
             dataGridViewTS.RowHeadersWidth = 51;
-            dataGridViewTS.Size = new Size(778, 56);
+            dataGridViewTS.Size = new Size(778, 125);
             dataGridViewTS.TabIndex = 56;
             // 
             // QuanLyThiSinhForm

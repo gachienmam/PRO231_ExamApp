@@ -267,11 +267,11 @@
             // 
             // buttonThemTS
             // 
-            buttonThemTS.Location = new Point(107, 374);
+            buttonThemTS.Location = new Point(49, 339);
             buttonThemTS.Margin = new Padding(3, 2, 3, 2);
             buttonThemTS.Name = "buttonThemTS";
-            buttonThemTS.Padding = new Padding(4);
-            buttonThemTS.Size = new Size(51, 33);
+            buttonThemTS.Padding = new Padding(4, 4, 4, 4);
+            buttonThemTS.Size = new Size(82, 50);
             buttonThemTS.TabIndex = 69;
             buttonThemTS.Text = "Thêm";
             // 
@@ -284,46 +284,46 @@
             // 
             // buttonLuuTS
             // 
-            buttonLuuTS.Location = new Point(390, 374);
+            buttonLuuTS.Location = new Point(363, 339);
             buttonLuuTS.Name = "buttonLuuTS";
-            buttonLuuTS.Padding = new Padding(4);
-            buttonLuuTS.Size = new Size(51, 33);
+            buttonLuuTS.Padding = new Padding(4, 4, 4, 4);
+            buttonLuuTS.Size = new Size(82, 50);
             buttonLuuTS.TabIndex = 64;
             buttonLuuTS.Text = "Lưu";
             // 
             // buttonDanhSachTS
             // 
-            buttonDanhSachTS.Location = new Point(513, 374);
+            buttonDanhSachTS.Location = new Point(517, 339);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
-            buttonDanhSachTS.Padding = new Padding(4);
-            buttonDanhSachTS.Size = new Size(73, 33);
+            buttonDanhSachTS.Padding = new Padding(4, 4, 4, 4);
+            buttonDanhSachTS.Size = new Size(82, 50);
             buttonDanhSachTS.TabIndex = 63;
             buttonDanhSachTS.Text = "Danh sách";
             // 
             // buttonThoat
             // 
-            buttonThoat.Location = new Point(664, 374);
+            buttonThoat.Location = new Point(668, 339);
             buttonThoat.Name = "buttonThoat";
-            buttonThoat.Padding = new Padding(4);
-            buttonThoat.Size = new Size(51, 33);
+            buttonThoat.Padding = new Padding(4, 4, 4, 4);
+            buttonThoat.Size = new Size(82, 50);
             buttonThoat.TabIndex = 62;
             buttonThoat.Text = "Thoát";
             // 
             // buttonXoaTS
             // 
-            buttonXoaTS.Location = new Point(299, 374);
+            buttonXoaTS.Location = new Point(264, 339);
             buttonXoaTS.Name = "buttonXoaTS";
-            buttonXoaTS.Padding = new Padding(4);
-            buttonXoaTS.Size = new Size(51, 33);
+            buttonXoaTS.Padding = new Padding(4, 4, 4, 4);
+            buttonXoaTS.Size = new Size(82, 50);
             buttonXoaTS.TabIndex = 61;
             buttonXoaTS.Text = "Xóa";
             // 
             // buttonSuaTS
             // 
-            buttonSuaTS.Location = new Point(206, 374);
+            buttonSuaTS.Location = new Point(158, 339);
             buttonSuaTS.Name = "buttonSuaTS";
-            buttonSuaTS.Padding = new Padding(4);
-            buttonSuaTS.Size = new Size(51, 33);
+            buttonSuaTS.Padding = new Padding(4, 4, 4, 4);
+            buttonSuaTS.Size = new Size(82, 50);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
             // 

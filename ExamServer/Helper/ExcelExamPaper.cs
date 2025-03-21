@@ -26,12 +26,8 @@ namespace ExamServer.Helper
             paper.Duration = InfoSheet.Cell("I4").GetValue<int>();
 
             // Multiple choice
-            InfoSheet.Table("ModuleInfoTable")
-        }
-
-        public  GetMultipleChoice()
-        {
-
+            InfoSheet.Table("ModuleInfoTable");
+            return null;
         }
     }
 }

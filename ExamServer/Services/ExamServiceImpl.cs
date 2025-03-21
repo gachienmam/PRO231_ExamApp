@@ -1,5 +1,4 @@
 ﻿using ExamLibrary.Enum;
-using ExamServer.ExamService;
 using ExamServer.Helper;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
@@ -16,6 +15,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using ExamProto;
 
 namespace ExamServer.Services
 {

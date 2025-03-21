@@ -2,7 +2,7 @@
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "ExamServer";
+option csharp_namespace = "ExamProto";
 
 service ExamService {
     rpc AuthenticateUser (AuthRequest) returns (AuthResponse);

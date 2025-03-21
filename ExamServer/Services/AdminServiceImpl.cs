@@ -1,5 +1,4 @@
 ﻿using ExamLibrary.Enum;
-using ExamServer.AdminService;
 using ExamServer.Helper;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
@@ -16,6 +15,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AdminProto;
 
 namespace ExamServer.Services
 {
@@ -46,6 +46,7 @@ namespace ExamServer.Services
         public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
         {
             // Validate user (simplified example)
+            /*
             var user = await _busDeThi.
                 .FirstOrDefaultAsync(u => u.Username == request.Username && u.Password == request.Password);
 
@@ -53,9 +54,11 @@ namespace ExamServer.Services
             {
                 return new AdminService.AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
             }
+            */
+            //string token = _jwtHelper.GenerateJwtToken(request.Username, user.VaiTro); // Implement token generation
 
-            string token = _jwtHelper.GenerateJwtToken(request.Username, user.VaiTro); // Implement token generation
-            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
+            return new AuthResponse { ResponseCode = 200, ResponseMessage = "", AccessToken = "" };
+            //return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
         }
 
         [Authorize]

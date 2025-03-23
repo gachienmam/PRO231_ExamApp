@@ -15,7 +15,7 @@ namespace ManagementApp
             ApplicationConfiguration.Initialize();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.CurrentCulture = new(CultureInfo.CurrentCulture.TextInfo.CultureName);
-            Application.Run(new MainForm());
+            Application.Run(new DangNhapForm());
         }
     }
 }

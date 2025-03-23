@@ -39,7 +39,7 @@ namespace ManagementApp
                         MainForm mainForm = new MainForm(_serverAddress, response.AccessToken); // Pass the server address
                         this.Hide();
                         mainForm.ShowDialog();
-                        this.Close(); // Close the login form after the main form is closed
+                        this.Show();
                     }
                     else
                     {

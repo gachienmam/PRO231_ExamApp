@@ -31,6 +31,8 @@
             layoutPanel = new TableLayoutPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
+            BUTTONTHOAT = new ReaLTaiizor.Controls.CrownButton();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
             crownTextBoxXNMK = new ReaLTaiizor.Controls.CrownTextBox();
             BUTTONDOIMATKHAU = new ReaLTaiizor.Controls.CrownButton();
@@ -39,8 +41,6 @@
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             TEXTBOXMATKHAUHIENTAI = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            BUTTONTHOAT = new ReaLTaiizor.Controls.CrownButton();
-            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
             SuspendLayout();
@@ -101,6 +101,28 @@
             crownSectionPanel2.SectionHeader = "Đổi mật khẩu";
             crownSectionPanel2.Size = new Size(392, 380);
             crownSectionPanel2.TabIndex = 2;
+            // 
+            // crownTitle4
+            // 
+            crownTitle4.AutoSize = true;
+            crownTitle4.Location = new Point(86, 281);
+            crownTitle4.Name = "crownTitle4";
+            crownTitle4.Size = new Size(233, 15);
+            crownTitle4.TabIndex = 21;
+            crownTitle4.Text = "Lưu ý: Mật khẩu mới phải có ít nhất 8 kí tự.";
+            // 
+            // BUTTONTHOAT
+            // 
+            BUTTONTHOAT.Anchor = AnchorStyles.None;
+            BUTTONTHOAT.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            BUTTONTHOAT.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BUTTONTHOAT.ImagePadding = 6;
+            BUTTONTHOAT.Location = new Point(195, 310);
+            BUTTONTHOAT.Name = "BUTTONTHOAT";
+            BUTTONTHOAT.Padding = new Padding(5);
+            BUTTONTHOAT.Size = new Size(98, 38);
+            BUTTONTHOAT.TabIndex = 20;
+            BUTTONTHOAT.Text = "Thoát";
             // 
             // crownTitle5
             // 
@@ -163,9 +185,9 @@
             crownTitle2.AutoSize = true;
             crownTitle2.Location = new Point(100, 91);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(108, 15);
+            crownTitle2.Size = new Size(102, 15);
             crownTitle2.TabIndex = 13;
-            crownTitle2.Text = "Mâtk khẩu hiện tại:";
+            crownTitle2.Text = "Mật khẩu hiện tại:";
             // 
             // TEXTBOXMATKHAUHIENTAI
             // 
@@ -189,28 +211,6 @@
             crownTitle1.TabIndex = 11;
             crownTitle1.Text = "Quản lý";
             crownTitle1.Click += crownTitle1_Click;
-            // 
-            // BUTTONTHOAT
-            // 
-            BUTTONTHOAT.Anchor = AnchorStyles.None;
-            BUTTONTHOAT.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
-            BUTTONTHOAT.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BUTTONTHOAT.ImagePadding = 6;
-            BUTTONTHOAT.Location = new Point(195, 310);
-            BUTTONTHOAT.Name = "BUTTONTHOAT";
-            BUTTONTHOAT.Padding = new Padding(5);
-            BUTTONTHOAT.Size = new Size(98, 38);
-            BUTTONTHOAT.TabIndex = 20;
-            BUTTONTHOAT.Text = "Thoát";
-            // 
-            // crownTitle4
-            // 
-            crownTitle4.AutoSize = true;
-            crownTitle4.Location = new Point(106, 281);
-            crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(233, 15);
-            crownTitle4.TabIndex = 21;
-            crownTitle4.Text = "Lưu ý: Mật khẩu mới phải có ít nhất 8 kí tự.";
             // 
             // DoiMatKhauForm
             // 

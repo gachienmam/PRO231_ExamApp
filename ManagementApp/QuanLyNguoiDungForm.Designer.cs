@@ -32,10 +32,12 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
+            crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             crownGroupBox2 = new ReaLTaiizor.Controls.CrownGroupBox();
-            crownRadioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownRadioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
             buttonThemND = new ReaLTaiizor.Controls.CrownButton();
             textBoxHoTenND = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxMKND = new ReaLTaiizor.Controls.CrownTextBox();
@@ -56,12 +58,59 @@
             buttonThoat = new ReaLTaiizor.Controls.CrownButton();
             buttonXoaND = new ReaLTaiizor.Controls.CrownButton();
             buttonSuaND = new ReaLTaiizor.Controls.CrownButton();
-            adioButtonGridviewND = new DataGridView();
+            dataGridView1 = new DataGridView();
+            panel1 = new Panel();
+            textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
+            crownButton2 = new ReaLTaiizor.Controls.CrownButton();
+            parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
+            crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox2.SuspendLayout();
             crownGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)adioButtonGridviewND).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // tabControl1
+            // 
+            tabControl1.Appearance = TabAppearance.FlatButtons;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.HotTrack = true;
+            tabControl1.Location = new Point(0, 0);
+            tabControl1.Multiline = true;
+            tabControl1.Name = "tabControl1";
+            tabControl1.Padding = new Point(0, 0);
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(800, 419);
+            tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(crownSectionPanel1);
+            tabPage1.Location = new Point(4, 27);
+            tabPage1.Margin = new Padding(0);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(792, 388);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Thông tin";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(panel1);
+            tabPage2.Controls.Add(dataGridView1);
+            tabPage2.Location = new Point(4, 27);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(792, 388);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Dữ liệu";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // crownSectionPanel1
             // 
@@ -96,6 +145,35 @@
             crownSectionPanel1.TabIndex = 0;
             crownSectionPanel1.Paint += crownSectionPanel1_Paint;
             // 
+            // parrotGradientPanel1
+            // 
+            parrotGradientPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            parrotGradientPanel1.BottomLeft = Color.Black;
+            parrotGradientPanel1.BottomRight = Color.Fuchsia;
+            parrotGradientPanel1.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            parrotGradientPanel1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            parrotGradientPanel1.Location = new Point(257, 53);
+            parrotGradientPanel1.Name = "parrotGradientPanel1";
+            parrotGradientPanel1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            parrotGradientPanel1.PrimerColor = Color.White;
+            parrotGradientPanel1.Size = new Size(500, 4);
+            parrotGradientPanel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            parrotGradientPanel1.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
+            parrotGradientPanel1.TabIndex = 104;
+            parrotGradientPanel1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            parrotGradientPanel1.TopLeft = Color.DeepSkyBlue;
+            parrotGradientPanel1.TopRight = Color.Fuchsia;
+            // 
+            // crownTitle7
+            // 
+            crownTitle7.AutoSize = true;
+            crownTitle7.Font = new Font("Segoe UI", 16F);
+            crownTitle7.Location = new Point(21, 39);
+            crownTitle7.Name = "crownTitle7";
+            crownTitle7.Size = new Size(223, 30);
+            crownTitle7.TabIndex = 103;
+            crownTitle7.Text = "Thông tin người dùng";
+            // 
             // crownTitle6
             // 
             crownTitle6.AutoSize = true;
@@ -111,7 +189,7 @@
             crownGroupBox2.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox2.Controls.Add(crownRadioButtonKHD);
             crownGroupBox2.Controls.Add(crownRadioButtonHD);
-            crownGroupBox2.Location = new Point(307, 131);
+            crownGroupBox2.Location = new Point(449, 164);
             crownGroupBox2.Margin = new Padding(3, 2, 3, 2);
             crownGroupBox2.Name = "crownGroupBox2";
             crownGroupBox2.Padding = new Padding(3, 2, 3, 2);
@@ -119,10 +197,10 @@
             crownGroupBox2.TabIndex = 55;
             crownGroupBox2.TabStop = false;
             // 
-            // crownRadioButtonKHD
+            // radioButtonKHD
             // 
             crownRadioButtonKHD.AutoSize = true;
-            crownRadioButtonKHD.Location = new Point(6, 20);
+            crownRadioButtonKHD.Location = new Point(6, 27);
             crownRadioButtonKHD.Margin = new Padding(3, 2, 3, 2);
             crownRadioButtonKHD.Name = "crownRadioButtonKHD";
             crownRadioButtonKHD.Size = new Size(118, 19);
@@ -130,10 +208,10 @@
             crownRadioButtonKHD.TabStop = true;
             crownRadioButtonKHD.Text = "Không hoạt động";
             // 
-            // crownRadioButtonHD
+            // radioButtonHD
             // 
             crownRadioButtonHD.AutoSize = true;
-            crownRadioButtonHD.Location = new Point(6, 1);
+            crownRadioButtonHD.Location = new Point(6, 4);
             crownRadioButtonHD.Margin = new Padding(3, 2, 3, 2);
             crownRadioButtonHD.Name = "crownRadioButtonHD";
             crownRadioButtonHD.Size = new Size(82, 19);
@@ -355,38 +433,76 @@
             buttonSuaND.TabIndex = 35;
             buttonSuaND.Text = "Sửa";
             // 
-            // adioButtonGridviewND
+            // dataGridView1
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            adioButtonGridviewND.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            adioButtonGridviewND.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            adioButtonGridviewND.DefaultCellStyle = dataGridViewCellStyle5;
-            adioButtonGridviewND.Location = new Point(441, 26);
-            adioButtonGridviewND.Name = "adioButtonGridviewND";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            adioButtonGridviewND.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            adioButtonGridviewND.RowHeadersWidth = 51;
-            adioButtonGridviewND.Size = new Size(359, 144);
-            adioButtonGridviewND.TabIndex = 31;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(786, 382);
+            dataGridView1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(textBoxTimKiem);
+            panel1.Controls.Add(crownButton2);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(3, 360);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(786, 25);
+            panel1.TabIndex = 1;
+            // 
+            // textBoxTimKiem
+            // 
+            textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
+            textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxTimKiem.Location = new Point(0, 1);
+            textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm người dùng theo email";
+            textBoxTimKiem.Size = new Size(680, 23);
+            textBoxTimKiem.TabIndex = 73;
+            // 
+            // crownButton2
+            // 
+            crownButton2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            crownButton2.Location = new Point(679, 1);
+            crownButton2.Margin = new Padding(3, 2, 3, 2);
+            crownButton2.Name = "crownButton2";
+            crownButton2.Padding = new Padding(4);
+            crownButton2.Size = new Size(107, 23);
+            crownButton2.TabIndex = 72;
+            crownButton2.Text = "Tìm kiếm";
+            // 
+            // parrotGradientPanel1
+            // 
+            parrotGradientPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            parrotGradientPanel1.BottomLeft = Color.Black;
+            parrotGradientPanel1.BottomRight = Color.Fuchsia;
+            parrotGradientPanel1.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            parrotGradientPanel1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            parrotGradientPanel1.Location = new Point(257, 53);
+            parrotGradientPanel1.Name = "parrotGradientPanel1";
+            parrotGradientPanel1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            parrotGradientPanel1.PrimerColor = Color.White;
+            parrotGradientPanel1.Size = new Size(500, 4);
+            parrotGradientPanel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            parrotGradientPanel1.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
+            parrotGradientPanel1.TabIndex = 104;
+            parrotGradientPanel1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            parrotGradientPanel1.TopLeft = Color.DeepSkyBlue;
+            parrotGradientPanel1.TopRight = Color.Fuchsia;
+            // 
+            // crownTitle7
+            // 
+            crownTitle7.AutoSize = true;
+            crownTitle7.Font = new Font("Segoe UI", 16F);
+            crownTitle7.Location = new Point(21, 39);
+            crownTitle7.Name = "crownTitle7";
+            crownTitle7.Size = new Size(223, 30);
+            crownTitle7.TabIndex = 103;
+            crownTitle7.Text = "Thông tin người dùng";
             // 
             // QuanLyNguoiDungForm
             // 
@@ -398,29 +514,32 @@
             MinimumSize = new Size(800, 419);
             Name = "QuanLyNguoiDungForm";
             Text = "Quản lý người dùng";
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
             crownGroupBox2.ResumeLayout(false);
             crownGroupBox2.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)adioButtonGridviewND).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
-        private ReaLTaiizor.Controls.CrownButton buttonLuuND;
-        private ReaLTaiizor.Controls.CrownButton buttonDanhSachND;
-        private ReaLTaiizor.Controls.CrownButton buttonThoat;
-        private ReaLTaiizor.Controls.CrownButton buttonXoaND;
-        private ReaLTaiizor.Controls.CrownButton buttonSuaND;
-        private DataGridView adioButtonGridviewND;
-        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
-        private ReaLTaiizor.Controls.CrownRadioButton radioButtonAdmin;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle1;
-        private ReaLTaiizor.Controls.CrownTextBox textBoxMaND;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle6;
+        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox2;
+        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonKHD;
+        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonHD;
+        private ReaLTaiizor.Controls.CrownButton buttonThemND;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxHoTenND;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMKND;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxEmailND;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;

@@ -30,7 +30,6 @@
         {
             mainMenuStrip = new ReaLTaiizor.Controls.CrownMenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
-            đăngNhậpToolStripMenuItem = new ToolStripMenuItem();
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
             thoátToolStripMenuItem = new ToolStripMenuItem();
             quảnLýToolStripMenuItem = new ToolStripMenuItem();
@@ -66,22 +65,12 @@
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { đăngNhậpToolStripMenuItem, đăngXuấtToolStripMenuItem, thoátToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { đăngXuấtToolStripMenuItem, thoátToolStripMenuItem });
             fileToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Padding = new Padding(4, 2, 2, 0);
             fileToolStripMenuItem.Size = new Size(67, 23);
             fileToolStripMenuItem.Text = "&Hệ thống";
-            // 
-            // đăngNhậpToolStripMenuItem
-            // 
-            đăngNhậpToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
-            đăngNhậpToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
-            đăngNhậpToolStripMenuItem.Name = "đăngNhậpToolStripMenuItem";
-            đăngNhậpToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.L;
-            đăngNhậpToolStripMenuItem.Size = new Size(180, 22);
-            đăngNhậpToolStripMenuItem.Text = "Đăng nhập";
-            đăngNhậpToolStripMenuItem.Click += đăngNhậpToolStripMenuItem_Click;
             // 
             // đăngXuấtToolStripMenuItem
             // 
@@ -256,7 +245,6 @@
 
         private ReaLTaiizor.Controls.CrownMenuStrip mainMenuStrip;
         private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem đăngNhậpToolStripMenuItem;
         private ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private ToolStripMenuItem thoátToolStripMenuItem;
         private ToolStripMenuItem quảnLýToolStripMenuItem;

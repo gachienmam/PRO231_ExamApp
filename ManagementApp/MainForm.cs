@@ -3,6 +3,7 @@ using ManagementApp.CustomControls;
 using Newtonsoft.Json.Linq;
 using ReaLTaiizor.Docking.Crown;
 using ReaLTaiizor.Native;
+using System.Configuration;
 using System.Windows.Forms;
 using static ExamServer.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
@@ -61,8 +62,20 @@ namespace ManagementApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ChangeTheme(false);
             this.Text = DefaultFormText;
+            if (ConfigurationManager.AppSettings["AppTheme"] == "light")
+            {
+                themeToggleToolStripMenuItem.Checked = false;
+                // Checked => Light, Unchecked => Dark
+                ChangeTheme(themeToggleToolStripMenuItem.Checked);
+            }
+            else
+            {
+                themeToggleToolStripMenuItem.Checked = true;
+                // Checked => Light, Unchecked => Dark
+                ChangeTheme(themeToggleToolStripMenuItem.Checked);
+            }
+
         }
         #endregion
 
@@ -102,6 +115,15 @@ namespace ManagementApp
             themeToggleToolStripMenuItem.Checked = !themeToggleToolStripMenuItem.Checked;
             // Checked => Light, Unchecked => Dark
             ChangeTheme(themeToggleToolStripMenuItem.Checked);
+            if (themeToggleToolStripMenuItem.Checked)
+            {
+                ConfigurationManager.AppSettings["AppTheme"] = "light";
+            }
+            else
+            {
+                ConfigurationManager.AppSettings["AppTheme"] = "dark";
+            }
+            MessageBox.Show(ConfigurationManager.AppSettings["AppTheme"]);
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,7 +137,7 @@ namespace ManagementApp
             CloseAllForms(true);
 
             // TODO: Cho lệnh log out ở giữa
-
+            Shared.IsExiting = true;
             Application.Exit();
         }
         #endregion
@@ -245,5 +267,11 @@ namespace ManagementApp
             }
         }
         #endregion
+
+        private void vềPolyTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GioiThieuForm gioiThieuForm = new GioiThieuForm();
+            gioiThieuForm.ShowDialog();
+        }
     }
 }

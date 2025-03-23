@@ -171,15 +171,16 @@
             vềPolyTestToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             vềPolyTestToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             vềPolyTestToolStripMenuItem.Name = "vềPolyTestToolStripMenuItem";
-            vềPolyTestToolStripMenuItem.Size = new Size(159, 22);
+            vềPolyTestToolStripMenuItem.Size = new Size(180, 22);
             vềPolyTestToolStripMenuItem.Text = "Về PolyTest";
+            vềPolyTestToolStripMenuItem.Click += vềPolyTestToolStripMenuItem_Click;
             // 
             // xemHướngDẫnToolStripMenuItem
             // 
             xemHướngDẫnToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             xemHướngDẫnToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             xemHướngDẫnToolStripMenuItem.Name = "xemHướngDẫnToolStripMenuItem";
-            xemHướngDẫnToolStripMenuItem.Size = new Size(159, 22);
+            xemHướngDẫnToolStripMenuItem.Size = new Size(180, 22);
             xemHướngDẫnToolStripMenuItem.Text = "Xem hướng dẫn";
             // 
             // usernameToolStripMenuItem

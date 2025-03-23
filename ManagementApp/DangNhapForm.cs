@@ -28,31 +28,39 @@ namespace ManagementApp
 
             if(email != string.Empty || password != string.Empty)
             {
-                try
-                {
-                    var request = new AuthRequest { Email = email, Password = password };
-                    var response = _client.AuthenticateUser(request);
+                //try
+                //{
+                //    var request = new AuthRequest { Email = email, Password = password };
+                //    var response = _client.AuthenticateUser(request);
 
-                    if (response.ResponseCode == (int)HttpStatusCode.OK)
-                    {
-                        // Authentication successful, open the main management form
-                        MainForm mainForm = new MainForm(_serverAddress, response.AccessToken); // Pass the server address
-                        this.Hide();
-                        mainForm.ShowDialog();
-                        this.Show();
-                    }
-                    else
-                    {
-                        CrownMessageBox.ShowError("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
-                }
-                catch (Grpc.Core.RpcException ex)
+                //    if (response.ResponseCode == (int)HttpStatusCode.OK)
+                //    {
+                //        Shared.AccessToken = response.AccessToken;
+                //        // Authentication successful, open the main management form
+                //        MainForm mainForm = new MainForm(_serverAddress, response.AccessToken); // Pass the server address
+                //        this.Hide();
+                //        mainForm.ShowDialog();
+                //        this.Show();
+                //    }
+                //    else
+                //    {
+                //        CrownMessageBox.ShowError("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //    }
+                //}
+                //catch (Grpc.Core.RpcException ex)
+                //{
+                //    CrownMessageBox.ShowError($"Server Error: {ex.Status.Detail}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //}
+                //catch (Exception ex)
+                //{
+                //    CrownMessageBox.ShowError($"Error: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //}
+                MainForm mainForm = new MainForm(_serverAddress, "");
+                this.Hide();
+                mainForm.ShowDialog();
+                if(!Shared.IsExiting)
                 {
-                    CrownMessageBox.ShowError($"gRPC Error: {ex.Status.Detail}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                }
-                catch (Exception ex)
-                {
-                    CrownMessageBox.ShowError($"Error: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    this.Show();
                 }
             }
             else

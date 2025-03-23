@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Text;
+using Microsoft.Extensions.Caching.Memory;
 
 /*
  * EOS - Exam Server

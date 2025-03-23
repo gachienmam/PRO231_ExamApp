@@ -30,12 +30,13 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
+            crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             crownGroupBox2 = new ReaLTaiizor.Controls.CrownGroupBox();
-            crownRadioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownRadioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
+            radioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
             buttonThemND = new ReaLTaiizor.Controls.CrownButton();
             textBoxHoTenND = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxMKND = new ReaLTaiizor.Controls.CrownTextBox();
@@ -53,20 +54,19 @@
             buttonDanhSachND = new ReaLTaiizor.Controls.CrownButton();
             buttonXoaND = new ReaLTaiizor.Controls.CrownButton();
             buttonSuaND = new ReaLTaiizor.Controls.CrownButton();
-            dataGridView1 = new DataGridView();
+            tabPage2 = new TabPage();
             panel1 = new Panel();
             textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
             crownButton2 = new ReaLTaiizor.Controls.CrownButton();
-            parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
-            crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
+            dataGridView1 = new DataGridView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox2.SuspendLayout();
             crownGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tabPage2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -94,18 +94,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Thông tin";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(panel1);
-            tabPage2.Controls.Add(dataGridView1);
-            tabPage2.Location = new Point(4, 27);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(792, 388);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Dữ liệu";
-            tabPage2.UseVisualStyleBackColor = true;
             // 
             // crownSectionPanel1
             // 
@@ -135,6 +123,35 @@
             crownSectionPanel1.Size = new Size(792, 388);
             crownSectionPanel1.TabIndex = 0;
             // 
+            // parrotGradientPanel1
+            // 
+            parrotGradientPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            parrotGradientPanel1.BottomLeft = Color.Black;
+            parrotGradientPanel1.BottomRight = Color.Fuchsia;
+            parrotGradientPanel1.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            parrotGradientPanel1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            parrotGradientPanel1.Location = new Point(257, 53);
+            parrotGradientPanel1.Name = "parrotGradientPanel1";
+            parrotGradientPanel1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            parrotGradientPanel1.PrimerColor = Color.White;
+            parrotGradientPanel1.Size = new Size(500, 4);
+            parrotGradientPanel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            parrotGradientPanel1.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
+            parrotGradientPanel1.TabIndex = 104;
+            parrotGradientPanel1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            parrotGradientPanel1.TopLeft = Color.DeepSkyBlue;
+            parrotGradientPanel1.TopRight = Color.Fuchsia;
+            // 
+            // crownTitle7
+            // 
+            crownTitle7.AutoSize = true;
+            crownTitle7.Font = new Font("Segoe UI", 16F);
+            crownTitle7.Location = new Point(21, 39);
+            crownTitle7.Name = "crownTitle7";
+            crownTitle7.Size = new Size(223, 30);
+            crownTitle7.TabIndex = 103;
+            crownTitle7.Text = "Thông tin người dùng";
+            // 
             // crownTitle6
             // 
             crownTitle6.Anchor = AnchorStyles.Top;
@@ -150,8 +167,8 @@
             // 
             crownGroupBox2.Anchor = AnchorStyles.Top;
             crownGroupBox2.BorderColor = Color.FromArgb(51, 51, 51);
-            crownGroupBox2.Controls.Add(crownRadioButtonKHD);
-            crownGroupBox2.Controls.Add(crownRadioButtonHD);
+            crownGroupBox2.Controls.Add(radioButtonKHD);
+            crownGroupBox2.Controls.Add(radioButtonHD);
             crownGroupBox2.Location = new Point(449, 164);
             crownGroupBox2.Margin = new Padding(3, 2, 3, 2);
             crownGroupBox2.Name = "crownGroupBox2";
@@ -160,27 +177,27 @@
             crownGroupBox2.TabIndex = 74;
             crownGroupBox2.TabStop = false;
             // 
-            // crownRadioButtonKHD
+            // radioButtonKHD
             // 
-            crownRadioButtonKHD.AutoSize = true;
-            crownRadioButtonKHD.Location = new Point(6, 27);
-            crownRadioButtonKHD.Margin = new Padding(3, 2, 3, 2);
-            crownRadioButtonKHD.Name = "crownRadioButtonKHD";
-            crownRadioButtonKHD.Size = new Size(118, 19);
-            crownRadioButtonKHD.TabIndex = 50;
-            crownRadioButtonKHD.TabStop = true;
-            crownRadioButtonKHD.Text = "Không hoạt động";
+            radioButtonKHD.AutoSize = true;
+            radioButtonKHD.Location = new Point(6, 27);
+            radioButtonKHD.Margin = new Padding(3, 2, 3, 2);
+            radioButtonKHD.Name = "radioButtonKHD";
+            radioButtonKHD.Size = new Size(118, 19);
+            radioButtonKHD.TabIndex = 50;
+            radioButtonKHD.TabStop = true;
+            radioButtonKHD.Text = "Không hoạt động";
             // 
-            // crownRadioButtonHD
+            // radioButtonHD
             // 
-            crownRadioButtonHD.AutoSize = true;
-            crownRadioButtonHD.Location = new Point(6, 4);
-            crownRadioButtonHD.Margin = new Padding(3, 2, 3, 2);
-            crownRadioButtonHD.Name = "crownRadioButtonHD";
-            crownRadioButtonHD.Size = new Size(82, 19);
-            crownRadioButtonHD.TabIndex = 43;
-            crownRadioButtonHD.TabStop = true;
-            crownRadioButtonHD.Text = "Hoạt động";
+            radioButtonHD.AutoSize = true;
+            radioButtonHD.Location = new Point(6, 4);
+            radioButtonHD.Margin = new Padding(3, 2, 3, 2);
+            radioButtonHD.Name = "radioButtonHD";
+            radioButtonHD.Size = new Size(82, 19);
+            radioButtonHD.TabIndex = 43;
+            radioButtonHD.TabStop = true;
+            radioButtonHD.Text = "Hoạt động";
             // 
             // buttonThemND
             // 
@@ -377,14 +394,17 @@
             buttonSuaND.TabIndex = 57;
             buttonSuaND.Text = "Sửa";
             // 
-            // dataGridView1
+            // tabPage2
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(786, 382);
-            dataGridView1.TabIndex = 0;
+            tabPage2.Controls.Add(panel1);
+            tabPage2.Controls.Add(dataGridView1);
+            tabPage2.Location = new Point(4, 27);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(792, 388);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Dữ liệu";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -419,34 +439,14 @@
             crownButton2.TabIndex = 72;
             crownButton2.Text = "Tìm kiếm";
             // 
-            // parrotGradientPanel1
+            // dataGridView1
             // 
-            parrotGradientPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            parrotGradientPanel1.BottomLeft = Color.Black;
-            parrotGradientPanel1.BottomRight = Color.Fuchsia;
-            parrotGradientPanel1.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            parrotGradientPanel1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
-            parrotGradientPanel1.Location = new Point(257, 53);
-            parrotGradientPanel1.Name = "parrotGradientPanel1";
-            parrotGradientPanel1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            parrotGradientPanel1.PrimerColor = Color.White;
-            parrotGradientPanel1.Size = new Size(500, 4);
-            parrotGradientPanel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            parrotGradientPanel1.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
-            parrotGradientPanel1.TabIndex = 104;
-            parrotGradientPanel1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            parrotGradientPanel1.TopLeft = Color.DeepSkyBlue;
-            parrotGradientPanel1.TopRight = Color.Fuchsia;
-            // 
-            // crownTitle7
-            // 
-            crownTitle7.AutoSize = true;
-            crownTitle7.Font = new Font("Segoe UI", 16F);
-            crownTitle7.Location = new Point(21, 39);
-            crownTitle7.Name = "crownTitle7";
-            crownTitle7.Size = new Size(223, 30);
-            crownTitle7.TabIndex = 103;
-            crownTitle7.Text = "Thông tin người dùng";
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(786, 382);
+            dataGridView1.TabIndex = 0;
             // 
             // QuanLyNguoiDungForm
             // 
@@ -461,16 +461,16 @@
             Text = "Quản lý người dùng";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
             crownGroupBox2.ResumeLayout(false);
             crownGroupBox2.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tabPage2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -481,8 +481,8 @@
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
         private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox2;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonKHD;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonHD;
+        private ReaLTaiizor.Controls.CrownRadioButton radioButtonKHD;
+        private ReaLTaiizor.Controls.CrownRadioButton radioButtonHD;
         private ReaLTaiizor.Controls.CrownButton buttonThemND;
         private ReaLTaiizor.Controls.CrownTextBox textBoxHoTenND;
         private ReaLTaiizor.Controls.CrownTextBox textBoxMKND;

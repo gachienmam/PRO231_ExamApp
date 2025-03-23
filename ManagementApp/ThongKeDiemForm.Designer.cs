@@ -30,14 +30,14 @@
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
             crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
+            btnLocDuLieu = new ReaLTaiizor.Controls.CrownButton();
+            crownCheckBox3 = new ReaLTaiizor.Controls.CrownCheckBox();
+            crownCheckBox2 = new ReaLTaiizor.Controls.CrownCheckBox();
             BUTTON_XUATDS = new ReaLTaiizor.Controls.CrownButton();
             BUTTON_XEMDS = new ReaLTaiizor.Controls.CrownButton();
             textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
             buttonTimKiem = new ReaLTaiizor.Controls.CrownButton();
             dataGridViewTKD = new DataGridView();
-            crownCheckBox3 = new ReaLTaiizor.Controls.CrownCheckBox();
-            crownCheckBox2 = new ReaLTaiizor.Controls.CrownCheckBox();
-            btnLocDuLieu = new ReaLTaiizor.Controls.CrownButton();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTKD).BeginInit();
@@ -72,6 +72,33 @@
             crownGroupBox1.Text = "Lọc dữ liệu";
             crownGroupBox1.Enter += crownGroupBox1_Enter;
             // 
+            // btnLocDuLieu
+            // 
+            btnLocDuLieu.Location = new Point(9, 46);
+            btnLocDuLieu.Name = "btnLocDuLieu";
+            btnLocDuLieu.Padding = new Padding(5);
+            btnLocDuLieu.Size = new Size(106, 29);
+            btnLocDuLieu.TabIndex = 20;
+            btnLocDuLieu.Text = "Lọc";
+            // 
+            // crownCheckBox3
+            // 
+            crownCheckBox3.AutoSize = true;
+            crownCheckBox3.Location = new Point(69, 22);
+            crownCheckBox3.Name = "crownCheckBox3";
+            crownCheckBox3.Size = new Size(44, 19);
+            crownCheckBox3.TabIndex = 6;
+            crownCheckBox3.Text = "Rớt";
+            // 
+            // crownCheckBox2
+            // 
+            crownCheckBox2.AutoSize = true;
+            crownCheckBox2.Location = new Point(16, 22);
+            crownCheckBox2.Name = "crownCheckBox2";
+            crownCheckBox2.Size = new Size(47, 19);
+            crownCheckBox2.TabIndex = 5;
+            crownCheckBox2.Text = "Đậu";
+            // 
             // BUTTON_XUATDS
             // 
             BUTTON_XUATDS.Location = new Point(454, 28);
@@ -96,7 +123,7 @@
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Font = new Font("Segoe UI", 9F);
             textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxTimKiem.Location = new Point(12, 79);
+            textBoxTimKiem.Location = new Point(12, 80);
             textBoxTimKiem.Multiline = true;
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.PlaceholderText = "Tìm kiếm theo mã thí sinh";
@@ -119,33 +146,6 @@
             dataGridViewTKD.Name = "dataGridViewTKD";
             dataGridViewTKD.Size = new Size(802, 336);
             dataGridViewTKD.TabIndex = 8;
-            // 
-            // crownCheckBox3
-            // 
-            crownCheckBox3.AutoSize = true;
-            crownCheckBox3.Location = new Point(69, 22);
-            crownCheckBox3.Name = "crownCheckBox3";
-            crownCheckBox3.Size = new Size(44, 19);
-            crownCheckBox3.TabIndex = 6;
-            crownCheckBox3.Text = "Rớt";
-            // 
-            // crownCheckBox2
-            // 
-            crownCheckBox2.AutoSize = true;
-            crownCheckBox2.Location = new Point(16, 22);
-            crownCheckBox2.Name = "crownCheckBox2";
-            crownCheckBox2.Size = new Size(47, 19);
-            crownCheckBox2.TabIndex = 5;
-            crownCheckBox2.Text = "Đậu";
-            // 
-            // btnLocDuLieu
-            // 
-            btnLocDuLieu.Location = new Point(9, 46);
-            btnLocDuLieu.Name = "btnLocDuLieu";
-            btnLocDuLieu.Padding = new Padding(5);
-            btnLocDuLieu.Size = new Size(106, 29);
-            btnLocDuLieu.TabIndex = 20;
-            btnLocDuLieu.Text = "Lọc";
             // 
             // ThongKeDiemForm
             // 

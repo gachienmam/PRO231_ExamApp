@@ -185,9 +185,9 @@
             crownTitle2.AutoSize = true;
             crownTitle2.Location = new Point(100, 91);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(108, 15);
+            crownTitle2.Size = new Size(102, 15);
             crownTitle2.TabIndex = 13;
-            crownTitle2.Text = "Mâtk khẩu hiện tại:";
+            crownTitle2.Text = "Mật khẩu hiện tại:";
             // 
             // TEXTBOXMATKHAUHIENTAI
             // 

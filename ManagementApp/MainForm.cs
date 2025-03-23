@@ -35,6 +35,7 @@ namespace ManagementApp
         private QuanLyDeThiForm quanLyDeThiForm = new QuanLyDeThiForm();
         private QuanLyThiSinhForm quanLyThiSinhForm = new QuanLyThiSinhForm();
         private QuanLyNguoiDungForm quanLyNguoiDungForm = new QuanLyNguoiDungForm();
+        private ThongKeDiemForm thongKeDiemForm = new ThongKeDiemForm();
 
         #region Constructor
         public MainForm()
@@ -92,7 +93,8 @@ namespace ManagementApp
 
         private void điểmTheoThíSinhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            điểmTheoThíSinhToolStripMenuItem.Checked = !điểmTheoThíSinhToolStripMenuItem.Checked;
+            ClearAllCheckedAndChangeToForm(thongKeDiemForm, điểmTheoThíSinhToolStripMenuItem);
         }
 
         private void themeToggleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +107,7 @@ namespace ManagementApp
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseAllForms(true);
+            this.Close();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

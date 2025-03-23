@@ -39,12 +39,12 @@ namespace ManagementApp
 
         private void buttonThemND_Click(object sender, EventArgs e)
         {
-            textBoxHoTenND.Text = null;
+            textBoxHoTenND.Text = string.Empty;
             textBoxHoTenND.Enabled = true;
-            textBoxMKND.Text = null;
+            textBoxMKND.Text = string.Empty;
             textBoxMKND.Enabled = true;
-            textBoxEmailND.Text = null;
-            textBoxHoTenND.Text = null;
+            textBoxEmailND.Text = string.Empty;
+            textBoxHoTenND.Text = string.Empty;
             textBoxHoTenND.Enabled = true;
             textBoxEmailND.Enabled = true;
             radioButtonGV.Enabled = true;
@@ -63,7 +63,6 @@ namespace ManagementApp
         }
         private void ResetValues()
         {
-            textBoxTimKiem.Text = "Nhập tên email người dùng";
             textBoxEmailND.Text = null;
             textBoxHoTenND.Text = null;
             textBoxHoTenND.Text = null;
@@ -76,10 +75,10 @@ namespace ManagementApp
             radioButtonGV.Enabled = false;
             buttonThemND.Enabled = true;
             buttonLuuND.Enabled = false;
-            buttonThoat.Enabled = true;
             buttonSuaND.Enabled = false;
             buttonXoaND.Enabled = false;
-            adioButtonGridviewND.Enabled = true;
+            radioButtonHD.Enabled = true;
+            radioButtonKHD.Enabled = true;
         }
 
         private void textBoxTimKiem_TextChanged(object sender, EventArgs e)

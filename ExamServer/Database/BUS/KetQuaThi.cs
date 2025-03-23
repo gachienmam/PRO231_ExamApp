@@ -8,5 +8,6 @@ namespace ExamServer.Database.BUS
 {
     internal class KetQuaThi
     {
+        
     }
 }

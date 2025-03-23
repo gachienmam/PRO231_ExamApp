@@ -36,7 +36,6 @@
             crownButton2 = new ReaLTaiizor.Controls.CrownButton();
             dataGridView1 = new DataGridView();
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTextBox6 = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxMaTS = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxHoTenTS = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxSDTTS = new ReaLTaiizor.Controls.CrownTextBox();
@@ -59,7 +58,6 @@
             buttonThoat = new ReaLTaiizor.Controls.CrownButton();
             buttonXoaTS = new ReaLTaiizor.Controls.CrownButton();
             buttonSuaTS = new ReaLTaiizor.Controls.CrownButton();
-            buttonTimKiemTS = new ReaLTaiizor.Controls.CrownButton();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -125,7 +123,7 @@
             textBoxTimKiem.Location = new Point(0, 1);
             textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
             textBoxTimKiem.Name = "textBoxTimKiem";
-            textBoxTimKiem.PlaceholderText = "Tìm kiếm người dùng theo email";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm thí sinh theo số điện thoại";
             textBoxTimKiem.Size = new Size(680, 23);
             textBoxTimKiem.TabIndex = 73;
             // 
@@ -151,7 +149,6 @@
             // 
             // crownSectionPanel1
             // 
-            crownSectionPanel1.Controls.Add(crownTextBox6);
             crownSectionPanel1.Controls.Add(textBoxMaTS);
             crownSectionPanel1.Controls.Add(textBoxHoTenTS);
             crownSectionPanel1.Controls.Add(textBoxSDTTS);
@@ -172,7 +169,6 @@
             crownSectionPanel1.Controls.Add(buttonThoat);
             crownSectionPanel1.Controls.Add(buttonXoaTS);
             crownSectionPanel1.Controls.Add(buttonSuaTS);
-            crownSectionPanel1.Controls.Add(buttonTimKiemTS);
             crownSectionPanel1.Dock = DockStyle.Fill;
             crownSectionPanel1.Location = new Point(0, 0);
             crownSectionPanel1.Margin = new Padding(3, 2, 3, 2);
@@ -181,24 +177,12 @@
             crownSectionPanel1.Size = new Size(792, 388);
             crownSectionPanel1.TabIndex = 1;
             // 
-            // crownTextBox6
-            // 
-            crownTextBox6.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox6.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox6.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox6.Location = new Point(216, 311);
-            crownTextBox6.Margin = new Padding(3, 2, 3, 2);
-            crownTextBox6.Name = "crownTextBox6";
-            crownTextBox6.PlaceholderText = "Tìm kiếm thí sinh theo số điện thoại";
-            crownTextBox6.Size = new Size(225, 23);
-            crownTextBox6.TabIndex = 84;
-            // 
             // textBoxMaTS
             // 
             textBoxMaTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxMaTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaTS.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxMaTS.Location = new Point(198, 30);
+            textBoxMaTS.Location = new Point(185, 43);
             textBoxMaTS.Margin = new Padding(3, 2, 3, 2);
             textBoxMaTS.Name = "textBoxMaTS";
             textBoxMaTS.Size = new Size(169, 23);
@@ -209,7 +193,7 @@
             textBoxHoTenTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxHoTenTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxHoTenTS.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxHoTenTS.Location = new Point(198, 74);
+            textBoxHoTenTS.Location = new Point(185, 87);
             textBoxHoTenTS.Margin = new Padding(3, 2, 3, 2);
             textBoxHoTenTS.Name = "textBoxHoTenTS";
             textBoxHoTenTS.Size = new Size(169, 23);
@@ -220,7 +204,7 @@
             textBoxSDTTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxSDTTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxSDTTS.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxSDTTS.Location = new Point(198, 120);
+            textBoxSDTTS.Location = new Point(185, 133);
             textBoxSDTTS.Margin = new Padding(3, 2, 3, 2);
             textBoxSDTTS.Name = "textBoxSDTTS";
             textBoxSDTTS.Size = new Size(169, 23);
@@ -231,7 +215,7 @@
             textBoxEmailTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxEmailTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxEmailTS.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxEmailTS.Location = new Point(533, 33);
+            textBoxEmailTS.Location = new Point(511, 37);
             textBoxEmailTS.Margin = new Padding(3, 2, 3, 2);
             textBoxEmailTS.Name = "textBoxEmailTS";
             textBoxEmailTS.Size = new Size(199, 23);
@@ -242,7 +226,7 @@
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(radioButtonKhoaTS);
             crownGroupBox1.Controls.Add(radioButtonHDTS);
-            crownGroupBox1.Location = new Point(174, 153);
+            crownGroupBox1.Location = new Point(185, 175);
             crownGroupBox1.Margin = new Padding(3, 2, 3, 2);
             crownGroupBox1.Name = "crownGroupBox1";
             crownGroupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -276,7 +260,7 @@
             // 
             crownTitle7.AutoSize = true;
             crownTitle7.Font = new Font("Segoe UI", 9F);
-            crownTitle7.Location = new Point(442, 29);
+            crownTitle7.Location = new Point(466, 39);
             crownTitle7.Name = "crownTitle7";
             crownTitle7.Size = new Size(39, 15);
             crownTitle7.TabIndex = 78;
@@ -286,7 +270,7 @@
             // 
             crownTitle6.AutoSize = true;
             crownTitle6.Font = new Font("Segoe UI", 9F);
-            crownTitle6.Location = new Point(80, 74);
+            crownTitle6.Location = new Point(118, 89);
             crownTitle6.Name = "crownTitle6";
             crownTitle6.Size = new Size(61, 15);
             crownTitle6.TabIndex = 77;
@@ -296,7 +280,7 @@
             // 
             crownTitle5.AutoSize = true;
             crownTitle5.Font = new Font("Segoe UI", 9F);
-            crownTitle5.Location = new Point(442, 74);
+            crownTitle5.Location = new Point(445, 83);
             crownTitle5.Name = "crownTitle5";
             crownTitle5.Size = new Size(60, 15);
             crownTitle5.TabIndex = 76;
@@ -306,7 +290,7 @@
             // 
             crownTitle4.AutoSize = true;
             crownTitle4.Font = new Font("Segoe UI", 9F);
-            crownTitle4.Location = new Point(80, 120);
+            crownTitle4.Location = new Point(100, 135);
             crownTitle4.Name = "crownTitle4";
             crownTitle4.Size = new Size(79, 15);
             crownTitle4.TabIndex = 75;
@@ -316,7 +300,7 @@
             // 
             crownTitle3.AutoSize = true;
             crownTitle3.Font = new Font("Segoe UI", 9F);
-            crownTitle3.Location = new Point(442, 116);
+            crownTitle3.Location = new Point(441, 126);
             crownTitle3.Name = "crownTitle3";
             crownTitle3.Size = new Size(63, 15);
             crownTitle3.TabIndex = 74;
@@ -326,7 +310,7 @@
             // 
             crownTitle2.AutoSize = true;
             crownTitle2.Font = new Font("Segoe UI", 9F);
-            crownTitle2.Location = new Point(80, 163);
+            crownTitle2.Location = new Point(117, 179);
             crownTitle2.Name = "crownTitle2";
             crownTitle2.Size = new Size(62, 15);
             crownTitle2.TabIndex = 73;
@@ -336,7 +320,7 @@
             // 
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI", 9F);
-            crownTitle1.Location = new Point(80, 29);
+            crownTitle1.Location = new Point(137, 45);
             crownTitle1.Name = "crownTitle1";
             crownTitle1.Size = new Size(42, 15);
             crownTitle1.TabIndex = 71;
@@ -347,7 +331,7 @@
             textBoxMKTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxMKTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxMKTS.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxMKTS.Location = new Point(533, 77);
+            textBoxMKTS.Location = new Point(511, 81);
             textBoxMKTS.Margin = new Padding(3, 2, 3, 2);
             textBoxMKTS.Name = "textBoxMKTS";
             textBoxMKTS.Size = new Size(199, 23);
@@ -355,7 +339,7 @@
             // 
             // buttonThemTS
             // 
-            buttonThemTS.Location = new Point(43, 330);
+            buttonThemTS.Location = new Point(44, 330);
             buttonThemTS.Margin = new Padding(3, 2, 3, 2);
             buttonThemTS.Name = "buttonThemTS";
             buttonThemTS.Padding = new Padding(4);
@@ -365,14 +349,14 @@
             // 
             // dateTimePickerNgaySinhTS
             // 
-            dateTimePickerNgaySinhTS.Location = new Point(532, 120);
+            dateTimePickerNgaySinhTS.Location = new Point(510, 124);
             dateTimePickerNgaySinhTS.Name = "dateTimePickerNgaySinhTS";
             dateTimePickerNgaySinhTS.Size = new Size(200, 23);
             dateTimePickerNgaySinhTS.TabIndex = 68;
             // 
             // buttonLuuTS
             // 
-            buttonLuuTS.Location = new Point(357, 330);
+            buttonLuuTS.Location = new Point(358, 330);
             buttonLuuTS.Name = "buttonLuuTS";
             buttonLuuTS.Padding = new Padding(4);
             buttonLuuTS.Size = new Size(82, 50);
@@ -381,7 +365,7 @@
             // 
             // buttonDanhSachTS
             // 
-            buttonDanhSachTS.Location = new Point(511, 330);
+            buttonDanhSachTS.Location = new Point(512, 330);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
             buttonDanhSachTS.Padding = new Padding(4);
             buttonDanhSachTS.Size = new Size(82, 50);
@@ -390,7 +374,7 @@
             // 
             // buttonThoat
             // 
-            buttonThoat.Location = new Point(662, 330);
+            buttonThoat.Location = new Point(663, 330);
             buttonThoat.Name = "buttonThoat";
             buttonThoat.Padding = new Padding(4);
             buttonThoat.Size = new Size(82, 50);
@@ -399,7 +383,7 @@
             // 
             // buttonXoaTS
             // 
-            buttonXoaTS.Location = new Point(258, 330);
+            buttonXoaTS.Location = new Point(259, 330);
             buttonXoaTS.Name = "buttonXoaTS";
             buttonXoaTS.Padding = new Padding(4);
             buttonXoaTS.Size = new Size(82, 50);
@@ -408,21 +392,12 @@
             // 
             // buttonSuaTS
             // 
-            buttonSuaTS.Location = new Point(152, 330);
+            buttonSuaTS.Location = new Point(153, 330);
             buttonSuaTS.Name = "buttonSuaTS";
             buttonSuaTS.Padding = new Padding(4);
             buttonSuaTS.Size = new Size(82, 50);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
-            // 
-            // buttonTimKiemTS
-            // 
-            buttonTimKiemTS.Location = new Point(476, 308);
-            buttonTimKiemTS.Name = "buttonTimKiemTS";
-            buttonTimKiemTS.Padding = new Padding(4);
-            buttonTimKiemTS.Size = new Size(75, 23);
-            buttonTimKiemTS.TabIndex = 58;
-            buttonTimKiemTS.Text = "Tìm kiếm";
             // 
             // QuanLyThiSinhForm
             // 
@@ -453,7 +428,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox6;
         private ReaLTaiizor.Controls.CrownTextBox textBoxMaTS;
         private ReaLTaiizor.Controls.CrownTextBox textBoxHoTenTS;
         private ReaLTaiizor.Controls.CrownTextBox textBoxSDTTS;
@@ -476,7 +450,6 @@
         private ReaLTaiizor.Controls.CrownButton buttonThoat;
         private ReaLTaiizor.Controls.CrownButton buttonXoaTS;
         private ReaLTaiizor.Controls.CrownButton buttonSuaTS;
-        private ReaLTaiizor.Controls.CrownButton buttonTimKiemTS;
         private TabPage tabPage2;
         private Panel panel1;
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiem;

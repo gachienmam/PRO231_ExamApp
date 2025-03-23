@@ -153,13 +153,13 @@ namespace ManagementApp
             }
             if (textBoxHoTenTS.Text.Trim().Length == 0)// kiem tra phai nhap data
             {
-                MessageBox.Show("Bạn phải nhập Họ tên người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập Họ tên thí sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxHoTenTS.Focus();
                 return;
             }
             if (textBoxMKTS.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập mâtk khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxMKTS.Focus();
                 return;
             }
@@ -177,19 +177,14 @@ namespace ManagementApp
                 dateTimePickerNgaySinhTS.Focus();
                 return;
             }
-            if (radioButtonKhoaTS.Checked == false && radioButtonKhoaTS.Checked == false)// kiem tra phai check tình trạng
+            if (radioButtonKhoaTS.Checked == false && radioButtonHDTS.Checked == false)// kiem tra phai check tình trạng
             {
-                MessageBox.Show("Bạn phải chon vai trò người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải chon trạng thái thí sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxHoTenTS.Focus();
                 return;
             }
 
-            if (radioButtonHDTS.Checked == false && radioButtonHDTS.Checked == false)// kiem tra phai check tình trạng
-            {
-                MessageBox.Show("Bạn phải chon tình trạng người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxHoTenTS.Focus();
-                return;
-            }
+            
             else
             {
                 if ()
@@ -258,13 +253,13 @@ namespace ManagementApp
             }
             if (textBoxHoTenTS.Text.Trim().Length == 0)// kiem tra phai nhap data
             {
-                MessageBox.Show("Bạn phải nhập Họ tên người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập Họ tên thí sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxHoTenTS.Focus();
                 return;
             }
             if (textBoxMKTS.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn phải nhập mâtk khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxMKTS.Focus();
                 return;
             }
@@ -284,14 +279,14 @@ namespace ManagementApp
             }
             if (radioButtonKhoaTS.Checked == false && radioButtonKhoaTS.Checked == false)// kiem tra phai check tình trạng
             {
-                MessageBox.Show("Bạn phải chon vai trò người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải chon vai trò thí sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxHoTenTS.Focus();
                 return;
             }
 
-            if (radioButtonHDTS.Checked == false && radioButtonHDTS.Checked == false)// kiem tra phai check tình trạng
+            if (radioButtonHDTS.Checked == false && radioButtonKhoaTS.Checked == false)// kiem tra phai check tình trạng
             {
-                MessageBox.Show("Bạn phải chon tình trạng người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải chon tình trạng thí sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxHoTenTS.Focus();
                 return;
             }
@@ -321,10 +316,12 @@ namespace ManagementApp
             LoadGridview_ThiSinh();
         }
 
-        private void buttonTimKiemTS_Click(object sender, EventArgs e)
+        
+
+        private void crownButtonTimKiem_Click(object sender, EventArgs e)
         {
-            string soDT = textBoxTimKiem.Text;
-            DataTable ds = busKhach.SearchKhach(soDT);
+            string Email = textBoxTimKiem.Text;
+            DataTable ds = busKhach.SearchKhach(Email);
             if (ds.Rows.Count > 0)
             {
                 dataGridViewTS.DataSource = ds;
@@ -338,10 +335,10 @@ namespace ManagementApp
             }
             else
             {
-                MessageBox.Show("Không tìm thấy khách hàng nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không tìm thấy thí sinh nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxTimKiem.Focus();
             }
-            textBoxTimKiem.Text = "Nhập số điện thoại khach hàng";
+            textBoxTimKiem.Text = "Nhập Email thí sinh";
             textBoxTimKiem.BackColor = Color.LightGray;
             ResetValues();
         }

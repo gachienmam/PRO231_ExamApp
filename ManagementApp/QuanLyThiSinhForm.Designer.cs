@@ -30,11 +30,6 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
-            panel1 = new Panel();
-            textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
-            crownButton2 = new ReaLTaiizor.Controls.CrownButton();
-            dataGridView1 = new DataGridView();
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
             crownTextBox6 = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxMaTS = new ReaLTaiizor.Controls.CrownTextBox();
@@ -60,13 +55,18 @@
             buttonXoaTS = new ReaLTaiizor.Controls.CrownButton();
             buttonSuaTS = new ReaLTaiizor.Controls.CrownButton();
             buttonTimKiemTS = new ReaLTaiizor.Controls.CrownButton();
+            tabPage2 = new TabPage();
+            panel1 = new Panel();
+            textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
+            crownButtonTimKiem = new ReaLTaiizor.Controls.CrownButton();
+            dataGridViewTS = new DataGridView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTS).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -94,60 +94,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Thông tin";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(panel1);
-            tabPage2.Controls.Add(dataGridView1);
-            tabPage2.Location = new Point(4, 27);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(792, 388);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Dữ liệu";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(textBoxTimKiem);
-            panel1.Controls.Add(crownButton2);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(3, 360);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(786, 25);
-            panel1.TabIndex = 1;
-            // 
-            // textBoxTimKiem
-            // 
-            textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
-            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
-            textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxTimKiem.Location = new Point(0, 1);
-            textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
-            textBoxTimKiem.Name = "textBoxTimKiem";
-            textBoxTimKiem.PlaceholderText = "Tìm kiếm người dùng theo email";
-            textBoxTimKiem.Size = new Size(680, 23);
-            textBoxTimKiem.TabIndex = 73;
-            // 
-            // crownButton2
-            // 
-            crownButton2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            crownButton2.Location = new Point(679, 1);
-            crownButton2.Margin = new Padding(3, 2, 3, 2);
-            crownButton2.Name = "crownButton2";
-            crownButton2.Padding = new Padding(4);
-            crownButton2.Size = new Size(107, 23);
-            crownButton2.TabIndex = 72;
-            crownButton2.Text = "Tìm kiếm";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(786, 382);
-            dataGridView1.TabIndex = 0;
             // 
             // crownSectionPanel1
             // 
@@ -328,7 +274,7 @@
             crownTitle2.Font = new Font("Segoe UI", 9F);
             crownTitle2.Location = new Point(80, 163);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(62, 15);
+            crownTitle2.Size = new Size(63, 15);
             crownTitle2.TabIndex = 73;
             crownTitle2.Text = "Trạng thái:";
             // 
@@ -338,7 +284,7 @@
             crownTitle1.Font = new Font("Segoe UI", 9F);
             crownTitle1.Location = new Point(80, 29);
             crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(42, 15);
+            crownTitle1.Size = new Size(43, 15);
             crownTitle1.TabIndex = 71;
             crownTitle1.Text = "Mã TS:";
             // 
@@ -378,6 +324,7 @@
             buttonLuuTS.Size = new Size(82, 50);
             buttonLuuTS.TabIndex = 64;
             buttonLuuTS.Text = "Lưu";
+            buttonLuuTS.Click += buttonLuuTS_Click;
             // 
             // buttonDanhSachTS
             // 
@@ -387,6 +334,7 @@
             buttonDanhSachTS.Size = new Size(82, 50);
             buttonDanhSachTS.TabIndex = 63;
             buttonDanhSachTS.Text = "Danh sách";
+            buttonDanhSachTS.Click += buttonDanhSachTS_Click;
             // 
             // buttonThoat
             // 
@@ -405,6 +353,7 @@
             buttonXoaTS.Size = new Size(82, 50);
             buttonXoaTS.TabIndex = 61;
             buttonXoaTS.Text = "Xóa";
+            buttonXoaTS.Click += buttonXoaTS_Click;
             // 
             // buttonSuaTS
             // 
@@ -414,6 +363,7 @@
             buttonSuaTS.Size = new Size(82, 50);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
+            buttonSuaTS.Click += buttonSuaTS_Click;
             // 
             // buttonTimKiemTS
             // 
@@ -423,6 +373,61 @@
             buttonTimKiemTS.Size = new Size(75, 23);
             buttonTimKiemTS.TabIndex = 58;
             buttonTimKiemTS.Text = "Tìm kiếm";
+            buttonTimKiemTS.Click += buttonTimKiemTS_Click;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(panel1);
+            tabPage2.Controls.Add(dataGridViewTS);
+            tabPage2.Location = new Point(4, 27);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(792, 388);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Dữ liệu";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(textBoxTimKiem);
+            panel1.Controls.Add(crownButtonTimKiem);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(3, 360);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(786, 25);
+            panel1.TabIndex = 1;
+            // 
+            // textBoxTimKiem
+            // 
+            textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
+            textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxTimKiem.Location = new Point(0, 1);
+            textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm người dùng theo email";
+            textBoxTimKiem.Size = new Size(680, 23);
+            textBoxTimKiem.TabIndex = 73;
+            // 
+            // crownButtonTimKiem
+            // 
+            crownButtonTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            crownButtonTimKiem.Location = new Point(679, 1);
+            crownButtonTimKiem.Margin = new Padding(3, 2, 3, 2);
+            crownButtonTimKiem.Name = "crownButtonTimKiem";
+            crownButtonTimKiem.Padding = new Padding(4);
+            crownButtonTimKiem.Size = new Size(107, 23);
+            crownButtonTimKiem.TabIndex = 72;
+            crownButtonTimKiem.Text = "Tìm kiếm";
+            // 
+            // dataGridViewTS
+            // 
+            dataGridViewTS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTS.Dock = DockStyle.Fill;
+            dataGridViewTS.Location = new Point(3, 3);
+            dataGridViewTS.Name = "dataGridViewTS";
+            dataGridViewTS.Size = new Size(786, 382);
+            dataGridViewTS.TabIndex = 0;
             // 
             // QuanLyThiSinhForm
             // 
@@ -437,14 +442,14 @@
             Text = "Quản lý thí sinh";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTS).EndInit();
             ResumeLayout(false);
         }
 
@@ -480,7 +485,7 @@
         private TabPage tabPage2;
         private Panel panel1;
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiem;
-        private ReaLTaiizor.Controls.CrownButton crownButton2;
-        private DataGridView dataGridView1;
+        private ReaLTaiizor.Controls.CrownButton crownButtonTimKiem;
+        private DataGridView dataGridViewTS;
     }
 }

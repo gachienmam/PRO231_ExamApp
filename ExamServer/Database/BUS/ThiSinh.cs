@@ -8,11 +8,11 @@ namespace ExamServer.Database.BUS
 {
     internal class ThiSinh
     {
-        private readonly DAL.ThiSinh _DAL_NguoiDung;
+        private readonly DAL.ThiSinh _DAL_ThiSinh;
 
         public ThiSinh(DAL.ThiSinh ThiSinh)
         {
-            _DAL_NguoiDung = ThiSinh;
+            _DAL_ThiSinh = ThiSinh;
         }
     }
 }

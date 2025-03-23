@@ -73,10 +73,5 @@ namespace ManagementApp
 
             textBoxEmailTS.Focus();
         }
-
-        private void QuanLyThiSinhForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

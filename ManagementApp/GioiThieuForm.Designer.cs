@@ -28,88 +28,137 @@
         /// </summary>
         private void InitializeComponent()
         {
-            crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            crownSectionPanel1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GioiThieuForm));
+            foreverForm1 = new ReaLTaiizor.Forms.ForeverForm();
+            foreverLabel1 = new ReaLTaiizor.Controls.ForeverLabel();
+            foreverClose1 = new ReaLTaiizor.Controls.ForeverClose();
+            foreverLabel2 = new ReaLTaiizor.Controls.ForeverLabel();
+            foreverLabel3 = new ReaLTaiizor.Controls.ForeverLabel();
+            foreverTextBox1 = new ReaLTaiizor.Controls.ForeverTextBox();
+            foreverForm1.SuspendLayout();
             SuspendLayout();
             // 
-            // crownSectionPanel1
+            // foreverForm1
             // 
-            crownSectionPanel1.Controls.Add(crownTitle4);
-            crownSectionPanel1.Controls.Add(crownTitle1);
-            crownSectionPanel1.Controls.Add(crownTitle3);
-            crownSectionPanel1.Controls.Add(crownTitle2);
-            crownSectionPanel1.Dock = DockStyle.Fill;
-            crownSectionPanel1.Location = new Point(0, 0);
-            crownSectionPanel1.Name = "crownSectionPanel1";
-            crownSectionPanel1.SectionHeader = null;
-            crownSectionPanel1.Size = new Size(870, 418);
-            crownSectionPanel1.TabIndex = 0;
+            foreverForm1.BackColor = Color.White;
+            foreverForm1.BaseColor = Color.FromArgb(60, 70, 73);
+            foreverForm1.BorderColor = Color.DodgerBlue;
+            foreverForm1.Controls.Add(foreverTextBox1);
+            foreverForm1.Controls.Add(foreverLabel3);
+            foreverForm1.Controls.Add(foreverLabel2);
+            foreverForm1.Controls.Add(foreverClose1);
+            foreverForm1.Controls.Add(foreverLabel1);
+            foreverForm1.Dock = DockStyle.Fill;
+            foreverForm1.Font = new Font("Segoe UI", 12F);
+            foreverForm1.ForeverColor = Color.FromArgb(35, 168, 109);
+            foreverForm1.HeaderColor = Color.FromArgb(45, 47, 49);
+            foreverForm1.HeaderMaximize = false;
+            foreverForm1.HeaderTextFont = new Font("Segoe UI", 12F);
+            foreverForm1.Image = null;
+            foreverForm1.Location = new Point(0, 0);
+            foreverForm1.MinimumSize = new Size(210, 50);
+            foreverForm1.Name = "foreverForm1";
+            foreverForm1.Padding = new Padding(1, 51, 1, 1);
+            foreverForm1.Sizable = true;
+            foreverForm1.Size = new Size(501, 277);
+            foreverForm1.TabIndex = 0;
+            foreverForm1.Text = "Giới thiệu PolyTest";
+            foreverForm1.TextColor = Color.FromArgb(234, 234, 234);
+            foreverForm1.TextLight = Color.SeaGreen;
             // 
-            // crownTitle4
+            // foreverLabel1
             // 
-            crownTitle4.AutoSize = true;
-            crownTitle4.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle4.Location = new Point(71, 255);
-            crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(880, 13);
-            crownTitle4.TabIndex = 6;
-            crownTitle4.Text = "Phần mềm cho phép tạo đề thi, quản lý ngân hàng câu hỏi, tổ chức thi và chấm điểm tự động, giúp giảm tải công việc cho giáo viên và nâng cao trải nghiệm người dùng.";
+            foreverLabel1.AutoSize = true;
+            foreverLabel1.BackColor = Color.Transparent;
+            foreverLabel1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            foreverLabel1.ForeColor = Color.LightGray;
+            foreverLabel1.Location = new Point(21, 66);
+            foreverLabel1.Name = "foreverLabel1";
+            foreverLabel1.Size = new Size(314, 30);
+            foreverLabel1.TabIndex = 11;
+            foreverLabel1.Text = "PolyTest EOS Management App";
             // 
-            // crownTitle1
+            // foreverClose1
             // 
-            crownTitle1.AutoSize = true;
-            crownTitle1.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle1.Location = new Point(162, 213);
-            crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(696, 13);
-            crownTitle1.TabIndex = 5;
-            crownTitle1.Text = "EOS (Exam Online System) là một phần mềm thi trắc nghiệm trực tuyến, giúp tổ chức và quản lý các kỳ thi một cách dễ dàng, hiệu quả. ";
-            crownTitle1.Click += crownTitle1_Click_1;
+            foreverClose1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            foreverClose1.BackColor = Color.White;
+            foreverClose1.BaseColor = Color.FromArgb(45, 47, 49);
+            foreverClose1.DefaultLocation = true;
+            foreverClose1.DownColor = Color.FromArgb(30, 0, 0, 0);
+            foreverClose1.Font = new Font("Marlett", 10F);
+            foreverClose1.Location = new Point(466, 16);
+            foreverClose1.Name = "foreverClose1";
+            foreverClose1.OverColor = Color.FromArgb(30, 255, 255, 255);
+            foreverClose1.Size = new Size(18, 18);
+            foreverClose1.TabIndex = 12;
+            foreverClose1.Text = "foreverClose1";
+            foreverClose1.TextColor = Color.FromArgb(243, 243, 243);
             // 
-            // crownTitle3
+            // foreverLabel2
             // 
-            crownTitle3.AutoSize = true;
-            crownTitle3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle3.Location = new Point(286, 73);
-            crownTitle3.Name = "crownTitle3";
-            crownTitle3.Size = new Size(277, 21);
-            crownTitle3.TabIndex = 3;
-            crownTitle3.Text = "Tên phần mềm: Thi Trắc nghiệm PolyTest";
+            foreverLabel2.AutoSize = true;
+            foreverLabel2.BackColor = Color.Transparent;
+            foreverLabel2.Font = new Font("Segoe UI", 8F);
+            foreverLabel2.ForeColor = Color.LightGray;
+            foreverLabel2.Location = new Point(21, 107);
+            foreverLabel2.Name = "foreverLabel2";
+            foreverLabel2.Size = new Size(251, 13);
+            foreverLabel2.TabIndex = 13;
+            foreverLabel2.Text = "by Pupu và những người bạn (Nhóm 2, SD1802)";
             // 
-            // crownTitle2
+            // foreverLabel3
             // 
-            crownTitle2.AutoSize = true;
-            crownTitle2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle2.Location = new Point(262, 127);
-            crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(349, 21);
-            crownTitle2.TabIndex = 1;
-            crownTitle2.Text = "Nhà phát hành: Pupu chacha và những người bạn";
+            foreverLabel3.AutoSize = true;
+            foreverLabel3.BackColor = Color.Transparent;
+            foreverLabel3.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            foreverLabel3.ForeColor = Color.LightGray;
+            foreverLabel3.Location = new Point(328, 79);
+            foreverLabel3.Name = "foreverLabel3";
+            foreverLabel3.Size = new Size(60, 13);
+            foreverLabel3.TabIndex = 14;
+            foreverLabel3.Text = "v23032025";
+            // 
+            // foreverTextBox1
+            // 
+            foreverTextBox1.BackColor = Color.Transparent;
+            foreverTextBox1.BaseColor = Color.FromArgb(45, 47, 49);
+            foreverTextBox1.BorderColor = Color.FromArgb(35, 168, 109);
+            foreverTextBox1.FocusOnHover = false;
+            foreverTextBox1.ForeColor = Color.FromArgb(192, 192, 192);
+            foreverTextBox1.Location = new Point(21, 141);
+            foreverTextBox1.MaxLength = 32767;
+            foreverTextBox1.Multiline = true;
+            foreverTextBox1.Name = "foreverTextBox1";
+            foreverTextBox1.ReadOnly = true;
+            foreverTextBox1.Size = new Size(454, 109);
+            foreverTextBox1.TabIndex = 15;
+            foreverTextBox1.Text = resources.GetString("foreverTextBox1.Text");
+            foreverTextBox1.TextAlign = HorizontalAlignment.Left;
+            foreverTextBox1.UseSystemPasswordChar = false;
             // 
             // GioiThieuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(870, 418);
-            Controls.Add(crownSectionPanel1);
-            MinimumSize = new Size(800, 419);
+            ClientSize = new Size(501, 277);
+            Controls.Add(foreverForm1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "GioiThieuForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "GioiThieuForm";
-            crownSectionPanel1.ResumeLayout(false);
-            crownSectionPanel1.PerformLayout();
+            TransparencyKey = Color.Fuchsia;
+            foreverForm1.ResumeLayout(false);
+            foreverForm1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle2;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle1;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle4;
+        private ReaLTaiizor.Forms.ForeverForm foreverForm1;
+        private ReaLTaiizor.Controls.ForeverTextBox foreverTextBox1;
+        private ReaLTaiizor.Controls.ForeverLabel foreverLabel3;
+        private ReaLTaiizor.Controls.ForeverLabel foreverLabel2;
+        private ReaLTaiizor.Controls.ForeverClose foreverClose1;
+        private ReaLTaiizor.Controls.ForeverLabel foreverLabel1;
     }
 }

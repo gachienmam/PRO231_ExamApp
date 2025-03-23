@@ -165,7 +165,7 @@
             // radioButtonKhoaTS
             // 
             radioButtonKhoaTS.AutoSize = true;
-            radioButtonKhoaTS.Location = new Point(100, 10);
+            radioButtonKhoaTS.Location = new Point(119, 10);
             radioButtonKhoaTS.Margin = new Padding(3, 2, 3, 2);
             radioButtonKhoaTS.Name = "radioButtonKhoaTS";
             radioButtonKhoaTS.Size = new Size(52, 19);
@@ -176,7 +176,7 @@
             // radioButtonHDTS
             // 
             radioButtonHDTS.AutoSize = true;
-            radioButtonHDTS.Location = new Point(5, 10);
+            radioButtonHDTS.Location = new Point(24, 10);
             radioButtonHDTS.Margin = new Padding(3, 2, 3, 2);
             radioButtonHDTS.Name = "radioButtonHDTS";
             radioButtonHDTS.Size = new Size(82, 19);
@@ -187,70 +187,70 @@
             // crownTitle7
             // 
             crownTitle7.AutoSize = true;
-            crownTitle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle7.Font = new Font("Segoe UI", 9F);
             crownTitle7.Location = new Point(442, 29);
             crownTitle7.Name = "crownTitle7";
-            crownTitle7.Size = new Size(51, 21);
+            crownTitle7.Size = new Size(39, 15);
             crownTitle7.TabIndex = 78;
             crownTitle7.Text = "Email:";
             // 
             // crownTitle6
             // 
             crownTitle6.AutoSize = true;
-            crownTitle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(80, 74);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(79, 21);
+            crownTitle6.Size = new Size(61, 15);
             crownTitle6.TabIndex = 77;
             crownTitle6.Text = "Họ và tên:";
             // 
             // crownTitle5
             // 
             crownTitle5.AutoSize = true;
-            crownTitle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle5.Font = new Font("Segoe UI", 9F);
             crownTitle5.Location = new Point(442, 74);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(78, 21);
+            crownTitle5.Size = new Size(60, 15);
             crownTitle5.TabIndex = 76;
             crownTitle5.Text = "Mật khẩu:";
             // 
             // crownTitle4
             // 
             crownTitle4.AutoSize = true;
-            crownTitle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle4.Font = new Font("Segoe UI", 9F);
             crownTitle4.Location = new Point(80, 120);
             crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(104, 21);
+            crownTitle4.Size = new Size(79, 15);
             crownTitle4.TabIndex = 75;
             crownTitle4.Text = "Số điện thoại:";
             // 
             // crownTitle3
             // 
             crownTitle3.AutoSize = true;
-            crownTitle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle3.Font = new Font("Segoe UI", 9F);
             crownTitle3.Location = new Point(442, 116);
             crownTitle3.Name = "crownTitle3";
-            crownTitle3.Size = new Size(83, 21);
+            crownTitle3.Size = new Size(63, 15);
             crownTitle3.TabIndex = 74;
             crownTitle3.Text = "Ngày sinh:";
             // 
             // crownTitle2
             // 
             crownTitle2.AutoSize = true;
-            crownTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle2.Location = new Point(80, 160);
+            crownTitle2.Font = new Font("Segoe UI", 9F);
+            crownTitle2.Location = new Point(80, 163);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(82, 21);
+            crownTitle2.Size = new Size(62, 15);
             crownTitle2.TabIndex = 73;
             crownTitle2.Text = "Trạng thái:";
             // 
             // crownTitle1
             // 
             crownTitle1.AutoSize = true;
-            crownTitle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle1.Font = new Font("Segoe UI", 9F);
             crownTitle1.Location = new Point(80, 29);
             crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(56, 21);
+            crownTitle1.Size = new Size(42, 15);
             crownTitle1.TabIndex = 71;
             crownTitle1.Text = "Mã TS:";
             // 
@@ -267,10 +267,10 @@
             // 
             // buttonThemTS
             // 
-            buttonThemTS.Location = new Point(49, 339);
+            buttonThemTS.Location = new Point(45, 357);
             buttonThemTS.Margin = new Padding(3, 2, 3, 2);
             buttonThemTS.Name = "buttonThemTS";
-            buttonThemTS.Padding = new Padding(4, 4, 4, 4);
+            buttonThemTS.Padding = new Padding(4);
             buttonThemTS.Size = new Size(82, 50);
             buttonThemTS.TabIndex = 69;
             buttonThemTS.Text = "Thêm";
@@ -284,45 +284,45 @@
             // 
             // buttonLuuTS
             // 
-            buttonLuuTS.Location = new Point(363, 339);
+            buttonLuuTS.Location = new Point(359, 357);
             buttonLuuTS.Name = "buttonLuuTS";
-            buttonLuuTS.Padding = new Padding(4, 4, 4, 4);
+            buttonLuuTS.Padding = new Padding(4);
             buttonLuuTS.Size = new Size(82, 50);
             buttonLuuTS.TabIndex = 64;
             buttonLuuTS.Text = "Lưu";
             // 
             // buttonDanhSachTS
             // 
-            buttonDanhSachTS.Location = new Point(517, 339);
+            buttonDanhSachTS.Location = new Point(513, 357);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
-            buttonDanhSachTS.Padding = new Padding(4, 4, 4, 4);
+            buttonDanhSachTS.Padding = new Padding(4);
             buttonDanhSachTS.Size = new Size(82, 50);
             buttonDanhSachTS.TabIndex = 63;
             buttonDanhSachTS.Text = "Danh sách";
             // 
             // buttonThoat
             // 
-            buttonThoat.Location = new Point(668, 339);
+            buttonThoat.Location = new Point(664, 357);
             buttonThoat.Name = "buttonThoat";
-            buttonThoat.Padding = new Padding(4, 4, 4, 4);
+            buttonThoat.Padding = new Padding(4);
             buttonThoat.Size = new Size(82, 50);
             buttonThoat.TabIndex = 62;
             buttonThoat.Text = "Thoát";
             // 
             // buttonXoaTS
             // 
-            buttonXoaTS.Location = new Point(264, 339);
+            buttonXoaTS.Location = new Point(260, 357);
             buttonXoaTS.Name = "buttonXoaTS";
-            buttonXoaTS.Padding = new Padding(4, 4, 4, 4);
+            buttonXoaTS.Padding = new Padding(4);
             buttonXoaTS.Size = new Size(82, 50);
             buttonXoaTS.TabIndex = 61;
             buttonXoaTS.Text = "Xóa";
             // 
             // buttonSuaTS
             // 
-            buttonSuaTS.Location = new Point(158, 339);
+            buttonSuaTS.Location = new Point(154, 357);
             buttonSuaTS.Name = "buttonSuaTS";
-            buttonSuaTS.Padding = new Padding(4, 4, 4, 4);
+            buttonSuaTS.Padding = new Padding(4);
             buttonSuaTS.Size = new Size(82, 50);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
@@ -356,7 +356,6 @@
             MinimumSize = new Size(800, 419);
             Name = "QuanLyThiSinhForm";
             Text = "Quản lý thí sinh";
-            Load += QuanLyThiSinhForm_Load;
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
             crownGroupBox1.ResumeLayout(false);

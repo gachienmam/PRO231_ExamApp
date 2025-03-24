@@ -28,7 +28,7 @@ namespace ManagementApp
             handler.ServerCertificateCustomValidationCallback =
                 HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:5000",
+            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:5001",
                 new GrpcChannelOptions { HttpHandler = handler });
             _client = new AdminServiceClient(channel);
         }

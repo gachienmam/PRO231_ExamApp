@@ -35,6 +35,6 @@ namespace ExamLibrary.Question
 
         public string ID;
 
-        public List<Types.MultipleChoice> _q_multipleChoice;
+        public List<Types.MultipleChoice> MultipleChoiceQuestions;
     }
 }

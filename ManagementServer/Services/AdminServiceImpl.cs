@@ -41,18 +41,18 @@ namespace ManagementServer.Services
         {
             if (request.Email == null)
             {
-                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
             var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
             var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
             if (user == null)
             {
-                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
 
             string token = _jwtHelper.GenerateJwtToken(request.Email, user); // Implement token generation
 
-            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
+            return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
         }
 
         [Authorize]

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             panel1 = new Panel();
@@ -49,10 +50,11 @@
             textBoxTime = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitleServer = new ReaLTaiizor.Controls.CrownTitle();
             crownTitleExamCode = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitleStuden = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitleStudent = new ReaLTaiizor.Controls.CrownTitle();
             buttonFinish = new ReaLTaiizor.Controls.CrownButton();
             textBoxMachine = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitleMachine = new ReaLTaiizor.Controls.CrownTitle();
+            timerExam = new System.Windows.Forms.Timer(components);
             crownSectionPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panelCauHoiHienTai.SuspendLayout();
@@ -73,7 +75,7 @@
             crownSectionPanel1.Controls.Add(textBoxTime);
             crownSectionPanel1.Controls.Add(crownTitleServer);
             crownSectionPanel1.Controls.Add(crownTitleExamCode);
-            crownSectionPanel1.Controls.Add(crownTitleStuden);
+            crownSectionPanel1.Controls.Add(crownTitleStudent);
             crownSectionPanel1.Controls.Add(buttonFinish);
             crownSectionPanel1.Controls.Add(textBoxMachine);
             crownSectionPanel1.Controls.Add(crownTitleMachine);
@@ -305,14 +307,14 @@
             crownTitleExamCode.TabIndex = 8;
             crownTitleExamCode.Text = "Exam code:";
             // 
-            // crownTitleStuden
+            // crownTitleStudent
             // 
-            crownTitleStuden.AutoSize = true;
-            crownTitleStuden.Location = new Point(20, 154);
-            crownTitleStuden.Name = "crownTitleStuden";
-            crownTitleStuden.Size = new Size(60, 19);
-            crownTitleStuden.TabIndex = 7;
-            crownTitleStuden.Text = "Student:";
+            crownTitleStudent.AutoSize = true;
+            crownTitleStudent.Location = new Point(20, 154);
+            crownTitleStudent.Name = "crownTitleStudent";
+            crownTitleStudent.Size = new Size(60, 19);
+            crownTitleStudent.TabIndex = 7;
+            crownTitleStudent.Text = "Student:";
             // 
             // buttonFinish
             // 
@@ -344,6 +346,11 @@
             crownTitleMachine.Size = new Size(64, 19);
             crownTitleMachine.TabIndex = 1;
             crownTitleMachine.Text = "Machine:";
+            // 
+            // timerExam
+            // 
+            timerExam.Interval = 1000;
+            timerExam.Tick += timerExam_Tick;
             // 
             // ExamForm
             // 
@@ -386,7 +393,7 @@
         private ReaLTaiizor.Controls.CrownTextBox textBoxTime;
         private ReaLTaiizor.Controls.CrownTitle crownTitleServer;
         private ReaLTaiizor.Controls.CrownTitle crownTitleExamCode;
-        private ReaLTaiizor.Controls.CrownTitle crownTitleStuden;
+        private ReaLTaiizor.Controls.CrownTitle crownTitleStudent;
         private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton4;
         private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton3;
         private ReaLTaiizor.Controls.CrownSectionPanel panelChonDapAn;
@@ -407,5 +414,6 @@
         private ReaLTaiizor.Controls.CrownButton buttonNext;
         private ReaLTaiizor.Controls.CrownSectionPanel panelDanhSachCauHoi;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
+        private System.Windows.Forms.Timer timerExam;
     }
 }

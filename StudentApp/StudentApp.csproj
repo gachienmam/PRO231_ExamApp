@@ -20,11 +20,20 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="protobuf-net" Version="3.2.46" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExamLibrary\ExamLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="Protobuffer\ExamService.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exam\" />
   </ItemGroup>
 
 </Project>

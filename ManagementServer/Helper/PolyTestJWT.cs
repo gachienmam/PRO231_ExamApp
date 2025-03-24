@@ -20,16 +20,15 @@ namespace ManagementServer.Helper
         {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.HoTen),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };
-            string role = user.VaiTro.Equals("Admin") == true || user.VaiTro.Equals("GiangVien") == true ? "Management" : "User";
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt{role}:Key"] ?? "DefaultPolyTestExamServerKey"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestManagementServerKey"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
-                issuer: Configuration[$"Jwt{role}:Issuer"],
-                audience: Configuration[$"Jwt{role}:Audience"],
+                issuer: Configuration[$"Jwt:Issuer"],
+                audience: Configuration[$"Jwt:Audience"],
                 claims,
                 expires: DateTime.UtcNow.AddHours(6),
                 signingCredentials: creds
@@ -40,10 +39,8 @@ namespace ManagementServer.Helper
 
         public ClaimsPrincipal? ValidateToken(string token, ServerCallContext context)
         {
-            var userContext = context.GetHttpContext().User;
-            string role = userContext.IsInRole("Admin") == true || userContext.IsInRole("GiangVien") == true ? "Management" : "User";
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt{role}:Key"] ?? "DefaultPolyTestExamServerKey");
+            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestManagementServerKey");
 
             try
             {
@@ -53,8 +50,8 @@ namespace ManagementServer.Helper
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration[$"Jwt{role}:Issuer"],
-                    ValidAudience = Configuration[$"Jwt{role}:Audience"],
+                    ValidIssuer = Configuration[$"Jwt:Issuer"],
+                    ValidAudience = Configuration[$"Jwt:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 }, out _);
 

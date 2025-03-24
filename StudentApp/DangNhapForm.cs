@@ -5,6 +5,7 @@ using ExamProto;
 using ReaLTaiizor.Controls;
 using System.Net;
 using Google.Protobuf.WellKnownTypes;
+using System.Security.Principal;
 
 namespace StudentApp
 {
@@ -35,6 +36,11 @@ namespace StudentApp
 
         private void DangNhapForm_Load(object sender, EventArgs e)
         {
+            //if (!IsAdministrator())
+            //{
+            //    CrownMessageBox.ShowError($"Phần mềm thi chưa được chạy bằng Admin. Xin hãy liên lạc với giám thị.", "Lỗi", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+            //    Application.Exit();
+            //}
             if (ConfigurationManager.AppSettings["AppTheme"] == "light")
             {
                 ThemeProvider.Theme = new LightTheme();
@@ -115,5 +121,15 @@ namespace StudentApp
             Invalidate();
             Refresh();
         }
+
+
+        #region Function
+        private bool IsAdministrator()
+        {
+            WindowsIdentity current = WindowsIdentity.GetCurrent();
+            WindowsPrincipal windowsPrincipal = new WindowsPrincipal(current);
+            return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+        #endregion
     }
 }

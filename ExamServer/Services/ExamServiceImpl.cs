@@ -55,17 +55,17 @@ namespace ExamServer.Services
         {
             if (request.Email == null || request.Password == null)
             {
-                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
             var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
-            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.NguoiDung>());
+            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.ThiSinh>());
             if (user == null)
             {
-                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
 
-            string token = _jwtHelper.GenerateJwtToken(user.Email, user); // Implement token generation
-            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
+            string token = _jwtHelper.GenerateJwtToken(user); // Implement token generation
+            return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
             //return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = ""};
         }
 

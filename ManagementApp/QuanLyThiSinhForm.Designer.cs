@@ -258,7 +258,7 @@
             crownTitle2.Font = new Font("Segoe UI", 9F);
             crownTitle2.Location = new Point(117, 179);
             crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(63, 15);
+            crownTitle2.Size = new Size(62, 15);
             crownTitle2.TabIndex = 73;
             crownTitle2.Text = "Trạng thái:";
             // 
@@ -268,7 +268,7 @@
             crownTitle1.Font = new Font("Segoe UI", 9F);
             crownTitle1.Location = new Point(137, 45);
             crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(43, 15);
+            crownTitle1.Size = new Size(42, 15);
             crownTitle1.TabIndex = 71;
             crownTitle1.Text = "Mã TS:";
             // 
@@ -308,6 +308,7 @@
             buttonLuuTS.Size = new Size(82, 50);
             buttonLuuTS.TabIndex = 64;
             buttonLuuTS.Text = "Lưu";
+            buttonLuuTS.Click += buttonLuuTS_Click;
             // 
             // buttonDanhSachTS
             // 

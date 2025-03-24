@@ -6,6 +6,8 @@ using ReaLTaiizor.Native;
 using System.Configuration;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static AdminProto.AdminService;
+
 //using static ExamServer.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
 
@@ -28,16 +30,14 @@ namespace ManagementApp
         private readonly string DefaultFormText = "PolyTest Manager";
 
         // Lưu trữ thông tin máy chủ
-        //private readonly AdminServiceClient _client;
+        private AdminServiceClient _client;
         private readonly string _serverAddress;
         private readonly string _accessToken;
 
-        private DangNhapForm dangNhapForm = new DangNhapForm();
-
-        private QuanLyDeThiForm quanLyDeThiForm = new QuanLyDeThiForm();
-        private QuanLyThiSinhForm quanLyThiSinhForm = new QuanLyThiSinhForm();
-        private QuanLyNguoiDungForm quanLyNguoiDungForm = new QuanLyNguoiDungForm();
-        private ThongKeDiemForm thongKeDiemForm = new ThongKeDiemForm();
+        private QuanLyDeThiForm quanLyDeThiForm;
+        private QuanLyThiSinhForm quanLyThiSinhForm;
+        private QuanLyNguoiDungForm quanLyNguoiDungForm;
+        private ThongKeDiemForm thongKeDiemForm;
 
         #region Constructor
         public MainForm()
@@ -47,15 +47,18 @@ namespace ManagementApp
             Application.AddMessageFilter(new ControlScrollFilter());
         }
 
-        public MainForm(string serverAddress, string accessToken)
+        public MainForm(AdminServiceClient client, string accessToken)
         {
             InitializeComponent();
 
             // Đăng nhập vào máy chủ dùng thông tin đăng nhập từ cái DangNhapForm
-            _serverAddress = serverAddress;
+            _client = client;
             _accessToken = accessToken;
-            var channel = GrpcChannel.ForAddress(_serverAddress);
-            //_client = new AdminServiceClient(channel);
+
+            //quanLyDeThiForm = new QuanLyDeThiForm(_client, _accessToken);
+            //quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _accessToken);
+            //quanLyThiSinhForm = new QuanLyThiSinhForm(_client, _accessToken);
+            thongKeDiemForm = new ThongKeDiemForm(_client, _accessToken);
 
             // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
             Application.AddMessageFilter(new ControlScrollFilter());
@@ -80,11 +83,6 @@ namespace ManagementApp
         #endregion
 
         #region Main Menu Strip
-
-        private void đăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ClearAllCheckedAndChangeToForm(dangNhapForm);
-        }
         private void đềThiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Checked => is open
@@ -129,7 +127,7 @@ namespace ManagementApp
 
             // TODO: Cho lệnh log out ở giữa
             Shared.IsExiting = true;
-            Application.Exit();
+            this.Close();
         }
         #endregion
 

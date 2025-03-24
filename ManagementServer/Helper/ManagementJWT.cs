@@ -7,16 +7,16 @@ using System.Text;
 
 namespace ManagementServer.Helper
 {
-    internal class PolyTestJWT
+    internal class ManagementJWT
     {
         public IConfiguration Configuration;
 
-        public PolyTestJWT(IConfiguration configuration)
+        public ManagementJWT(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public string GenerateJwtToken(string email, NguoiDung user)
+        public string GenerateJwtToken(NguoiDung user)
         {
             var claims = new[]
             {

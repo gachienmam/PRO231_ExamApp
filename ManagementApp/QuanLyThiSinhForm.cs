@@ -184,7 +184,7 @@ namespace ManagementApp
                 return;
             }
 
-            
+
             else
             {
                 //if ()
@@ -316,7 +316,7 @@ namespace ManagementApp
             LoadGridview_ThiSinh();
         }
 
-        
+
 
         private void crownButtonTimKiem_Click(object sender, EventArgs e)
         {

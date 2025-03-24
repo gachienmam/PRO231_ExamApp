@@ -67,12 +67,16 @@ namespace ManagementApp
                     {
                         Shared.AccessToken = response.AccessToken;
                         // Authentication successful, open the main management form
-                        MainForm mainForm = new MainForm(_serverAddress, response.AccessToken); // Pass the server address
+                        MainForm mainForm = new MainForm(_client, response.AccessToken); // Pass the server address
                         this.Hide();
                         mainForm.ShowDialog();
                         if (!Shared.IsExiting)
                         {
                             this.Show();
+                        }
+                        else
+                        {
+                            Application.Exit();
                         }
                     }
                     else

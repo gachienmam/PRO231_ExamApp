@@ -2,6 +2,7 @@ using ExamServer.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.IdentityModel.Tokens;
+using System.Net;
 using System.Text;
 
 internal class Program
@@ -28,9 +29,9 @@ internal class Program
 
         builder.WebHost.ConfigureKestrel(options =>
         {
-            options.ListenLocalhost(5000, listenOptions =>
+            options.Listen(IPAddress.Any, builder.Configuration.GetValue<int>("ExamGrpcServer:Port", 50051), listenOptions =>
             {
-                listenOptions.Protocols = HttpProtocols.Http2; // Force HTTP/2
+                listenOptions.Protocols = HttpProtocols.Http2;
             });
         });
 

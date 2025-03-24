@@ -33,14 +33,14 @@
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBoxMKEmail = new ReaLTaiizor.Controls.CrownTextBox();
-            TEXTBOXEMAIL = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMatKhauEmail = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxEmail = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
-            BUTTONDANGNHAP = new ReaLTaiizor.Controls.CrownButton();
+            btnDangNhap = new ReaLTaiizor.Controls.CrownButton();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            TEXTBOXMATKHAUDE = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMatKhauDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            TEXTBOXMADE = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMaDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
@@ -87,14 +87,14 @@
             // 
             crownSectionPanel2.Controls.Add(crownTitle6);
             crownSectionPanel2.Controls.Add(crownTitle5);
-            crownSectionPanel2.Controls.Add(crownTextBoxMKEmail);
-            crownSectionPanel2.Controls.Add(TEXTBOXEMAIL);
+            crownSectionPanel2.Controls.Add(textBoxMatKhauEmail);
+            crownSectionPanel2.Controls.Add(textBoxEmail);
             crownSectionPanel2.Controls.Add(crownTitle4);
-            crownSectionPanel2.Controls.Add(BUTTONDANGNHAP);
+            crownSectionPanel2.Controls.Add(btnDangNhap);
             crownSectionPanel2.Controls.Add(crownTitle3);
-            crownSectionPanel2.Controls.Add(TEXTBOXMATKHAUDE);
+            crownSectionPanel2.Controls.Add(textBoxMatKhauDe);
             crownSectionPanel2.Controls.Add(crownTitle2);
-            crownSectionPanel2.Controls.Add(TEXTBOXMADE);
+            crownSectionPanel2.Controls.Add(textBoxMaDe);
             crownSectionPanel2.Controls.Add(crownTitle1);
             crownSectionPanel2.Dock = DockStyle.Fill;
             crownSectionPanel2.Location = new Point(400, 0);
@@ -124,52 +124,53 @@
             crownTitle5.TabIndex = 8;
             crownTitle5.Text = "Email:";
             // 
-            // crownTextBoxMKEmail
+            // textBoxMatKhauEmail
             // 
-            crownTextBoxMKEmail.Anchor = AnchorStyles.None;
-            crownTextBoxMKEmail.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBoxMKEmail.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBoxMKEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxMKEmail.Location = new Point(106, 335);
-            crownTextBoxMKEmail.Name = "crownTextBoxMKEmail";
-            crownTextBoxMKEmail.Size = new Size(193, 23);
-            crownTextBoxMKEmail.TabIndex = 7;
+            textBoxMatKhauEmail.Anchor = AnchorStyles.None;
+            textBoxMatKhauEmail.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMatKhauEmail.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMatKhauEmail.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMatKhauEmail.Location = new Point(106, 335);
+            textBoxMatKhauEmail.Name = "textBoxMatKhauEmail";
+            textBoxMatKhauEmail.Size = new Size(193, 23);
+            textBoxMatKhauEmail.TabIndex = 7;
             // 
-            // TEXTBOXEMAIL
+            // textBoxEmail
             // 
-            TEXTBOXEMAIL.Anchor = AnchorStyles.None;
-            TEXTBOXEMAIL.BackColor = Color.FromArgb(69, 73, 74);
-            TEXTBOXEMAIL.BorderStyle = BorderStyle.FixedSingle;
-            TEXTBOXEMAIL.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXEMAIL.Location = new Point(106, 276);
-            TEXTBOXEMAIL.Name = "TEXTBOXEMAIL";
-            TEXTBOXEMAIL.Size = new Size(193, 23);
-            TEXTBOXEMAIL.TabIndex = 6;
+            textBoxEmail.Anchor = AnchorStyles.None;
+            textBoxEmail.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxEmail.BorderStyle = BorderStyle.FixedSingle;
+            textBoxEmail.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxEmail.Location = new Point(106, 276);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(193, 23);
+            textBoxEmail.TabIndex = 6;
             // 
             // crownTitle4
             // 
             crownTitle4.Anchor = AnchorStyles.None;
             crownTitle4.AutoSize = true;
             crownTitle4.Font = new Font("Segoe UI Semilight", 8.2F);
-            crownTitle4.Location = new Point(123, 96);
-            crownTitle4.MinimumSize = new Size(163, 15);
+            crownTitle4.Location = new Point(138, 93);
+            crownTitle4.MinimumSize = new Size(0, 16);
             crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(163, 15);
+            crownTitle4.Size = new Size(134, 16);
             crownTitle4.TabIndex = 5;
             crownTitle4.Text = "Hãy điền thông tin của bạn";
             // 
-            // BUTTONDANGNHAP
+            // btnDangNhap
             // 
-            BUTTONDANGNHAP.Anchor = AnchorStyles.None;
-            BUTTONDANGNHAP.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
-            BUTTONDANGNHAP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            BUTTONDANGNHAP.ImagePadding = 6;
-            BUTTONDANGNHAP.Location = new Point(157, 381);
-            BUTTONDANGNHAP.Name = "BUTTONDANGNHAP";
-            BUTTONDANGNHAP.Padding = new Padding(5);
-            BUTTONDANGNHAP.Size = new Size(98, 38);
-            BUTTONDANGNHAP.TabIndex = 0;
-            BUTTONDANGNHAP.Text = "Đăng nhập";
+            btnDangNhap.Anchor = AnchorStyles.None;
+            btnDangNhap.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            btnDangNhap.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDangNhap.ImagePadding = 6;
+            btnDangNhap.Location = new Point(153, 369);
+            btnDangNhap.Name = "btnDangNhap";
+            btnDangNhap.Padding = new Padding(5);
+            btnDangNhap.Size = new Size(98, 38);
+            btnDangNhap.TabIndex = 0;
+            btnDangNhap.Text = "Đăng nhập";
+            btnDangNhap.Click += btnDangNhap_Click;
             // 
             // crownTitle3
             // 
@@ -180,18 +181,17 @@
             crownTitle3.Size = new Size(76, 15);
             crownTitle3.TabIndex = 4;
             crownTitle3.Text = "Mật khẩu đề:";
-            crownTitle3.Click += crownTitle3_Click;
             // 
-            // TEXTBOXMATKHAUDE
+            // textBoxMatKhauDe
             // 
-            TEXTBOXMATKHAUDE.Anchor = AnchorStyles.None;
-            TEXTBOXMATKHAUDE.BackColor = Color.FromArgb(69, 73, 74);
-            TEXTBOXMATKHAUDE.BorderStyle = BorderStyle.FixedSingle;
-            TEXTBOXMATKHAUDE.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMATKHAUDE.Location = new Point(106, 214);
-            TEXTBOXMATKHAUDE.Name = "TEXTBOXMATKHAUDE";
-            TEXTBOXMATKHAUDE.Size = new Size(193, 23);
-            TEXTBOXMATKHAUDE.TabIndex = 3;
+            textBoxMatKhauDe.Anchor = AnchorStyles.None;
+            textBoxMatKhauDe.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMatKhauDe.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMatKhauDe.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMatKhauDe.Location = new Point(106, 214);
+            textBoxMatKhauDe.Name = "textBoxMatKhauDe";
+            textBoxMatKhauDe.Size = new Size(193, 23);
+            textBoxMatKhauDe.TabIndex = 3;
             // 
             // crownTitle2
             // 
@@ -203,16 +203,16 @@
             crownTitle2.TabIndex = 2;
             crownTitle2.Text = "Mã đề:";
             // 
-            // TEXTBOXMADE
+            // textBoxMaDe
             // 
-            TEXTBOXMADE.Anchor = AnchorStyles.None;
-            TEXTBOXMADE.BackColor = Color.FromArgb(69, 73, 74);
-            TEXTBOXMADE.BorderStyle = BorderStyle.FixedSingle;
-            TEXTBOXMADE.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMADE.Location = new Point(106, 151);
-            TEXTBOXMADE.Name = "TEXTBOXMADE";
-            TEXTBOXMADE.Size = new Size(193, 23);
-            TEXTBOXMADE.TabIndex = 1;
+            textBoxMaDe.Anchor = AnchorStyles.None;
+            textBoxMaDe.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMaDe.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMaDe.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMaDe.Location = new Point(106, 151);
+            textBoxMaDe.Name = "textBoxMaDe";
+            textBoxMaDe.Size = new Size(193, 23);
+            textBoxMaDe.TabIndex = 1;
             // 
             // crownTitle1
             // 
@@ -224,7 +224,6 @@
             crownTitle1.Size = new Size(185, 32);
             crownTitle1.TabIndex = 0;
             crownTitle1.Text = "Thi trắc nghiệm";
-            crownTitle1.Click += crownTitle1_Click;
             // 
             // DangNhapForm
             // 
@@ -244,16 +243,16 @@
 
         private TableLayoutPanel layoutPanel;
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel2;
-        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMADE;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMaDe;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMATKHAUDE;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMatKhauDe;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
-        private ReaLTaiizor.Controls.CrownButton BUTTONDANGNHAP;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxMKEmail;
-        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXEMAIL;
+        private ReaLTaiizor.Controls.CrownButton btnDangNhap;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMatKhauEmail;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxEmail;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
     }

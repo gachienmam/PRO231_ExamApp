@@ -16,6 +16,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ExamProto;
+using ExamServer.Database;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 
 namespace ExamServer.Services
 {
@@ -25,28 +28,46 @@ namespace ExamServer.Services
         //private readonly ILogger<UserExamServiceImpl> _logger;
         // Thay bằng BUS
         //private readonly ExamDbContext _dbContext; // Assuming EF Core for SQL Server
-        private Database.BUS.DeThi _busDeThi = new Database.BUS.DeThi();
-        private PolyTestJWT _jwtService;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<AdminServiceImpl> _logger;
 
-        public ExamServiceImpl(IMemoryCache cache/*, ExamDbContext dbContext*/)
+        // Cho phần mềm quản lý kết nối vô để xử lý SQL trực tiếp
+        private DatabaseHelper _databaseHelper;
+
+        // Cho server
+        private Database.BUS.DeThi _busDeThi;
+        private Database.BUS.NguoiDung _busNguoiDung;
+        private PolyTestJWT _jwtHelper;
+
+        public ExamServiceImpl(IConfiguration configuration, ILogger<AdminServiceImpl> logger, IMemoryCache cache)
         {
+            _configuration = configuration;
+            _logger = logger;
             _cache = cache;
-            //_dbContext = dbContext;
+
+            _databaseHelper = new DatabaseHelper(_configuration.GetConnectionString("ExamDatabase") ?? "");
+            _busDeThi = new Database.BUS.DeThi(new Database.DAL.DeThi(_databaseHelper));
+            _busNguoiDung = new Database.BUS.NguoiDung(new Database.DAL.NguoiDung(_databaseHelper));
+
+            _jwtHelper = new PolyTestJWT(_configuration);
         }
 
         public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
         {
-            // Validate user (simplified example)
-            //var user = await _dbContext.Users
-            //    .FirstOrDefaultAsync(u => u.Username == request.Username && u.Password == request.Password);
-
-            if (request.Username == null)
+            if (request.Email == null || request.Password == null)
+            {
+                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+            }
+            var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
+            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.NguoiDung>());
+            if (user == null)
             {
                 return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
             }
 
-            string token = _jwtService.GenerateJwtToken(user); // Implement token generation
-            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token};
+            string token = _jwtHelper.GenerateJwtToken(user.Email, user); // Implement token generation
+            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
+            //return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = ""};
         }
 
         [Authorize]
@@ -57,20 +78,23 @@ namespace ExamServer.Services
             if (!_cache.TryGetValue(cacheKey, out ExamData examData))
             {
                 // Load from database if not in cache
-                var exam = await _busDeThi.GetDeThiFromID().FindAsync(request.ExamId);
-                if (exam == null)
-                {
-                    return new ExamData { ResponseCode = 404 }; // Not Found
-                }
+                var examDataTable = await Task.Run(() => _busDeThi.GetDeThiFromMaDe(request.ExamId));
 
-                examData = new ExamData
-                {
-                    ResponseCode = (int)HttpStatusCode.OK,
-                    ExamPaper = ByteString.CopyFrom(exam.PaperData),
-                    //ExamForm = ByteString.CopyFrom(exam.FormData),
-                    //ExamFormSize = exam.FormData.Length,
-                    ServerInformation = ByteString.CopyFromUtf8("PolyTestExamServer_14032025")
-                };
+                // Load DeThi.ViTriFileDe from excel into usable type to return to client
+                //
+                //if (exam == null)
+                //{
+                //    return new ExamData { ResponseCode = 404 }; // Not Found
+                //}
+
+                //examData = new ExamData
+                //{
+                //    ResponseCode = (int)HttpStatusCode.OK,
+                //    ExamPaper = ByteString.CopyFrom(exam.),
+                //    //ExamForm = ByteString.CopyFrom(exam.FormData),
+                //    //ExamFormSize = exam.FormData.Length,
+                //    ServerInformation = ByteString.CopyFromUtf8("PolyTestExamServer_14032025")
+                //};
 
                 // Store in cache for 10 minutes
                 _cache.Set(cacheKey, examData, TimeSpan.FromMinutes(10));

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace ExamServer.Database.BUS
             _DAL_deThi = deThi;
         }
 
-        public ExamLibrary.Question.Paper GetDeThiFromID()
+        public DataTable GetDeThiFromMaDe(string MaDe)
         {
             return null;
         }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExamServer.Database.DTO;
 
 namespace ExamServer.Database.DAL
 {
@@ -17,15 +18,106 @@ namespace ExamServer.Database.DAL
             _dbHelper = dbHelper;
         }
 
-        public DataTable GetUserByUsername(string username)
+        public DataTable GetUserByUsername(string studenId)
         {
             string query = "SELECT * FROM ThiSinh WHERE MaThiSing = @MaThiSing";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@MaThiSing", username)
+                new SqlParameter("@MaThiSing", studenId)
             };
 
             return _dbHelper.ExecuteQuery(query, parameters);
         }
+        public bool DeleteThiSinh(string maThiSinh)
+        {
+            string query = "EXEC sp_DeleteThiSinh @MaThiSinh";
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@MaThiSinh", maThiSinh)
+                };
+
+                _dbHelper.ExecuteNonQuery(query, parameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi xóa thí sinh: {ex.Message}");
+                return false;
+            }
+        }
+        public bool InsertThiSinh(string maThiSinh, string hoTen, string email, string matKhau, DateTime ngaySinh, string soDienThoai, int trangThai)
+        {
+            string query = "EXEC sp_InsertThiSinh @MaThiSinh, @HoTen, @Email, @MatKhau, @NgaySinh, @SoDienThoai, @TrangThai";
+
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@MaThiSinh", maThiSinh),
+                    new SqlParameter("@HoTen", hoTen),
+                    new SqlParameter("@Email", email),
+                    new SqlParameter("@MatKhau", matKhau),
+                    new SqlParameter("@NgaySinh", ngaySinh),
+                    new SqlParameter("@SoDienThoai", soDienThoai),
+                    new SqlParameter("@TrangThai", trangThai)
+                };
+
+                _dbHelper.ExecuteNonQuery(query, parameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi thêm thí sinh: {ex.Message}");
+                return false;
+            }
+        }
+        public bool UpdateThiSinh(string maThiSinh, string hoTen, string email, string matKhau, DateTime ngaySinh, string soDienThoai, int trangThai)
+        {
+            string query = "EXEC sp_UpdateThiSinh @MaThiSinh, @HoTen, @Email, @MatKhau, @NgaySinh, @SoDienThoai, @TrangThai";
+
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@MaThiSinh", maThiSinh),
+                    new SqlParameter("@HoTen", hoTen),
+                    new SqlParameter("@Email", email),
+                    new SqlParameter("@MatKhau", matKhau),
+                    new SqlParameter("@NgaySinh", ngaySinh),
+                    new SqlParameter("@SoDienThoai", soDienThoai),
+                    new SqlParameter("@TrangThai", trangThai)
+                };
+
+                _dbHelper.ExecuteNonQuery(query, parameters);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi cập nhật thí sinh: {ex.Message}");
+                return false;
+            }
+        }
+        public DataTable GetDanhSachThiSinh(int trangThai)
+        {
+            string query = "EXEC sp_DanhSachThiSinh @TrangThai";
+
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@TrangThai", trangThai)
+                };
+
+                return _dbHelper.ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi lấy danh sách thí sinh: {ex.Message}");
+                return null;
+            }
+        }
+
     }
 }

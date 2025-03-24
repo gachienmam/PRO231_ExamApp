@@ -16,6 +16,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AdminProto;
+using ExamServer.Database;
+using Newtonsoft.Json.Linq;
+using ExamServer.Database.DTO;
 
 namespace ExamServer.Services
 {
@@ -24,41 +27,46 @@ namespace ExamServer.Services
         #region Constructor
         private readonly string _uploadPath = "ExamPapers/";
 
+        private readonly IConfiguration _configuration;
         private readonly ILogger<AdminServiceImpl> _logger;
 
         // Cho phần mềm quản lý kết nối vô để xử lý SQL trực tiếp
-        private Database.DAL.DatabaseHelper _databaseHelper;
+        private DatabaseHelper _databaseHelper;
 
         // Cho server
         private Database.BUS.DeThi _busDeThi;
         private Database.BUS.NguoiDung _busNguoiDung;
         private PolyTestJWT _jwtHelper;
 
-        public AdminServiceImpl(ILogger<AdminServiceImpl> logger, Database.BUS.DeThi _BUS_DeThi, Database.BUS.NguoiDung _BUS_NguoiDung)
+        public AdminServiceImpl(IConfiguration configuration, ILogger<AdminServiceImpl> logger)
         {
+            _configuration = configuration;
             _logger = logger;
-            _busDeThi = _BUS_DeThi;
-            _busNguoiDung = _BUS_NguoiDung;
-            //_dbContext = dbContext;
+
+            _databaseHelper = new DatabaseHelper(_configuration.GetConnectionString("ExamDatabase") ?? "");
+            _busDeThi = new Database.BUS.DeThi(new Database.DAL.DeThi(_databaseHelper));
+            _busNguoiDung = new Database.BUS.NguoiDung(new Database.DAL.NguoiDung(_databaseHelper));
+
+            _jwtHelper = new PolyTestJWT(_configuration);
         }
         #endregion
 
         public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
         {
-            // Validate user (simplified example)
-            /*
-            var user = await _busDeThi.
-                .FirstOrDefaultAsync(u => u.Username == request.Username && u.Password == request.Password);
-
-            if (request.Username == null)
+            if (request.Email == null)
             {
-                return new AdminService.AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
             }
-            */
-            //string token = _jwtHelper.GenerateJwtToken(request.Username, user.VaiTro); // Implement token generation
+            var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
+            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.NguoiDung>());
+            if (user == null)
+            {
+                return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
+            }
 
-            return new AuthResponse { ResponseCode = 200, ResponseMessage = "", AccessToken = "" };
-            //return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
+            string token = _jwtHelper.GenerateJwtToken(request.Email, user); // Implement token generation
+
+            return new AuthResponse { ResponseCode = 200, ResponseMessage = "Success", AccessToken = token };
         }
 
         [Authorize]
@@ -110,8 +118,7 @@ namespace ExamServer.Services
             {
                 try
                 {
-                    string json = _databaseHelper.ExecuteRawSqlQuery(request.Command);
-                    await Task.Delay(1000);
+                    string json = await Task.Run(() => _databaseHelper.ExecuteRawSqlQuery(request.Command));
                     return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = json };
                 }
                 catch (Exception ex)

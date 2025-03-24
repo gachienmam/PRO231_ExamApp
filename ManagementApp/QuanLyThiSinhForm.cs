@@ -192,8 +192,8 @@ namespace ManagementApp
             }
             else
             {
-                if ()
-                { }
+                //if ()
+                //{ }
                 // Tạo DTo
                 //d nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang); // Vì ID tự tăng nên để ID số gì cũng dc
                 //if (busNhanVien.insertNhanVien(nv))
@@ -204,10 +204,10 @@ namespace ManagementApp
                 //    email = txtEmail.Text;
                 //    SendMail(nv.EmailNV);
                 //}
-                else
-                {
-                    MessageBox.Show("Thêm không thành công");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Thêm không thành công");
+                //}
             }
         }
 
@@ -297,9 +297,9 @@ namespace ManagementApp
             }
             else
             {
-                if ()
-                { }
-                // Tạo DTo
+                //if ()
+                //{ }
+                //Tạo DTo
                 //d nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang); // Vì ID tự tăng nên để ID số gì cũng dc
                 //if (busNhanVien.insertNhanVien(nv))
                 //{
@@ -309,10 +309,10 @@ namespace ManagementApp
                 //    email = txtEmail.Text;
                 //    SendMail(nv.EmailNV);
                 //}
-                else
-                {
-                    MessageBox.Show("Sửa không thành công");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Sửa không thành công");
+                //}
             }
         }
 
@@ -324,7 +324,8 @@ namespace ManagementApp
         private void buttonTimKiemTS_Click(object sender, EventArgs e)
         {
             string soDT = textBoxTimKiem.Text;
-            DataTable ds = busKhach.SearchKhach(soDT);
+            //DataTable ds = busKhach.SearchKhach(soDT);
+            DataTable ds = new DataTable();
             if (ds.Rows.Count > 0)
             {
                 dataGridViewTS.DataSource = ds;

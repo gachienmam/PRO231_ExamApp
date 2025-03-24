@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Xml.Linq;
 using System.Text;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Configuration;
 
 /*
  * EOS - Exam Server

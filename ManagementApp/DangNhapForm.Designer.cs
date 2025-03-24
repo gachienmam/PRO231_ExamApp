@@ -185,6 +185,7 @@
             Controls.Add(layoutPanel);
             Name = "DangNhapForm";
             Text = "PolyTest Manager - Đăng nhập";
+            Load += DangNhapForm_Load;
             layoutPanel.ResumeLayout(false);
             crownSectionPanel2.ResumeLayout(false);
             crownSectionPanel2.PerformLayout();

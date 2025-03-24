@@ -5,7 +5,8 @@ using ReaLTaiizor.Docking.Crown;
 using ReaLTaiizor.Native;
 using System.Configuration;
 using System.Windows.Forms;
-using static ExamServer.AdminService;
+using System.Xml.Linq;
+//using static ExamServer.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
 
 namespace ManagementApp
@@ -27,7 +28,7 @@ namespace ManagementApp
         private readonly string DefaultFormText = "PolyTest Manager";
 
         // Lưu trữ thông tin máy chủ
-        private readonly AdminServiceClient _client;
+        //private readonly AdminServiceClient _client;
         private readonly string _serverAddress;
         private readonly string _accessToken;
 
@@ -54,7 +55,7 @@ namespace ManagementApp
             _serverAddress = serverAddress;
             _accessToken = accessToken;
             var channel = GrpcChannel.ForAddress(_serverAddress);
-            _client = new AdminServiceClient(channel);
+            //_client = new AdminServiceClient(channel);
 
             // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
             Application.AddMessageFilter(new ControlScrollFilter());
@@ -65,17 +66,16 @@ namespace ManagementApp
             this.Text = DefaultFormText;
             if (ConfigurationManager.AppSettings["AppTheme"] == "light")
             {
-                themeToggleToolStripMenuItem.Checked = false;
+                themeToggleToolStripMenuItem.Checked = true;
                 // Checked => Light, Unchecked => Dark
                 ChangeTheme(themeToggleToolStripMenuItem.Checked);
             }
             else
             {
-                themeToggleToolStripMenuItem.Checked = true;
+                themeToggleToolStripMenuItem.Checked = false;
                 // Checked => Light, Unchecked => Dark
                 ChangeTheme(themeToggleToolStripMenuItem.Checked);
             }
-
         }
         #endregion
 
@@ -112,18 +112,9 @@ namespace ManagementApp
 
         private void themeToggleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            themeToggleToolStripMenuItem.Checked = !themeToggleToolStripMenuItem.Checked;
             // Checked => Light, Unchecked => Dark
+            themeToggleToolStripMenuItem.Checked = !themeToggleToolStripMenuItem.Checked;
             ChangeTheme(themeToggleToolStripMenuItem.Checked);
-            if (themeToggleToolStripMenuItem.Checked)
-            {
-                ConfigurationManager.AppSettings["AppTheme"] = "light";
-            }
-            else
-            {
-                ConfigurationManager.AppSettings["AppTheme"] = "dark";
-            }
-            MessageBox.Show(ConfigurationManager.AppSettings["AppTheme"]);
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,44 +136,33 @@ namespace ManagementApp
         #region Functions
         private void ChangeTheme(bool isChangingToLightTheme)
         {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             if (isChangingToLightTheme)
             {
                 // Checking
                 ThemeProvider.Theme = new LightTheme();
-                BackColor = ThemeProvider.Theme.Colors.GreyBackground;
-
-                foreach (ToolStripMenuItem Control in mainMenuStrip.Items)
-                {
-                    Control.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
-                    foreach (ToolStripMenuItem childControl in Control.DropDownItems)
-                    {
-                        childControl.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
-                    }
-                }
                 themeToggleToolStripMenuItem.Text = "Chế độ sáng";
-
-                Invalidate();
-                Refresh();
+                config.AppSettings.Settings["AppTheme"].Value = "light";
             }
             else
             {
                 // Unchecking
                 ThemeProvider.Theme = new DarkTheme();
-                BackColor = ThemeProvider.Theme.Colors.GreyBackground;
-
-                foreach (ToolStripMenuItem Control in mainMenuStrip.Items)
-                {
-                    Control.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
-                    foreach (ToolStripMenuItem childControl in Control.DropDownItems)
-                    {
-                        childControl.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
-                    }
-                }
                 themeToggleToolStripMenuItem.Text = "Chế độ tối";
-
-                Invalidate();
-                Refresh();
+                config.AppSettings.Settings["AppTheme"].Value = "dark";
             }
+            config.Save(ConfigurationSaveMode.Modified);
+            this.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
+            foreach (ToolStripMenuItem Control in mainMenuStrip.Items)
+            {
+                Control.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
+                foreach (ToolStripMenuItem childControl in Control.DropDownItems)
+                {
+                    childControl.BackColor = ThemeProvider.Theme.Colors.GreyBackground;
+                }
+            }
+            Invalidate();
+            Refresh();
         }
 
         private void ClearAllCheckedAndChangeToForm(Form form, ToolStripMenuItem itemToBeChecked)

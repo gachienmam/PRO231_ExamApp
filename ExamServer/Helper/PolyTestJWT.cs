@@ -22,7 +22,7 @@ namespace ExamServer.Helper
             Configuration = configuration;
         }
 
-        public string GenerateJwtToken(NguoiDung user)
+        public string GenerateJwtToken(string email, NguoiDung user)
         {
             var claims = new[]
             {

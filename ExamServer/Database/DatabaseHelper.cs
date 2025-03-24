@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace ExamServer.Database.DAL
+namespace ExamServer.Database
 {
     public class DatabaseHelper
     {

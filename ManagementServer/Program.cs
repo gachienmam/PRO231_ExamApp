@@ -1,4 +1,4 @@
-using ExamServer.Services;
+using ManagementServer.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.IdentityModel.Tokens;
@@ -28,7 +28,7 @@ internal class Program
 
         builder.WebHost.ConfigureKestrel(options =>
         {
-            options.ListenLocalhost(5000, listenOptions =>
+            options.ListenLocalhost(5001, listenOptions =>
             {
                 listenOptions.Protocols = HttpProtocols.Http2; // Force HTTP/2
             });
@@ -45,8 +45,8 @@ internal class Program
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.MapGrpcService<ExamServer.Services.ExamServiceImpl>();
-        app.MapGet("/", () => "PolyTest Examination Server");
+        app.MapGrpcService<ManagementServer.Services.AdminServiceImpl>();
+        app.MapGet("/", () => "PolyTest Management Server");
 
         //app.UseEndpoints(endpoints =>
         //{

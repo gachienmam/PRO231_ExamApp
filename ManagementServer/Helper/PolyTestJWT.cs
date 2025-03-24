@@ -1,11 +1,11 @@
-﻿using ExamServer.Database.DTO;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Microsoft.IdentityModel.Tokens;
+using ServerDatabaseLibrary.Database.DTO;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace ExamServer.Helper
+namespace ManagementServer.Helper
 {
     internal class PolyTestJWT
     {

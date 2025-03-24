@@ -5,7 +5,7 @@ import "google/protobuf/timestamp.proto";
 option csharp_namespace = "AdminProto";
 
 service AdminService {
-    rpc AuthenticateUser (AuthRequest) returns (AuthResponse);
+    rpc AdminAuthenticateUser (AuthRequest) returns (AuthResponse);
     rpc UploadExamPaper (stream UploadExamFileChunk) returns (UploadResponse);
     rpc ExecuteRemoteCommand (CommandRequest) returns (CommandResponse);
 }

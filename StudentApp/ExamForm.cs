@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExamProto;
+using ReaLTaiizor.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,37 +18,51 @@ namespace StudentApp
         [DllImport("user32.dll")]
         public static extern uint SetWindowDisplayAffinity(IntPtr hwnd, uint dwAffinity);
 
-        public ExamForm()
+        // Dữ liệu thi
+        private ExamData _data;
+
+        // Kết nối máy chủ ExamServer
+        private readonly ExamService.ExamServiceClient _client;
+        private string _accessToken;
+
+        // Kiểm tra người dùng đã hoàn thành bài thi hay chưa (cho nút Finish)
+        private bool _userFinishedExam;
+
+        public ExamForm(ExamService.ExamServiceClient client, string accessToken, ExamData data)
         {
             InitializeComponent();
+            // MONKE Anticheat: Giấu cửa sổ thi khỏi phần mềm quay fim
+            ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
+
+            _client = client;
+            _accessToken = accessToken;
+            _data = data;
         }
 
         private void ExamForm_Load(object sender, EventArgs e)
         {
-            ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hoàn thành bài thi?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Close(); // Đóng ExamForm
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có muốn thoát ứng dụng không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit(); // Thoát toàn bộ ứng dụng
-            }
         }
 
         private void crownButtonFinish_Click(object sender, EventArgs e)
         {
-            crownGroupBoxCauHoi.Hide();
+            if(_userFinishedExam)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                DialogResult result = CrownMessageBox.ShowInformation("Bạn có chắc chắn muốn hoàn thành bài thi?", "Xác nhận", ReaLTaiizor.Enum.Crown.DialogButton.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    panel1.Hide();
+                    _userFinishedExam = true;
+                }
+            }
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

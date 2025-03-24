@@ -1,28 +1,16 @@
-﻿using ExamLibrary.Enum;
-using ExamServer.Helper;
-using Google.Protobuf;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using AdminProto;
-using ExamServer.Database;
 using Newtonsoft.Json.Linq;
-using ExamServer.Database.DTO;
+using ExamLibrary.Enum;
+using ManagementServer.Helper;
+using ServerDatabaseLibrary;
+using ServerDatabaseLibrary.Database;
 
-namespace ExamServer.Services
+namespace ManagementServer.Services
 {
-    internal class AdminServiceImpl
+    public class AdminServiceImpl
     {
         #region Constructor
         private readonly string _uploadPath = "ExamPapers/";
@@ -34,8 +22,7 @@ namespace ExamServer.Services
         private DatabaseHelper _databaseHelper;
 
         // Cho server
-        private Database.BUS.DeThi _busDeThi;
-        private Database.BUS.NguoiDung _busNguoiDung;
+        private ServerDatabaseLibrary.Database.BUS.NguoiDung _busNguoiDung;
         private PolyTestJWT _jwtHelper;
 
         public AdminServiceImpl(IConfiguration configuration, ILogger<AdminServiceImpl> logger)
@@ -44,21 +31,20 @@ namespace ExamServer.Services
             _logger = logger;
 
             _databaseHelper = new DatabaseHelper(_configuration.GetConnectionString("ExamDatabase") ?? "");
-            _busDeThi = new Database.BUS.DeThi(new Database.DAL.DeThi(_databaseHelper));
-            _busNguoiDung = new Database.BUS.NguoiDung(new Database.DAL.NguoiDung(_databaseHelper));
+            _busNguoiDung = new ServerDatabaseLibrary.Database.BUS.NguoiDung(new ServerDatabaseLibrary.Database.DAL.NguoiDung(_databaseHelper));
 
             _jwtHelper = new PolyTestJWT(_configuration);
         }
         #endregion
 
-        public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
+        public async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
             if (request.Email == null)
             {
                 return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };
             }
             var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
-            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.NguoiDung>());
+            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
             if (user == null)
             {
                 return new AuthResponse { ResponseCode = 401, ResponseMessage = "Invalid credentials" };

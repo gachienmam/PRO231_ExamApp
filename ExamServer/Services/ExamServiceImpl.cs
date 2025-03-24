@@ -1,5 +1,4 @@
-﻿using ExamLibrary.Enum;
-using ExamServer.Helper;
+﻿using ExamServer.Helper;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
@@ -29,7 +28,7 @@ namespace ExamServer.Services
         // Thay bằng BUS
         //private readonly ExamDbContext _dbContext; // Assuming EF Core for SQL Server
         private readonly IConfiguration _configuration;
-        private readonly ILogger<AdminServiceImpl> _logger;
+        private readonly ILogger<ExamServiceImpl> _logger;
 
         // Cho phần mềm quản lý kết nối vô để xử lý SQL trực tiếp
         private DatabaseHelper _databaseHelper;
@@ -39,7 +38,7 @@ namespace ExamServer.Services
         private Database.BUS.NguoiDung _busNguoiDung;
         private PolyTestJWT _jwtHelper;
 
-        public ExamServiceImpl(IConfiguration configuration, ILogger<AdminServiceImpl> logger, IMemoryCache cache)
+        public ExamServiceImpl(IConfiguration configuration, ILogger<ExamServiceImpl> logger, IMemoryCache cache)
         {
             _configuration = configuration;
             _logger = logger;
@@ -52,7 +51,7 @@ namespace ExamServer.Services
             _jwtHelper = new PolyTestJWT(_configuration);
         }
 
-        public async Task<AuthResponse> AuthenticateUser(AuthRequest request, ServerCallContext context)
+        public async Task<AuthResponse> ExamAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
             if (request.Email == null || request.Password == null)
             {

@@ -321,23 +321,23 @@ namespace ManagementApp
         private void crownButtonTimKiem_Click(object sender, EventArgs e)
         {
             string Email = textBoxTimKiem.Text;
-            DataTable ds = busKhach.SearchKhach(Email);
-            if (ds.Rows.Count > 0)
-            {
-                dataGridViewTS.DataSource = ds;
-                dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
-                dataGridViewTS.Columns[1].HeaderText = "Họ và tên";
-                dataGridViewTS.Columns[2].HeaderText = "Email";
-                dataGridViewTS.Columns[3].HeaderText = "Mật khẩu";
-                dataGridViewTS.Columns[4].HeaderText = "Ngày sinh";
-                dataGridViewTS.Columns[5].HeaderText = "Số điện Thoại";
-                dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy thí sinh nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxTimKiem.Focus();
-            }
+            //DataTable ds = busKhach.SearchKhach(Email);
+            //if (ds.Rows.Count > 0)
+            //{
+            //    dataGridViewTS.DataSource = ds;
+            //    dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
+            //    dataGridViewTS.Columns[1].HeaderText = "Họ và tên";
+            //    dataGridViewTS.Columns[2].HeaderText = "Email";
+            //    dataGridViewTS.Columns[3].HeaderText = "Mật khẩu";
+            //    dataGridViewTS.Columns[4].HeaderText = "Ngày sinh";
+            //    dataGridViewTS.Columns[5].HeaderText = "Số điện Thoại";
+            //    dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Không tìm thấy thí sinh nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    textBoxTimKiem.Focus();
+            //}
             textBoxTimKiem.Text = "Nhập Email thí sinh";
             textBoxTimKiem.BackColor = Color.LightGray;
             ResetValues();

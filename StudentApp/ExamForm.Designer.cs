@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             panel1 = new Panel();
+            panelCauHoiHienTai = new ReaLTaiizor.Controls.CrownSectionPanel();
+            labelQuestion = new ReaLTaiizor.Controls.CrownTitle();
             panelChonDapAn = new ReaLTaiizor.Controls.CrownSectionPanel();
             checkBoxDapAnD = new ReaLTaiizor.Controls.CrownCheckBox();
             checkBoxDapAnC = new ReaLTaiizor.Controls.CrownCheckBox();
             checkBoxDapAnB = new ReaLTaiizor.Controls.CrownCheckBox();
             checkBoxDapAnA = new ReaLTaiizor.Controls.CrownCheckBox();
             buttonNext = new ReaLTaiizor.Controls.CrownButton();
-            panelCauHoiHienTai = new ReaLTaiizor.Controls.CrownSectionPanel();
-            labelQuestion = new ReaLTaiizor.Controls.CrownTitle();
             panelDanhSachCauHoi = new ReaLTaiizor.Controls.CrownSectionPanel();
             checkBoxConfirmFinish = new ReaLTaiizor.Controls.CrownCheckBox();
             pictureAnhDeThi = new PictureBox();
@@ -52,11 +53,10 @@
             buttonFinish = new ReaLTaiizor.Controls.CrownButton();
             textBoxMachine = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitleMachine = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             crownSectionPanel1.SuspendLayout();
             panel1.SuspendLayout();
-            panelChonDapAn.SuspendLayout();
             panelCauHoiHienTai.SuspendLayout();
+            panelChonDapAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).BeginInit();
             SuspendLayout();
             // 
@@ -85,6 +85,16 @@
             crownSectionPanel1.Size = new Size(868, 591);
             crownSectionPanel1.TabIndex = 0;
             // 
+            // crownTitle2
+            // 
+            crownTitle2.AutoSize = true;
+            crownTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle2.Location = new Point(12, 201);
+            crownTitle2.Name = "crownTitle2";
+            crownTitle2.Size = new Size(438, 21);
+            crownTitle2.TabIndex = 62;
+            crownTitle2.Text = "Bài của bạn chưa được lưu, xin hãy báo giám thị và tiếp tục thi.";
+            // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -95,6 +105,29 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(844, 325);
             panel1.TabIndex = 20;
+            // 
+            // panelCauHoiHienTai
+            // 
+            panelCauHoiHienTai.AutoScroll = true;
+            panelCauHoiHienTai.Controls.Add(labelQuestion);
+            panelCauHoiHienTai.Dock = DockStyle.Fill;
+            panelCauHoiHienTai.Font = new Font("Segoe UI", 9F);
+            panelCauHoiHienTai.Location = new Point(119, 0);
+            panelCauHoiHienTai.Name = "panelCauHoiHienTai";
+            panelCauHoiHienTai.SectionHeader = "Câu hỏi (1/20)";
+            panelCauHoiHienTai.Size = new Size(725, 244);
+            panelCauHoiHienTai.TabIndex = 68;
+            // 
+            // labelQuestion
+            // 
+            labelQuestion.AutoSize = true;
+            labelQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelQuestion.Location = new Point(23, 45);
+            labelQuestion.MinimumSize = new Size(0, 150);
+            labelQuestion.Name = "labelQuestion";
+            labelQuestion.Size = new Size(245, 150);
+            labelQuestion.TabIndex = 61;
+            labelQuestion.Text = "(Chỉ chọn 1 đáp án)\r\nVăn thành có bình thường không?\r\n\r\nA. Có\r\nB. Không\r\nC. No\r\nD. skibidi dop dop yes yes";
             // 
             // panelChonDapAn
             // 
@@ -164,29 +197,7 @@
             buttonNext.Size = new Size(75, 23);
             buttonNext.TabIndex = 63;
             buttonNext.Text = "Next";
-            // 
-            // panelCauHoiHienTai
-            // 
-            panelCauHoiHienTai.AutoScroll = true;
-            panelCauHoiHienTai.Controls.Add(labelQuestion);
-            panelCauHoiHienTai.Dock = DockStyle.Fill;
-            panelCauHoiHienTai.Font = new Font("Segoe UI", 9F);
-            panelCauHoiHienTai.Location = new Point(119, 0);
-            panelCauHoiHienTai.Name = "panelCauHoiHienTai";
-            panelCauHoiHienTai.SectionHeader = "Câu hỏi (1/20)";
-            panelCauHoiHienTai.Size = new Size(725, 244);
-            panelCauHoiHienTai.TabIndex = 68;
-            // 
-            // labelQuestion
-            // 
-            labelQuestion.AutoSize = true;
-            labelQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelQuestion.Location = new Point(23, 45);
-            labelQuestion.MinimumSize = new Size(0, 150);
-            labelQuestion.Name = "labelQuestion";
-            labelQuestion.Size = new Size(245, 150);
-            labelQuestion.TabIndex = 61;
-            labelQuestion.Text = "(Chỉ chọn 1 đáp án)\r\nVăn thành có bình thường không?\r\n\r\nA. Có\r\nB. Không\r\nC. No\r\nD. skibidi dop dop yes yes";
+            buttonNext.Click += buttonNext_Click;
             // 
             // panelDanhSachCauHoi
             // 
@@ -334,34 +345,29 @@
             crownTitleMachine.TabIndex = 1;
             crownTitleMachine.Text = "Machine:";
             // 
-            // crownTitle2
-            // 
-            crownTitle2.AutoSize = true;
-            crownTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle2.Location = new Point(12, 201);
-            crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(438, 21);
-            crownTitle2.TabIndex = 62;
-            crownTitle2.Text = "Bài của bạn chưa được lưu, xin hãy báo giám thị và tiếp tục thi.";
-            // 
             // ExamForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(868, 591);
             Controls.Add(crownSectionPanel1);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
             MinimumSize = new Size(800, 419);
             Name = "ExamForm";
             Text = "ExamForm";
+            TopMost = true;
+            WindowState = FormWindowState.Maximized;
             Load += ExamForm_Load;
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
             panel1.ResumeLayout(false);
-            panelChonDapAn.ResumeLayout(false);
-            panelChonDapAn.PerformLayout();
             panelCauHoiHienTai.ResumeLayout(false);
             panelCauHoiHienTai.PerformLayout();
+            panelChonDapAn.ResumeLayout(false);
+            panelChonDapAn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).EndInit();
             ResumeLayout(false);
         }

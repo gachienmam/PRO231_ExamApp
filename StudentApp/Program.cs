@@ -1,3 +1,5 @@
+using System.Configuration;
+
 namespace StudentApp
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace StudentApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ExamForm());
+            Application.Run(new DangNhapForm(ConfigurationManager.AppSettings["ServerAddress"] ?? "http://localhost:5000"));
         }
     }
 }

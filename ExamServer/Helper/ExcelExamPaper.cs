@@ -1,33 +1,40 @@
 ﻿using ExamLibrary;
 using ExamLibrary.Question;
+using MiniExcelLibs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClosedXML.Excel;
 
 namespace ExamServer.Helper
 {
     public class ExcelExamPaper
     {
-        private XLWorkbook _workbook;
-        
-        public ExcelExamPaper(XLWorkbook workbook)
-        {
-            _workbook = workbook;
-        }
+        //public static List<Dictionary<>> ReadExcelData(string filePath)
+        //{
+        //    return MiniExcel.Query(filePath).ToList();
+        //}
 
-        public Task<Paper> GetExam(string fileLocation)
+        public static void ProcessExcelData(List<Dictionary<string, object>> data)
         {
-            Paper paper = new Paper();
-            var InfoSheet = _workbook.Worksheet(1);
-            paper.ExamCode = InfoSheet.Cell("F4").GetValue<string>();
-            paper.Duration = InfoSheet.Cell("I4").GetValue<int>();
+            foreach (var row in data)
+            {
+                // Access data by column name (e.g., "Mã câu", "Câu hỏi", "A", "B", "C", "D", "Đáp án")
+                if (row.ContainsKey("Mã câu") && row.ContainsKey("Câu hỏi"))
+                {
+                    string questionId = row["Mã câu"].ToString();
+                    string question = row["Câu hỏi"].ToString();
+                    string optionA = row.ContainsKey("A") ? row["A"].ToString() : "";
+                    string optionB = row.ContainsKey("B") ? row["B"].ToString() : "";
+                    string optionC = row.ContainsKey("C") ? row["C"].ToString() : "";
+                    string optionD = row.ContainsKey("D") ? row["D"].ToString() : "";
+                    string answer = row.ContainsKey("Đáp án") ? row["Đáp án"].ToString() : "";
 
-            // Multiple choice
-            InfoSheet.Table("ModuleInfoTable");
-            return null;
+                    // Process the data (e.g., print to console, store in a database, etc.)
+                    Console.WriteLine($"Question ID: {questionId}, Question: {question}, Options: A={optionA}, B={optionB}, C={optionC}, D={optionD}, Answer: {answer}");
+                }
+            }
         }
     }
 }

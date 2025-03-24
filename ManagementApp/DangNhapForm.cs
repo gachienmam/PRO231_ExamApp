@@ -28,7 +28,7 @@ namespace ManagementApp
             handler.ServerCertificateCustomValidationCallback =
                 HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-            var channel = GrpcChannel.ForAddress("https://localhost:5001",
+            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:5000",
                 new GrpcChannelOptions { HttpHandler = handler });
             _client = new AdminServiceClient(channel);
         }
@@ -47,7 +47,7 @@ namespace ManagementApp
                 Invalidate();
                 Refresh();
             }
-            this.Text += _serverAddress;
+            this.Text += $" (Máy chủ: {_serverAddress})";
         }
         #endregion
 
@@ -61,7 +61,7 @@ namespace ManagementApp
                 try
                 {
                     var request = new AuthRequest { Email = email, Password = password };
-                    var response = _client.AuthenticateUser(request);
+                    var response = _client.AdminAuthenticateUser(request);
 
                     if (response.ResponseCode == (int)HttpStatusCode.OK)
                     {

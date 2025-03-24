@@ -13,7 +13,6 @@ namespace ExamLibrary.Question
             _examCode = string.Empty;
             _testName = string.Empty;
             _testImage = new byte[0];
-            _examCode = string.Empty;
             _listAudio = new List<Data.Audio>();
             _notes = string.Empty;
             _listenCode = string.Empty;

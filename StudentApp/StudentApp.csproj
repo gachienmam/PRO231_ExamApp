@@ -24,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protobuffer\ExamService.proto">
-      <GrpcServices>Client</GrpcServices>
-    </Protobuf>
+    <Protobuf Include="Protobuffer\ExamService.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

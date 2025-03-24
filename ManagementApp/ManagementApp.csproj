@@ -22,6 +22,7 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,12 +45,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protobuffer\AdminService.proto" GrpcServices="Client" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="App.config">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protobuffer\AdminService.proto" GrpcServices="Client" />
   </ItemGroup>
 </Project>

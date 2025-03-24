@@ -31,6 +31,7 @@
             layoutPanel = new TableLayoutPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            buttonSettings = new ReaLTaiizor.Controls.CrownButton();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
             textBoxMatKhauEmail = new ReaLTaiizor.Controls.CrownTextBox();
@@ -85,6 +86,7 @@
             // 
             // crownSectionPanel2
             // 
+            crownSectionPanel2.Controls.Add(buttonSettings);
             crownSectionPanel2.Controls.Add(crownTitle6);
             crownSectionPanel2.Controls.Add(crownTitle5);
             crownSectionPanel2.Controls.Add(textBoxMatKhauEmail);
@@ -103,6 +105,17 @@
             crownSectionPanel2.SectionHeader = "Đăng nhập";
             crownSectionPanel2.Size = new Size(400, 419);
             crownSectionPanel2.TabIndex = 2;
+            // 
+            // buttonSettings
+            // 
+            buttonSettings.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonSettings.Location = new Point(325, 396);
+            buttonSettings.Name = "buttonSettings";
+            buttonSettings.Padding = new Padding(5);
+            buttonSettings.Size = new Size(75, 23);
+            buttonSettings.TabIndex = 10;
+            buttonSettings.Text = "Cài đặt";
+            buttonSettings.Click += buttonSettings_Click;
             // 
             // crownTitle6
             // 
@@ -233,6 +246,7 @@
             Controls.Add(layoutPanel);
             Name = "DangNhapForm";
             Text = "PolyTest App - Đăng nhập";
+            Load += DangNhapForm_Load;
             layoutPanel.ResumeLayout(false);
             crownSectionPanel2.ResumeLayout(false);
             crownSectionPanel2.PerformLayout();
@@ -255,5 +269,6 @@
         private ReaLTaiizor.Controls.CrownTextBox textBoxEmail;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
+        private ReaLTaiizor.Controls.CrownButton buttonSettings;
     }
 }

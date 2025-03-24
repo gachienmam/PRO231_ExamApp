@@ -4,12 +4,16 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>81a6a46a-7555-441c-93b3-60a264d79115</UserSecretsId>
+    <UserSecretsId>fe0700bc-1cb8-4eaa-aa8b-de0fc716db97</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Protos\ExamService.proto" />
+    <None Remove="Protos\AdminService.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\AdminService.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +22,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.14" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-    <PackageReference Include="MiniExcel" Version="1.39.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.7.0" />
   </ItemGroup>
@@ -27,11 +30,5 @@
     <ProjectReference Include="..\ExamLibrary\ExamLibrary.csproj" />
     <ProjectReference Include="..\ServerDatabaseLibrary\ServerDatabaseLibrary.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Protobuf Include="Protos\ExamService.proto" GrpcServices="Server" />
-  </ItemGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

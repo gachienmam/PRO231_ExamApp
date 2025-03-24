@@ -211,9 +211,9 @@ namespace ManagementApp
             }
             else
             {
-                if ()
-                { }
-                // Tạo DTo
+                //if ()
+                //{ }
+                //Tạo DTo
                 //d nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang); // Vì ID tự tăng nên để ID số gì cũng dc
                 //if (busNhanVien.insertNhanVien(nv))
                 //{
@@ -223,10 +223,10 @@ namespace ManagementApp
                 //    email = txtEmail.Text;
                 //    SendMail(nv.EmailNV);
                 //}
-                else
-                {
-                    MessageBox.Show("Thêm không thành công");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Thêm không thành công");
+                //}
             }
         }
 
@@ -283,9 +283,9 @@ namespace ManagementApp
             }
             else
             {
-                if ()
-                { }
-                // Tạo DTo
+                //if ()
+                //{ }
+                //Tạo DTo
                 //d nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang); // Vì ID tự tăng nên để ID số gì cũng dc
                 //if (busNhanVien.insertNhanVien(nv))
                 //{
@@ -295,10 +295,10 @@ namespace ManagementApp
                 //    email = txtEmail.Text;
                 //    SendMail(nv.EmailNV);
                 //}
-                else
-                {
-                    MessageBox.Show("Sửa không thành công");
-                }
+                //else
+                //{
+                //    MessageBox.Show("Sửa không thành công");
+                //}
             }
         }
 
@@ -334,22 +334,22 @@ namespace ManagementApp
         private void crownButtonTimKiem_Click(object sender, EventArgs e)
         {
             string Email = textBoxTimKiem.Text;
-            DataTable ds = busND.SearchKhach(Email);
-            if (ds.Rows.Count > 0)
-            {
-                dataGridViewND.DataSource = ds;
-                dataGridViewND.Columns[0].HeaderText = "Mã người dùng";
-                dataGridViewND.Columns[1].HeaderText = "Họ và tên";
-                dataGridViewND.Columns[2].HeaderText = "Email";
-                dataGridViewND.Columns[3].HeaderText = "Mật khẩu";
-                dataGridViewND.Columns[4].HeaderText = "Số điện Thoại";
-                dataGridViewND.Columns[5].HeaderText = "Trạng thái";
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy người dùng nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxTimKiem.Focus();
-            }
+            //DataTable ds = busND.SearchKhach(Email);
+            //if (ds.Rows.Count > 0)
+            //{
+            //    dataGridViewND.DataSource = ds;
+            //    dataGridViewND.Columns[0].HeaderText = "Mã người dùng";
+            //    dataGridViewND.Columns[1].HeaderText = "Họ và tên";
+            //    dataGridViewND.Columns[2].HeaderText = "Email";
+            //    dataGridViewND.Columns[3].HeaderText = "Mật khẩu";
+            //    dataGridViewND.Columns[4].HeaderText = "Số điện Thoại";
+            //    dataGridViewND.Columns[5].HeaderText = "Trạng thái";
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Không tìm thấy người dùng nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    textBoxTimKiem.Focus();
+            //}
             textBoxTimKiem.Text = "Nhập Email người dùng";
             textBoxTimKiem.BackColor = Color.LightGray;
             ResetValues();

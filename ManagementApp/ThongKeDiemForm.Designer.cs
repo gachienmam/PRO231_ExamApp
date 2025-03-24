@@ -1,4 +1,5 @@
-﻿namespace ManagementApp
+﻿
+namespace ManagementApp
 {
     partial class ThongKeDiemForm
     {
@@ -57,7 +58,6 @@
             crownSectionPanel1.SectionHeader = "Thống kê";
             crownSectionPanel1.Size = new Size(800, 450);
             crownSectionPanel1.TabIndex = 0;
-            crownSectionPanel1.Paint += crownSectionPanel1_Paint;
             // 
             // crownGroupBox1
             // 
@@ -71,7 +71,6 @@
             crownGroupBox1.TabIndex = 19;
             crownGroupBox1.TabStop = false;
             crownGroupBox1.Text = "Lọc dữ liệu";
-            crownGroupBox1.Enter += crownGroupBox1_Enter;
             // 
             // btnLocDuLieu
             // 

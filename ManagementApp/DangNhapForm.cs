@@ -1,9 +1,9 @@
-﻿using AdminProto;
-using Grpc.Net.Client;
+﻿using Grpc.Net.Client;
+using ManagementApp.AdminProto;
 using ReaLTaiizor.Controls;
 using System.Configuration;
 using System.Net;
-using static AdminProto.AdminService;
+using static ManagementApp.AdminProto.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
 
 namespace ManagementApp
@@ -25,10 +25,10 @@ namespace ManagementApp
             _serverAddress = serverAddress;
 
             var handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback =
-                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+            //handler.ServerCertificateCustomValidationCallback =
+            //    HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:5001",
+            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:50052",
                 new GrpcChannelOptions { HttpHandler = handler });
             _client = new AdminServiceClient(channel);
         }

@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
 using System.Net;
-using AdminProto;
+using ManagementServer.AdminProto;
 using Newtonsoft.Json.Linq;
 using ExamLibrary.Enum;
 using ManagementServer.Helper;
@@ -10,7 +10,7 @@ using ServerDatabaseLibrary.Database;
 
 namespace ManagementServer.Services
 {
-    public class AdminServiceImpl
+    public class AdminServiceImpl : AdminService.AdminServiceBase
     {
         #region Constructor
         private readonly string _uploadPath = "ExamPapers/";
@@ -37,7 +37,7 @@ namespace ManagementServer.Services
         }
         #endregion
 
-        public async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
+        public override async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
             //if (request.Email == null)
             //{
@@ -58,7 +58,7 @@ namespace ManagementServer.Services
         }
 
         [Authorize]
-        public async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
+        public override async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
         {
             string examId = null;
             string filePath = null;
@@ -94,24 +94,25 @@ namespace ManagementServer.Services
         }
 
         [Authorize]
-        public async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
+        public override async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
         {
-            var user = context.GetHttpContext().User;
-            if (!user.IsInRole("Admin") || !user.IsInRole("GiangVien"))
-            {
-                throw new RpcException(new Status(StatusCode.PermissionDenied, "Access denied"));
-            }
+            //var user = context.GetHttpContext().User;
+            //if (!user.IsInRole("Admin") || !user.IsInRole("GiangVien"))
+            //{
+            //    throw new RpcException(new Status(StatusCode.PermissionDenied, "Access denied"));
+            //}
 
             if (request.RequestCode.Equals((int)RemoteCommandType.SQL))
             {
                 try
                 {
                     string json = await Task.Run(() => _databaseHelper.ExecuteRawSqlQuery(request.Command));
+                    Console.WriteLine(json);
                     return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = json };
                 }
                 catch (Exception ex)
                 {
-                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"Error: {ex.Message}"};
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"SQL Error: {ex.Message}"};
                 }
             }
 

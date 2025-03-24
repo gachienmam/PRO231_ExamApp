@@ -1,11 +1,14 @@
-﻿using AdminProto;
-using ExamLibrary.Enum;
+﻿using ExamLibrary.Enum;
 using System;
 using System.Data;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using static AdminProto.AdminService;
+using ManagementApp.AdminProto;
+using static ManagementApp.AdminProto.AdminService;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using ReaLTaiizor.Controls;
 
 namespace ManagementApp
 {
@@ -13,12 +16,17 @@ namespace ManagementApp
     {
         private readonly AdminServiceClient _client;
         private readonly string _accessToken;
+        private readonly Grpc.Core.Metadata _headers;
 
         public ThongKeDiemForm(AdminServiceClient client, string accessToken)
         {
             InitializeComponent();
             _client = client;
             _accessToken = accessToken;
+            _headers = new Grpc.Core.Metadata
+                {
+                    { "Authorization", $"Bearer {_accessToken}" }
+                };
         }
 
         private void BUTTON_THOAT_Click(object sender, EventArgs e)
@@ -33,24 +41,29 @@ namespace ManagementApp
                 var request = new CommandRequest()
                 {
                     RequestCode = (int)RemoteCommandType.SQL,
-                    Command = "SELECT * FROM KETQUA"
+                    Command = "SELECT * FROM KetQuaThi"
                 };
 
-                var response = _client.ExecuteRemoteCommand(request);
+                var response = _client.ExecuteRemoteCommand(request, _headers);
 
                 if (response.ResponseCode == (int)HttpStatusCode.OK)
                 {
-                    DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
+                    DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
+                    //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
+                    if (dataTable == null)
+                    {
+                        CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    }
                     dataGridView1.DataSource = dataTable;
                 }
                 else
                 {
-                    MessageBox.Show($"Lỗi: {response.ResponseMessage}");
+                    CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi: {ex.Message}");
+                CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
             }
         }
 

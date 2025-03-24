@@ -73,7 +73,6 @@ namespace ServerDatabaseLibrary.Database.DAL
             }
         }
 
-
         public bool DeleteDeThi(string examId)
         {
             string query = "EXEC sp_DeleteDeThi @MaDe";

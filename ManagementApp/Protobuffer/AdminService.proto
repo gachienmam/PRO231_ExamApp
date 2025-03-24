@@ -2,7 +2,9 @@
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "AdminProto";
+package AdminProto;
+
+option csharp_namespace = "ManagementApp.AdminProto";
 
 service AdminService {
     rpc AdminAuthenticateUser (AuthRequest) returns (AuthResponse);

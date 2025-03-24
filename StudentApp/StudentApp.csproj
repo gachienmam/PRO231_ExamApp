@@ -29,11 +29,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protobuffer\ExamService.proto" GrpcServices="Client" />
+    <Folder Include="Exam\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exam\" />
+    <Protobuf Include="Protobuffer\ExamService.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>

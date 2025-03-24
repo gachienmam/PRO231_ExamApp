@@ -6,7 +6,7 @@ using ReaLTaiizor.Native;
 using System.Configuration;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static AdminProto.AdminService;
+using static ManagementApp.AdminProto.AdminService;
 
 //using static ExamServer.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;

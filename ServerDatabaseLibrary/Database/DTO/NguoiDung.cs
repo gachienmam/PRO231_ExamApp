@@ -18,15 +18,6 @@ namespace ServerDatabaseLibrary.Database.DTO
             VaiTro = vaiTro;
         }
 
-        public NguoiDung()
-        {
-            MaNguoiDung = "";
-            HoTen = "";
-            Email = "";
-            MatKhau = "";
-            VaiTro = "";
-        }
-
         [MaxLength(50)]
         public string MaNguoiDung { get; set; }
 

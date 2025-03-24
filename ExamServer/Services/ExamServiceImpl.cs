@@ -15,7 +15,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ExamProto;
-using ExamServer.Database;
+using ServerDatabaseLibrary.Database;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 
@@ -34,8 +34,8 @@ namespace ExamServer.Services
         private DatabaseHelper _databaseHelper;
 
         // Cho server
-        private Database.BUS.DeThi _busDeThi;
-        private Database.BUS.NguoiDung _busNguoiDung;
+        private ServerDatabaseLibrary.Database.BUS.DeThi _busDeThi;
+        private ServerDatabaseLibrary.Database.BUS.ThiSinh _busThiSinh;
         private PolyTestJWT _jwtHelper;
 
         public ExamServiceImpl(IConfiguration configuration, ILogger<ExamServiceImpl> logger, IMemoryCache cache)
@@ -45,8 +45,8 @@ namespace ExamServer.Services
             _cache = cache;
 
             _databaseHelper = new DatabaseHelper(_configuration.GetConnectionString("ExamDatabase") ?? "");
-            _busDeThi = new Database.BUS.DeThi(new Database.DAL.DeThi(_databaseHelper));
-            _busNguoiDung = new Database.BUS.NguoiDung(new Database.DAL.NguoiDung(_databaseHelper));
+            _busDeThi = new ServerDatabaseLibrary.Database.BUS.DeThi(new ServerDatabaseLibrary.Database.DAL.DeThi(_databaseHelper));
+            _busThiSinh = new ServerDatabaseLibrary.Database.BUS.ThiSinh(new ServerDatabaseLibrary.Database.DAL.ThiSinh(_databaseHelper));
 
             _jwtHelper = new PolyTestJWT(_configuration);
         }
@@ -57,8 +57,8 @@ namespace ExamServer.Services
             {
                 return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
-            var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
-            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.ThiSinh>());
+            var userTable = await Task.Run(() => _busThiSinh.Get(request.Email));
+            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.ThiSinh>());
             if (user == null)
             {
                 return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };

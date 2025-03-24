@@ -29,303 +29,340 @@
         private void InitializeComponent()
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownGroupBoxCauHoi = new ReaLTaiizor.Controls.CrownGroupBox();
-            crownRadioButtonC = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownRadioButtonB = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownRadioButtonA = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownButtonNext = new ReaLTaiizor.Controls.CrownButton();
-            crownTitle10 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle9 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle8 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
-            crownRadioButtonD = new ReaLTaiizor.Controls.CrownRadioButton();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBoxImage = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBoxServer = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBoxExamcode = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBoxStuden = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTextBoxTime = new ReaLTaiizor.Controls.CrownTextBox();
+            panel1 = new Panel();
+            panelChonDapAn = new ReaLTaiizor.Controls.CrownSectionPanel();
+            checkBoxDapAnD = new ReaLTaiizor.Controls.CrownCheckBox();
+            checkBoxDapAnC = new ReaLTaiizor.Controls.CrownCheckBox();
+            checkBoxDapAnB = new ReaLTaiizor.Controls.CrownCheckBox();
+            checkBoxDapAnA = new ReaLTaiizor.Controls.CrownCheckBox();
+            buttonNext = new ReaLTaiizor.Controls.CrownButton();
+            panelCauHoiHienTai = new ReaLTaiizor.Controls.CrownSectionPanel();
+            labelQuestion = new ReaLTaiizor.Controls.CrownTitle();
+            panelDanhSachCauHoi = new ReaLTaiizor.Controls.CrownSectionPanel();
+            checkBoxConfirmFinish = new ReaLTaiizor.Controls.CrownCheckBox();
+            pictureAnhDeThi = new PictureBox();
+            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            textBoxServer = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxExamCode = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxStudent = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxTime = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitleServer = new ReaLTaiizor.Controls.CrownTitle();
             crownTitleExamCode = new ReaLTaiizor.Controls.CrownTitle();
             crownTitleStuden = new ReaLTaiizor.Controls.CrownTitle();
-            crownButtonFinish = new ReaLTaiizor.Controls.CrownButton();
-            crttonFisnisMachine = new ReaLTaiizor.Controls.CrownTextBox();
+            buttonFinish = new ReaLTaiizor.Controls.CrownButton();
+            textBoxMachine = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitleMachine = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             crownSectionPanel1.SuspendLayout();
-            crownGroupBoxCauHoi.SuspendLayout();
+            panel1.SuspendLayout();
+            panelChonDapAn.SuspendLayout();
+            panelCauHoiHienTai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).BeginInit();
             SuspendLayout();
             // 
             // crownSectionPanel1
             // 
-            crownSectionPanel1.Controls.Add(crownGroupBoxCauHoi);
-            crownSectionPanel1.Controls.Add(crownTextBoxImage);
-            crownSectionPanel1.Controls.Add(crownTextBoxServer);
-            crownSectionPanel1.Controls.Add(crownTextBoxExamcode);
-            crownSectionPanel1.Controls.Add(crownTextBoxStuden);
-            crownSectionPanel1.Controls.Add(crownTextBoxTime);
+            crownSectionPanel1.Controls.Add(crownTitle2);
+            crownSectionPanel1.Controls.Add(panel1);
+            crownSectionPanel1.Controls.Add(checkBoxConfirmFinish);
+            crownSectionPanel1.Controls.Add(pictureAnhDeThi);
+            crownSectionPanel1.Controls.Add(crownTitle1);
+            crownSectionPanel1.Controls.Add(textBoxServer);
+            crownSectionPanel1.Controls.Add(textBoxExamCode);
+            crownSectionPanel1.Controls.Add(textBoxStudent);
+            crownSectionPanel1.Controls.Add(textBoxTime);
             crownSectionPanel1.Controls.Add(crownTitleServer);
             crownSectionPanel1.Controls.Add(crownTitleExamCode);
             crownSectionPanel1.Controls.Add(crownTitleStuden);
-            crownSectionPanel1.Controls.Add(crownButtonFinish);
-            crownSectionPanel1.Controls.Add(crttonFisnisMachine);
+            crownSectionPanel1.Controls.Add(buttonFinish);
+            crownSectionPanel1.Controls.Add(textBoxMachine);
             crownSectionPanel1.Controls.Add(crownTitleMachine);
             crownSectionPanel1.Dock = DockStyle.Fill;
+            crownSectionPanel1.Font = new Font("Segoe UI", 10F);
             crownSectionPanel1.Location = new Point(0, 0);
             crownSectionPanel1.Name = "crownSectionPanel1";
-            crownSectionPanel1.SectionHeader = null;
-            crownSectionPanel1.Size = new Size(868, 522);
+            crownSectionPanel1.SectionHeader = "PolyTest Exam Client - Hôm nay: 24/3/2025";
+            crownSectionPanel1.Size = new Size(868, 591);
             crownSectionPanel1.TabIndex = 0;
             // 
-            // crownGroupBoxCauHoi
+            // panel1
             // 
-            crownGroupBoxCauHoi.BorderColor = Color.FromArgb(51, 51, 51);
-            crownGroupBoxCauHoi.Controls.Add(crownRadioButtonC);
-            crownGroupBoxCauHoi.Controls.Add(crownRadioButtonB);
-            crownGroupBoxCauHoi.Controls.Add(crownRadioButtonA);
-            crownGroupBoxCauHoi.Controls.Add(crownButtonNext);
-            crownGroupBoxCauHoi.Controls.Add(crownTitle10);
-            crownGroupBoxCauHoi.Controls.Add(crownTitle9);
-            crownGroupBoxCauHoi.Controls.Add(crownTitle8);
-            crownGroupBoxCauHoi.Controls.Add(crownTitle7);
-            crownGroupBoxCauHoi.Controls.Add(crownTitle6);
-            crownGroupBoxCauHoi.Controls.Add(crownRadioButtonD);
-            crownGroupBoxCauHoi.Controls.Add(crownTitle2);
-            crownGroupBoxCauHoi.Location = new Point(29, 222);
-            crownGroupBoxCauHoi.Name = "crownGroupBoxCauHoi";
-            crownGroupBoxCauHoi.Size = new Size(827, 241);
-            crownGroupBoxCauHoi.TabIndex = 15;
-            crownGroupBoxCauHoi.TabStop = false;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Controls.Add(panelCauHoiHienTai);
+            panel1.Controls.Add(panelChonDapAn);
+            panel1.Controls.Add(panelDanhSachCauHoi);
+            panel1.Location = new Point(12, 225);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(844, 325);
+            panel1.TabIndex = 20;
             // 
-            // crownRadioButtonC
+            // panelChonDapAn
             // 
-            crownRadioButtonC.AutoSize = true;
-            crownRadioButtonC.Location = new Point(30, 126);
-            crownRadioButtonC.Name = "crownRadioButtonC";
-            crownRadioButtonC.Size = new Size(33, 19);
-            crownRadioButtonC.TabIndex = 27;
-            crownRadioButtonC.TabStop = true;
-            crownRadioButtonC.Text = "C";
-            crownRadioButtonC.UseMnemonic = false;
+            panelChonDapAn.Controls.Add(checkBoxDapAnD);
+            panelChonDapAn.Controls.Add(checkBoxDapAnC);
+            panelChonDapAn.Controls.Add(checkBoxDapAnB);
+            panelChonDapAn.Controls.Add(checkBoxDapAnA);
+            panelChonDapAn.Controls.Add(buttonNext);
+            panelChonDapAn.Dock = DockStyle.Left;
+            panelChonDapAn.Font = new Font("Segoe UI", 9F);
+            panelChonDapAn.Location = new Point(0, 0);
+            panelChonDapAn.Name = "panelChonDapAn";
+            panelChonDapAn.SectionHeader = "Đáp án";
+            panelChonDapAn.Size = new Size(119, 244);
+            panelChonDapAn.TabIndex = 0;
             // 
-            // crownRadioButtonB
+            // checkBoxDapAnD
             // 
-            crownRadioButtonB.AutoSize = true;
-            crownRadioButtonB.Location = new Point(30, 93);
-            crownRadioButtonB.Name = "crownRadioButtonB";
-            crownRadioButtonB.Size = new Size(32, 19);
-            crownRadioButtonB.TabIndex = 26;
-            crownRadioButtonB.TabStop = true;
-            crownRadioButtonB.Text = "B";
-            crownRadioButtonB.UseMnemonic = false;
+            checkBoxDapAnD.Anchor = AnchorStyles.None;
+            checkBoxDapAnD.AutoSize = true;
+            checkBoxDapAnD.Font = new Font("Segoe UI", 12F);
+            checkBoxDapAnD.Location = new Point(44, 149);
+            checkBoxDapAnD.Name = "checkBoxDapAnD";
+            checkBoxDapAnD.Size = new Size(40, 25);
+            checkBoxDapAnD.TabIndex = 67;
+            checkBoxDapAnD.Text = "D";
             // 
-            // crownRadioButtonA
+            // checkBoxDapAnC
             // 
-            crownRadioButtonA.AutoSize = true;
-            crownRadioButtonA.Location = new Point(30, 60);
-            crownRadioButtonA.Name = "crownRadioButtonA";
-            crownRadioButtonA.Size = new Size(33, 19);
-            crownRadioButtonA.TabIndex = 25;
-            crownRadioButtonA.TabStop = true;
-            crownRadioButtonA.Text = "A";
-            crownRadioButtonA.UseMnemonic = false;
+            checkBoxDapAnC.Anchor = AnchorStyles.None;
+            checkBoxDapAnC.AutoSize = true;
+            checkBoxDapAnC.Font = new Font("Segoe UI", 12F);
+            checkBoxDapAnC.Location = new Point(44, 115);
+            checkBoxDapAnC.Name = "checkBoxDapAnC";
+            checkBoxDapAnC.Size = new Size(39, 25);
+            checkBoxDapAnC.TabIndex = 66;
+            checkBoxDapAnC.Text = "C";
             // 
-            // crownButtonNext
+            // checkBoxDapAnB
             // 
-            crownButtonNext.Location = new Point(30, 196);
-            crownButtonNext.Name = "crownButtonNext";
-            crownButtonNext.Padding = new Padding(5);
-            crownButtonNext.Size = new Size(75, 23);
-            crownButtonNext.TabIndex = 16;
-            crownButtonNext.Text = "Next";
+            checkBoxDapAnB.Anchor = AnchorStyles.None;
+            checkBoxDapAnB.AutoSize = true;
+            checkBoxDapAnB.Font = new Font("Segoe UI", 12F);
+            checkBoxDapAnB.Location = new Point(44, 80);
+            checkBoxDapAnB.Name = "checkBoxDapAnB";
+            checkBoxDapAnB.Size = new Size(38, 25);
+            checkBoxDapAnB.TabIndex = 65;
+            checkBoxDapAnB.Text = "B";
             // 
-            // crownTitle10
+            // checkBoxDapAnA
             // 
-            crownTitle10.AutoSize = true;
-            crownTitle10.Location = new Point(75, 160);
-            crownTitle10.Name = "crownTitle10";
-            crownTitle10.Size = new Size(42, 15);
-            crownTitle10.TabIndex = 24;
-            crownTitle10.Text = "Khùng";
+            checkBoxDapAnA.Anchor = AnchorStyles.None;
+            checkBoxDapAnA.AutoSize = true;
+            checkBoxDapAnA.Font = new Font("Segoe UI", 12F);
+            checkBoxDapAnA.Location = new Point(44, 45);
+            checkBoxDapAnA.Name = "checkBoxDapAnA";
+            checkBoxDapAnA.Size = new Size(39, 25);
+            checkBoxDapAnA.TabIndex = 62;
+            checkBoxDapAnA.Text = "A";
             // 
-            // crownTitle9
+            // buttonNext
             // 
-            crownTitle9.AutoSize = true;
-            crownTitle9.Location = new Point(75, 130);
-            crownTitle9.Name = "crownTitle9";
-            crownTitle9.Size = new Size(84, 15);
-            crownTitle9.TabIndex = 23;
-            crownTitle9.Text = "Cái gì đó thứ 3";
+            buttonNext.Anchor = AnchorStyles.None;
+            buttonNext.Location = new Point(22, 194);
+            buttonNext.Name = "buttonNext";
+            buttonNext.Padding = new Padding(5);
+            buttonNext.Size = new Size(75, 23);
+            buttonNext.TabIndex = 63;
+            buttonNext.Text = "Next";
             // 
-            // crownTitle8
+            // panelCauHoiHienTai
             // 
-            crownTitle8.AutoSize = true;
-            crownTitle8.Location = new Point(75, 93);
-            crownTitle8.Name = "crownTitle8";
-            crownTitle8.Size = new Size(111, 15);
-            crownTitle8.TabIndex = 22;
-            crownTitle8.Text = "Không bình thường";
+            panelCauHoiHienTai.AutoScroll = true;
+            panelCauHoiHienTai.Controls.Add(labelQuestion);
+            panelCauHoiHienTai.Dock = DockStyle.Fill;
+            panelCauHoiHienTai.Font = new Font("Segoe UI", 9F);
+            panelCauHoiHienTai.Location = new Point(119, 0);
+            panelCauHoiHienTai.Name = "panelCauHoiHienTai";
+            panelCauHoiHienTai.SectionHeader = "Câu hỏi (1/20)";
+            panelCauHoiHienTai.Size = new Size(725, 244);
+            panelCauHoiHienTai.TabIndex = 68;
             // 
-            // crownTitle7
+            // labelQuestion
             // 
-            crownTitle7.AutoSize = true;
-            crownTitle7.Location = new Point(75, 60);
-            crownTitle7.Name = "crownTitle7";
-            crownTitle7.Size = new Size(73, 15);
-            crownTitle7.TabIndex = 21;
-            crownTitle7.Text = "Bình thường";
+            labelQuestion.AutoSize = true;
+            labelQuestion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelQuestion.Location = new Point(23, 45);
+            labelQuestion.MinimumSize = new Size(0, 150);
+            labelQuestion.Name = "labelQuestion";
+            labelQuestion.Size = new Size(245, 150);
+            labelQuestion.TabIndex = 61;
+            labelQuestion.Text = "(Chỉ chọn 1 đáp án)\r\nVăn thành có bình thường không?\r\n\r\nA. Có\r\nB. Không\r\nC. No\r\nD. skibidi dop dop yes yes";
             // 
-            // crownTitle6
+            // panelDanhSachCauHoi
             // 
-            crownTitle6.AutoSize = true;
-            crownTitle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle6.Location = new Point(107, 14);
-            crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(245, 21);
-            crownTitle6.TabIndex = 20;
-            crownTitle6.Text = "Văn thành có bình thường không?";
+            panelDanhSachCauHoi.Dock = DockStyle.Bottom;
+            panelDanhSachCauHoi.Font = new Font("Segoe UI", 9F);
+            panelDanhSachCauHoi.Location = new Point(0, 244);
+            panelDanhSachCauHoi.Name = "panelDanhSachCauHoi";
+            panelDanhSachCauHoi.SectionHeader = "Danh sách câu hỏi";
+            panelDanhSachCauHoi.Size = new Size(844, 81);
+            panelDanhSachCauHoi.TabIndex = 69;
             // 
-            // crownRadioButtonD
+            // checkBoxConfirmFinish
             // 
-            crownRadioButtonD.AutoSize = true;
-            crownRadioButtonD.Location = new Point(30, 158);
-            crownRadioButtonD.Name = "crownRadioButtonD";
-            crownRadioButtonD.Size = new Size(33, 19);
-            crownRadioButtonD.TabIndex = 17;
-            crownRadioButtonD.TabStop = true;
-            crownRadioButtonD.Text = "D";
-            crownRadioButtonD.UseMnemonic = false;
+            checkBoxConfirmFinish.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            checkBoxConfirmFinish.AutoSize = true;
+            checkBoxConfirmFinish.Location = new Point(93, 556);
+            checkBoxConfirmFinish.Name = "checkBoxConfirmFinish";
+            checkBoxConfirmFinish.Size = new Size(262, 23);
+            checkBoxConfirmFinish.TabIndex = 19;
+            checkBoxConfirmFinish.Text = "Tôi muốn hoàn thành bài kiểm tra này";
             // 
-            // crownTitle2
+            // pictureAnhDeThi
             // 
-            crownTitle2.AutoSize = true;
-            crownTitle2.Location = new Point(30, 19);
-            crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(46, 15);
-            crownTitle2.TabIndex = 16;
-            crownTitle2.Text = "Answer";
+            pictureAnhDeThi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureAnhDeThi.Location = new Point(717, 45);
+            pictureAnhDeThi.Name = "pictureAnhDeThi";
+            pictureAnhDeThi.Size = new Size(128, 128);
+            pictureAnhDeThi.TabIndex = 18;
+            pictureAnhDeThi.TabStop = false;
             // 
-            // crownTextBoxImage
+            // crownTitle1
             // 
-            crownTextBoxImage.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBoxImage.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBoxImage.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxImage.Location = new Point(678, 49);
-            crownTextBoxImage.Multiline = true;
-            crownTextBoxImage.Name = "crownTextBoxImage";
-            crownTextBoxImage.Size = new Size(178, 117);
-            crownTextBoxImage.TabIndex = 14;
+            crownTitle1.Anchor = AnchorStyles.Top;
+            crownTitle1.AutoSize = true;
+            crownTitle1.Location = new Point(376, 35);
+            crownTitle1.Name = "crownTitle1";
+            crownTitle1.Size = new Size(108, 19);
+            crownTitle1.TabIndex = 17;
+            crownTitle1.Text = "Thời gian còn lại";
             // 
-            // crownTextBoxServer
+            // textBoxServer
             // 
-            crownTextBoxServer.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBoxServer.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBoxServer.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxServer.Location = new Point(119, 85);
-            crownTextBoxServer.Name = "crownTextBoxServer";
-            crownTextBoxServer.Size = new Size(140, 23);
-            crownTextBoxServer.TabIndex = 13;
+            textBoxServer.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxServer.BorderStyle = BorderStyle.FixedSingle;
+            textBoxServer.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxServer.Location = new Point(110, 81);
+            textBoxServer.Name = "textBoxServer";
+            textBoxServer.ReadOnly = true;
+            textBoxServer.Size = new Size(140, 25);
+            textBoxServer.TabIndex = 13;
             // 
-            // crownTextBoxExamcode
+            // textBoxExamCode
             // 
-            crownTextBoxExamcode.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBoxExamcode.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBoxExamcode.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxExamcode.Location = new Point(119, 124);
-            crownTextBoxExamcode.Name = "crownTextBoxExamcode";
-            crownTextBoxExamcode.Size = new Size(140, 23);
-            crownTextBoxExamcode.TabIndex = 12;
+            textBoxExamCode.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxExamCode.BorderStyle = BorderStyle.FixedSingle;
+            textBoxExamCode.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxExamCode.Location = new Point(110, 116);
+            textBoxExamCode.Name = "textBoxExamCode";
+            textBoxExamCode.ReadOnly = true;
+            textBoxExamCode.Size = new Size(140, 25);
+            textBoxExamCode.TabIndex = 12;
             // 
-            // crownTextBoxStuden
+            // textBoxStudent
             // 
-            crownTextBoxStuden.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBoxStuden.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBoxStuden.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxStuden.Location = new Point(119, 162);
-            crownTextBoxStuden.Name = "crownTextBoxStuden";
-            crownTextBoxStuden.Size = new Size(140, 23);
-            crownTextBoxStuden.TabIndex = 11;
+            textBoxStudent.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxStudent.BorderStyle = BorderStyle.FixedSingle;
+            textBoxStudent.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxStudent.Location = new Point(110, 152);
+            textBoxStudent.Name = "textBoxStudent";
+            textBoxStudent.ReadOnly = true;
+            textBoxStudent.Size = new Size(140, 25);
+            textBoxStudent.TabIndex = 11;
             // 
-            // crownTextBoxTime
+            // textBoxTime
             // 
-            crownTextBoxTime.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBoxTime.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBoxTime.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxTime.Location = new Point(425, 49);
-            crownTextBoxTime.Multiline = true;
-            crownTextBoxTime.Name = "crownTextBoxTime";
-            crownTextBoxTime.Size = new Size(137, 59);
-            crownTextBoxTime.TabIndex = 10;
+            textBoxTime.Anchor = AnchorStyles.Top;
+            textBoxTime.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxTime.BorderStyle = BorderStyle.None;
+            textBoxTime.Font = new Font("Segoe UI", 28F);
+            textBoxTime.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxTime.Location = new Point(347, 57);
+            textBoxTime.Multiline = true;
+            textBoxTime.Name = "textBoxTime";
+            textBoxTime.ReadOnly = true;
+            textBoxTime.Size = new Size(157, 61);
+            textBoxTime.TabIndex = 10;
+            textBoxTime.Text = "00:00";
+            textBoxTime.TextAlign = HorizontalAlignment.Center;
             // 
             // crownTitleServer
             // 
             crownTitleServer.AutoSize = true;
-            crownTitleServer.Location = new Point(29, 85);
+            crownTitleServer.Location = new Point(20, 83);
             crownTitleServer.Name = "crownTitleServer";
-            crownTitleServer.Size = new Size(42, 15);
+            crownTitleServer.Size = new Size(50, 19);
             crownTitleServer.TabIndex = 9;
             crownTitleServer.Text = "Server:";
             // 
             // crownTitleExamCode
             // 
             crownTitleExamCode.AutoSize = true;
-            crownTitleExamCode.Location = new Point(29, 126);
+            crownTitleExamCode.Location = new Point(20, 118);
             crownTitleExamCode.Name = "crownTitleExamCode";
-            crownTitleExamCode.Size = new Size(67, 15);
+            crownTitleExamCode.Size = new Size(77, 19);
             crownTitleExamCode.TabIndex = 8;
             crownTitleExamCode.Text = "Exam code:";
             // 
             // crownTitleStuden
             // 
             crownTitleStuden.AutoSize = true;
-            crownTitleStuden.Location = new Point(29, 164);
+            crownTitleStuden.Location = new Point(20, 154);
             crownTitleStuden.Name = "crownTitleStuden";
-            crownTitleStuden.Size = new Size(47, 15);
+            crownTitleStuden.Size = new Size(60, 19);
             crownTitleStuden.TabIndex = 7;
-            crownTitleStuden.Text = "Studen:";
+            crownTitleStuden.Text = "Student:";
             // 
-            // crownButtonFinish
+            // buttonFinish
             // 
-            crownButtonFinish.Location = new Point(12, 490);
-            crownButtonFinish.Name = "crownButtonFinish";
-            crownButtonFinish.Padding = new Padding(5);
-            crownButtonFinish.Size = new Size(75, 23);
-            crownButtonFinish.TabIndex = 3;
-            crownButtonFinish.Text = "Finish";
-            crownButtonFinish.Click += crownButtonFinish_Click;
+            buttonFinish.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            buttonFinish.Location = new Point(12, 557);
+            buttonFinish.Name = "buttonFinish";
+            buttonFinish.Padding = new Padding(5);
+            buttonFinish.Size = new Size(75, 23);
+            buttonFinish.TabIndex = 3;
+            buttonFinish.Text = "Finish";
+            buttonFinish.Click += crownButtonFinish_Click;
             // 
-            // crttonFisnisMachine
+            // textBoxMachine
             // 
-            crttonFisnisMachine.BackColor = Color.FromArgb(69, 73, 74);
-            crttonFisnisMachine.BorderStyle = BorderStyle.FixedSingle;
-            crttonFisnisMachine.ForeColor = Color.FromArgb(220, 220, 220);
-            crttonFisnisMachine.Location = new Point(119, 49);
-            crttonFisnisMachine.Name = "crttonFisnisMachine";
-            crttonFisnisMachine.Size = new Size(140, 23);
-            crttonFisnisMachine.TabIndex = 2;
+            textBoxMachine.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMachine.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMachine.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMachine.Location = new Point(110, 45);
+            textBoxMachine.Name = "textBoxMachine";
+            textBoxMachine.ReadOnly = true;
+            textBoxMachine.Size = new Size(140, 25);
+            textBoxMachine.TabIndex = 2;
             // 
             // crownTitleMachine
             // 
             crownTitleMachine.AutoSize = true;
-            crownTitleMachine.Location = new Point(29, 51);
+            crownTitleMachine.Location = new Point(20, 47);
             crownTitleMachine.Name = "crownTitleMachine";
-            crownTitleMachine.Size = new Size(56, 15);
+            crownTitleMachine.Size = new Size(64, 19);
             crownTitleMachine.TabIndex = 1;
             crownTitleMachine.Text = "Machine:";
+            // 
+            // crownTitle2
+            // 
+            crownTitle2.AutoSize = true;
+            crownTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            crownTitle2.Location = new Point(12, 201);
+            crownTitle2.Name = "crownTitle2";
+            crownTitle2.Size = new Size(438, 21);
+            crownTitle2.TabIndex = 62;
+            crownTitle2.Text = "Bài của bạn chưa được lưu, xin hãy báo giám thị và tiếp tục thi.";
             // 
             // ExamForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(868, 522);
+            ClientSize = new Size(868, 591);
             Controls.Add(crownSectionPanel1);
+            FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(800, 419);
             Name = "ExamForm";
             Text = "ExamForm";
+            Load += ExamForm_Load;
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
-            crownGroupBoxCauHoi.ResumeLayout(false);
-            crownGroupBoxCauHoi.PerformLayout();
+            panel1.ResumeLayout(false);
+            panelChonDapAn.ResumeLayout(false);
+            panelChonDapAn.PerformLayout();
+            panelCauHoiHienTai.ResumeLayout(false);
+            panelCauHoiHienTai.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).EndInit();
             ResumeLayout(false);
         }
 
@@ -334,30 +371,35 @@
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
         private ReaLTaiizor.Controls.CrownButton crownButton2;
         private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton1;
-        private ReaLTaiizor.Controls.CrownButton crownButtonFinish;
-        private ReaLTaiizor.Controls.CrownTextBox crttonFisnisMachine;
+        private ReaLTaiizor.Controls.CrownButton buttonFinish;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMachine;
         private ReaLTaiizor.Controls.CrownTitle crownTitleMachine;
-        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBoxCauHoi;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxImage;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxServer;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxExamcode;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxStuden;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBoxTime;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxServer;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxExamCode;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxStudent;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxTime;
         private ReaLTaiizor.Controls.CrownTitle crownTitleServer;
         private ReaLTaiizor.Controls.CrownTitle crownTitleExamCode;
         private ReaLTaiizor.Controls.CrownTitle crownTitleStuden;
+        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton4;
+        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton3;
+        private ReaLTaiizor.Controls.CrownSectionPanel panelChonDapAn;
+        private PictureBox pictureAnhDeThi;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle1;
+        private ReaLTaiizor.Controls.CrownCheckBox checkBoxConfirmFinish;
+        private Panel panel1;
+        private ReaLTaiizor.Controls.CrownSectionPanel panelCauHoiHienTai;
         private ReaLTaiizor.Controls.CrownTitle crownTitle10;
         private ReaLTaiizor.Controls.CrownTitle crownTitle9;
         private ReaLTaiizor.Controls.CrownTitle crownTitle8;
         private ReaLTaiizor.Controls.CrownTitle crownTitle7;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle6;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton4;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton3;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonD;
+        private ReaLTaiizor.Controls.CrownTitle labelQuestion;
+        private ReaLTaiizor.Controls.CrownCheckBox checkBoxDapAnD;
+        private ReaLTaiizor.Controls.CrownCheckBox checkBoxDapAnC;
+        private ReaLTaiizor.Controls.CrownCheckBox checkBoxDapAnB;
+        private ReaLTaiizor.Controls.CrownCheckBox checkBoxDapAnA;
+        private ReaLTaiizor.Controls.CrownButton buttonNext;
+        private ReaLTaiizor.Controls.CrownSectionPanel panelDanhSachCauHoi;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
-        private ReaLTaiizor.Controls.CrownButton crownButtonNext;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonC;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonB;
-        private ReaLTaiizor.Controls.CrownRadioButton crownRadioButtonA;
     }
 }

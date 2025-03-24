@@ -37,10 +37,10 @@
             BUTTON_XEMDS = new ReaLTaiizor.Controls.CrownButton();
             textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
             buttonTimKiem = new ReaLTaiizor.Controls.CrownButton();
-            dataGridViewTKD = new DataGridView();
+            dataGridView1 = new DataGridView();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTKD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // crownSectionPanel1
@@ -50,7 +50,7 @@
             crownSectionPanel1.Controls.Add(BUTTON_XEMDS);
             crownSectionPanel1.Controls.Add(textBoxTimKiem);
             crownSectionPanel1.Controls.Add(buttonTimKiem);
-            crownSectionPanel1.Controls.Add(dataGridViewTKD);
+            crownSectionPanel1.Controls.Add(dataGridView1);
             crownSectionPanel1.Dock = DockStyle.Fill;
             crownSectionPanel1.Location = new Point(0, 0);
             crownSectionPanel1.Name = "crownSectionPanel1";
@@ -81,6 +81,7 @@
             btnLocDuLieu.Size = new Size(106, 29);
             btnLocDuLieu.TabIndex = 20;
             btnLocDuLieu.Text = "Lọc";
+            btnLocDuLieu.Click += btnLocDuLieu_Click;
             // 
             // crownCheckBox3
             // 
@@ -108,6 +109,7 @@
             BUTTON_XUATDS.Size = new Size(215, 32);
             BUTTON_XUATDS.TabIndex = 17;
             BUTTON_XUATDS.Text = "Xuất danh sách điểm";
+            BUTTON_XUATDS.Click += BUTTON_XUATDS_Click;
             // 
             // BUTTON_XEMDS
             // 
@@ -140,14 +142,15 @@
             buttonTimKiem.Size = new Size(132, 29);
             buttonTimKiem.TabIndex = 14;
             buttonTimKiem.Text = "Tìm kiếm";
+            buttonTimKiem.Click += buttonTimKiem_Click;
             // 
-            // dataGridViewTKD
+            // dataGridView1
             // 
-            dataGridViewTKD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTKD.Location = new Point(0, 115);
-            dataGridViewTKD.Name = "dataGridViewTKD";
-            dataGridViewTKD.Size = new Size(802, 336);
-            dataGridViewTKD.TabIndex = 8;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(0, 115);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(802, 336);
+            dataGridView1.TabIndex = 8;
             // 
             // ThongKeDiemForm
             // 
@@ -162,7 +165,7 @@
             crownSectionPanel1.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewTKD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -171,7 +174,7 @@
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiem;
         private ReaLTaiizor.Controls.CrownButton buttonTimKiem;
-        private DataGridView dataGridViewTKD;
+        private DataGridView dataGridView1;
         private ReaLTaiizor.Controls.CrownButton BUTTON_XUATDS;
         private ReaLTaiizor.Controls.CrownButton BUTTON_XEMDS;
         private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;

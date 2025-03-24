@@ -31,5 +31,15 @@ namespace ManagementApp
         {
 
         }
+
+        private void crownSectionPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BUTTON_XEMDS_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

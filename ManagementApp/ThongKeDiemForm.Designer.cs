@@ -57,6 +57,7 @@
             crownSectionPanel1.SectionHeader = "Thống kê";
             crownSectionPanel1.Size = new Size(800, 450);
             crownSectionPanel1.TabIndex = 0;
+            crownSectionPanel1.Paint += crownSectionPanel1_Paint;
             // 
             // crownGroupBox1
             // 
@@ -116,6 +117,7 @@
             BUTTON_XEMDS.Size = new Size(215, 33);
             BUTTON_XEMDS.TabIndex = 16;
             BUTTON_XEMDS.Text = "Xem danh sách điểm";
+            BUTTON_XEMDS.Click += BUTTON_XEMDS_Click;
             // 
             // textBoxTimKiem
             // 
@@ -142,7 +144,7 @@
             // dataGridViewTKD
             // 
             dataGridViewTKD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTKD.Location = new Point(-1, 115);
+            dataGridViewTKD.Location = new Point(0, 115);
             dataGridViewTKD.Name = "dataGridViewTKD";
             dataGridViewTKD.Size = new Size(802, 336);
             dataGridViewTKD.TabIndex = 8;

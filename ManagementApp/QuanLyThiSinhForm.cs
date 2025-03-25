@@ -294,7 +294,7 @@ namespace ManagementApp
                     var request = new CommandRequest()
                     {
                         RequestCode = (int)RemoteCommandType.SQL,
-                        Command = string.Format("EXEC sp_DeleteThiSinh @MaThiSinh")      
+                        Command = string.Format("EXEC sp_DeleteThiSinh @MaThiSinh")
                     };
 
                     var response = _client.ExecuteRemoteCommand(request, _headers);
@@ -396,7 +396,7 @@ namespace ManagementApp
                     {
                         RequestCode = (int)RemoteCommandType.SQL,
                         Command = string.Format("EXEC sp_UpdateThiSinh @MaThiSinh, @HoTen, @Email, @MatKhau, @NgaySinh, @SoDienThoai, @TrangThai")
-                            
+
                     };
 
                     var response = _client.ExecuteRemoteCommand(request, _headers);
@@ -457,8 +457,8 @@ namespace ManagementApp
             {
                 MessageBox.Show($"Lỗi: {ex.Message}");
             }
-            
-            
+
+
             ResetValues();
         }
 
@@ -493,6 +493,22 @@ namespace ManagementApp
             {
                 CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
             }
+        }
+
+        private void dataGridViewTS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           // Kiểm tra số lượng cột trước khi đặt HeaderText
+            if (dataGridViewTS.Columns.Count >= 7)
+            {
+                dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
+                dataGridViewTS.Columns[1].HeaderText = "Họ và tên";
+                dataGridViewTS.Columns[2].HeaderText = "Email";
+                dataGridViewTS.Columns[3].HeaderText = "Mật khẩu";
+                dataGridViewTS.Columns[4].HeaderText = "Ngày sinh";
+                dataGridViewTS.Columns[5].HeaderText = "Số điện thoại";
+                dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
+            }
+            tabControl1.SelectedTab = 0;
         }
     }
 }

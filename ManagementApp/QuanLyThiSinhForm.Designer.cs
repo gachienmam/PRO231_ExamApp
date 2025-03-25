@@ -401,6 +401,7 @@
             dataGridViewTS.Name = "dataGridViewTS";
             dataGridViewTS.Size = new Size(786, 382);
             dataGridViewTS.TabIndex = 0;
+            dataGridViewTS.CellContentClick += dataGridViewTS_CellContentClick;
             // 
             // QuanLyThiSinhForm
             // 

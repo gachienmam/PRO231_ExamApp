@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ManagementApp.AdminProto.AdminService;
 
 namespace ManagementApp
 {
@@ -21,9 +22,19 @@ namespace ManagementApp
 
         private readonly TreeViewControl _dockTreeView;
 
-        public QuanLyDeThiForm()
+        private readonly AdminServiceClient _client;
+        private readonly string _accessToken;
+        private readonly Grpc.Core.Metadata _headers;
+
+        public QuanLyDeThiForm(AdminServiceClient client, string accessToken)
         {
             InitializeComponent();
+            _client = client;
+            _accessToken = accessToken;
+            _headers = new Grpc.Core.Metadata
+                {
+                    { "Authorization", $"Bearer {_accessToken}" }
+                };
 
             // Add the control scroll message filter to re-route all mousewheel events
             // to the control the user is currently hovering over with their cursor.

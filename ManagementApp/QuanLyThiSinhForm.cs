@@ -8,14 +8,25 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ManagementApp.AdminProto.AdminService;
 
 namespace ManagementApp
 {
     public partial class QuanLyThiSinhForm : Form
     {
-        public QuanLyThiSinhForm()
+        private readonly AdminServiceClient _client;
+        private readonly string _accessToken;
+        private readonly Grpc.Core.Metadata _headers;
+
+        public QuanLyThiSinhForm(AdminServiceClient client, string accessToken)
         {
             InitializeComponent();
+            _client = client;
+            _accessToken = accessToken;
+            _headers = new Grpc.Core.Metadata
+                {
+                    { "Authorization", $"Bearer {_accessToken}" }
+                };
         }
 
         private void buttonThoat_Click(object sender, EventArgs e)

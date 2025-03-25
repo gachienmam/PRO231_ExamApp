@@ -55,9 +55,9 @@ namespace ManagementApp
             _client = client;
             _accessToken = accessToken;
 
-            //quanLyDeThiForm = new QuanLyDeThiForm(_client, _accessToken);
-            //quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _accessToken);
-            //quanLyThiSinhForm = new QuanLyThiSinhForm(_client, _accessToken);
+            quanLyDeThiForm = new QuanLyDeThiForm(_client, _accessToken);
+            quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _accessToken);
+            quanLyThiSinhForm = new QuanLyThiSinhForm(_client, _accessToken);
             thongKeDiemForm = new ThongKeDiemForm(_client, _accessToken);
 
             // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
@@ -231,9 +231,9 @@ namespace ManagementApp
         {
             if (clearAllForms)
             {
-                quanLyDeThiForm = new();
-                quanLyNguoiDungForm = new();
-                quanLyThiSinhForm = new();
+                quanLyDeThiForm = new(_client, _accessToken);
+                quanLyNguoiDungForm = new(_client, _accessToken);
+                quanLyThiSinhForm = new(_client, _accessToken);
 
                 formView.Controls.Clear();
                 _currentForm = null;

@@ -24,7 +24,7 @@ namespace ManagementServer.Helper
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestManagementServerKey"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestManagementServerKeyDefaultPolyTestManagementServerKeyDefaultPolyTestManagementServerKeyDefaultPolyTestManagementServerKey"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
                 issuer: Configuration[$"Jwt:Issuer"],
@@ -40,7 +40,7 @@ namespace ManagementServer.Helper
         public ClaimsPrincipal? ValidateToken(string token, ServerCallContext context)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestManagementServerKey");
+            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestManagementServerKeyDefaultPolyTestManagementServerKeyDefaultPolyTestManagementServerKeyDefaultPolyTestManagementServerKey");
 
             try
             {

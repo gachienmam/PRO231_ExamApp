@@ -23,18 +23,13 @@ namespace ManagementApp
         private readonly TreeViewControl _dockTreeView;
 
         private readonly AdminServiceClient _client;
-        private readonly string _accessToken;
         private readonly Grpc.Core.Metadata _headers;
 
-        public QuanLyDeThiForm(AdminServiceClient client, string accessToken)
+        public QuanLyDeThiForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
-            _accessToken = accessToken;
-            _headers = new Grpc.Core.Metadata
-                {
-                    { "Authorization", $"Bearer {_accessToken}" }
-                };
+            _headers = headers
 
             // Add the control scroll message filter to re-route all mousewheel events
             // to the control the user is currently hovering over with their cursor.

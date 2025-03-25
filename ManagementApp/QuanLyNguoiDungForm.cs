@@ -22,18 +22,13 @@ namespace ManagementApp
     public partial class QuanLyNguoiDungForm : Form
     {
         private readonly AdminServiceClient _client;
-        private readonly string _accessToken;
         private readonly Grpc.Core.Metadata _headers;
 
-        public QuanLyNguoiDungForm(AdminServiceClient client, string accessToken)
+        public QuanLyNguoiDungForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
-            _accessToken = accessToken;
-            _headers = new Grpc.Core.Metadata
-                {
-                    { "Authorization", $"Bearer {_accessToken}" }
-                };
+            _headers = headers;
         }
 
         private void dataGridViewNguoiDung_Click(object sender, EventArgs e)

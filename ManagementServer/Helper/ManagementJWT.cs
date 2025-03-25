@@ -15,12 +15,14 @@ namespace ManagementServer.Helper
         {
             Configuration = configuration;
         }
-
+        
         public string GenerateJwtToken(NguoiDung user)
         {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.MaNguoiDung),
+                new Claim(JwtRegisteredClaimNames.Name, user.HoTen),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };

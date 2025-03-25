@@ -60,38 +60,84 @@ namespace ServerDatabaseLibrary.Database
         }
 
         // Cho phép trực tiếp chạy lệnh SQL (lệnh từ phần mềm quản lý)
-        public string ExecuteRawSqlQuery(string sqlCommand)
+        public async Task<int> ExecuteSqlNonQueryAsync(string sqlCommand)
         {
-            try
+            if (string.IsNullOrWhiteSpace(sqlCommand))
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
-                {
-                    using (SqlCommand command = new SqlCommand(sqlCommand, connection))
-                    {
-                        connection.Open();
+                throw new ArgumentException("SQL command cannot be null or empty.", nameof(sqlCommand));
+            }
 
-                        if (sqlCommand.Trim().StartsWith("SELECT", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // SELECT 
-                            using (SqlDataReader reader = command.ExecuteReader())
-                            {
-                                return SerializeDataReader(reader);
-                            }
-                        }
-                        else
-                        {
-                            // INSERT, UPDATE, DELETE,...
-                            command.ExecuteNonQuery();
-                            return "Success";
-                        }
+            await using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand(sqlCommand, connection))
+                {
+                    try
+                    {
+                        return await command.ExecuteNonQueryAsync();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"SQL Error: {ex.Message}");
+                        //throw;
+                        return 0;
                     }
                 }
             }
-            catch (Exception ex)
+        }
+
+        public async Task<object> ExecuteSqlScalarAsync(string sqlCommand)
+        {
+            if (string.IsNullOrWhiteSpace(sqlCommand))
             {
-                return $"Error: {ex.Message}";
+                throw new ArgumentException("SQL command cannot be null or empty.", nameof(sqlCommand));
+            }
+
+            await using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                using (var command = new SqlCommand(sqlCommand, connection))
+                {
+                    try
+                    {
+                        return await command.ExecuteScalarAsync();
+                    }
+                    catch (SqlException ex)
+                    {
+                        Console.WriteLine($"SQL Error: {ex.Message}");
+                        throw;
+                    }
+                }
             }
         }
+
+        public async Task<string> ExecuteSqlReaderAsync(string sqlCommand)
+        {
+            if (string.IsNullOrWhiteSpace(sqlCommand))
+            {
+                return "SQL command cannot be null or empty. " + nameof(sqlCommand);
+            }
+
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+                var command = new SqlCommand(sqlCommand, connection);
+                SqlDataReader result = await command.ExecuteReaderAsync(System.Data.CommandBehavior.CloseConnection);
+                return SerializeDataReader(result);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"SQL Error: {ex.Message}");
+                if (connection != null && connection.State == System.Data.ConnectionState.Open)
+                {
+                    await connection.CloseAsync();
+                }
+                return $"SQL Error: {ex.Message}";
+            }
+        }
+
 
         // Chuyển dữ liệu SQL sang JSON
         private string SerializeDataReader(SqlDataReader reader)

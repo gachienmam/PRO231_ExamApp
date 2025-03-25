@@ -6,10 +6,16 @@ namespace ExamLibrary.Enum
 {
     public enum RemoteCommandType
     {
-        SQL = 0,
+        // Lệnh liên quan SQL
+        SQL_NONQUERY = 0,
+        SQL_SCALAR = 1,
+        SQL_READER = 2,
 
-        BROADCAST_ALL = 1,
-        BROADCAST_TARGETED_EXAM = 2,
-        BROADCAST_TARGETED_USER = 3
+        // Lệnh liên quan tạo password
+        REQUEST_ENCRYPTEDPASSWORD = 5,
+
+        BROADCAST_ALL = 10,
+        BROADCAST_TARGETED_EXAM = 11,
+        BROADCAST_TARGETED_USER = 12
     }
 }

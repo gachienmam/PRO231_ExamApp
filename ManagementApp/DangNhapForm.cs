@@ -1,4 +1,5 @@
-﻿using Grpc.Net.Client;
+﻿using Accessibility;
+using Grpc.Net.Client;
 using ManagementApp.AdminProto;
 using ReaLTaiizor.Controls;
 using System.Configuration;
@@ -67,7 +68,11 @@ namespace ManagementApp
                     {
                         Shared.AccessToken = response.AccessToken;
                         // Authentication successful, open the main management form
-                        MainForm mainForm = new MainForm(_client, response.AccessToken); // Pass the server address
+                        Grpc.Core.Metadata headers = new Grpc.Core.Metadata
+                            {
+                                { "Authorization", $"Bearer {Shared.AccessToken}" }
+                            };
+                        MainForm mainForm = new MainForm(_client, headers); // Pass the server address
                         this.Hide();
                         mainForm.ShowDialog();
                         if (!Shared.IsExiting)

@@ -20,17 +20,12 @@ namespace ManagementApp
     public partial class QuanLyThiSinhForm : Form
     {
         private readonly AdminServiceClient _client;
-        private readonly string _accessToken;
         private readonly Grpc.Core.Metadata _headers;
-        public QuanLyThiSinhForm(AdminServiceClient client, string accessToken)
+        public QuanLyThiSinhForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
-            _accessToken = accessToken;
-            _headers = new Grpc.Core.Metadata
-                {
-                    { "Authorization", $"Bearer {_accessToken}" }
-                };
+            _headers = headers;
         }
 
         private void buttonThoat_Click(object sender, EventArgs e)

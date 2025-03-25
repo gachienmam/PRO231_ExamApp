@@ -32,8 +32,8 @@ namespace ManagementApp
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
             crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
             btnLocDuLieu = new ReaLTaiizor.Controls.CrownButton();
-            crownCheckBox3 = new ReaLTaiizor.Controls.CrownCheckBox();
-            crownCheckBox2 = new ReaLTaiizor.Controls.CrownCheckBox();
+            CheckBoxRot = new ReaLTaiizor.Controls.CrownCheckBox();
+            CheckBoxDau = new ReaLTaiizor.Controls.CrownCheckBox();
             BUTTON_XUATDS = new ReaLTaiizor.Controls.CrownButton();
             BUTTON_XEMDS = new ReaLTaiizor.Controls.CrownButton();
             textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
@@ -63,8 +63,8 @@ namespace ManagementApp
             // 
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(btnLocDuLieu);
-            crownGroupBox1.Controls.Add(crownCheckBox3);
-            crownGroupBox1.Controls.Add(crownCheckBox2);
+            crownGroupBox1.Controls.Add(CheckBoxRot);
+            crownGroupBox1.Controls.Add(CheckBoxDau);
             crownGroupBox1.Location = new Point(675, 28);
             crownGroupBox1.Name = "crownGroupBox1";
             crownGroupBox1.Size = new Size(121, 81);
@@ -82,23 +82,23 @@ namespace ManagementApp
             btnLocDuLieu.Text = "Lọc";
             btnLocDuLieu.Click += btnLocDuLieu_Click;
             // 
-            // crownCheckBox3
+            // CheckBoxRot
             // 
-            crownCheckBox3.AutoSize = true;
-            crownCheckBox3.Location = new Point(69, 22);
-            crownCheckBox3.Name = "crownCheckBox3";
-            crownCheckBox3.Size = new Size(44, 19);
-            crownCheckBox3.TabIndex = 6;
-            crownCheckBox3.Text = "Rớt";
+            CheckBoxRot.AutoSize = true;
+            CheckBoxRot.Location = new Point(69, 22);
+            CheckBoxRot.Name = "CheckBoxRot";
+            CheckBoxRot.Size = new Size(44, 19);
+            CheckBoxRot.TabIndex = 6;
+            CheckBoxRot.Text = "Rớt";
             // 
-            // crownCheckBox2
+            // CheckBoxDau
             // 
-            crownCheckBox2.AutoSize = true;
-            crownCheckBox2.Location = new Point(16, 22);
-            crownCheckBox2.Name = "crownCheckBox2";
-            crownCheckBox2.Size = new Size(47, 19);
-            crownCheckBox2.TabIndex = 5;
-            crownCheckBox2.Text = "Đậu";
+            CheckBoxDau.AutoSize = true;
+            CheckBoxDau.Location = new Point(16, 22);
+            CheckBoxDau.Name = "CheckBoxDau";
+            CheckBoxDau.Size = new Size(47, 19);
+            CheckBoxDau.TabIndex = 5;
+            CheckBoxDau.Text = "Đậu";
             // 
             // BUTTON_XUATDS
             // 
@@ -178,7 +178,7 @@ namespace ManagementApp
         private ReaLTaiizor.Controls.CrownButton BUTTON_XEMDS;
         private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
         private ReaLTaiizor.Controls.CrownButton btnLocDuLieu;
-        private ReaLTaiizor.Controls.CrownCheckBox crownCheckBox3;
-        private ReaLTaiizor.Controls.CrownCheckBox crownCheckBox2;
+        private ReaLTaiizor.Controls.CrownCheckBox CheckBoxRot;
+        private ReaLTaiizor.Controls.CrownCheckBox CheckBoxDau;
     }
 }

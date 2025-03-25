@@ -92,13 +92,46 @@ namespace ManagementApp
         {
             try
             {
-                DataTable dt = (DataTable)dataGridView1.DataSource;
-                if (dt != null)
+                DataTable dt;
+
+                // Kiểm tra nếu DataSource đang là DataView thì lấy bảng gốc
+                if (dataGridView1.DataSource is DataView dvSource)
                 {
+                    dt = dvSource.Table;
+                }
+                else
+                {
+                    dt = (DataTable)dataGridView1.DataSource;
+                }
+
+                if (CheckBoxDau.Checked && CheckBoxRot.Checked)
+                {
+                    // Hiển thị toàn bộ danh sách
+                    dataGridView1.DataSource = dt;
+                }
+                else if (CheckBoxDau.Checked)
+                {
+                    // Hiển thị thí sinh đậu (điểm >= 5)
                     DataView dv = new DataView(dt);
-                    dv.RowFilter = "Diem >= 5"; // Giả sử cột Diem tồn tại
+                    dv.RowFilter = "Diem >= 5";
                     dataGridView1.DataSource = dv;
                 }
+                else if (CheckBoxRot.Checked)
+                {
+                    // Hiển thị thí sinh rớt (điểm < 5)
+                    DataView dv = new DataView(dt);
+                    dv.RowFilter = "Diem < 5";
+                    dataGridView1.DataSource = dv;
+                }
+                else
+                {
+                    // Không chọn gì thì xóa dữ liệu hiển thị
+                    dataGridView1.DataSource = dt;
+                }
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -156,7 +189,7 @@ namespace ManagementApp
                 if (dt != null)
                 {
                     DataView dv = new DataView(dt);
-                    dv.RowFilter = $"MaSV = '{maSV}'";
+                    dv.RowFilter = $"MaThiSinh = '{maSV}'";
                     dataGridView1.DataSource = dv;
                 }
                 else

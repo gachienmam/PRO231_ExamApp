@@ -363,7 +363,7 @@ namespace ManagementApp
                     var request = new CommandRequest()
                     {
                         RequestCode = (int)RemoteCommandType.SQL,
-                        Command = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text}', N'{textBoxHoTenTS.Text}', N'{textBoxEmailTS.Text}', N'{textBoxMKTS.Text}', CONVERT(DATE,'{dateTimePickerNgaySinhTS.Text}'), N'{textBoxSDTTS.Text}', {trangThai}" 
+                        Command = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text}', N'{textBoxHoTenTS.Text}', N'{textBoxEmailTS.Text}', N'{textBoxMKTS.Text}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text}', {trangThai}" 
                         
 
                     };
@@ -414,7 +414,7 @@ namespace ManagementApp
                 if (dt != null)
                 {
                     DataView dv = new DataView(dt);
-                    dv.RowFilter = $"MaSV = '{maSV}'";
+                    dv.RowFilter = $"MaThiSinh = '{maSV}'";
                     dataGridViewTS.DataSource = dv;
                 }
                 else

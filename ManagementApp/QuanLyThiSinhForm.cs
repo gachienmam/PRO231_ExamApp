@@ -37,38 +37,7 @@ namespace ManagementApp
         {
             this.Close();
         }
-        private void dgvThiSinh_Click(object sender, EventArgs e)
-        {
-            if (dataGridViewTS.Rows.Count > 1)
-            {
-                buttonLuuTS.Enabled = false;
-                textBoxMaTS.Focus();
-                textBoxHoTenTS.Enabled = true;
-                textBoxSDTTS.Enabled = true;
-                textBoxEmailTS.Enabled = true;
-                textBoxMKTS.Enabled = true;
-                dateTimePickerNgaySinhTS.Enabled = true;
-                radioButtonKhoaTS.Enabled = true;
-                radioButtonHDTS.Enabled = true;
-                buttonSuaTS.Enabled = true;
-                buttonXoaTS.Enabled = true;
-                textBoxMaTS.Text = dataGridViewTS.CurrentRow.Cells[0].Value.ToString();
-                textBoxHoTenTS.Text = dataGridViewTS.CurrentRow.Cells[1].Value.ToString();
-                textBoxSDTTS.Text = dataGridViewTS.CurrentRow.Cells[2].Value.ToString();
-                textBoxEmailTS.Text = dataGridViewTS.CurrentRow.Cells[3].Value.ToString();
-                textBoxMKTS.Text = dataGridViewTS.CurrentRow.Cells[4].Value.ToString();
-                dateTimePickerNgaySinhTS.Text = dataGridViewTS.CurrentRow.Cells[5].Value.ToString();
-                string TrangThai = dataGridViewTS.CurrentRow.Cells[6].Value.ToString();
-                if (TrangThai == "Khoa")
-                    radioButtonKhoaTS.Checked = true;
-                else
-                    radioButtonHDTS.Checked = true;
-            }
-            else
-            {
-                MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+
         private void buttonThemTS_Click(object sender, EventArgs e)
         {
             textBoxMaTS.Text = null;
@@ -508,7 +477,37 @@ namespace ManagementApp
                 dataGridViewTS.Columns[5].HeaderText = "Số điện thoại";
                 dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
             }
-            tabControl1.SelectedTab = 0;
+
+            if (dataGridViewTS.Rows.Count > 1)
+            {
+                buttonLuuTS.Enabled = false;
+                textBoxMaTS.Focus();
+                textBoxHoTenTS.Enabled = true;
+                textBoxSDTTS.Enabled = true;
+                textBoxEmailTS.Enabled = true;
+                textBoxMKTS.Enabled = true;
+                dateTimePickerNgaySinhTS.Enabled = true;
+                radioButtonKhoaTS.Enabled = true;
+                radioButtonHDTS.Enabled = true;
+                buttonSuaTS.Enabled = true;
+                buttonXoaTS.Enabled = true;
+                textBoxMaTS.Text = dataGridViewTS.CurrentRow.Cells[0].Value.ToString();
+                textBoxHoTenTS.Text = dataGridViewTS.CurrentRow.Cells[1].Value.ToString();
+                textBoxSDTTS.Text = dataGridViewTS.CurrentRow.Cells[2].Value.ToString();
+                textBoxEmailTS.Text = dataGridViewTS.CurrentRow.Cells[3].Value.ToString();
+                textBoxMKTS.Text = dataGridViewTS.CurrentRow.Cells[4].Value.ToString();
+                dateTimePickerNgaySinhTS.Text = dataGridViewTS.CurrentRow.Cells[5].Value.ToString();
+                string TrangThai = dataGridViewTS.CurrentRow.Cells[6].Value.ToString();
+                if (TrangThai == "Khóa")
+                    radioButtonKhoaTS.Checked = true;
+                else
+                    radioButtonHDTS.Checked = true;
+            }
+            else
+            {
+                MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            tabControl1.SelectedIndex = 0;
         }
     }
 }

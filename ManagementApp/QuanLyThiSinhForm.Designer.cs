@@ -292,6 +292,7 @@
             buttonThemTS.Size = new Size(82, 50);
             buttonThemTS.TabIndex = 69;
             buttonThemTS.Text = "Thêm";
+            buttonThemTS.Click += buttonThemTS_Click;
             // 
             // dateTimePickerNgaySinhTS
             // 
@@ -328,6 +329,7 @@
             buttonThoat.Size = new Size(82, 50);
             buttonThoat.TabIndex = 62;
             buttonThoat.Text = "Thoát";
+            buttonThoat.Click += buttonThoat_Click_1;
             // 
             // buttonXoaTS
             // 
@@ -337,6 +339,7 @@
             buttonXoaTS.Size = new Size(82, 50);
             buttonXoaTS.TabIndex = 61;
             buttonXoaTS.Text = "Xóa";
+            buttonXoaTS.Click += buttonXoaTS_Click;
             // 
             // buttonSuaTS
             // 
@@ -346,6 +349,7 @@
             buttonSuaTS.Size = new Size(82, 50);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
+            buttonSuaTS.Click += buttonSuaTS_Click;
             // 
             // tabPage2
             // 

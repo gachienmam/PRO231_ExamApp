@@ -159,8 +159,12 @@ namespace ManagementApp
                 trangThai = 1; // Nếu radioButtonHDTS được chọn, trạng thái là hoạt động
             }
 
-            float intDienThoai;
-            bool isInt = float.TryParse(textBoxSDTTS.Text.Trim().ToString(), out intDienThoai);
+            int intDienThoai;
+            bool isInt = int.TryParse(textBoxSDTTS.Text.Trim().ToString(), out intDienThoai);
+            if (isInt == false)
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ");
+            }
             if (textBoxEmailTS.Text.Trim().Length == 0)// kiem tra phai nhap email
             {
                 MessageBox.Show("Bạn phải nhập email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -263,7 +267,7 @@ namespace ManagementApp
                     var request = new CommandRequest()
                     {
                         RequestCode = (int)RemoteCommandType.SQL,
-                        Command = string.Format("EXEC sp_DeleteThiSinh @MaThiSinh")
+                        Command = string.Format("EXEC sp_DeleteThiSinh " + textBoxMaTS.Text)
                     };
 
                     var response = _client.ExecuteRemoteCommand(request, _headers);
@@ -304,8 +308,8 @@ namespace ManagementApp
             {
                 trangThai = 1; // Nếu radioButtonHDTS được chọn, trạng thái là hoạt động
             }
-            float intDienThoai;
-            bool isInt = float.TryParse(textBoxSDTTS.Text.Trim().ToString(), out intDienThoai);
+            int intDienThoai;
+            bool isInt = int.TryParse(textBoxSDTTS.Text.Trim().ToString(), out intDienThoai);
             if (textBoxEmailTS.Text.Trim().Length == 0)// kiem tra phai nhap email
             {
                 MessageBox.Show("Bạn phải nhập email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -344,12 +348,7 @@ namespace ManagementApp
                 dateTimePickerNgaySinhTS.Focus();
                 return;
             }
-            if (radioButtonKhoaTS.Checked == false && radioButtonKhoaTS.Checked == false)// kiem tra phai check tình trạng
-            {
-                MessageBox.Show("Bạn phải chon vai trò thí sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxHoTenTS.Focus();
-                return;
-            }
+            
 
             if (radioButtonHDTS.Checked == false && radioButtonKhoaTS.Checked == false)// kiem tra phai check tình trạng
             {
@@ -364,7 +363,8 @@ namespace ManagementApp
                     var request = new CommandRequest()
                     {
                         RequestCode = (int)RemoteCommandType.SQL,
-                        Command = string.Format("EXEC sp_UpdateThiSinh @MaThiSinh, @HoTen, @Email, @MatKhau, @NgaySinh, @SoDienThoai, @TrangThai")
+                        Command = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text}', N'{textBoxHoTenTS.Text}', N'{textBoxEmailTS.Text}', N'{textBoxMKTS.Text}', CONVERT(DATE,'{dateTimePickerNgaySinhTS.Text}'), N'{textBoxSDTTS.Text}', {trangThai}" 
+                        
 
                     };
 
@@ -466,7 +466,7 @@ namespace ManagementApp
 
         private void dataGridViewTS_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           // Kiểm tra số lượng cột trước khi đặt HeaderText
+            // Kiểm tra số lượng cột trước khi đặt HeaderText
             if (dataGridViewTS.Columns.Count >= 7)
             {
                 dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
@@ -493,10 +493,10 @@ namespace ManagementApp
                 buttonXoaTS.Enabled = true;
                 textBoxMaTS.Text = dataGridViewTS.CurrentRow.Cells[0].Value.ToString();
                 textBoxHoTenTS.Text = dataGridViewTS.CurrentRow.Cells[1].Value.ToString();
-                textBoxSDTTS.Text = dataGridViewTS.CurrentRow.Cells[2].Value.ToString();
-                textBoxEmailTS.Text = dataGridViewTS.CurrentRow.Cells[3].Value.ToString();
-                textBoxMKTS.Text = dataGridViewTS.CurrentRow.Cells[4].Value.ToString();
-                dateTimePickerNgaySinhTS.Text = dataGridViewTS.CurrentRow.Cells[5].Value.ToString();
+                textBoxEmailTS.Text = dataGridViewTS.CurrentRow.Cells[2].Value.ToString();
+                textBoxMKTS.Text = dataGridViewTS.CurrentRow.Cells[3].Value.ToString();
+                dateTimePickerNgaySinhTS.Text = dataGridViewTS.CurrentRow.Cells[4].Value.ToString();
+                textBoxSDTTS.Text = dataGridViewTS.CurrentRow.Cells[5].Value.ToString();
                 string TrangThai = dataGridViewTS.CurrentRow.Cells[6].Value.ToString();
                 if (TrangThai == "Khóa")
                     radioButtonKhoaTS.Checked = true;
@@ -508,6 +508,11 @@ namespace ManagementApp
                 MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             tabControl1.SelectedIndex = 0;
+        }
+
+        private void buttonThoat_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -33,29 +33,29 @@
             statusStrip = new ReaLTaiizor.Controls.CrownStatusStrip();
             splitter1 = new Splitter();
             sectionPanelEditor = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownButton2 = new ReaLTaiizor.Controls.CrownButton();
-            crownButton3 = new ReaLTaiizor.Controls.CrownButton();
-            crownTextBox5 = new ReaLTaiizor.Controls.CrownTextBox();
+            btnDeleteExam = new ReaLTaiizor.Controls.CrownButton();
+            btnSelectFile = new ReaLTaiizor.Controls.CrownButton();
+            lblValidFile = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle10 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox4 = new ReaLTaiizor.Controls.CrownTextBox();
+            txtFilePath = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle9 = new ReaLTaiizor.Controls.CrownTitle();
             parrotGradientPanel2 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownTitle8 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
-            crownDropDownList1 = new ReaLTaiizor.Controls.CrownDropDownList();
-            dateTimePicker2 = new DateTimePicker();
+            cbStatus = new ReaLTaiizor.Controls.CrownDropDownList();
+            dtpEndTime = new DateTimePicker();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
-            dateTimePicker1 = new DateTimePicker();
+            dtpStartTime = new DateTimePicker();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox3 = new ReaLTaiizor.Controls.CrownTextBox();
+            txtExamPassword = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox2 = new ReaLTaiizor.Controls.CrownTextBox();
+            txtCreatorCode = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox1 = new ReaLTaiizor.Controls.CrownTextBox();
+            txtExamCode = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            crownButton1 = new ReaLTaiizor.Controls.CrownButton();
+            btnSaveExam = new ReaLTaiizor.Controls.CrownButton();
             examTreeView = new ReaLTaiizor.Controls.CrownTreeView();
             sectionPanelTreeView = new ReaLTaiizor.Controls.CrownSectionPanel();
             statusStrip.SuspendLayout();
@@ -102,29 +102,29 @@
             // 
             // sectionPanelEditor
             // 
-            sectionPanelEditor.Controls.Add(crownButton2);
-            sectionPanelEditor.Controls.Add(crownButton3);
-            sectionPanelEditor.Controls.Add(crownTextBox5);
+            sectionPanelEditor.Controls.Add(btnDeleteExam);
+            sectionPanelEditor.Controls.Add(btnSelectFile);
+            sectionPanelEditor.Controls.Add(lblValidFile);
             sectionPanelEditor.Controls.Add(crownTitle10);
-            sectionPanelEditor.Controls.Add(crownTextBox4);
+            sectionPanelEditor.Controls.Add(txtFilePath);
             sectionPanelEditor.Controls.Add(crownTitle9);
             sectionPanelEditor.Controls.Add(parrotGradientPanel2);
             sectionPanelEditor.Controls.Add(crownTitle8);
             sectionPanelEditor.Controls.Add(crownTitle7);
-            sectionPanelEditor.Controls.Add(crownDropDownList1);
-            sectionPanelEditor.Controls.Add(dateTimePicker2);
+            sectionPanelEditor.Controls.Add(cbStatus);
+            sectionPanelEditor.Controls.Add(dtpEndTime);
             sectionPanelEditor.Controls.Add(crownTitle6);
-            sectionPanelEditor.Controls.Add(dateTimePicker1);
+            sectionPanelEditor.Controls.Add(dtpStartTime);
             sectionPanelEditor.Controls.Add(crownTitle5);
-            sectionPanelEditor.Controls.Add(crownTextBox3);
+            sectionPanelEditor.Controls.Add(txtExamPassword);
             sectionPanelEditor.Controls.Add(crownTitle4);
-            sectionPanelEditor.Controls.Add(crownTextBox2);
+            sectionPanelEditor.Controls.Add(txtCreatorCode);
             sectionPanelEditor.Controls.Add(crownTitle3);
-            sectionPanelEditor.Controls.Add(crownTextBox1);
+            sectionPanelEditor.Controls.Add(txtExamCode);
             sectionPanelEditor.Controls.Add(crownTitle2);
             sectionPanelEditor.Controls.Add(parrotGradientPanel1);
             sectionPanelEditor.Controls.Add(crownTitle1);
-            sectionPanelEditor.Controls.Add(crownButton1);
+            sectionPanelEditor.Controls.Add(btnSaveExam);
             sectionPanelEditor.Dock = DockStyle.Fill;
             sectionPanelEditor.Location = new Point(179, 0);
             sectionPanelEditor.MinimumSize = new Size(540, 393);
@@ -133,36 +133,38 @@
             sectionPanelEditor.Size = new Size(621, 393);
             sectionPanelEditor.TabIndex = 6;
             // 
-            // crownButton2
+            // btnDeleteExam
             // 
-            crownButton2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            crownButton2.Location = new Point(428, 350);
-            crownButton2.Name = "crownButton2";
-            crownButton2.Padding = new Padding(5);
-            crownButton2.Size = new Size(84, 23);
-            crownButton2.TabIndex = 123;
-            crownButton2.Text = "Xóa đề thi";
+            btnDeleteExam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDeleteExam.Location = new Point(428, 350);
+            btnDeleteExam.Name = "btnDeleteExam";
+            btnDeleteExam.Padding = new Padding(5);
+            btnDeleteExam.Size = new Size(84, 23);
+            btnDeleteExam.TabIndex = 123;
+            btnDeleteExam.Text = "Xóa đề thi";
+            btnDeleteExam.Click += btnDeleteExam_Click;
             // 
-            // crownButton3
+            // btnSelectFile
             // 
-            crownButton3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            crownButton3.Location = new Point(527, 317);
-            crownButton3.Name = "crownButton3";
-            crownButton3.Padding = new Padding(5);
-            crownButton3.Size = new Size(75, 23);
-            crownButton3.TabIndex = 121;
-            crownButton3.Text = "Chọn đề";
+            btnSelectFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSelectFile.Location = new Point(527, 317);
+            btnSelectFile.Name = "btnSelectFile";
+            btnSelectFile.Padding = new Padding(5);
+            btnSelectFile.Size = new Size(75, 23);
+            btnSelectFile.TabIndex = 121;
+            btnSelectFile.Text = "Chọn đề";
+            btnSelectFile.Click += btnSelectFile_Click;
             // 
-            // crownTextBox5
+            // lblValidFile
             // 
-            crownTextBox5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            crownTextBox5.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox5.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox5.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox5.Location = new Point(106, 352);
-            crownTextBox5.Name = "crownTextBox5";
-            crownTextBox5.Size = new Size(126, 23);
-            crownTextBox5.TabIndex = 120;
+            lblValidFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblValidFile.BackColor = Color.FromArgb(69, 73, 74);
+            lblValidFile.BorderStyle = BorderStyle.FixedSingle;
+            lblValidFile.ForeColor = Color.FromArgb(220, 220, 220);
+            lblValidFile.Location = new Point(106, 352);
+            lblValidFile.Name = "lblValidFile";
+            lblValidFile.Size = new Size(126, 23);
+            lblValidFile.TabIndex = 120;
             // 
             // crownTitle10
             // 
@@ -175,16 +177,16 @@
             crownTitle10.TabIndex = 119;
             crownTitle10.Text = "Đề hợp lệ?";
             // 
-            // crownTextBox4
+            // txtFilePath
             // 
-            crownTextBox4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            crownTextBox4.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox4.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox4.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox4.Location = new Point(106, 323);
-            crownTextBox4.Name = "crownTextBox4";
-            crownTextBox4.Size = new Size(126, 23);
-            crownTextBox4.TabIndex = 118;
+            txtFilePath.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtFilePath.BackColor = Color.FromArgb(69, 73, 74);
+            txtFilePath.BorderStyle = BorderStyle.FixedSingle;
+            txtFilePath.ForeColor = Color.FromArgb(220, 220, 220);
+            txtFilePath.Location = new Point(106, 323);
+            txtFilePath.Name = "txtFilePath";
+            txtFilePath.Size = new Size(126, 23);
+            txtFilePath.TabIndex = 118;
             // 
             // crownTitle9
             // 
@@ -234,29 +236,29 @@
             crownTitle7.Font = new Font("Segoe UI", 9F);
             crownTitle7.Location = new Point(339, 142);
             crownTitle7.Name = "crownTitle7";
-            crownTitle7.Size = new Size(59, 15);
+            crownTitle7.Size = new Size(60, 15);
             crownTitle7.TabIndex = 114;
             crownTitle7.Text = "Trạng thái";
             // 
-            // crownDropDownList1
+            // cbStatus
             // 
-            crownDropDownList1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            crownDropDownList1.Location = new Point(404, 140);
-            crownDropDownList1.Name = "crownDropDownList1";
-            crownDropDownList1.Size = new Size(200, 23);
-            crownDropDownList1.TabIndex = 113;
-            crownDropDownList1.Text = "crownDropDownList1";
+            cbStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbStatus.Location = new Point(404, 140);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(200, 23);
+            cbStatus.TabIndex = 113;
+            cbStatus.Text = "crownDropDownList1";
             // 
-            // dateTimePicker2
+            // dtpEndTime
             // 
-            dateTimePicker2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePicker2.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
-            dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.Location = new Point(404, 111);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(199, 23);
-            dateTimePicker2.TabIndex = 112;
-            dateTimePicker2.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
+            dtpEndTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dtpEndTime.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
+            dtpEndTime.Format = DateTimePickerFormat.Custom;
+            dtpEndTime.Location = new Point(404, 111);
+            dtpEndTime.Name = "dtpEndTime";
+            dtpEndTime.Size = new Size(199, 23);
+            dtpEndTime.TabIndex = 112;
+            dtpEndTime.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
             // 
             // crownTitle6
             // 
@@ -265,20 +267,20 @@
             crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(296, 113);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(102, 15);
+            crownTitle6.Size = new Size(103, 15);
             crownTitle6.TabIndex = 111;
             crownTitle6.Text = "Thời gian kết thúc";
             // 
-            // dateTimePicker1
+            // dtpStartTime
             // 
-            dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dateTimePicker1.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(404, 82);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(199, 23);
-            dateTimePicker1.TabIndex = 110;
-            dateTimePicker1.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
+            dtpStartTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dtpStartTime.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
+            dtpStartTime.Format = DateTimePickerFormat.Custom;
+            dtpStartTime.Location = new Point(404, 82);
+            dtpStartTime.Name = "dtpStartTime";
+            dtpStartTime.Size = new Size(199, 23);
+            dtpStartTime.TabIndex = 110;
+            dtpStartTime.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
             // 
             // crownTitle5
             // 
@@ -287,20 +289,20 @@
             crownTitle5.Font = new Font("Segoe UI", 9F);
             crownTitle5.Location = new Point(299, 84);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(99, 15);
+            crownTitle5.Size = new Size(100, 15);
             crownTitle5.TabIndex = 109;
             crownTitle5.Text = "Thời gian bất đầu";
             // 
-            // crownTextBox3
+            // txtExamPassword
             // 
-            crownTextBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            crownTextBox3.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox3.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox3.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox3.Location = new Point(106, 140);
-            crownTextBox3.Name = "crownTextBox3";
-            crownTextBox3.Size = new Size(126, 23);
-            crownTextBox3.TabIndex = 108;
+            txtExamPassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtExamPassword.BackColor = Color.FromArgb(69, 73, 74);
+            txtExamPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtExamPassword.ForeColor = Color.FromArgb(220, 220, 220);
+            txtExamPassword.Location = new Point(106, 140);
+            txtExamPassword.Name = "txtExamPassword";
+            txtExamPassword.Size = new Size(126, 23);
+            txtExamPassword.TabIndex = 108;
             // 
             // crownTitle4
             // 
@@ -312,16 +314,16 @@
             crownTitle4.TabIndex = 107;
             crownTitle4.Text = "Mật khẩu đề";
             // 
-            // crownTextBox2
+            // txtCreatorCode
             // 
-            crownTextBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            crownTextBox2.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox2.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox2.Location = new Point(106, 111);
-            crownTextBox2.Name = "crownTextBox2";
-            crownTextBox2.Size = new Size(126, 23);
-            crownTextBox2.TabIndex = 106;
+            txtCreatorCode.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtCreatorCode.BackColor = Color.FromArgb(69, 73, 74);
+            txtCreatorCode.BorderStyle = BorderStyle.FixedSingle;
+            txtCreatorCode.ForeColor = Color.FromArgb(220, 220, 220);
+            txtCreatorCode.Location = new Point(106, 111);
+            txtCreatorCode.Name = "txtCreatorCode";
+            txtCreatorCode.Size = new Size(126, 23);
+            txtCreatorCode.TabIndex = 106;
             // 
             // crownTitle3
             // 
@@ -333,16 +335,16 @@
             crownTitle3.TabIndex = 105;
             crownTitle3.Text = "Mã người tạo";
             // 
-            // crownTextBox1
+            // txtExamCode
             // 
-            crownTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            crownTextBox1.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox1.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox1.Location = new Point(106, 82);
-            crownTextBox1.Name = "crownTextBox1";
-            crownTextBox1.Size = new Size(126, 23);
-            crownTextBox1.TabIndex = 104;
+            txtExamCode.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtExamCode.BackColor = Color.FromArgb(69, 73, 74);
+            txtExamCode.BorderStyle = BorderStyle.FixedSingle;
+            txtExamCode.ForeColor = Color.FromArgb(220, 220, 220);
+            txtExamCode.Location = new Point(106, 82);
+            txtExamCode.Name = "txtExamCode";
+            txtExamCode.Size = new Size(126, 23);
+            txtExamCode.TabIndex = 104;
             // 
             // crownTitle2
             // 
@@ -383,15 +385,16 @@
             crownTitle1.TabIndex = 101;
             crownTitle1.Text = "Thông tin đề";
             // 
-            // crownButton1
+            // btnSaveExam
             // 
-            crownButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            crownButton1.Location = new Point(518, 350);
-            crownButton1.Name = "crownButton1";
-            crownButton1.Padding = new Padding(5);
-            crownButton1.Size = new Size(84, 23);
-            crownButton1.TabIndex = 122;
-            crownButton1.Text = "Lưu thay đổi";
+            btnSaveExam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSaveExam.Location = new Point(518, 350);
+            btnSaveExam.Name = "btnSaveExam";
+            btnSaveExam.Padding = new Padding(5);
+            btnSaveExam.Size = new Size(84, 23);
+            btnSaveExam.TabIndex = 122;
+            btnSaveExam.Text = "Lưu thay đổi";
+            btnSaveExam.Click += btnSaveExam_Click;
             // 
             // examTreeView
             // 
@@ -447,29 +450,29 @@
         private ReaLTaiizor.Controls.CrownStatusStrip statusStrip;
         private Splitter splitter1;
         private ReaLTaiizor.Controls.CrownSectionPanel sectionPanelEditor;
-        private ReaLTaiizor.Controls.CrownButton crownButton2;
-        private ReaLTaiizor.Controls.CrownButton crownButton3;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox5;
+        private ReaLTaiizor.Controls.CrownButton btnDeleteExam;
+        private ReaLTaiizor.Controls.CrownButton btnSelectFile;
+        private ReaLTaiizor.Controls.CrownTextBox lblValidFile;
         private ReaLTaiizor.Controls.CrownTitle crownTitle10;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox4;
+        private ReaLTaiizor.Controls.CrownTextBox txtFilePath;
         private ReaLTaiizor.Controls.CrownTitle crownTitle9;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle8;
         private ReaLTaiizor.Controls.CrownTitle crownTitle7;
-        private ReaLTaiizor.Controls.CrownDropDownList crownDropDownList1;
-        private DateTimePicker dateTimePicker2;
+        private ReaLTaiizor.Controls.CrownDropDownList cbStatus;
+        private DateTimePicker dtpEndTime;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpStartTime;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox3;
+        private ReaLTaiizor.Controls.CrownTextBox txtExamPassword;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox2;
+        private ReaLTaiizor.Controls.CrownTextBox txtCreatorCode;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox1;
+        private ReaLTaiizor.Controls.CrownTextBox txtExamCode;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
-        private ReaLTaiizor.Controls.CrownButton crownButton1;
+        private ReaLTaiizor.Controls.CrownButton btnSaveExam;
         private ReaLTaiizor.Controls.CrownTreeView examTreeView;
         private ReaLTaiizor.Controls.CrownSectionPanel sectionPanelTreeView;
     }

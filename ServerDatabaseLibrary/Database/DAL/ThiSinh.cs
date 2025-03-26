@@ -18,12 +18,12 @@ namespace ServerDatabaseLibrary.Database.DAL
             _dbHelper = dbHelper;
         }
 
-        public DataTable GetUserByUsername(string studenId)
+        public DataTable GetThiSinhByMaThiSinh(string maThiSinh)
         {
-            string query = "SELECT * FROM ThiSinh WHERE MaThiSing = @MaThiSing";
+            string query = "SELECT * FROM ThiSinh WHERE MaThiSinh = @MaThiSinh";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@MaThiSing", studenId)
+                new SqlParameter("@MaThiSinh", maThiSinh)
             };
 
             return _dbHelper.ExecuteQuery(query, parameters);
@@ -107,7 +107,7 @@ namespace ServerDatabaseLibrary.Database.DAL
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-            new SqlParameter("@TrangThai", trangThai)
+                    new SqlParameter("@TrangThai", trangThai)
                 };
 
                 return _dbHelper.ExecuteQuery(query, parameters);

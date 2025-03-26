@@ -58,7 +58,7 @@
             panel1 = new Panel();
             textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
             crownButtonTimKiem = new ReaLTaiizor.Controls.CrownButton();
-            dataGridViewND = new DataGridView();
+            dataGridViewNguoiDung = new DataGridView();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             crownSectionPanel1.SuspendLayout();
@@ -66,7 +66,7 @@
             crownGroupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewND).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewNguoiDung).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -159,7 +159,7 @@
             crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(381, 168);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(63, 15);
+            crownTitle6.Size = new Size(62, 15);
             crownTitle6.TabIndex = 75;
             crownTitle6.Text = "Trạng thái:";
             // 
@@ -397,12 +397,12 @@
             buttonSuaND.Size = new Size(61, 36);
             buttonSuaND.TabIndex = 57;
             buttonSuaND.Text = "Sửa";
-            buttonSuaND.Click += buttonSuaND_Click_1;
+            buttonSuaND.Click += buttonSuaND_Click;
             // 
             // tabPage2
             // 
             tabPage2.Controls.Add(panel1);
-            tabPage2.Controls.Add(dataGridViewND);
+            tabPage2.Controls.Add(dataGridViewNguoiDung);
             tabPage2.Location = new Point(4, 27);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -445,14 +445,15 @@
             crownButtonTimKiem.Text = "Tìm kiếm";
             crownButtonTimKiem.Click += crownButtonTimKiem_Click;
             // 
-            // dataGridViewND
+            // dataGridViewNguoiDung
             // 
-            dataGridViewND.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewND.Dock = DockStyle.Fill;
-            dataGridViewND.Location = new Point(3, 3);
-            dataGridViewND.Name = "dataGridViewND";
-            dataGridViewND.Size = new Size(786, 382);
-            dataGridViewND.TabIndex = 0;
+            dataGridViewNguoiDung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewNguoiDung.Dock = DockStyle.Fill;
+            dataGridViewNguoiDung.Location = new Point(3, 3);
+            dataGridViewNguoiDung.Name = "dataGridViewNguoiDung";
+            dataGridViewNguoiDung.Size = new Size(786, 382);
+            dataGridViewNguoiDung.TabIndex = 0;
+            dataGridViewNguoiDung.Click += dataGridViewNguoiDung_Click;
             // 
             // QuanLyNguoiDungForm
             // 
@@ -465,6 +466,7 @@
             MinimumSize = new Size(800, 419);
             Name = "QuanLyNguoiDungForm";
             Text = "Quản lý người dùng";
+            Load += QuanLyNguoiDungForm_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             crownSectionPanel1.ResumeLayout(false);
@@ -476,7 +478,7 @@
             tabPage2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewND).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewNguoiDung).EndInit();
             ResumeLayout(false);
         }
 
@@ -510,7 +512,7 @@
         private Panel panel1;
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiem;
         private ReaLTaiizor.Controls.CrownButton crownButtonTimKiem;
-        private DataGridView dataGridViewND;
+        private DataGridView dataGridViewNguoiDung;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle7;
     }

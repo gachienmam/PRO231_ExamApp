@@ -1,5 +1,5 @@
-﻿using ExamServer.Database.DTO;
-using Microsoft.Data.SqlClient;
+﻿using ServerDatabaseLibrary.Database.DTO;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.BUS
+namespace ManagementApp.Database.BUS
 {
-    internal class NguoiDung
+    public class NguoiDung
     {
         private readonly DAL.NguoiDung _DAL_NguoiDung;
 

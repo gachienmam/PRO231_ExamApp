@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GioiThieuForm));
             foreverForm1 = new ReaLTaiizor.Forms.ForeverForm();
-            foreverLabel1 = new ReaLTaiizor.Controls.ForeverLabel();
-            foreverClose1 = new ReaLTaiizor.Controls.ForeverClose();
-            foreverLabel2 = new ReaLTaiizor.Controls.ForeverLabel();
-            foreverLabel3 = new ReaLTaiizor.Controls.ForeverLabel();
             foreverTextBox1 = new ReaLTaiizor.Controls.ForeverTextBox();
+            foreverLabel3 = new ReaLTaiizor.Controls.ForeverLabel();
+            foreverLabel2 = new ReaLTaiizor.Controls.ForeverLabel();
+            foreverClose1 = new ReaLTaiizor.Controls.ForeverClose();
+            foreverLabel1 = new ReaLTaiizor.Controls.ForeverLabel();
             foreverForm1.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,58 +66,6 @@
             foreverForm1.TextColor = Color.FromArgb(234, 234, 234);
             foreverForm1.TextLight = Color.SeaGreen;
             // 
-            // foreverLabel1
-            // 
-            foreverLabel1.AutoSize = true;
-            foreverLabel1.BackColor = Color.Transparent;
-            foreverLabel1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            foreverLabel1.ForeColor = Color.LightGray;
-            foreverLabel1.Location = new Point(21, 66);
-            foreverLabel1.Name = "foreverLabel1";
-            foreverLabel1.Size = new Size(314, 30);
-            foreverLabel1.TabIndex = 11;
-            foreverLabel1.Text = "PolyTest EOS Management App";
-            // 
-            // foreverClose1
-            // 
-            foreverClose1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            foreverClose1.BackColor = Color.White;
-            foreverClose1.BaseColor = Color.FromArgb(45, 47, 49);
-            foreverClose1.DefaultLocation = true;
-            foreverClose1.DownColor = Color.FromArgb(30, 0, 0, 0);
-            foreverClose1.Font = new Font("Marlett", 10F);
-            foreverClose1.Location = new Point(466, 16);
-            foreverClose1.Name = "foreverClose1";
-            foreverClose1.OverColor = Color.FromArgb(30, 255, 255, 255);
-            foreverClose1.Size = new Size(18, 18);
-            foreverClose1.TabIndex = 12;
-            foreverClose1.Text = "foreverClose1";
-            foreverClose1.TextColor = Color.FromArgb(243, 243, 243);
-            // 
-            // foreverLabel2
-            // 
-            foreverLabel2.AutoSize = true;
-            foreverLabel2.BackColor = Color.Transparent;
-            foreverLabel2.Font = new Font("Segoe UI", 8F);
-            foreverLabel2.ForeColor = Color.LightGray;
-            foreverLabel2.Location = new Point(21, 107);
-            foreverLabel2.Name = "foreverLabel2";
-            foreverLabel2.Size = new Size(251, 13);
-            foreverLabel2.TabIndex = 13;
-            foreverLabel2.Text = "by Pupu và những người bạn (Nhóm 2, SD1802)";
-            // 
-            // foreverLabel3
-            // 
-            foreverLabel3.AutoSize = true;
-            foreverLabel3.BackColor = Color.Transparent;
-            foreverLabel3.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            foreverLabel3.ForeColor = Color.LightGray;
-            foreverLabel3.Location = new Point(328, 79);
-            foreverLabel3.Name = "foreverLabel3";
-            foreverLabel3.Size = new Size(60, 13);
-            foreverLabel3.TabIndex = 14;
-            foreverLabel3.Text = "v23032025";
-            // 
             // foreverTextBox1
             // 
             foreverTextBox1.BackColor = Color.Transparent;
@@ -136,10 +84,62 @@
             foreverTextBox1.TextAlign = HorizontalAlignment.Left;
             foreverTextBox1.UseSystemPasswordChar = false;
             // 
+            // foreverLabel3
+            // 
+            foreverLabel3.AutoSize = true;
+            foreverLabel3.BackColor = Color.Transparent;
+            foreverLabel3.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            foreverLabel3.ForeColor = Color.LightGray;
+            foreverLabel3.Location = new Point(328, 79);
+            foreverLabel3.Name = "foreverLabel3";
+            foreverLabel3.Size = new Size(60, 13);
+            foreverLabel3.TabIndex = 14;
+            foreverLabel3.Text = "v23032025";
+            // 
+            // foreverLabel2
+            // 
+            foreverLabel2.AutoSize = true;
+            foreverLabel2.BackColor = Color.Transparent;
+            foreverLabel2.Font = new Font("Segoe UI", 8F);
+            foreverLabel2.ForeColor = Color.LightGray;
+            foreverLabel2.Location = new Point(21, 107);
+            foreverLabel2.Name = "foreverLabel2";
+            foreverLabel2.Size = new Size(251, 13);
+            foreverLabel2.TabIndex = 13;
+            foreverLabel2.Text = "by Pupu và những người bạn (Nhóm 2, SD1802)";
+            // 
+            // foreverClose1
+            // 
+            foreverClose1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            foreverClose1.BackColor = Color.White;
+            foreverClose1.BaseColor = Color.FromArgb(45, 47, 49);
+            foreverClose1.DefaultLocation = true;
+            foreverClose1.DownColor = Color.FromArgb(30, 0, 0, 0);
+            foreverClose1.Font = new Font("Marlett", 10F);
+            foreverClose1.Location = new Point(471, 16);
+            foreverClose1.Name = "foreverClose1";
+            foreverClose1.OverColor = Color.FromArgb(30, 255, 255, 255);
+            foreverClose1.Size = new Size(18, 18);
+            foreverClose1.TabIndex = 12;
+            foreverClose1.Text = "foreverClose1";
+            foreverClose1.TextColor = Color.FromArgb(243, 243, 243);
+            // 
+            // foreverLabel1
+            // 
+            foreverLabel1.AutoSize = true;
+            foreverLabel1.BackColor = Color.Transparent;
+            foreverLabel1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            foreverLabel1.ForeColor = Color.LightGray;
+            foreverLabel1.Location = new Point(21, 66);
+            foreverLabel1.Name = "foreverLabel1";
+            foreverLabel1.Size = new Size(314, 30);
+            foreverLabel1.TabIndex = 11;
+            foreverLabel1.Text = "PolyTest EOS Management App";
+            // 
             // GioiThieuForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(501, 277);
             Controls.Add(foreverForm1);
             FormBorderStyle = FormBorderStyle.None;

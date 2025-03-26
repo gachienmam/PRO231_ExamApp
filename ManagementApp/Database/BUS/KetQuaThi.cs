@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.BUS
+namespace ServerDatabaseLibrary.Database.BUS
 {
-    internal class KetQuaThi
+    public class KetQuaThi
     {
         
     }

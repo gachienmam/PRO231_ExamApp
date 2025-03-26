@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static ManagementApp.AdminProto.AdminService;
 
 namespace ManagementApp
 {
@@ -17,9 +18,14 @@ namespace ManagementApp
         private readonly TreeViewControl _dockTreeView;
         private string selectedFilePath = "";
 
-        public QuanLyDeThiForm()
+        private readonly AdminServiceClient _client;
+        private readonly Grpc.Core.Metadata _headers;
+
+        public QuanLyDeThiForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
+            _client = client;
+            _headers = headers;
 
             // Thêm bộ lọc sự kiện cuộn chuột
             Application.AddMessageFilter(new ControlScrollFilter());

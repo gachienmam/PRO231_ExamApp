@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.BUS
+namespace ManagementApp.Database.BUS
 {
-    internal class ThiSinh
+    public class ThiSinh
     {
         private readonly DAL.ThiSinh _DAL_ThiSinh;
 

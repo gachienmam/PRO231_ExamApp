@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.DTO
+namespace ServerDatabaseLibrary.Database.DTO
 {
-    internal class DeThi
+    public class DeThi
     {
         [MaxLength(50)]
         public string MaDe { get; set; }

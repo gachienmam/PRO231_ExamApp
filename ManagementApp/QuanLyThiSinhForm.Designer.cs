@@ -50,7 +50,6 @@
             dateTimePickerNgaySinhTS = new DateTimePicker();
             buttonLuuTS = new ReaLTaiizor.Controls.CrownButton();
             buttonDanhSachTS = new ReaLTaiizor.Controls.CrownButton();
-            buttonThoat = new ReaLTaiizor.Controls.CrownButton();
             buttonXoaTS = new ReaLTaiizor.Controls.CrownButton();
             buttonSuaTS = new ReaLTaiizor.Controls.CrownButton();
             tabPage2 = new TabPage();
@@ -112,7 +111,6 @@
             crownSectionPanel1.Controls.Add(dateTimePickerNgaySinhTS);
             crownSectionPanel1.Controls.Add(buttonLuuTS);
             crownSectionPanel1.Controls.Add(buttonDanhSachTS);
-            crownSectionPanel1.Controls.Add(buttonThoat);
             crownSectionPanel1.Controls.Add(buttonXoaTS);
             crownSectionPanel1.Controls.Add(buttonSuaTS);
             crownSectionPanel1.Dock = DockStyle.Fill;
@@ -285,13 +283,14 @@
             // 
             // buttonThemTS
             // 
-            buttonThemTS.Location = new Point(44, 330);
+            buttonThemTS.Location = new Point(322, 337);
             buttonThemTS.Margin = new Padding(3, 2, 3, 2);
             buttonThemTS.Name = "buttonThemTS";
             buttonThemTS.Padding = new Padding(4);
-            buttonThemTS.Size = new Size(82, 50);
+            buttonThemTS.Size = new Size(82, 43);
             buttonThemTS.TabIndex = 69;
             buttonThemTS.Text = "Thêm";
+            buttonThemTS.Click += buttonThemTS_Click;
             // 
             // dateTimePickerNgaySinhTS
             // 
@@ -302,49 +301,43 @@
             // 
             // buttonLuuTS
             // 
-            buttonLuuTS.Location = new Point(358, 330);
+            buttonLuuTS.Location = new Point(586, 337);
             buttonLuuTS.Name = "buttonLuuTS";
             buttonLuuTS.Padding = new Padding(4);
-            buttonLuuTS.Size = new Size(82, 50);
+            buttonLuuTS.Size = new Size(82, 43);
             buttonLuuTS.TabIndex = 64;
             buttonLuuTS.Text = "Lưu";
             buttonLuuTS.Click += buttonLuuTS_Click;
             // 
             // buttonDanhSachTS
             // 
-            buttonDanhSachTS.Location = new Point(512, 330);
+            buttonDanhSachTS.Location = new Point(185, 337);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
             buttonDanhSachTS.Padding = new Padding(4);
-            buttonDanhSachTS.Size = new Size(82, 50);
+            buttonDanhSachTS.Size = new Size(129, 43);
             buttonDanhSachTS.TabIndex = 63;
             buttonDanhSachTS.Text = "Danh sách";
-            // 
-            // buttonThoat
-            // 
-            buttonThoat.Location = new Point(663, 330);
-            buttonThoat.Name = "buttonThoat";
-            buttonThoat.Padding = new Padding(4);
-            buttonThoat.Size = new Size(82, 50);
-            buttonThoat.TabIndex = 62;
-            buttonThoat.Text = "Thoát";
+            buttonDanhSachTS.Click += buttonDanhSachTS_Click_1;
             // 
             // buttonXoaTS
             // 
-            buttonXoaTS.Location = new Point(259, 330);
+            buttonXoaTS.Location = new Point(498, 337);
             buttonXoaTS.Name = "buttonXoaTS";
             buttonXoaTS.Padding = new Padding(4);
-            buttonXoaTS.Size = new Size(82, 50);
+            buttonXoaTS.Size = new Size(82, 43);
             buttonXoaTS.TabIndex = 61;
             buttonXoaTS.Text = "Xóa";
+            buttonXoaTS.Click += buttonXoaTS_Click;
             // 
             // buttonSuaTS
             // 
-            buttonSuaTS.Location = new Point(153, 330);
+            buttonSuaTS.Location = new Point(410, 337);
             buttonSuaTS.Name = "buttonSuaTS";
             buttonSuaTS.Padding = new Padding(4);
-            buttonSuaTS.Size = new Size(82, 50);
+            buttonSuaTS.Size = new Size(82, 43);
             buttonSuaTS.TabIndex = 60;
             buttonSuaTS.Text = "Sửa";
+            buttonSuaTS.Click += buttonSuaTS_Click;
             // 
             // tabPage2
             // 
@@ -400,6 +393,7 @@
             dataGridViewTS.Name = "dataGridViewTS";
             dataGridViewTS.Size = new Size(786, 382);
             dataGridViewTS.TabIndex = 0;
+            dataGridViewTS.CellContentClick += dataGridViewTS_CellContentClick;
             // 
             // QuanLyThiSinhForm
             // 
@@ -412,6 +406,7 @@
             MinimumSize = new Size(800, 419);
             Name = "QuanLyThiSinhForm";
             Text = "Quản lý thí sinh";
+            Load += QuanLyThiSinhForm_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             crownSectionPanel1.ResumeLayout(false);
@@ -449,7 +444,6 @@
         private DateTimePicker dateTimePickerNgaySinhTS;
         private ReaLTaiizor.Controls.CrownButton buttonLuuTS;
         private ReaLTaiizor.Controls.CrownButton buttonDanhSachTS;
-        private ReaLTaiizor.Controls.CrownButton buttonThoat;
         private ReaLTaiizor.Controls.CrownButton buttonXoaTS;
         private ReaLTaiizor.Controls.CrownButton buttonSuaTS;
         private TabPage tabPage2;

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.DTO
+namespace ServerDatabaseLibrary.Database.DTO
 {
-    internal class NguoiDung
+    public class NguoiDung
     {
         public NguoiDung(string maNguoiDung, string hoTen, string email, string matKhau, string vaiTro)
         {

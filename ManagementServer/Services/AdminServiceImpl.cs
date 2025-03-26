@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using Microsoft.AspNetCore.Authorization;
 using System.Net;
-using AdminProto;
+using ManagementServer.AdminProto;
 using Newtonsoft.Json.Linq;
 using ExamLibrary.Enum;
 using ManagementServer.Helper;
@@ -10,7 +10,7 @@ using ServerDatabaseLibrary.Database;
 
 namespace ManagementServer.Services
 {
-    public class AdminServiceImpl
+    public class AdminServiceImpl : AdminService.AdminServiceBase
     {
         #region Constructor
         private readonly string _uploadPath = "ExamPapers/";
@@ -37,7 +37,7 @@ namespace ManagementServer.Services
         }
         #endregion
 
-        public async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
+        public override async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
             //if (request.Email == null)
             //{
@@ -45,7 +45,7 @@ namespace ManagementServer.Services
             //}
             //var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
             //var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
-            //if (user == null)
+            //if (user == null || !PasswordEncryption.VerifyPassword(request.Password, user.MatKhau))
             //{
             //    return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             //}
@@ -57,8 +57,8 @@ namespace ManagementServer.Services
             return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
         }
 
-        [Authorize]
-        public async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
+        [Authorize(Roles = "Admin, GiangVien")]
+        public override async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
         {
             string examId = null;
             string filePath = null;
@@ -93,26 +93,52 @@ namespace ManagementServer.Services
             }
         }
 
-        [Authorize]
-        public async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
+        [Authorize(Roles = "Admin, GiangVien")]
+        public override async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
         {
-            var user = context.GetHttpContext().User;
-            if (!user.IsInRole("Admin") || !user.IsInRole("GiangVien"))
-            {
-                throw new RpcException(new Status(StatusCode.PermissionDenied, "Access denied"));
-            }
-
-            if (request.RequestCode.Equals((int)RemoteCommandType.SQL))
+            if (request.RequestCode.Equals((int)RemoteCommandType.SQL_NONQUERY))
             {
                 try
                 {
-                    string json = await Task.Run(() => _databaseHelper.ExecuteRawSqlQuery(request.Command));
+                    int result = await _databaseHelper.ExecuteSqlNonQueryAsync(request.Command);
+                    Console.WriteLine($"SQL_NONQUERY: " + result);
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = result.ToString() };
+                }
+                catch (Exception ex)
+                {
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"SQL Error: {ex.Message}"};
+                }
+            }
+            if (request.RequestCode.Equals((int)RemoteCommandType.SQL_SCALAR))
+            {
+                try
+                {
+                    object result = await _databaseHelper.ExecuteSqlScalarAsync(request.Command);
+                    Console.WriteLine(result);
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = (string)result };
+                }
+                catch (Exception ex)
+                {
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"SQL Error: {ex.Message}" };
+                }
+            }
+            if (request.RequestCode.Equals((int)RemoteCommandType.SQL_READER))
+            {
+                try
+                {
+                    string json = await _databaseHelper.ExecuteSqlReaderAsync(request.Command);
+                    Console.WriteLine(json);
                     return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = json };
                 }
                 catch (Exception ex)
                 {
-                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"Error: {ex.Message}"};
+                    return new CommandResponse { ResponseCode = (int)HttpStatusCode.InternalServerError, ResponseMessage = $"SQL Error: {ex.Message}" };
                 }
+            }
+
+            if (request.RequestCode.Equals((int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD))
+            {
+                return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = PasswordEncryption.HashPassword(request.Command) };
             }
 
             return new CommandResponse { ResponseCode = (int)HttpStatusCode.NotImplemented, ResponseMessage = $"Not implemented" };

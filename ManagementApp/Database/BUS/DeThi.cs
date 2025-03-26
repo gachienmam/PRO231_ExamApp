@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ExamLibrary.Question;
 
-namespace ExamServer.Database.BUS
+namespace ServerDatabaseLibrary.Database.BUS
 {
-    internal class DeThi
+    public class DeThi
     {
         private readonly DAL.DeThi _DAL_deThi;
 

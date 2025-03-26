@@ -1,9 +1,10 @@
-﻿using AdminProto;
+﻿using Accessibility;
 using Grpc.Net.Client;
+using ManagementApp.AdminProto;
 using ReaLTaiizor.Controls;
 using System.Configuration;
 using System.Net;
-using static AdminProto.AdminService;
+using static ManagementApp.AdminProto.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
 
 namespace ManagementApp
@@ -25,10 +26,10 @@ namespace ManagementApp
             _serverAddress = serverAddress;
 
             var handler = new HttpClientHandler();
-            handler.ServerCertificateCustomValidationCallback =
-                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+            //handler.ServerCertificateCustomValidationCallback =
+            //    HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:5001",
+            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:50052",
                 new GrpcChannelOptions { HttpHandler = handler });
             _client = new AdminServiceClient(channel);
         }
@@ -67,7 +68,11 @@ namespace ManagementApp
                     {
                         Shared.AccessToken = response.AccessToken;
                         // Authentication successful, open the main management form
-                        MainForm mainForm = new MainForm(_client, response.AccessToken); // Pass the server address
+                        Grpc.Core.Metadata headers = new Grpc.Core.Metadata
+                            {
+                                { "Authorization", $"Bearer {Shared.AccessToken}" }
+                            };
+                        MainForm mainForm = new MainForm(_client, headers); // Pass the server address
                         this.Hide();
                         mainForm.ShowDialog();
                         if (!Shared.IsExiting)

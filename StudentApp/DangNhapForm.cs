@@ -1,7 +1,7 @@
 using static ReaLTaiizor.Helper.CrownHelper;
 using System.Configuration;
 using Grpc.Net.Client;
-using ExamProto;
+using StudentApp.ExamProto;
 using ReaLTaiizor.Controls;
 using System.Net;
 using Google.Protobuf.WellKnownTypes;

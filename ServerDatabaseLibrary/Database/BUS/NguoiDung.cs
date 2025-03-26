@@ -6,13 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ServerDatabaseLibrary.Database.BUS
 {
     public class NguoiDung
     {
         private readonly DAL.NguoiDung _DAL_NguoiDung;
-
+        
         public NguoiDung(DAL.NguoiDung NguoiDung)
         {
             _DAL_NguoiDung = NguoiDung;
@@ -22,5 +23,21 @@ namespace ServerDatabaseLibrary.Database.BUS
         {
             return _DAL_NguoiDung.GetNguoiDungByMaNguoiDung(MaNguoiDung);
         }
+        public bool InsertNguoidung(DTO.NguoiDung NguoiDung)
+        {
+            _DAL_NguoiDung.InsertNguoiDung(NguoiDung.MaNguoiDung, NguoiDung.HoTen, NguoiDung.Email, NguoiDung.MatKhau, NguoiDung.VaiTro);
+            return true;
+        }
+        public bool UpdateNguoidung(DTO.NguoiDung NguoiDung)
+        {
+            _DAL_NguoiDung.UpdateNguoiDung(NguoiDung.MaNguoiDung, NguoiDung.HoTen, NguoiDung.Email, NguoiDung.MatKhau, NguoiDung.VaiTro);
+            return true;
+        }
+        public bool DeleteNguoidung(DTO.NguoiDung NguoiDung)
+        {
+            _DAL_NguoiDung.DeleteNguoiDung(NguoiDung.MaNguoiDung);
+            return true;
+        }
+        
     }
 }

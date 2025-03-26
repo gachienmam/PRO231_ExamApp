@@ -6,7 +6,7 @@ using ReaLTaiizor.Native;
 using System.Configuration;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static AdminProto.AdminService;
+using static ManagementApp.AdminProto.AdminService;
 
 //using static ExamServer.AdminService;
 using static ReaLTaiizor.Helper.CrownHelper;
@@ -32,7 +32,7 @@ namespace ManagementApp
         // Lưu trữ thông tin máy chủ
         private AdminServiceClient _client;
         private readonly string _serverAddress;
-        private readonly string _accessToken;
+        private readonly Grpc.Core.Metadata _headers;
 
         private QuanLyDeThiForm quanLyDeThiForm;
         private QuanLyThiSinhForm quanLyThiSinhForm;
@@ -47,18 +47,18 @@ namespace ManagementApp
             Application.AddMessageFilter(new ControlScrollFilter());
         }
 
-        public MainForm(AdminServiceClient client, string accessToken)
+        public MainForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
 
             // Đăng nhập vào máy chủ dùng thông tin đăng nhập từ cái DangNhapForm
             _client = client;
-            _accessToken = accessToken;
+            _headers = headers;
 
-            //quanLyDeThiForm = new QuanLyDeThiForm(_client, _accessToken);
-            //quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _accessToken);
-            //quanLyThiSinhForm = new QuanLyThiSinhForm(_client, _accessToken);
-            thongKeDiemForm = new ThongKeDiemForm(_client, _accessToken);
+            quanLyDeThiForm = new QuanLyDeThiForm(_client, _headers);
+            quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _headers);
+            quanLyThiSinhForm = new QuanLyThiSinhForm(_client, _headers);
+            thongKeDiemForm = new ThongKeDiemForm(_client, _headers);
 
             // Thêm code dưới để chuột tự động tập trung vào ô hiện tại khi lăn chuột
             Application.AddMessageFilter(new ControlScrollFilter());
@@ -231,9 +231,9 @@ namespace ManagementApp
         {
             if (clearAllForms)
             {
-                quanLyDeThiForm = new();
-                quanLyNguoiDungForm = new();
-                quanLyThiSinhForm = new();
+                quanLyDeThiForm = new(_client, _headers);
+                quanLyNguoiDungForm = new(_client, _headers);
+                quanLyThiSinhForm = new(_client, _headers);
 
                 formView.Controls.Clear();
                 _currentForm = null;

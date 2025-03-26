@@ -1,90 +1,82 @@
-﻿using AdminProto;
-using ExamLibrary.Enum;
+﻿using ExamLibrary.Enum;
 using System;
 using System.Data;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using static AdminProto.AdminService;
+using ManagementApp.AdminProto;
+using static ManagementApp.AdminProto.AdminService;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using ReaLTaiizor.Controls;
+using ManagementApp.Database;
 
 namespace ManagementApp
 {
     public partial class ThongKeDiemForm : Form
     {
         private readonly AdminServiceClient _client;
-        private readonly string _accessToken;
+        private readonly Grpc.Core.Metadata _headers;
 
-        public ThongKeDiemForm(AdminServiceClient client, string accessToken)
+        private readonly GrpcDatabaseHelper _dbHelper;
+
+        private DataTable _dataTable;
+
+        public ThongKeDiemForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
-            _accessToken = accessToken;
+            _headers = headers;
+
+            _dbHelper = new GrpcDatabaseHelper(_client, _headers);
         }
 
+        private async void ThongKeDiemForm_Load(object sender, EventArgs e)
+        {
+            await LoadDataGridView();
+        }
+
+        #region Control Action Events
         private void BUTTON_THOAT_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void BUTTON_XEMDS_Click(object sender, EventArgs e)
+        private async void BUTTON_XEMDS_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var request = new CommandRequest()
-                {
-                    RequestCode = (int)RemoteCommandType.SQL,
-                    Command = "SELECT * FROM KETQUA"
-                };
-
-                var response = _client.ExecuteRemoteCommand(request);
-
-                if (response.ResponseCode == (int)HttpStatusCode.OK)
-                {
-                    DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                    dataGridView1.DataSource = dataTable;
-                }
-                else
-                {
-                    MessageBox.Show($"Lỗi: {response.ResponseMessage}");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}");
-            }
-        }
-
-        private DataTable ConvertToDataTable(string data)
-        {
-            DataTable dataTable = new DataTable();
-            string[] rows = data.Split('\n');
-            if (rows.Length > 0)
-            {
-                string[] headers = rows[0].Split(',');
-                foreach (string header in headers)
-                {
-                    dataTable.Columns.Add(header);
-                }
-
-                for (int i = 1; i < rows.Length; i++)
-                {
-                    string[] cells = rows[i].Split(',');
-                    dataTable.Rows.Add(cells);
-                }
-            }
-            return dataTable;
+            await LoadDataGridView();
         }
 
         private void btnLocDuLieu_Click(object sender, EventArgs e)
         {
             try
             {
-                DataTable dt = (DataTable)dataGridView1.DataSource;
-                if (dt != null)
+                DataTable dt = _dataTable;
+                dataGridView1.DataSource = _dataTable;
+
+                if (CheckBoxDau.Checked && CheckBoxRot.Checked)
                 {
+                    // Hiển thị toàn bộ danh sách
+                    dataGridView1.DataSource = dt;
+                }
+                else if (CheckBoxDau.Checked)
+                {
+                    // Hiển thị thí sinh đậu (điểm >= 5)
                     DataView dv = new DataView(dt);
-                    dv.RowFilter = "Diem >= 5"; // Giả sử cột Diem tồn tại
+                    dv.RowFilter = "Diem >= 5";
                     dataGridView1.DataSource = dv;
+                }
+                else if (CheckBoxRot.Checked)
+                {
+                    // Hiển thị thí sinh rớt (điểm < 5)
+                    DataView dv = new DataView(dt);
+                    dv.RowFilter = "Diem < 5";
+                    dataGridView1.DataSource = dv;
+                }
+                else
+                {
+                    // Không chọn gì thì xóa dữ liệu hiển thị
+                    dataGridView1.DataSource = dt;
                 }
             }
             catch (Exception ex)
@@ -139,11 +131,12 @@ namespace ManagementApp
                     return;
                 }
 
-                DataTable dt = (DataTable)dataGridView1.DataSource;
+                DataTable dt = _dataTable;
+                dataGridView1.DataSource = _dataTable;
                 if (dt != null)
                 {
                     DataView dv = new DataView(dt);
-                    dv.RowFilter = $"MaSV = '{maSV}'";
+                    dv.RowFilter = $"MaThiSinh = '{maSV}'";
                     dataGridView1.DataSource = dv;
                 }
                 else
@@ -156,5 +149,14 @@ namespace ManagementApp
                 MessageBox.Show($"Lỗi: {ex.Message}");
             }
         }
+        #endregion
+
+        #region Function
+        private async Task LoadDataGridView()
+        {
+            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM KetQuaThi");
+            dataGridView1.DataSource = _dataTable;
+        }
+        #endregion
     }
 }

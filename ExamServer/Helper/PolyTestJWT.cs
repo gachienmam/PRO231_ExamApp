@@ -1,6 +1,6 @@
-﻿using ExamServer.Database.DTO;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Microsoft.IdentityModel.Tokens;
+using ServerDatabaseLibrary.Database.DTO;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -20,11 +20,15 @@ namespace ExamServer.Helper
         {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.MaThiSinh),
+                new Claim(JwtRegisteredClaimNames.Name, user.HoTen),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.PhoneNumber, user.SoDienThoai),
+                new Claim(JwtRegisteredClaimNames.Birthdate, user.NgaySinh.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 //new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestExamServerKey"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKey"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var token = new JwtSecurityToken(
                 issuer: Configuration[$"Jwt:Issuer"],
@@ -40,7 +44,7 @@ namespace ExamServer.Helper
         public ClaimsPrincipal? ValidateToken(string token, ServerCallContext context)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestExamServerKey");
+            var key = Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKey");
 
             try
             {

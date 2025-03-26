@@ -14,28 +14,32 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using ExamProto;
-using ExamServer.Database;
+using ServerDatabaseLibrary.Database;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
+using ExamServer.ExamProto;
+using ManagementServer.Helper;
 
 namespace ExamServer.Services
 {
     internal class ExamServiceImpl
     {
+        private readonly string _uploadPath = "ExamPapers/";
+
         private readonly IMemoryCache _cache;
         //private readonly ILogger<UserExamServiceImpl> _logger;
-        // Thay bằng BUS
-        //private readonly ExamDbContext _dbContext; // Assuming EF Core for SQL Server
         private readonly IConfiguration _configuration;
         private readonly ILogger<ExamServiceImpl> _logger;
 
-        // Cho phần mềm quản lý kết nối vô để xử lý SQL trực tiếp
+        // Truy cập dữ liệu cho BUS -> DAL
         private DatabaseHelper _databaseHelper;
 
         // Cho server
-        private Database.BUS.DeThi _busDeThi;
-        private Database.BUS.NguoiDung _busNguoiDung;
+        //private ServerDatabaseLibrary.Database.BUS.DeThi _busDeThi;
+        //private ServerDatabaseLibrary.Database.BUS.ThiSinh _busThiSinh;
+        private ServerDatabaseLibrary.Database.DAL.DeThi _dalDeThi;
+        private ServerDatabaseLibrary.Database.DAL.ThiSinh _dalThiSinh;
+
         private PolyTestJWT _jwtHelper;
 
         public ExamServiceImpl(IConfiguration configuration, ILogger<ExamServiceImpl> logger, IMemoryCache cache)
@@ -45,20 +49,20 @@ namespace ExamServer.Services
             _cache = cache;
 
             _databaseHelper = new DatabaseHelper(_configuration.GetConnectionString("ExamDatabase") ?? "");
-            _busDeThi = new Database.BUS.DeThi(new Database.DAL.DeThi(_databaseHelper));
-            _busNguoiDung = new Database.BUS.NguoiDung(new Database.DAL.NguoiDung(_databaseHelper));
+            _dalDeThi = new ServerDatabaseLibrary.Database.DAL.DeThi(_databaseHelper);
+            _dalThiSinh = new ServerDatabaseLibrary.Database.DAL.ThiSinh(_databaseHelper);
 
             _jwtHelper = new PolyTestJWT(_configuration);
         }
 
         public async Task<AuthResponse> ExamAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
-            if (request.Email == null || request.Password == null)
+            if (request.ThiSinhId == null || request.Password == null)
             {
                 return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
-            var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
-            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<Database.DTO.ThiSinh>());
+            var userTable = await Task.Run(() => _dalThiSinh.GetThiSinhByMaThiSinh(request.ThiSinhId));
+            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.ThiSinh>());
             if (user == null)
             {
                 return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
@@ -77,26 +81,34 @@ namespace ExamServer.Services
             if (!_cache.TryGetValue(cacheKey, out ExamData examData))
             {
                 // Load from database if not in cache
-                var examDataTable = await Task.Run(() => _busDeThi.GetDeThiFromMaDe(request.ExamId));
+                var examDataTable = await Task.Run(() => _dalDeThi.GetDeThiByMaDe(request.ExamId));
+                if (examDataTable != null || examDataTable.Rows.Count > 0)
+                {
+                    //Load DeThi.ViTriFileDe from excel into usable type to return to client
+                    var exam = ExcelExamHelper.ReadFromFileIntoPaper(examDataTable.Rows[0]["ViTriFileDe"].ToString());
 
-                // Load DeThi.ViTriFileDe from excel into usable type to return to client
-                //
-                //if (exam == null)
-                //{
-                //    return new ExamData { ResponseCode = 404 }; // Not Found
-                //}
 
-                //examData = new ExamData
-                //{
-                //    ResponseCode = (int)HttpStatusCode.OK,
-                //    ExamPaper = ByteString.CopyFrom(exam.),
-                //    //ExamForm = ByteString.CopyFrom(exam.FormData),
-                //    //ExamFormSize = exam.FormData.Length,
-                //    ServerInformation = ByteString.CopyFromUtf8("PolyTestExamServer_14032025")
-                //};
+                    if (exam == null)
+                    {
+                        return new ExamData { ResponseCode = 404 }; // Not Found
+                    }
 
-                // Store in cache for 10 minutes
-                _cache.Set(cacheKey, examData, TimeSpan.FromMinutes(10));
+                    examData = new ExamData
+                    {
+                        ResponseCode = (int)HttpStatusCode.OK,
+                        ExamPaper = ByteString.CopyFrom(exam),
+                        //ExamForm = ByteString.CopyFrom(exam.FormData),
+                        //ExamFormSize = exam.FormData.Length,
+                        ServerInformation = ByteString.CopyFromUtf8("PolyTestExamServer_14032025")
+                    };
+
+                    // Lưu trong bộ nhớ tạm trong 10p
+                   _cache.Set(cacheKey, examData, TimeSpan.FromMinutes(10));
+                }
+                else
+                {
+                    return new ExamData { ResponseCode = (int)HttpStatusCode.NotFound, ExamForm = null, ExamFormSize = 0, ExamPaper = null, ServerInformation = null };
+                }
             }
 
             return examData;

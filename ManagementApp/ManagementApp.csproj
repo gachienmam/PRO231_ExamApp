@@ -10,6 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\BUS\**" />
+    <Compile Remove="Database\DAL\**" />
+    <Compile Remove="Database\DTO\**" />
+    <EmbeddedResource Remove="Database\BUS\**" />
+    <EmbeddedResource Remove="Database\DAL\**" />
+    <EmbeddedResource Remove="Database\DTO\**" />
+    <None Remove="Database\BUS\**" />
+    <None Remove="Database\DAL\**" />
+    <None Remove="Database\DTO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Protobuffer\AdminService.proto" />
   </ItemGroup>
 

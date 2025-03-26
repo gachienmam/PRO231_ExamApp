@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.DTO
+namespace ServerDatabaseLibrary.Database.DTO
 {
-    internal class KetQuaThi
+    public class KetQuaThi
     {
         public KetQuaThi(string maThiSinh, string maDe, float diem, DateTime tgBatDau, DateTime tgKetThuc)
         {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamServer.Database.DTO
+namespace ServerDatabaseLibrary.Database.DTO
 {
-    internal class ThiSinh
+    public class ThiSinh
     {
         public ThiSinh(string maThiSinh, string hoTen, string email, string matKhau, DateOnly ngaySinh, string soDienThoai, int trangThai)
         {

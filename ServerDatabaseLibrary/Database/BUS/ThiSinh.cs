@@ -31,7 +31,6 @@ namespace ServerDatabaseLibrary.Database.BUS
         }
         public bool GetDanhSachThiSinh(DTO.ThiSinh ThiSinh)
         {
-            _DAL_ThiSinh.GetDanhSachThiSinh(ThiSinh.MaThiSinh) ;
             return true;
         }
     }

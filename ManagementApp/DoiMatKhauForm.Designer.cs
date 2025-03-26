@@ -59,7 +59,7 @@
             layoutPanel.Name = "layoutPanel";
             layoutPanel.RowCount = 1;
             layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            layoutPanel.Size = new Size(784, 380);
+            layoutPanel.Size = new Size(800, 419);
             layoutPanel.TabIndex = 1;
             // 
             // parrotGradientPanel1
@@ -74,7 +74,7 @@
             parrotGradientPanel1.Name = "parrotGradientPanel1";
             parrotGradientPanel1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             parrotGradientPanel1.PrimerColor = Color.White;
-            parrotGradientPanel1.Size = new Size(392, 380);
+            parrotGradientPanel1.Size = new Size(400, 419);
             parrotGradientPanel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
             parrotGradientPanel1.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Vertical;
             parrotGradientPanel1.TabIndex = 5;
@@ -95,11 +95,11 @@
             crownSectionPanel2.Controls.Add(TEXTBOXMATKHAUHIENTAI);
             crownSectionPanel2.Controls.Add(crownTitle1);
             crownSectionPanel2.Dock = DockStyle.Fill;
-            crownSectionPanel2.Location = new Point(392, 0);
+            crownSectionPanel2.Location = new Point(400, 0);
             crownSectionPanel2.Margin = new Padding(0);
             crownSectionPanel2.Name = "crownSectionPanel2";
             crownSectionPanel2.SectionHeader = "Đổi mật khẩu";
-            crownSectionPanel2.Size = new Size(392, 380);
+            crownSectionPanel2.Size = new Size(400, 419);
             crownSectionPanel2.TabIndex = 2;
             // 
             // crownTitle4
@@ -117,7 +117,7 @@
             BUTTONTHOAT.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             BUTTONTHOAT.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BUTTONTHOAT.ImagePadding = 6;
-            BUTTONTHOAT.Location = new Point(195, 310);
+            BUTTONTHOAT.Location = new Point(199, 329);
             BUTTONTHOAT.Name = "BUTTONTHOAT";
             BUTTONTHOAT.Padding = new Padding(5);
             BUTTONTHOAT.Size = new Size(98, 38);
@@ -128,7 +128,7 @@
             // 
             crownTitle5.Anchor = AnchorStyles.None;
             crownTitle5.AutoSize = true;
-            crownTitle5.Location = new Point(100, 216);
+            crownTitle5.Location = new Point(104, 235);
             crownTitle5.Name = "crownTitle5";
             crownTitle5.Size = new Size(107, 15);
             crownTitle5.TabIndex = 19;
@@ -140,7 +140,7 @@
             crownTextBoxXNMK.BackColor = Color.FromArgb(69, 73, 74);
             crownTextBoxXNMK.BorderStyle = BorderStyle.FixedSingle;
             crownTextBoxXNMK.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBoxXNMK.Location = new Point(100, 234);
+            crownTextBoxXNMK.Location = new Point(104, 253);
             crownTextBoxXNMK.Name = "crownTextBoxXNMK";
             crownTextBoxXNMK.Size = new Size(193, 23);
             crownTextBoxXNMK.TabIndex = 17;
@@ -151,18 +151,19 @@
             BUTTONDOIMATKHAU.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             BUTTONDOIMATKHAU.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BUTTONDOIMATKHAU.ImagePadding = 6;
-            BUTTONDOIMATKHAU.Location = new Point(100, 310);
+            BUTTONDOIMATKHAU.Location = new Point(108, 329);
             BUTTONDOIMATKHAU.Name = "BUTTONDOIMATKHAU";
             BUTTONDOIMATKHAU.Padding = new Padding(5);
             BUTTONDOIMATKHAU.Size = new Size(98, 38);
             BUTTONDOIMATKHAU.TabIndex = 10;
             BUTTONDOIMATKHAU.Text = "Đổi mật khẩu";
+            BUTTONDOIMATKHAU.Click += BUTTONDOIMATKHAU_Click;
             // 
             // crownTitle3
             // 
             crownTitle3.Anchor = AnchorStyles.None;
             crownTitle3.AutoSize = true;
-            crownTitle3.Location = new Point(100, 154);
+            crownTitle3.Location = new Point(104, 173);
             crownTitle3.Name = "crownTitle3";
             crownTitle3.Size = new Size(84, 15);
             crownTitle3.TabIndex = 15;
@@ -174,7 +175,7 @@
             TEXTBOXMATKHAUMOI.BackColor = Color.FromArgb(69, 73, 74);
             TEXTBOXMATKHAUMOI.BorderStyle = BorderStyle.FixedSingle;
             TEXTBOXMATKHAUMOI.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMATKHAUMOI.Location = new Point(100, 172);
+            TEXTBOXMATKHAUMOI.Location = new Point(104, 191);
             TEXTBOXMATKHAUMOI.Name = "TEXTBOXMATKHAUMOI";
             TEXTBOXMATKHAUMOI.Size = new Size(193, 23);
             TEXTBOXMATKHAUMOI.TabIndex = 14;
@@ -183,7 +184,7 @@
             // 
             crownTitle2.Anchor = AnchorStyles.None;
             crownTitle2.AutoSize = true;
-            crownTitle2.Location = new Point(100, 91);
+            crownTitle2.Location = new Point(104, 110);
             crownTitle2.Name = "crownTitle2";
             crownTitle2.Size = new Size(102, 15);
             crownTitle2.TabIndex = 13;
@@ -195,7 +196,7 @@
             TEXTBOXMATKHAUHIENTAI.BackColor = Color.FromArgb(69, 73, 74);
             TEXTBOXMATKHAUHIENTAI.BorderStyle = BorderStyle.FixedSingle;
             TEXTBOXMATKHAUHIENTAI.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMATKHAUHIENTAI.Location = new Point(100, 109);
+            TEXTBOXMATKHAUHIENTAI.Location = new Point(104, 128);
             TEXTBOXMATKHAUHIENTAI.Name = "TEXTBOXMATKHAUHIENTAI";
             TEXTBOXMATKHAUHIENTAI.Size = new Size(193, 23);
             TEXTBOXMATKHAUHIENTAI.TabIndex = 12;
@@ -205,12 +206,11 @@
             crownTitle1.Anchor = AnchorStyles.None;
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            crownTitle1.Location = new Point(151, 42);
+            crownTitle1.Location = new Point(155, 61);
             crownTitle1.Name = "crownTitle1";
             crownTitle1.Size = new Size(98, 32);
             crownTitle1.TabIndex = 11;
             crownTitle1.Text = "Quản lý";
-            crownTitle1.Click += crownTitle1_Click;
             // 
             // DoiMatKhauForm
             // 
@@ -218,9 +218,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 380);
             Controls.Add(layoutPanel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimumSize = new Size(800, 419);
             Name = "DoiMatKhauForm";
-            Text = "DoiMatKhauForm";
+            Text = "PolyTest Manager - Đổi mật khẩu";
             layoutPanel.ResumeLayout(false);
             crownSectionPanel2.ResumeLayout(false);
             crownSectionPanel2.PerformLayout();

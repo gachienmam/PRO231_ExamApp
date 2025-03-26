@@ -93,21 +93,21 @@ namespace ServerDatabaseLibrary.Database.DAL
             return true;
         }
 
-        public DataTable GetNguoiDungByVaiTro(string vaiTro)
+        public DataTable GetDeThiByMaDe(string maDe)
         {
-            string query = "EXEC sp_DanhSachNguoiDung @VaiTro";
+            string query = "SELECT * FROM DeThi WHERE MaDe = @MaDe";
             try
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-            new SqlParameter("@VaiTro", vaiTro)
+            new SqlParameter("@MaDe", maDe)
                 };
 
                 return _dbHelper.ExecuteQuery(query, parameters);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Lỗi lấy danh sách người dùng: {ex.Message}");
+                Console.WriteLine($"Lỗi lấy danh sách đề thi: {ex.Message}");
                 return null;
             }
         }

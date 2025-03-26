@@ -151,13 +151,12 @@ namespace ManagementApp
             {
                 try
                 {
-                    var sql = string.Format("EXEC sp_InsertNguoiDung N'{0}', N'{1}', N'{2}', N'{3}', N'{4}'",
+                    var sql = string.Format("EXEC sp_InsertNguoiDung N'{0}', N'{1}', N'{2}', N'{3}', N'{4}' ,N'{5}'",
                         textBoxMaND.Text.Trim(),
                         textBoxHoTenND.Text.Trim(),
                         textBoxEmailND.Text.Trim(),
                         textBoxMKND.Text.Trim(),
-                        radioButtonAdmin.Checked,
-                        radioButtonGV.Checked); // Vai trò mặc định là "ThiSinh"
+                        VaiTro,TrangThai); 
 
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();

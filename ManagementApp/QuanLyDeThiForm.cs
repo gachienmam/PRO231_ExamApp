@@ -60,5 +60,10 @@ namespace ManagementApp
                 examTreeView.Nodes.Add(node);
             }
         }
+
+        private void examTreeView_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

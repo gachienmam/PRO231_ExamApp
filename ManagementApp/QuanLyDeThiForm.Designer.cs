@@ -234,7 +234,7 @@
             crownTitle7.Font = new Font("Segoe UI", 9F);
             crownTitle7.Location = new Point(339, 142);
             crownTitle7.Name = "crownTitle7";
-            crownTitle7.Size = new Size(59, 15);
+            crownTitle7.Size = new Size(60, 15);
             crownTitle7.TabIndex = 114;
             crownTitle7.Text = "Trạng thái";
             // 
@@ -265,7 +265,7 @@
             crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(296, 113);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(102, 15);
+            crownTitle6.Size = new Size(103, 15);
             crownTitle6.TabIndex = 111;
             crownTitle6.Text = "Thời gian kết thúc";
             // 
@@ -287,7 +287,7 @@
             crownTitle5.Font = new Font("Segoe UI", 9F);
             crownTitle5.Location = new Point(299, 84);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(99, 15);
+            crownTitle5.Size = new Size(100, 15);
             crownTitle5.TabIndex = 109;
             crownTitle5.Text = "Thời gian bất đầu";
             // 
@@ -404,6 +404,7 @@
             examTreeView.Size = new Size(173, 367);
             examTreeView.TabIndex = 3;
             examTreeView.Text = "crownTreeView1";
+            examTreeView.Click += examTreeView_Click;
             // 
             // sectionPanelTreeView
             // 

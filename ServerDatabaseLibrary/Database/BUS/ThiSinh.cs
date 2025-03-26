@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,9 @@ namespace ServerDatabaseLibrary.Database.BUS
             _DAL_ThiSinh.DeleteThiSinh(ThiSinh.MaThiSinh);
             return true;
         }
-        public bool GetDanhSachThiSinh(DTO.ThiSinh ThiSinh)
+        public DataTable GetThiSinhBYMaThiSinh(string MaThiSinh)
         {
-            _DAL_ThiSinh.GetDanhSachThiSinh(ThiSinh.MaThiSinh) ;
-            return true;
+            return _DAL_ThiSinh.GetThiSinhByMaThiSinh(MaThiSinh);
         }
     }
 }

@@ -107,7 +107,7 @@ namespace ServerDatabaseLibrary.Database.DAL
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-            new SqlParameter("@TrangThai", trangThai)
+                    new SqlParameter("@TrangThai", trangThai)
                 };
 
                 return _dbHelper.ExecuteQuery(query, parameters);

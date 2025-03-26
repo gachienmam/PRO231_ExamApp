@@ -16,12 +16,14 @@ namespace ExamLibrary.Question
             _testImage = new byte[0];
             _listAudio = new List<Data.Audio>();
             _notes = string.Empty;
+            _mark = 0;
             _listenCode = string.Empty;
             _option_shuffleMultipleChoice = true;
             _q_multipleChoice = new List<Types.MultipleChoice>();
             _duration = 600;
         }
 
+        // Tên đề thi
         public string TestName
         {
             get
@@ -34,6 +36,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Ảnh đề thi
         public byte[] ExamImage
         {
             get
@@ -46,7 +49,8 @@ namespace ExamLibrary.Question
             }
         }
 
-        public int Duration // in seconds
+        // Thời gian thi (tính bằng giây)
+        public int Duration
         {
             get
             {
@@ -58,6 +62,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Ghi chú từ giảng viên
         public string ExamNotes
         {
             get
@@ -70,6 +75,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Mã đề
         public string ExamCode
         {
             get
@@ -82,7 +88,8 @@ namespace ExamLibrary.Question
             }
         }
 
-        public float Mark
+        // Số câu cần trả lời đúng để Pass
+        public int Mark
         {
             get
             {
@@ -94,6 +101,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Số lượng câu hỏi
         public int NoOfQuestion
         {
             get
@@ -106,6 +114,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Tùy chọn: Có xáo trộn câu hỏi MultipleChoice hay không?
         public bool option_ShuffleMultipleChoice
         {
             get
@@ -118,6 +127,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Danh sách câu hỏi MultipleChoice
         public List<Types.MultipleChoice> MultipleChoiceQuestions // in seconds
         {
             get
@@ -130,6 +140,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Chưa dùng
         public string ListenCode
         {
             get
@@ -142,6 +153,7 @@ namespace ExamLibrary.Question
             }
         }
 
+        // Chưa dùng
         public List<Data.Audio> ListAudio
         {
             get
@@ -164,7 +176,7 @@ namespace ExamLibrary.Question
 
         private int _duration; // in seconds
 
-        private float _mark;
+        private int _mark; // số câu
 
         private int _noOfQuestions;
 

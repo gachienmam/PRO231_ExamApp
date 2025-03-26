@@ -132,6 +132,7 @@
             sectionPanelEditor.SectionHeader = "Chỉnh sửa đề:";
             sectionPanelEditor.Size = new Size(621, 393);
             sectionPanelEditor.TabIndex = 6;
+            sectionPanelEditor.Paint += sectionPanelEditor_Paint;
             // 
             // btnDeleteExam
             // 
@@ -407,7 +408,6 @@
             examTreeView.Size = new Size(173, 367);
             examTreeView.TabIndex = 3;
             examTreeView.Text = "crownTreeView1";
-            examTreeView.Click += examTreeView_Click;
             // 
             // sectionPanelTreeView
             // 

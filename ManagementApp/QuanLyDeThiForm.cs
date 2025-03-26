@@ -138,6 +138,9 @@ namespace ManagementApp
             MessageBox.Show("Đã xóa thông tin đề thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-   
+        private void sectionPanelEditor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

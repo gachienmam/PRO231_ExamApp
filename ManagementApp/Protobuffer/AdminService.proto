@@ -31,7 +31,6 @@ message AuthResponse {
 message UploadExamFileChunk {
     string examId = 1;
     bytes data = 2;
-    bool isLastChunk = 3;
 }
 
 message UploadResponse {

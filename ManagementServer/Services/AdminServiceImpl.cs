@@ -60,36 +60,34 @@ namespace ManagementServer.Services
         [Authorize(Roles = "Admin, GiangVien")]
         public override async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
         {
-            string examId = null;
-            string filePath = null;
-            FileStream fileStream = null;
-
             try
             {
-                await foreach (var chunk in requestStream.ReadAllAsync())
+                string fileName = $"{requestStream.Current.ExamId}.xlsx"; // Generate a unique filename
+                string filePath = Path.Combine(_uploadPath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                 {
-                    if (examId == null)
+                    while (await requestStream.MoveNext())
                     {
-                        examId = chunk.ExamId;
-                        Directory.CreateDirectory(_uploadPath);
-                        filePath = Path.Combine(_uploadPath, $"{examId}.xlsx");
-                        fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-                    }
-
-                    await fileStream.WriteAsync(chunk.Data.ToByteArray(), 0, chunk.Data.Length);
-
-                    if (chunk.IsLastChunk)
-                    {
-                        break;
+                        await fileStream.WriteAsync(requestStream.Current.Data.ToByteArray());
                     }
                 }
 
-                fileStream?.Close();
-                return new UploadResponse { ResponseCode = (int)StatusCode.OK, ResponseMessage = $"File uploaded successfully at: {filePath}" };
+                return new UploadResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = filePath };
+            }
+            catch (RpcException rpcEx)
+            {
+                _logger.LogError($"gRPC Error during upload: {rpcEx.Status.Detail}");
+                return new UploadResponse { ResponseCode = (int)HttpStatusCode.NotFound, ResponseMessage = $"gRPC Error during exam paper upload: {rpcEx.Status.Detail}" };
             }
             catch (Exception ex)
             {
-                return new UploadResponse { ResponseCode = (int)StatusCode.Internal, ResponseMessage = $"Error: {ex.Message}" };
+                _logger.LogError($"Error during exam paper upload: {ex.Message}");
+                return new UploadResponse { ResponseCode = (int)HttpStatusCode.NotFound, ResponseMessage = $"Generic error during exam paper upload: {ex.Message}" };
+            }
+            finally
+            {
+                _logger.LogInformation("UploadExamPaper request finished.");
             }
         }
 

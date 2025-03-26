@@ -129,7 +129,7 @@
             labelQuestion.Name = "labelQuestion";
             labelQuestion.Size = new Size(245, 150);
             labelQuestion.TabIndex = 61;
-            labelQuestion.Text = "(Chỉ chọn 1 đáp án)\r\nVăn thành có bình thường không?\r\n\r\nA. Có\r\nB. Không\r\nC. No\r\nD. skibidi dop dop yes yes";
+            labelQuestion.Text = "(Chọn 1 đáp án)\r\nVăn thành có bình thường không?\r\n\r\nA. Có\r\nB. Không\r\nC. No\r\nD. skibidi dop dop yes yes";
             // 
             // panelChonDapAn
             // 

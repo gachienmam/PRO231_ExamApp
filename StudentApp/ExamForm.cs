@@ -1,10 +1,11 @@
 ﻿using ExamLibrary.Question;
 using ExamLibrary.Question.Types;
 using ExamLibrary.Remote;
-using ExamProto;
+using StudentApp.ExamProto;
 using Google.Protobuf;
 using ProtoBuf;
 using ReaLTaiizor.Controls;
+using StudentApp.ExamProto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Drawing.Text;
 
 namespace StudentApp
 {
@@ -36,7 +38,7 @@ namespace StudentApp
 
         // Kết nối máy chủ ExamServer
         private readonly ExamService.ExamServiceClient _client;
-        private string _accessToken;
+        private readonly Grpc.Core.Metadata _headers;
 
         // Kiểm tra người dùng đã hoàn thành bài thi hay chưa (cho nút Finish)
         private bool _userFinishedExam;
@@ -47,7 +49,7 @@ namespace StudentApp
         // Câu hỏi hiện tại đếm từ 1 (MultipleChoice)
         private int _multipleChoice_currentQuestion;
 
-        public ExamForm(ExamService.ExamServiceClient client, string accessToken, ExamData data)
+        public ExamForm(ExamService.ExamServiceClient client, Grpc.Core.Metadata headers, ExamData data)
         {
             InitializeComponent();
 
@@ -55,7 +57,7 @@ namespace StudentApp
             ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
 
             _client = client;
-            _accessToken = accessToken;
+            _headers = headers;
             _data = data;
 
             // Deserialize ServerInformation
@@ -110,6 +112,9 @@ namespace StudentApp
             textBoxStudent.Text = Environment.MachineName;
             pictureAnhDeThi.Image = ByteArrayToImage(_examPaper.ExamImage);
 
+            // Fullscreen
+            EnterFullScreenMode(this);
+
             // Load đề thi
             AddQuestionButtonsToPanel(_examPaper.NoOfQuestion);
             DisplayMultipleChoice(0);
@@ -129,6 +134,7 @@ namespace StudentApp
                 if (result == DialogResult.Yes)
                 {
                     panel1.Hide();
+                    LeaveFullScreenMode(this);
                     _userFinishedExam = true;
                 }
             }
@@ -154,7 +160,41 @@ namespace StudentApp
         #endregion
 
         #region Function
-        public Image ByteArrayToImage(byte[] data)
+        private void SaveAnswerToSubmissionPaper(int questionIndex)
+        {
+            var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.MultipleChoiceQuestions.Where(q => q.QuestionID == questionIndex).FirstOrDefault();
+            if (currentQuestionSubmitPaper != null)
+            {
+                List<string> answers = new List<string>();
+                if (checkBoxDapAnA.Checked == true)
+                {
+                    answers.Add("A");
+                }
+                if (checkBoxDapAnB.Checked == true)
+                {
+                    answers.Add("B");
+                }
+                if (checkBoxDapAnC.Checked == true)
+                {
+                    answers.Add("C");
+                }
+                if (checkBoxDapAnD.Checked == true)
+                {
+                    answers.Add("D");
+                }
+                currentQuestionSubmitPaper.QuestionAnswers = answers;
+            }
+        }
+
+        private void UpdateAnsweredQuestionButtons()
+        {
+            for (int i = 1; i < _submitPaper.SubmissionPaper.MultipleChoiceQuestions.Count; i++)
+            {
+                if( question.QuestionAnswers.
+            }
+        }
+
+        private Image ByteArrayToImage(byte[] data)
         {
             MemoryStream ms = new MemoryStream(data);
             Image returnImage = Image.FromStream(ms);
@@ -185,14 +225,14 @@ namespace StudentApp
                 }
                 this.panelDanhSachCauHoi.Controls.Add(button);
                 button.Visible = true;
-                button.Click += this.questionButton_Click;
+                button.Click += questionButton_Click;
             }
         }
 
         private void DisplayMultipleChoice(int questionOrder)
         {
             var currentQuestionExam = _examPaper.MultipleChoiceQuestions[questionOrder];
-            var currentQuestionSubmitPaper = _submitPaper.MultipleChoiceQuestions[questionOrder];
+            var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.MultipleChoiceQuestions[questionOrder];
             panelCauHoiHienTai.SectionHeader = $"Câu hỏi ({questionOrder}/{_examPaper.MultipleChoiceQuestions.Count})";
             labelQuestion.Text = currentQuestionExam.QuestionText;
 
@@ -258,6 +298,21 @@ namespace StudentApp
                 buttonFinish.Enabled = true;
                 buttonFinish.PerformClick();
             }
+        }
+        #endregion
+
+        #region Fullscreen
+        public void EnterFullScreenMode(Form targetForm)
+        {
+            targetForm.WindowState = FormWindowState.Normal;
+            targetForm.FormBorderStyle = FormBorderStyle.None;
+            targetForm.WindowState = FormWindowState.Maximized;
+        }
+
+        public void LeaveFullScreenMode(Form targetForm)
+        {
+            targetForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            targetForm.WindowState = FormWindowState.Normal;
         }
         #endregion
     }

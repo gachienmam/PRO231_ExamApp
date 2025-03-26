@@ -70,7 +70,7 @@ namespace StudentApp
                 try
                 {
                     // Bước 1: Đăng nhập để lấy token
-                    var authRequest = new AuthRequest { Email = email, Password = password, ExamCode = examid, Machine = Environment.MachineName, Timestamp = Timestamp.FromDateTime(DateTime.UtcNow) };
+                    var authRequest = new AuthRequest { ThiSinhId = email, Password = password, ExamCode = examid, Timestamp = Timestamp.FromDateTime(DateTime.UtcNow) };
                     var authResponse = _client.ExamAuthenticateUser(authRequest);
 
                     if (authResponse.ResponseCode == (int)HttpStatusCode.OK)
@@ -84,7 +84,7 @@ namespace StudentApp
                         var examResponse = _client.GetExamData(examRequest, headers);
                         if (examResponse.ResponseCode == (int)HttpStatusCode.OK)
                         {
-                            ExamForm examForm = new ExamForm(_client, authResponse.AccessToken, examResponse); // Pass the server address
+                            ExamForm examForm = new ExamForm(_client, headers, examResponse); // Pass the server address
                             this.Hide();
                             examForm.Show();
                             this.Close();

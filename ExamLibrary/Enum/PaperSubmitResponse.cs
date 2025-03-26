@@ -6,8 +6,13 @@ namespace ExamLibrary.Enum
 {
     public enum PaperSubmitResponse
     {
-        SUBMIT_SUCCESS = 1,
-        SUBMIT_FAILED = 2,
-        SUBMIT_FINAL = 3
+        // Server
+        SUBMIT_SUCCESS_CONTINUE = 1,
+        SUBMIT_SUCCESS_FINAL = 2,
+        SUBMIT_FAILED = 3,
+
+        // Client
+        SUBMIT_CONTINUE = 4,
+        SUBMIT_FINAL = 5,
     }
 }

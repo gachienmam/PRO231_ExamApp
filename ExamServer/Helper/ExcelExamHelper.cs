@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
+using ClosedXML.Excel.Drawings;
 using DocumentFormat.OpenXml.Office2021.MipLabelMetaData;
 using DocumentFormat.OpenXml.Spreadsheet;
 using ExamLibrary.Question;
 using ExamLibrary.Question.Types;
 using MiniExcelLibs;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ManagementServer.Helper
 {
@@ -22,9 +24,84 @@ namespace ManagementServer.Helper
             //Paper paper = 
             return new Paper()
             {
+                Mark = ReadMarkInfo(excelFileName),
+                Duration = ReadDurationInfo(excelFileName),
+                ExamImage = ReadImagesFromExcel(excelFileName, "Thong Tin"),
                 option_ShuffleMultipleChoice = ReadMultipleChoiceInfo(excelFileName),
                 MultipleChoiceQuestions = ReadMultipleChoiceQuestions(excelFileName),
             };
+        }
+
+        private static int ReadDurationInfo(string excelFileName)
+        {
+            string sheet = "Thong Tin";
+            string cell = "C5";
+
+            try
+            {
+                // --- Read a specific cell ---
+                using (var workbook = new XLWorkbook(excelFileName))
+                {
+                    var worksheet = workbook.Worksheet(sheet);
+
+                    // Read a specific cell value
+                    var shuffleQuestions = worksheet.Cell(cell);
+                    if (string.IsNullOrWhiteSpace((string)shuffleQuestions.Value))
+                    {
+                        return (int)shuffleQuestions.Value;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"ReadDurationInfo Error reading file: {cell} is empty or not found.");
+                        return 0;
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"ReadDurationInfo Error: File not found at '{excelFileName}'");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ReadDurationInfo: An error occurred: {ex.Message}");
+            }
+            return 0;
+        }
+
+        private static int ReadMarkInfo(string excelFileName)
+        {
+            string sheet = "Thong Tin";
+            string cell = "E5";
+
+            try
+            {
+                // --- Read a specific cell ---
+                using (var workbook = new XLWorkbook(excelFileName))
+                {
+                    var worksheet = workbook.Worksheet(sheet);
+
+                    // Read a specific cell value
+                    var mark = worksheet.Cell(cell);
+                    if (string.IsNullOrWhiteSpace((string)mark.Value))
+                    {
+                        return (int)mark.Value;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"ReadMarkInfo Error reading file: {cell} is empty or not found.");
+                        return 0;
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"ReadMarkInfo Error: File not found at '{excelFileName}'");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ReadMarkInfo: An error occurred: {ex.Message}");
+            }
+            return 0;
         }
 
         private static bool ReadMultipleChoiceInfo(string excelFileName)
@@ -43,14 +120,14 @@ namespace ManagementServer.Helper
                     var shuffleQuestions = worksheet.Cell(cell_ShuffleQuestions);
                     if ((string)shuffleQuestions.Value != null)
                     {
-                        if((string)shuffleQuestions.Value == "Yes")
+                        if ((string)shuffleQuestions.Value == "Yes")
                         {
                             return true;
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"Lỗi khi đọc: Mark: {cell_ShuffleQuestions} is empty or not found.");
+                        Console.WriteLine($"Error reading file: Mark: {cell_ShuffleQuestions} is empty or not found.");
                         return false;
                     }
                 }
@@ -101,6 +178,7 @@ namespace ManagementServer.Helper
                     int answerBColumn = firstColumn + 3;
                     int answerCColumn = firstColumn + 4;
                     int answerDColumn = firstColumn + 5;
+                    int answersColumn = firstColumn + 6;
 
                     int currentRow = firstRow;
                     while (true)
@@ -137,10 +215,16 @@ namespace ManagementServer.Helper
                         multipleChoiceItem.QuestionAnswerTextD = worksheet.Cell(currentRow, answerDColumn).Value.ToString();
 
                         // Add answers to the list
-                        multipleChoiceItem.QuestionAnswers.Add(multipleChoiceItem.QuestionAnswerTextA);
-                        multipleChoiceItem.QuestionAnswers.Add(multipleChoiceItem.QuestionAnswerTextB);
-                        multipleChoiceItem.QuestionAnswers.Add(multipleChoiceItem.QuestionAnswerTextC);
-                        multipleChoiceItem.QuestionAnswers.Add(multipleChoiceItem.QuestionAnswerTextD);
+                        string allAnswersText = worksheet.Cell(currentRow, answersColumn).Value.ToString();
+                        if (!string.IsNullOrEmpty(allAnswersText))
+                        {
+                            string[] individualAnswers = allAnswersText.Split(';');
+                            foreach (string answer in individualAnswers)
+                            {
+                                // Trim any leading/trailing whitespace from each answer
+                                multipleChoiceItem.QuestionAnswers.Add(answer.Trim());
+                            }
+                        }
 
                         multipleChoiceList.Add(multipleChoiceItem);
                         currentRow++;
@@ -157,6 +241,46 @@ namespace ManagementServer.Helper
             }
 
             return multipleChoiceList;
+        }
+
+        private static byte[] ReadImagesFromExcel(string filePath, string sheetName)
+        {
+            try
+            {
+                using (var workbook = new XLWorkbook(filePath))
+                {
+                    var worksheet = workbook.Worksheet(sheetName);
+
+                    foreach (var drawing in worksheet.Pictures)
+                    {
+                        Console.WriteLine($"Found Image From {filePath}/{sheetName}: {drawing.ImageStream}");
+
+                        //string imageName = $"extracted_image_{Guid.NewGuid()}.{drawing.Name.Split('/').Last()}";
+                        //string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), imageName);
+
+                        try
+                        {
+                            return drawing.ImageStream.ToArray();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error saving image '{drawing.Name}': {ex.Message}");
+                            return null;
+                        }
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"Error: File not found.");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return null;
+            }
+            return null;
         }
     }
 }

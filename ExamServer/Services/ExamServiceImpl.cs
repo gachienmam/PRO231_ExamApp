@@ -19,12 +19,17 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using ExamServer.ExamProto;
 using ManagementServer.Helper;
+using ProtoBuf;
+using ExamLibrary.Question;
+using ExamLibrary.Remote;
+using ExamLibrary.Enum;
 
 namespace ExamServer.Services
 {
-    internal class ExamServiceImpl
+    internal class ExamServiceImpl : ExamProto.ExamService.ExamServiceBase
     {
-        private readonly string _uploadPath = "ExamPapers/";
+        private readonly string _examPaperPath = "ExamPapers/";
+        private readonly string _submitPaperPath = "SubmitPapers/";
 
         private readonly IMemoryCache _cache;
         //private readonly ILogger<UserExamServiceImpl> _logger;
@@ -55,7 +60,7 @@ namespace ExamServer.Services
             _jwtHelper = new PolyTestJWT(_configuration);
         }
 
-        public async Task<AuthResponse> ExamAuthenticateUser(AuthRequest request, ServerCallContext context)
+        public override async Task<AuthResponse> ExamAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
             if (request.ThiSinhId == null || request.Password == null)
             {
@@ -74,7 +79,7 @@ namespace ExamServer.Services
         }
 
         [Authorize]
-        public async Task<ExamData> GetExamData(ExamRequest request, ServerCallContext context)
+        public override async Task<ExamData> GetExamData(ExamRequest request, ServerCallContext context)
         {
             string cacheKey = $"Exam_{request.ExamId}";
 
@@ -86,24 +91,41 @@ namespace ExamServer.Services
                 {
                     //Load DeThi.ViTriFileDe from excel into usable type to return to client
                     var exam = ExcelExamHelper.ReadFromFileIntoPaper(examDataTable.Rows[0]["ViTriFileDe"].ToString());
-
-
                     if (exam == null)
                     {
-                        return new ExamData { ResponseCode = 404 }; // Not Found
+                        return new ExamData { ResponseCode = (int)HttpStatusCode.NotFound }; // Not Found
+                    }
+
+                    byte[] examPaperByteArray;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        Serializer.Serialize(memoryStream, exam);
+                        examPaperByteArray = memoryStream.ToArray();
+                    }
+
+                    ServerInformation serverInfo = new ServerInformation()
+                    {
+                        IP = "192.168.110.1",
+                        ServerName = Environment.MachineName
+                    };
+                    byte[] serverInfoByteArray;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        Serializer.Serialize(memoryStream, serverInfo);
+                        serverInfoByteArray = memoryStream.ToArray();
                     }
 
                     examData = new ExamData
                     {
                         ResponseCode = (int)HttpStatusCode.OK,
-                        ExamPaper = ByteString.CopyFrom(exam),
-                        //ExamForm = ByteString.CopyFrom(exam.FormData),
-                        //ExamFormSize = exam.FormData.Length,
-                        ServerInformation = ByteString.CopyFromUtf8("PolyTestExamServer_14032025")
+                        ExamPaper = ByteString.CopyFrom(examPaperByteArray),
+                        ExamForm = null,
+                        ExamFormSize = 0,
+                        ServerInformation = ByteString.CopyFrom(serverInfoByteArray)
                     };
 
-                    // Lưu trong bộ nhớ tạm trong 10p
-                   _cache.Set(cacheKey, examData, TimeSpan.FromMinutes(10));
+                    // Lưu trong bộ nhớ tạm trong thời gian thi
+                   _cache.Set(cacheKey, examData, TimeSpan.FromSeconds(exam.Duration + 120));
                 }
                 else
                 {
@@ -115,7 +137,7 @@ namespace ExamServer.Services
         }
 
         [Authorize]
-        public async Task<PaperSubmissionResponse> SubmitPaper(PaperSubmission request, ServerCallContext context)
+        public override async Task<PaperSubmissionResponse> SubmitPaper(PaperSubmission request, ServerCallContext context)
         {
             /*
             await _dbContext.Submissions.AddAsync(new ExamSubmissionRequest
@@ -125,12 +147,16 @@ namespace ExamServer.Services
             });
             await _dbContext.SaveChangesAsync();
             */
+            if(request.SubmissionType == (int)PaperSubmitResponse.SUBMIT_CONTINUE)
+            {
+
+            }
 
             return new PaperSubmissionResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Submission received" };
         }
 
         [Authorize]
-        public async Task StreamExamUpdates(ExamUpdateRequest request, IServerStreamWriter<ExamUpdate> responseStream, ServerCallContext context)
+        public override async Task StreamExamUpdates(ExamUpdateRequest request, IServerStreamWriter<ExamUpdate> responseStream, ServerCallContext context)
         {
             while (!context.CancellationToken.IsCancellationRequested)
             {
@@ -139,7 +165,7 @@ namespace ExamServer.Services
                     ResponseCode = 200,
                     ExamId = request.ExamId,
                     Timestamp = Timestamp.FromDateTime(DateTime.UtcNow),
-                    ResponseMessage = ByteString.CopyFromUtf8("DMM!")
+                    ResponseMessage = ByteString.CopyFromUtf8("gg")
                 };
 
                 await responseStream.WriteAsync(update);

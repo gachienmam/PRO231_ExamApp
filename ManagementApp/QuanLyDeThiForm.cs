@@ -1,12 +1,16 @@
-﻿using ManagementApp.CustomControls;
+﻿using ManagementApp.AdminProto;
+using ManagementApp.CustomControls;
+using ManagementApp.Database;
 using ReaLTaiizor.Child.Crown;
 using ReaLTaiizor.Controls;
 using ReaLTaiizor.Docking.Crown;
 using ReaLTaiizor.Native;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows.Forms;
 using static ManagementApp.AdminProto.AdminService;
 
@@ -21,47 +25,24 @@ namespace ManagementApp
         private readonly AdminServiceClient _client;
         private readonly Grpc.Core.Metadata _headers;
 
+        private CrownTreeView _tree;
+        private GrpcDatabaseHelper _dbHelper;
+
         public QuanLyDeThiForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
             _headers = headers;
 
+            _dbHelper = new GrpcDatabaseHelper(_client, _headers);
             // Thêm bộ lọc sự kiện cuộn chuột
             Application.AddMessageFilter(new ControlScrollFilter());
         }
 
-        private void QuanLyDeThiForm_Load(object sender, EventArgs e)
+        private async void QuanLyDeThiForm_Load(object sender, EventArgs e)
         {
-            LoadExamTreeView();
+            await LoadTreeViewDataAsync();
             LoadStatusComboBox();
-        }
-
-        private void LoadExamTreeView()
-        {
-            examTreeView.Nodes.Clear();
-            int childCount = 0;
-
-            for (int i = 0; i < 9; i++)
-            {
-                CrownTreeNode node = new($"SD180{i}")
-                {
-                    ExpandedIcon = Properties.Resources.folder_16x,
-                    Icon = Properties.Resources.folder_Closed_16xLG
-                };
-
-                for (int x = 0; x < 10; x++)
-                {
-                    CrownTreeNode childNode = new($"SD180{i}-De{childCount}")
-                    {
-                        Icon = Properties.Resources.document_16xLG
-                    };
-                    childCount++;
-                    node.Nodes.Add(childNode);
-                }
-
-                examTreeView.Nodes.Add(node);
-            }
         }
 
         private void LoadStatusComboBox()
@@ -72,16 +53,102 @@ namespace ManagementApp
             cbStatus.SelectedItem = cbStatus.Items[0];
         }
 
-        private void btnSelectFile_Click(object sender, EventArgs e)
+        private async void btnSelectFile_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = "PDF Files|*.pdf|Word Files|*.docx|All Files|*.*";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    selectedFilePath = ofd.FileName;
-                    txtFilePath.Text = selectedFilePath;
+                    string filePath = ofd.FileName;
+                    stripProgressBar.Visible = false;
+                    stripProgressBar.Value = 0;
+                    statusLabel.Text = "Đã tải: 0%";
+                    stripProgressBar.Visible = true;
+                    lblValidFile.Text = await UploadFileAsync(filePath);
+
+                    // Hide
+                    stripProgressBar.Visible = false; 
+                    stripProgressBar.Value = 0;
+                    statusLabel.Text = "Đang đợi";
                     lblValidFile.Text = IsValidExamFile(selectedFilePath) ? "Hợp lệ" : "Không hợp lệ";
+                }
+            }
+        }
+
+        private async Task<string> UploadFileAsync(string filePath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+                {
+                    CrownMessageBox.ShowError("Xin chọn file hợp lệ.", "Error");
+                    return string.Empty;
+                }
+
+                long totalBytes = new FileInfo(filePath).Length;
+                long bytesUploaded = 0;
+
+                using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    var call = _client.UploadExamPaper();
+
+                    byte[] buffer = new byte[4096]; // Buffer
+                    int bytesRead;
+
+                    while ((bytesRead = await fileStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    {
+                        await call.RequestStream.WriteAsync(new UploadExamFileChunk { Data = Google.Protobuf.ByteString.CopyFrom(buffer, 0, bytesRead) });
+                        bytesUploaded += bytesRead;
+
+                        // Cập nhật thanh quá trình
+                        UpdateProgressBar(bytesUploaded, totalBytes);
+                    }
+
+                    await call.RequestStream.CompleteAsync();
+
+                    var response = await call.ResponseAsync;
+                    if (response.ResponseCode == (int)HttpStatusCode.OK)
+                    {
+                        return response.ResponseMessage;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Đã xảy ra lỗi khi gửi file: {response.ResponseMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return response.ResponseMessage;
+                    }
+                }
+            }
+            catch (Grpc.Core.RpcException ex)
+            {
+                MessageBox.Show($"gRPC Error during upload: {ex.Status.Detail}", "gRPC Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during upload: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
+        }
+
+        private void UpdateProgressBar(long bytesUploaded, long totalBytes)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action<long, long>(UpdateProgressBar), bytesUploaded, totalBytes);
+            }
+            else
+            {
+                if (totalBytes > 0)
+                {
+                    int percentage = (int)((double)bytesUploaded / totalBytes * 100);
+                    stripProgressBar.Value = Math.Min(percentage, stripProgressBar.Maximum);
+                    statusLabel.Text = $"Đã tải: {percentage}%";
+                }
+                else
+                {
+                    stripProgressBar.Value = 0;
+                    statusLabel.Text = "Đang đợi";
                 }
             }
         }
@@ -126,6 +193,18 @@ namespace ManagementApp
 
         private void btnDeleteExam_Click(object sender, EventArgs e)
         {
+            ResetValues();
+
+            MessageBox.Show("Đã xóa thông tin đề thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnThemDe_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+        }
+
+        private void ResetValues()
+        {
             txtExamCode.Clear();
             txtCreatorCode.Clear();
             txtExamPassword.Clear();
@@ -134,13 +213,43 @@ namespace ManagementApp
             dtpStartTime.Value = DateTime.Now;
             dtpEndTime.Value = DateTime.Now.AddHours(1);
             cbStatus.SelectedItem = cbStatus.Items[0];
-
-            MessageBox.Show("Đã xóa thông tin đề thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void sectionPanelEditor_Paint(object sender, PaintEventArgs e)
+        private async Task LoadTreeViewDataAsync()
         {
+            DataTable dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM DeThi");
 
+            examTreeView.Nodes.Clear();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                CrownTreeNode node = new(dataTable.Rows[0]["MaDe"].ToString())
+                {
+                    Icon = Properties.Resources.document_16xLG
+                };
+
+                examTreeView.Nodes.Add(node);
+            }
+
+            _tree = examTreeView;
+        }
+        private void LoadTreeViewData()
+        {
+            DataTable dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM DeThi");
+
+            examTreeView.Nodes.Clear();
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                CrownTreeNode node = new(dataTable.Rows[0]["MaDe"].ToString())
+                {
+                    Icon = Properties.Resources.document_16xLG
+                };
+
+                examTreeView.Nodes.Add(node);
+            }
+
+            _tree = examTreeView;
         }
     }
 }

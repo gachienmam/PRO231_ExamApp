@@ -123,9 +123,9 @@
             crownTitle6.AutoSize = true;
             crownTitle6.Location = new Point(106, 317);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(92, 15);
+            crownTitle6.Size = new Size(102, 15);
             crownTitle6.TabIndex = 9;
-            crownTitle6.Text = "Mật khẩu email:";
+            crownTitle6.Text = "Mật khẩu thí sinh:";
             // 
             // crownTitle5
             // 
@@ -133,9 +133,9 @@
             crownTitle5.AutoSize = true;
             crownTitle5.Location = new Point(106, 258);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(39, 15);
+            crownTitle5.Size = new Size(70, 15);
             crownTitle5.TabIndex = 8;
-            crownTitle5.Text = "Email:";
+            crownTitle5.Text = "Tên thí sinh:";
             // 
             // textBoxMatKhauEmail
             // 

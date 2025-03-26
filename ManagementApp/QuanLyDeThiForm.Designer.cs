@@ -58,6 +58,7 @@
             btnSaveExam = new ReaLTaiizor.Controls.CrownButton();
             examTreeView = new ReaLTaiizor.Controls.CrownTreeView();
             sectionPanelTreeView = new ReaLTaiizor.Controls.CrownSectionPanel();
+            btnThemDe = new ReaLTaiizor.Controls.CrownButton();
             statusStrip.SuspendLayout();
             sectionPanelEditor.SuspendLayout();
             sectionPanelTreeView.SuspendLayout();
@@ -102,6 +103,7 @@
             // 
             // sectionPanelEditor
             // 
+            sectionPanelEditor.Controls.Add(btnThemDe);
             sectionPanelEditor.Controls.Add(btnDeleteExam);
             sectionPanelEditor.Controls.Add(btnSelectFile);
             sectionPanelEditor.Controls.Add(lblValidFile);
@@ -132,7 +134,6 @@
             sectionPanelEditor.SectionHeader = "Chỉnh sửa đề:";
             sectionPanelEditor.Size = new Size(621, 393);
             sectionPanelEditor.TabIndex = 6;
-            sectionPanelEditor.Paint += sectionPanelEditor_Paint;
             // 
             // btnDeleteExam
             // 
@@ -237,7 +238,7 @@
             crownTitle7.Font = new Font("Segoe UI", 9F);
             crownTitle7.Location = new Point(339, 142);
             crownTitle7.Name = "crownTitle7";
-            crownTitle7.Size = new Size(60, 15);
+            crownTitle7.Size = new Size(59, 15);
             crownTitle7.TabIndex = 114;
             crownTitle7.Text = "Trạng thái";
             // 
@@ -268,7 +269,7 @@
             crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(296, 113);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(103, 15);
+            crownTitle6.Size = new Size(102, 15);
             crownTitle6.TabIndex = 111;
             crownTitle6.Text = "Thời gian kết thúc";
             // 
@@ -290,7 +291,7 @@
             crownTitle5.Font = new Font("Segoe UI", 9F);
             crownTitle5.Location = new Point(299, 84);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(100, 15);
+            crownTitle5.Size = new Size(99, 15);
             crownTitle5.TabIndex = 109;
             crownTitle5.Text = "Thời gian bất đầu";
             // 
@@ -420,6 +421,17 @@
             sectionPanelTreeView.Size = new Size(175, 393);
             sectionPanelTreeView.TabIndex = 7;
             // 
+            // btnThemDe
+            // 
+            btnThemDe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnThemDe.Location = new Point(546, 0);
+            btnThemDe.Name = "btnThemDe";
+            btnThemDe.Padding = new Padding(5);
+            btnThemDe.Size = new Size(75, 23);
+            btnThemDe.TabIndex = 124;
+            btnThemDe.Text = "Thêm đề";
+            btnThemDe.Click += btnThemDe_Click;
+            // 
             // QuanLyDeThiForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -476,5 +488,6 @@
         private ReaLTaiizor.Controls.CrownButton btnSaveExam;
         private ReaLTaiizor.Controls.CrownTreeView examTreeView;
         private ReaLTaiizor.Controls.CrownSectionPanel sectionPanelTreeView;
+        private ReaLTaiizor.Controls.CrownButton btnThemDe;
     }
 }

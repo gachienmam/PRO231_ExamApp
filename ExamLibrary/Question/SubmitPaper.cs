@@ -11,7 +11,7 @@ namespace ExamLibrary.Question
             try
             {
                 SubmitPaper submitPaper = (SubmitPaper)obj;
-                return this.ID.Equals(submitPaper.ID) && this.SPaper.ExamCode.Equals(submitPaper.SPaper.ExamCode);
+                return this.ExamCode.Equals(submitPaper.ExamCode) && this.SubmissionPaper.ExamCode.Equals(submitPaper.SubmissionPaper.ExamCode);
             }
             catch
             {
@@ -29,12 +29,12 @@ namespace ExamLibrary.Question
 
         public bool Finished;
 
-        public Paper SPaper;
+        public int Mark;
+
+        public Paper SubmissionPaper;
 
         public int LastSelectedTabIndex;
 
-        public string ID;
-
-        public List<Types.MultipleChoice> MultipleChoiceQuestions;
+        public string ExamCode;
     }
 }

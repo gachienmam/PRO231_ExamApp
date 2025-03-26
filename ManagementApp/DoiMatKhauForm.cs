@@ -64,7 +64,7 @@ namespace ManagementApp
                     {
                         string sql = $"UPDATE NguoiDung SET  MatKhau = '{TextBoxXNhapLaiMatKhau.Text}';";
                         _dbHelper.ExecuteSqlNonQuery(sql);
-                        CrownMessageBox.ShowInformation("Đã sửa thí sính", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        CrownMessageBox.ShowInformation("Đã sửa người dùng", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                     }
                     catch (Exception ex)
                     {

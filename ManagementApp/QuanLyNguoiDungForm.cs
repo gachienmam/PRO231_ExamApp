@@ -53,24 +53,17 @@ namespace ManagementApp
                 textBoxMKND.Enabled = true;
                 radioButtonAdmin.Enabled = true;
                 radioButtonGV.Enabled = true;
-                radioButtonHD.Enabled = true;
-                radioButtonKHD.Enabled = true;
                 buttonSuaND.Enabled = true;
                 buttonXoaND.Enabled = true;
                 textBoxMaND.Text = dataGridViewNguoiDung.CurrentRow.Cells[0].Value.ToString();
                 textBoxHoTenND.Text = dataGridViewNguoiDung.CurrentRow.Cells[1].Value.ToString();
-                textBoxEmailND.Text = dataGridViewNguoiDung.CurrentRow.Cells[3].Value.ToString();
-                textBoxMKND.Text = dataGridViewNguoiDung.CurrentRow.Cells[4].Value.ToString();
-                string VaiTro = dataGridViewNguoiDung.CurrentRow.Cells[5].Value.ToString();
+                textBoxEmailND.Text = dataGridViewNguoiDung.CurrentRow.Cells[2].Value.ToString();
+                textBoxMKND.Text = dataGridViewNguoiDung.CurrentRow.Cells[3].Value.ToString();
+                string VaiTro = dataGridViewNguoiDung.CurrentRow.Cells[4].Value.ToString();
                 if (VaiTro == "Admin")
                     radioButtonAdmin.Checked = true;
                 else
                     radioButtonGV.Checked = true;
-                string TrangThai = dataGridViewNguoiDung.CurrentRow.Cells[6].Value.ToString();
-                if (TrangThai == "1") // 1 = HoatDong, 0 = KhongHoatDong
-                    radioButtonHD.Checked = true;
-                else
-                    radioButtonKHD.Checked = true;
             }
             else
             {
@@ -100,11 +93,7 @@ namespace ManagementApp
 
         private void buttonLuuND_Click(object sender, EventArgs e)
         {
-            string email;
-
-            int TrangThai = 0;//Không hoạt đọng
-            if (radioButtonHD.Checked)
-                TrangThai = 1;// hoạt đọng
+            string email;           
             string VaiTro = "GiangVien";//GV
             if (radioButtonAdmin.Checked)
                 VaiTro = "Admin";// Admin
@@ -134,16 +123,9 @@ namespace ManagementApp
                 return;
             }
 
-            if (radioButtonKHD.Checked == false && radioButtonHD.Checked == false)// kiem tra phai check tình trạng
-            {
-                MessageBox.Show("Bạn phải chon vai trò người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxHoTenND.Focus();
-                return;
-            }
-
             if (radioButtonAdmin.Checked == false && radioButtonGV.Checked == false)// kiem tra phai check tình trạng
             {
-                MessageBox.Show("Bạn phải chon tình trạng người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải chọn vai trò người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxHoTenND.Focus();
                 return;
             }
@@ -151,12 +133,12 @@ namespace ManagementApp
             {
                 try
                 {
-                    var sql = string.Format("EXEC sp_InsertNguoiDung N'{0}', N'{1}', N'{2}', N'{3}', N'{4}' ,N'{5}'",
+                    var sql = string.Format("EXEC sp_InsertNguoiDung N'{0}', N'{1}', N'{2}', N'{3}', N'{4}'",
                         textBoxMaND.Text.Trim(),
                         textBoxHoTenND.Text.Trim(),
                         textBoxEmailND.Text.Trim(),
                         textBoxMKND.Text.Trim(),
-                        VaiTro,TrangThai); 
+                        VaiTro);
 
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
@@ -174,10 +156,6 @@ namespace ManagementApp
         private void buttonSuaND_Click(object sender, EventArgs e)
         {
             string email;
-
-            int TrangThai = 0;//Không hoạt đọng
-            if (radioButtonHD.Checked)
-                TrangThai = 1;// hoạt đọng
             string VaiTro = "GiangVien";//GV
             if (radioButtonAdmin.Checked)
                 VaiTro = "Admin";// Admin
@@ -204,13 +182,6 @@ namespace ManagementApp
             {
                 MessageBox.Show("Bạn phải nhập Mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBoxMKND.Focus();
-                return;
-            }
-
-            if (radioButtonKHD.Checked == false && radioButtonHD.Checked == false)// kiem tra phai check tình trạng
-            {
-                MessageBox.Show("Bạn phải chon vai trò người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                textBoxHoTenND.Focus();
                 return;
             }
 
@@ -248,7 +219,7 @@ namespace ManagementApp
                     var result = Task.Run(async () => await _dbHelper.ExecuteSqlNonQueryAsync(sql));
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã xóa người dùng", "Xóa thành công", ReaLTaiizor .Enum.Crown.DialogButton.Ok);
+                    CrownMessageBox.ShowInformation("Đã xóa người dùng", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -279,7 +250,7 @@ namespace ManagementApp
             try
             {
                 string sql = $"SELECT * FROM NguoiDung WHERE MaNguoiDung = '{textBoxMaND.Text}';";
-                dataTable = _dbHelper.ExecuteSqlReader(sql);                
+                dataTable = _dbHelper.ExecuteSqlReader(sql);
             }
             catch (Exception ex)
             {
@@ -296,7 +267,6 @@ namespace ManagementApp
                 dataGridViewNguoiDung.Columns[2].HeaderText = "Email";
                 dataGridViewNguoiDung.Columns[3].HeaderText = "Mật khẩu";
                 dataGridViewNguoiDung.Columns[4].HeaderText = "Số điện Thoại";
-                dataGridViewNguoiDung.Columns[5].HeaderText = "Trạng thái";
             }
             else
             {
@@ -330,27 +300,25 @@ namespace ManagementApp
         #region Function
         private async Task LoadDataGridViewAsync()
         {
-            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM ThiSinh");
+            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM NguoiDung");
             dataGridViewNguoiDung.DataSource = _dataTable;
 
             dataGridViewNguoiDung.Columns[0].HeaderText = "Mã";
             dataGridViewNguoiDung.Columns[1].HeaderText = "Họ và tên";
             dataGridViewNguoiDung.Columns[2].HeaderText = "Email";
             dataGridViewNguoiDung.Columns[3].HeaderText = "Mật khẩu";
-            dataGridViewNguoiDung.Columns[4].HeaderText = "Trạng thái";
-            dataGridViewNguoiDung.Columns[5].HeaderText = "Vai trò";
+            dataGridViewNguoiDung.Columns[4].HeaderText = "Vai trò";
         }
         private void LoadDataGridView()
         {
-            _dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM ThiSinh");
+            _dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM NguoiDung");
             dataGridViewNguoiDung.DataSource = _dataTable;
 
             dataGridViewNguoiDung.Columns[0].HeaderText = "Mã";
             dataGridViewNguoiDung.Columns[1].HeaderText = "Họ và tên";
             dataGridViewNguoiDung.Columns[2].HeaderText = "Email";
             dataGridViewNguoiDung.Columns[3].HeaderText = "Mật khẩu";
-            dataGridViewNguoiDung.Columns[4].HeaderText = "Trạng thái";
-            dataGridViewNguoiDung.Columns[5].HeaderText = "Vai trò";
+            dataGridViewNguoiDung.Columns[4].HeaderText = "Vai trò";
         }
 
         private void ResetValues()
@@ -369,8 +337,6 @@ namespace ManagementApp
             buttonLuuND.Enabled = false;
             buttonSuaND.Enabled = false;
             buttonXoaND.Enabled = false;
-            radioButtonHD.Enabled = true;
-            radioButtonKHD.Enabled = true;
         }
         public bool IsValid(string emailaddress)// check rule email
         {
@@ -386,5 +352,10 @@ namespace ManagementApp
             }
         }
         #endregion
+
+        private void crownGroupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

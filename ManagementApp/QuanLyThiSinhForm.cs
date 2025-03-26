@@ -48,7 +48,7 @@ namespace ManagementApp
             textBoxEmailTS.Text = null;
             textBoxMKTS.Text = null;
             radioButtonHDTS.Checked = true;
-            radioButtonKhoaTS.Checked = false;
+            radioButtonKhoaTS.Checked = true;
 
             textBoxMaTS.Enabled = true;
             textBoxHoTenTS.Enabled = true;
@@ -56,7 +56,7 @@ namespace ManagementApp
             textBoxEmailTS.Enabled = true;
             textBoxMKTS.Enabled = true;
             radioButtonHDTS.Enabled = true;
-            radioButtonKhoaTS.Enabled = false;
+            radioButtonKhoaTS.Enabled = true;
 
             buttonThemTS.Enabled = true;
             buttonLuuTS.Enabled = true;

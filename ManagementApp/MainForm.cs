@@ -251,5 +251,11 @@ namespace ManagementApp
             GioiThieuForm gioiThieuForm = new GioiThieuForm();
             gioiThieuForm.ShowDialog();
         }
+
+        private void thôngTinCủaTôiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoiMatKhauForm doiMatKhauForm = new DoiMatKhauForm(_client, _headers);
+            doiMatKhauForm.ShowDialog();
+        }
     }
 }

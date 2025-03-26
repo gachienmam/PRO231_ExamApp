@@ -33,10 +33,6 @@
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
-            crownGroupBox2 = new ReaLTaiizor.Controls.CrownGroupBox();
-            radioButtonKHD = new ReaLTaiizor.Controls.CrownRadioButton();
-            radioButtonHD = new ReaLTaiizor.Controls.CrownRadioButton();
             buttonThemND = new ReaLTaiizor.Controls.CrownButton();
             textBoxHoTenND = new ReaLTaiizor.Controls.CrownTextBox();
             textBoxMKND = new ReaLTaiizor.Controls.CrownTextBox();
@@ -62,7 +58,6 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             crownSectionPanel1.SuspendLayout();
-            crownGroupBox2.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
             panel1.SuspendLayout();
@@ -99,8 +94,6 @@
             // 
             crownSectionPanel1.Controls.Add(parrotGradientPanel1);
             crownSectionPanel1.Controls.Add(crownTitle7);
-            crownSectionPanel1.Controls.Add(crownTitle6);
-            crownSectionPanel1.Controls.Add(crownGroupBox2);
             crownSectionPanel1.Controls.Add(buttonThemND);
             crownSectionPanel1.Controls.Add(textBoxHoTenND);
             crownSectionPanel1.Controls.Add(textBoxMKND);
@@ -151,53 +144,6 @@
             crownTitle7.Size = new Size(223, 30);
             crownTitle7.TabIndex = 103;
             crownTitle7.Text = "Thông tin người dùng";
-            // 
-            // crownTitle6
-            // 
-            crownTitle6.Anchor = AnchorStyles.Top;
-            crownTitle6.AutoSize = true;
-            crownTitle6.Font = new Font("Segoe UI", 9F);
-            crownTitle6.Location = new Point(381, 168);
-            crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(63, 15);
-            crownTitle6.TabIndex = 75;
-            crownTitle6.Text = "Trạng thái:";
-            // 
-            // crownGroupBox2
-            // 
-            crownGroupBox2.Anchor = AnchorStyles.Top;
-            crownGroupBox2.BorderColor = Color.FromArgb(51, 51, 51);
-            crownGroupBox2.Controls.Add(radioButtonKHD);
-            crownGroupBox2.Controls.Add(radioButtonHD);
-            crownGroupBox2.Location = new Point(449, 164);
-            crownGroupBox2.Margin = new Padding(3, 2, 3, 2);
-            crownGroupBox2.Name = "crownGroupBox2";
-            crownGroupBox2.Padding = new Padding(3, 2, 3, 2);
-            crownGroupBox2.Size = new Size(128, 52);
-            crownGroupBox2.TabIndex = 74;
-            crownGroupBox2.TabStop = false;
-            // 
-            // radioButtonKHD
-            // 
-            radioButtonKHD.AutoSize = true;
-            radioButtonKHD.Location = new Point(6, 27);
-            radioButtonKHD.Margin = new Padding(3, 2, 3, 2);
-            radioButtonKHD.Name = "radioButtonKHD";
-            radioButtonKHD.Size = new Size(118, 19);
-            radioButtonKHD.TabIndex = 50;
-            radioButtonKHD.TabStop = true;
-            radioButtonKHD.Text = "Không hoạt động";
-            // 
-            // radioButtonHD
-            // 
-            radioButtonHD.AutoSize = true;
-            radioButtonHD.Location = new Point(6, 4);
-            radioButtonHD.Margin = new Padding(3, 2, 3, 2);
-            radioButtonHD.Name = "radioButtonHD";
-            radioButtonHD.Size = new Size(82, 19);
-            radioButtonHD.TabIndex = 43;
-            radioButtonHD.TabStop = true;
-            radioButtonHD.Text = "Hoạt động";
             // 
             // buttonThemND
             // 
@@ -471,8 +417,6 @@
             tabPage1.ResumeLayout(false);
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
-            crownGroupBox2.ResumeLayout(false);
-            crownGroupBox2.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
@@ -487,10 +431,6 @@
         private TabControl tabControl1;
         private TabPage tabPage1;
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle6;
-        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox2;
-        private ReaLTaiizor.Controls.CrownRadioButton radioButtonKHD;
-        private ReaLTaiizor.Controls.CrownRadioButton radioButtonHD;
         private ReaLTaiizor.Controls.CrownButton buttonThemND;
         private ReaLTaiizor.Controls.CrownTextBox textBoxHoTenND;
         private ReaLTaiizor.Controls.CrownTextBox textBoxMKND;

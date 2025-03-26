@@ -231,9 +231,9 @@ namespace ManagementApp
         {
             if (clearAllForms)
             {
-                quanLyDeThiForm = new(_client, _accessToken);
-                quanLyNguoiDungForm = new(_client, _accessToken);
-                quanLyThiSinhForm = new(_client, _accessToken);
+                quanLyDeThiForm = new(_client, _headers);
+                quanLyNguoiDungForm = new(_client, _headers);
+                quanLyThiSinhForm = new(_client, _headers);
 
                 formView.Controls.Clear();
                 _currentForm = null;

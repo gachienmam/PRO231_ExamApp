@@ -17,19 +17,15 @@ namespace ManagementApp.Database
     public class GrpcDatabaseHelper
     {
         private readonly AdminServiceClient _client;
-        private readonly string _accessToken;
         private readonly Grpc.Core.Metadata _headers;
 
-        public GrpcDatabaseHelper(AdminServiceClient client, string accessToken)
+        public GrpcDatabaseHelper(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             _client = client;
-            _accessToken = accessToken;
-            _headers = new Grpc.Core.Metadata
-                {
-                    { "Authorization", $"Bearer {_accessToken}" }
-                };
+            _headers = headers;
         }
 
+        #region Async
         // Cho phép trực tiếp chạy lệnh SQL (lệnh từ phần mềm quản lý)
         public async Task<int> ExecuteSqlNonQueryAsync(string sqlCommand)
         {
@@ -78,7 +74,7 @@ namespace ManagementApp.Database
             {
                 var request = new CommandRequest()
                 {
-                    RequestCode = (int)RemoteCommandType.SQL_NONQUERY,
+                    RequestCode = (int)RemoteCommandType.SQL_SCALAR,
                     Command = sqlCommand
                 };
 
@@ -114,7 +110,7 @@ namespace ManagementApp.Database
             {
                 var request = new CommandRequest()
                 {
-                    RequestCode = (int)RemoteCommandType.SQL_NONQUERY,
+                    RequestCode = (int)RemoteCommandType.SQL_READER,
                     Command = sqlCommand
                 };
 
@@ -127,41 +123,138 @@ namespace ManagementApp.Database
                     if (dataTable == null)
                     {
                         //CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        return ConvertToDataTable($"Error\r\n{response.ResponseMessage}");
+                        return new DataTable().Columns.Add("Exception").Table.Rows.Add(response.ResponseMessage).Table;
                     }
                     return dataTable;
                 }
                 else
                 {
                     //CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    return ConvertToDataTable($"Error\r\n{response.ResponseMessage}");
+                    return new DataTable().Columns.Add("Exception").Table.Rows.Add( response.ResponseMessage).Table;
                 }
             }
             catch (Exception ex)
             {
                 //CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                return ConvertToDataTable($"Error\r\n{ex.Message}");
+                return new DataTable().Columns.Add("Exception").Table.Rows.Add(ex.Message).Table;
             }
         }
-        private DataTable ConvertToDataTable(string data)
-        {
-            DataTable dataTable = new DataTable();
-            string[] rows = data.Split('\n');
-            if (rows.Length > 0)
-            {
-                string[] headers = rows[0].Split(',');
-                foreach (string header in headers)
-                {
-                    dataTable.Columns.Add(header);
-                }
+        #endregion
 
-                for (int i = 1; i < rows.Length; i++)
+        #region Non-Async
+        // Cho phép trực tiếp chạy lệnh SQL (lệnh từ phần mềm quản lý)
+        public int ExecuteSqlNonQuery(string sqlCommand)
+        {
+            if (string.IsNullOrWhiteSpace(sqlCommand))
+            {
+                throw new ArgumentException("SQL command cannot be null or empty.", nameof(sqlCommand));
+            }
+
+            try
+            {
+                var request = new CommandRequest()
                 {
-                    string[] cells = rows[i].Split(',');
-                    dataTable.Rows.Add(cells);
+                    RequestCode = (int)RemoteCommandType.SQL_NONQUERY,
+                    Command = sqlCommand
+                };
+
+                var response = _client.ExecuteRemoteCommand(request, _headers);
+
+                if (response.ResponseCode == (int)HttpStatusCode.OK)
+                {
+                    int result = 0;
+                    int.TryParse(response.ResponseMessage, out result);
+                    return result;
+                }
+                else
+                {
+                    //CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    return -1;
                 }
             }
-            return dataTable;
+            catch (Exception ex)
+            {
+                //CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                return -1;
+            }
         }
+
+        public object ExecuteSqlScalar(string sqlCommand)
+        {
+            if (string.IsNullOrWhiteSpace(sqlCommand))
+            {
+                throw new ArgumentException("SQL command cannot be null or empty.", nameof(sqlCommand));
+            }
+
+            try
+            {
+                var request = new CommandRequest()
+                {
+                    RequestCode = (int)RemoteCommandType.SQL_SCALAR,
+                    Command = sqlCommand
+                };
+
+                var response = _client.ExecuteRemoteCommand(request, _headers);
+
+                if (response.ResponseCode == (int)HttpStatusCode.OK)
+                {
+                    int result = 0;
+                    int.TryParse(response.ResponseMessage, out result);
+                    return result;
+                }
+                else
+                {
+                    //CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    return $"Error: {response.ResponseMessage}";
+                }
+            }
+            catch (Exception ex)
+            {
+                //CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                return $"Error {ex.Message}";
+            }
+        }
+
+        public DataTable ExecuteSqlReader(string sqlCommand)
+        {
+            if (string.IsNullOrWhiteSpace(sqlCommand))
+            {
+                throw new ArgumentException("SQL command cannot be null or empty.", nameof(sqlCommand));
+            }
+
+            try
+            {
+                var request = new CommandRequest()
+                {
+                    RequestCode = (int)RemoteCommandType.SQL_READER,
+                    Command = sqlCommand
+                };
+
+                var response = _client.ExecuteRemoteCommand(request, _headers);
+
+                if (response.ResponseCode == (int)HttpStatusCode.OK)
+                {
+                    DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
+                    //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
+                    if (dataTable == null)
+                    {
+                        //CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        return new DataTable().Columns.Add("Exception").Table.Rows.Add(response.ResponseMessage).Table;
+                    }
+                    return dataTable;
+                }
+                else
+                {
+                    //CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    return new DataTable().Columns.Add("Exception").Table.Rows.Add(response.ResponseMessage).Table;
+                }
+            }
+            catch (Exception ex)
+            {
+                //CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                return new DataTable().Columns.Add("Exception").Table.Rows.Add(ex.Message).Table;
+            }
+        }
+        #endregion
     }
 }

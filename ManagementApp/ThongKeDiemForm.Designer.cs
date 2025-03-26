@@ -51,16 +51,16 @@ namespace ManagementApp
             crownSectionPanel1.Controls.Add(BUTTON_XEMDS);
             crownSectionPanel1.Controls.Add(textBoxTimKiem);
             crownSectionPanel1.Controls.Add(buttonTimKiem);
-            crownSectionPanel1.Controls.Add(dataGridView1);
-            crownSectionPanel1.Dock = DockStyle.Fill;
+            crownSectionPanel1.Dock = DockStyle.Top;
             crownSectionPanel1.Location = new Point(0, 0);
             crownSectionPanel1.Name = "crownSectionPanel1";
             crownSectionPanel1.SectionHeader = "Thống kê";
-            crownSectionPanel1.Size = new Size(800, 450);
+            crownSectionPanel1.Size = new Size(800, 125);
             crownSectionPanel1.TabIndex = 0;
             // 
             // crownGroupBox1
             // 
+            crownGroupBox1.Anchor = AnchorStyles.None;
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(btnLocDuLieu);
             crownGroupBox1.Controls.Add(CheckBoxRot);
@@ -102,6 +102,7 @@ namespace ManagementApp
             // 
             // BUTTON_XUATDS
             // 
+            BUTTON_XUATDS.Anchor = AnchorStyles.None;
             BUTTON_XUATDS.Location = new Point(454, 28);
             BUTTON_XUATDS.Name = "BUTTON_XUATDS";
             BUTTON_XUATDS.Padding = new Padding(5);
@@ -112,6 +113,7 @@ namespace ManagementApp
             // 
             // BUTTON_XEMDS
             // 
+            BUTTON_XEMDS.Anchor = AnchorStyles.None;
             BUTTON_XEMDS.Location = new Point(12, 28);
             BUTTON_XEMDS.Name = "BUTTON_XEMDS";
             BUTTON_XEMDS.Padding = new Padding(5);
@@ -122,6 +124,7 @@ namespace ManagementApp
             // 
             // textBoxTimKiem
             // 
+            textBoxTimKiem.Anchor = AnchorStyles.None;
             textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Font = new Font("Segoe UI", 9F);
@@ -135,6 +138,7 @@ namespace ManagementApp
             // 
             // buttonTimKiem
             // 
+            buttonTimKiem.Anchor = AnchorStyles.None;
             buttonTimKiem.Location = new Point(537, 79);
             buttonTimKiem.Name = "buttonTimKiem";
             buttonTimKiem.Padding = new Padding(5);
@@ -145,21 +149,27 @@ namespace ManagementApp
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 115);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 125);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(802, 336);
-            dataGridView1.TabIndex = 8;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(800, 325);
+            dataGridView1.TabIndex = 9;
             // 
             // ThongKeDiemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(crownSectionPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ThongKeDiemForm";
             Text = "Thống kê báo cáo điểm";
+            Load += ThongKeDiemForm_Load;
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();
             crownGroupBox1.ResumeLayout(false);
@@ -173,12 +183,12 @@ namespace ManagementApp
         private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiem;
         private ReaLTaiizor.Controls.CrownButton buttonTimKiem;
-        private DataGridView dataGridView1;
         private ReaLTaiizor.Controls.CrownButton BUTTON_XUATDS;
         private ReaLTaiizor.Controls.CrownButton BUTTON_XEMDS;
         private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
         private ReaLTaiizor.Controls.CrownButton btnLocDuLieu;
         private ReaLTaiizor.Controls.CrownCheckBox CheckBoxRot;
         private ReaLTaiizor.Controls.CrownCheckBox CheckBoxDau;
+        private DataGridView dataGridView1;
     }
 }

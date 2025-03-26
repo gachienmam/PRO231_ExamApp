@@ -78,7 +78,7 @@
             đăngXuấtToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             đăngXuấtToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            đăngXuấtToolStripMenuItem.Size = new Size(180, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(171, 22);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
@@ -88,7 +88,7 @@
             thoátToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
             thoátToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-            thoátToolStripMenuItem.Size = new Size(180, 22);
+            thoátToolStripMenuItem.Size = new Size(171, 22);
             thoátToolStripMenuItem.Text = "Thoát";
             thoátToolStripMenuItem.Click += thoátToolStripMenuItem_Click;
             // 
@@ -171,7 +171,7 @@
             vềPolyTestToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             vềPolyTestToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             vềPolyTestToolStripMenuItem.Name = "vềPolyTestToolStripMenuItem";
-            vềPolyTestToolStripMenuItem.Size = new Size(180, 22);
+            vềPolyTestToolStripMenuItem.Size = new Size(159, 22);
             vềPolyTestToolStripMenuItem.Text = "Về PolyTest";
             vềPolyTestToolStripMenuItem.Click += vềPolyTestToolStripMenuItem_Click;
             // 
@@ -180,7 +180,7 @@
             xemHướngDẫnToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             xemHướngDẫnToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             xemHướngDẫnToolStripMenuItem.Name = "xemHướngDẫnToolStripMenuItem";
-            xemHướngDẫnToolStripMenuItem.Size = new Size(180, 22);
+            xemHướngDẫnToolStripMenuItem.Size = new Size(159, 22);
             xemHướngDẫnToolStripMenuItem.Text = "Xem hướng dẫn";
             // 
             // usernameToolStripMenuItem
@@ -229,7 +229,6 @@
             ClientSize = new Size(804, 462);
             Controls.Add(formView);
             Controls.Add(mainMenuStrip);
-            DoubleBuffered = true;
             MainMenuStrip = mainMenuStrip;
             MdiChildrenMinimizedAnchorBottom = false;
             MinimumSize = new Size(820, 501);

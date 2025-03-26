@@ -10,6 +10,7 @@ namespace ExamLibrary.Enum
         SQL_NONQUERY = 0,
         SQL_SCALAR = 1,
         SQL_READER = 2,
+        SQL = 3,
 
         // Lệnh liên quan tạo password
         REQUEST_ENCRYPTEDPASSWORD = 5,

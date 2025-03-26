@@ -29,7 +29,7 @@ namespace ManagementApp
         {
             InitializeComponent();
             _client = client;
-            _headers = headers
+            _headers = headers;
 
             // Add the control scroll message filter to re-route all mousewheel events
             // to the control the user is currently hovering over with their cursor.

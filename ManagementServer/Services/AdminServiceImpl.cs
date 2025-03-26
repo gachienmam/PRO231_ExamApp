@@ -39,20 +39,20 @@ namespace ManagementServer.Services
 
         public override async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
-            if (request.Email == null)
-            {
-                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
-            }
-            var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
-            var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
-            if (user == null || !PasswordEncryption.VerifyPassword(request.Password, user.MatKhau))
-            {
-                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
-            }
+            //if (request.Email == null)
+            //{
+            //    return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
+            //}
+            //var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
+            //var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
+            //if (user == null || !PasswordEncryption.VerifyPassword(request.Password, user.MatKhau))
+            //{
+            //    return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
+            //}
 
-            string token = _jwtHelper.GenerateJwtToken(user); // Implement token generation
+            //string token = _jwtHelper.GenerateJwtToken(user); // Implement token generation
 
-            //string token = _jwtHelper.GenerateJwtToken(new ServerDatabaseLibrary.Database.DTO.NguoiDung(request.Email, "Joe Biden", "ND001", "Pass", "Admin"));
+            string token = _jwtHelper.GenerateJwtToken(new ServerDatabaseLibrary.Database.DTO.NguoiDung(request.Email, "Joe Biden", "ND001", "Pass", "Admin"));
 
             return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
         }

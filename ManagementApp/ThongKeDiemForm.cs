@@ -9,100 +9,50 @@ using static ManagementApp.AdminProto.AdminService;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using ReaLTaiizor.Controls;
+using ManagementApp.Database;
 
 namespace ManagementApp
 {
     public partial class ThongKeDiemForm : Form
     {
         private readonly AdminServiceClient _client;
-        private readonly string _accessToken;
         private readonly Grpc.Core.Metadata _headers;
 
-        public ThongKeDiemForm(AdminServiceClient client, string accessToken)
+        private readonly GrpcDatabaseHelper _dbHelper;
+
+        private DataTable _dataTable;
+
+        public ThongKeDiemForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
-            _accessToken = accessToken;
-            _headers = new Grpc.Core.Metadata
-                {
-                    { "Authorization", $"Bearer {_accessToken}" }
-                };
+            _headers = headers;
+
+            _dbHelper = new GrpcDatabaseHelper(_client, _headers);
         }
 
+        private async void ThongKeDiemForm_Load(object sender, EventArgs e)
+        {
+            await LoadDataGridView();
+        }
+
+        #region Control Action Events
         private void BUTTON_THOAT_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void BUTTON_XEMDS_Click(object sender, EventArgs e)
+        private async void BUTTON_XEMDS_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var request = new CommandRequest()
-                {
-                    RequestCode = (int)RemoteCommandType.SQL,
-                    Command = "SELECT * FROM KetQuaThi"
-                };
-
-                var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                if (response.ResponseCode == (int)HttpStatusCode.OK)
-                {
-                    DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-                    //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                    if (dataTable == null)
-                    {
-                        CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
-                    dataGridView1.DataSource = dataTable;
-                }
-                else
-                {
-                    CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                }
-            }
-            catch (Exception ex)
-            {
-                CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-            }
-        }
-
-        private DataTable ConvertToDataTable(string data)
-        {
-            DataTable dataTable = new DataTable();
-            string[] rows = data.Split('\n');
-            if (rows.Length > 0)
-            {
-                string[] headers = rows[0].Split(',');
-                foreach (string header in headers)
-                {
-                    dataTable.Columns.Add(header);
-                }
-
-                for (int i = 1; i < rows.Length; i++)
-                {
-                    string[] cells = rows[i].Split(',');
-                    dataTable.Rows.Add(cells);
-                }
-            }
-            return dataTable;
+            await LoadDataGridView();
         }
 
         private void btnLocDuLieu_Click(object sender, EventArgs e)
         {
             try
             {
-                DataTable dt;
-
-                // Kiểm tra nếu DataSource đang là DataView thì lấy bảng gốc
-                if (dataGridView1.DataSource is DataView dvSource)
-                {
-                    dt = dvSource.Table;
-                }
-                else
-                {
-                    dt = (DataTable)dataGridView1.DataSource;
-                }
+                DataTable dt = _dataTable;
+                dataGridView1.DataSource = _dataTable;
 
                 if (CheckBoxDau.Checked && CheckBoxRot.Checked)
                 {
@@ -128,10 +78,6 @@ namespace ManagementApp
                     // Không chọn gì thì xóa dữ liệu hiển thị
                     dataGridView1.DataSource = dt;
                 }
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -185,7 +131,8 @@ namespace ManagementApp
                     return;
                 }
 
-                DataTable dt = (DataTable)dataGridView1.DataSource;
+                DataTable dt = _dataTable;
+                dataGridView1.DataSource = _dataTable;
                 if (dt != null)
                 {
                     DataView dv = new DataView(dt);
@@ -202,5 +149,14 @@ namespace ManagementApp
                 MessageBox.Show($"Lỗi: {ex.Message}");
             }
         }
+        #endregion
+
+        #region Function
+        private async Task LoadDataGridView()
+        {
+            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM KetQuaThi");
+            dataGridView1.DataSource = _dataTable;
+        }
+        #endregion
     }
 }

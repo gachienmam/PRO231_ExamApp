@@ -1,5 +1,6 @@
 ﻿using ExamLibrary.Enum;
 using ManagementApp.AdminProto;
+using ManagementApp.Database;
 using Newtonsoft.Json;
 using ReaLTaiizor.Controls;
 using System;
@@ -21,16 +22,22 @@ namespace ManagementApp
     {
         private readonly AdminServiceClient _client;
         private readonly Grpc.Core.Metadata _headers;
+
+        private DataTable _dataTable;
+        private GrpcDatabaseHelper _dbHelper;
+
         public QuanLyThiSinhForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
             _client = client;
             _headers = headers;
+
+            _dbHelper = new GrpcDatabaseHelper(_client, _headers);
         }
 
-        private void buttonThoat_Click(object sender, EventArgs e)
+        private async void QuanLyThiSinhForm_Load(object sender, EventArgs e)
         {
-            this.Close();
+            await LoadDataGridViewAsync();
         }
 
         private void buttonThemTS_Click(object sender, EventArgs e)
@@ -53,95 +60,8 @@ namespace ManagementApp
 
             buttonThemTS.Enabled = true;
             buttonLuuTS.Enabled = true;
-            buttonThoat.Enabled = true;
             buttonSuaTS.Enabled = false;
             buttonXoaTS.Enabled = false;
-        }
-        private void LoadGridview_ThiSinh()
-        {
-            try
-            {
-                var request = new CommandRequest()
-                {
-                    RequestCode = (int)RemoteCommandType.SQL,
-                    Command = "SELECT * FROM ThiSinh"
-                };
-
-                var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                if (response.ResponseCode == (int)HttpStatusCode.OK)
-                {
-                    DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-
-                    if (dataTable == null || dataTable.Rows.Count == 0)
-                    {
-                        CrownMessageBox.ShowError("Không có dữ liệu hiển thị.", "Thông báo", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        return;
-                    }
-
-                    dataGridViewTS.DataSource = dataTable;
-
-                    // Kiểm tra số lượng cột trước khi đặt HeaderText
-                    if (dataGridViewTS.Columns.Count >= 7)
-                    {
-                        dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
-                        dataGridViewTS.Columns[1].HeaderText = "Họ và tên";
-                        dataGridViewTS.Columns[2].HeaderText = "Email";
-                        dataGridViewTS.Columns[3].HeaderText = "Mật khẩu";
-                        dataGridViewTS.Columns[4].HeaderText = "Ngày sinh";
-                        dataGridViewTS.Columns[5].HeaderText = "Số điện thoại";
-                        dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
-                    }
-                }
-                else
-                {
-                    CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                }
-            }
-            catch (Exception ex)
-            {
-                CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-            }
-        }
-        private void ResetValues()
-        {
-            textBoxMaTS.Text = null;
-            textBoxHoTenTS.Text = null;
-            textBoxSDTTS.Text = null;
-            textBoxEmailTS.Text = null;
-            textBoxMKTS.Text = null;
-            radioButtonHDTS.Checked = false;
-            radioButtonKhoaTS.Checked = false;
-
-            textBoxMaTS.Enabled = false;
-            textBoxHoTenTS.Enabled = false;
-            textBoxSDTTS.Enabled = false;
-            textBoxEmailTS.Enabled = false;
-            textBoxMKTS.Enabled = false;
-            radioButtonHDTS.Enabled = false;
-            radioButtonKhoaTS.Enabled = false;
-            dataGridViewTS.Enabled = true;
-
-            buttonThemTS.Enabled = true;
-            buttonLuuTS.Enabled = false;
-            buttonThoat.Enabled = true;
-            buttonSuaTS.Enabled = false;
-            buttonXoaTS.Enabled = false;
-
-            textBoxEmailTS.Focus();
-        }
-        public bool IsValid(string emailaddress)// check rule email
-        {
-            try
-            {
-                MailAddress m = new MailAddress(emailaddress);
-
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
         }
 
         private void buttonLuuTS_Click(object sender, EventArgs e)
@@ -210,35 +130,18 @@ namespace ManagementApp
             {
                 try
                 {
-                    var request = new CommandRequest()
-                    {
-                        RequestCode = (int)RemoteCommandType.SQL,
-                        Command = string.Format("EXEC sp_InsertThiSinh N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}', {6}",
+                    var sql = string.Format("EXEC sp_InsertThiSinh N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}', {6}",
                             textBoxMaTS.Text.Trim(),
                             textBoxHoTenTS.Text.Trim(),
                             textBoxEmailTS.Text.Trim(),
                             textBoxMKTS.Text.Trim(),
                             dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd"),
                             textBoxSDTTS.Text.Trim(),
-                            trangThai)
-                    };
-
-                    var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                    if (response.ResponseCode == (int)HttpStatusCode.OK)
-                    {
-                        DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-                        //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                        if (dataTable == null)
-                        {
-                            CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        }
-                        dataGridViewTS.DataSource = dataTable;
-                    }
-                    else
-                    {
-                        CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
+                            trangThai);
+                    _dbHelper.ExecuteSqlNonQuery(sql);
+                    LoadDataGridView();
+                    tabControl1.SelectedIndex = 1;
+                    CrownMessageBox.ShowInformation("Đã tạo thí sính mới", "Tạo thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -259,28 +162,11 @@ namespace ManagementApp
             {
                 try
                 {
-                    var request = new CommandRequest()
-                    {
-                        RequestCode = (int)RemoteCommandType.SQL,
-                        Command = string.Format("EXEC sp_DeleteThiSinh " + textBoxMaTS.Text)
-                    };
-
-                    var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                    if (response.ResponseCode == (int)HttpStatusCode.OK)
-                    {
-                        DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-                        //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                        if (dataTable == null)
-                        {
-                            CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        }
-                        dataGridViewTS.DataSource = dataTable;
-                    }
-                    else
-                    {
-                        CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
+                    string sql = string.Format("EXEC sp_DeleteThiSinh " + textBoxMaTS.Text);
+                    var result = Task.Run(async () => await _dbHelper.ExecuteSqlNonQueryAsync(sql));
+                    LoadDataGridView();
+                    tabControl1.SelectedIndex = 1;
+                    CrownMessageBox.ShowInformation("Đã xóa thí sính", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -343,7 +229,7 @@ namespace ManagementApp
                 dateTimePickerNgaySinhTS.Focus();
                 return;
             }
-            
+
 
             if (radioButtonHDTS.Checked == false && radioButtonKhoaTS.Checked == false)// kiem tra phai check tình trạng
             {
@@ -355,30 +241,12 @@ namespace ManagementApp
             {
                 try
                 {
-                    var request = new CommandRequest()
-                    {
-                        RequestCode = (int)RemoteCommandType.SQL,
-                        Command = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text}', N'{textBoxHoTenTS.Text}', N'{textBoxEmailTS.Text}', N'{textBoxMKTS.Text}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text}', {trangThai}" 
-                        
+                    string sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text}', N'{textBoxHoTenTS.Text}', N'{textBoxEmailTS.Text}', N'{textBoxMKTS.Text}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text}', {trangThai}";
+                    _dbHelper.ExecuteSqlNonQuery(sql);
+                    LoadDataGridView();
+                    tabControl1.SelectedIndex = 1;
+                    CrownMessageBox.ShowInformation("Đã sửa thí sính", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
 
-                    };
-
-                    var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                    if (response.ResponseCode == (int)HttpStatusCode.OK)
-                    {
-                        DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-                        //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                        if (dataTable == null)
-                        {
-                            CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        }
-                        dataGridViewTS.DataSource = dataTable;
-                    }
-                    else
-                    {
-                        CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
                 }
                 catch (Exception ex)
                 {
@@ -389,7 +257,7 @@ namespace ManagementApp
 
         private void buttonDanhSachTS_Click(object sender, EventArgs e)
         {
-            LoadGridview_ThiSinh();
+            LoadDataGridView();
         }
 
 
@@ -426,32 +294,11 @@ namespace ManagementApp
             ResetValues();
         }
 
-        private void buttonDanhSachTS_Click_1(object sender, EventArgs e)
+        private async void buttonDanhSachTS_Click_1(object sender, EventArgs e)
         {
             try
             {
-                var request = new CommandRequest()
-                {
-                    RequestCode = (int)RemoteCommandType.SQL,
-                    Command = "SELECT * FROM ThiSinh"
-                };
-
-                var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                if (response.ResponseCode == (int)HttpStatusCode.OK)
-                {
-                    DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-                    //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                    if (dataTable == null)
-                    {
-                        CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
-                    dataGridViewTS.DataSource = dataTable;
-                }
-                else
-                {
-                    CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                }
+                await LoadDataGridViewAsync();
             }
             catch (Exception ex)
             {
@@ -493,7 +340,7 @@ namespace ManagementApp
                 dateTimePickerNgaySinhTS.Text = dataGridViewTS.CurrentRow.Cells[4].Value.ToString();
                 textBoxSDTTS.Text = dataGridViewTS.CurrentRow.Cells[5].Value.ToString();
                 string TrangThai = dataGridViewTS.CurrentRow.Cells[6].Value.ToString();
-                if (TrangThai == "Khóa")
+                if (TrangThai == "0")
                     radioButtonKhoaTS.Checked = true;
                 else
                     radioButtonHDTS.Checked = true;
@@ -505,9 +352,95 @@ namespace ManagementApp
             tabControl1.SelectedIndex = 0;
         }
 
-        private void buttonThoat_Click_1(object sender, EventArgs e)
+        #region Function
+        private async Task LoadDataGridViewAsync()
         {
-            this.Close();
+            try
+            {
+                _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM ThiSinh");
+                dataGridViewTS.DataSource = _dataTable;
+
+                // Kiểm tra số lượng cột trước khi đặt HeaderText
+                if (dataGridViewTS.Columns.Count >= 7)
+                {
+                    dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
+                    dataGridViewTS.Columns[1].HeaderText = "Họ và tên";
+                    dataGridViewTS.Columns[2].HeaderText = "Email";
+                    dataGridViewTS.Columns[3].HeaderText = "Mật khẩu";
+                    dataGridViewTS.Columns[4].HeaderText = "Ngày sinh";
+                    dataGridViewTS.Columns[5].HeaderText = "Số điện thoại";
+                    dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
+                }
+            }
+            catch (Exception ex)
+            {
+                CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi dữ liệu", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+            }
         }
+
+        private void LoadDataGridView()
+        {
+            try
+            {
+                _dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM ThiSinh");
+                dataGridViewTS.DataSource = _dataTable;
+
+                // Kiểm tra số lượng cột trước khi đặt HeaderText
+                if (dataGridViewTS.Columns.Count >= 7)
+                {
+                    dataGridViewTS.Columns[0].HeaderText = "Mã thí sinh";
+                    dataGridViewTS.Columns[1].HeaderText = "Họ và tên";
+                    dataGridViewTS.Columns[2].HeaderText = "Email";
+                    dataGridViewTS.Columns[3].HeaderText = "Mật khẩu";
+                    dataGridViewTS.Columns[4].HeaderText = "Ngày sinh";
+                    dataGridViewTS.Columns[5].HeaderText = "Số điện thoại";
+                    dataGridViewTS.Columns[6].HeaderText = "Trạng thái";
+                }
+            }
+            catch (Exception ex)
+            {
+                CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi dữ liệu", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+            }
+        }
+        private void ResetValues()
+        {
+            textBoxMaTS.Text = null;
+            textBoxHoTenTS.Text = null;
+            textBoxSDTTS.Text = null;
+            textBoxEmailTS.Text = null;
+            textBoxMKTS.Text = null;
+            radioButtonHDTS.Checked = false;
+            radioButtonKhoaTS.Checked = false;
+
+            textBoxMaTS.Enabled = false;
+            textBoxHoTenTS.Enabled = false;
+            textBoxSDTTS.Enabled = false;
+            textBoxEmailTS.Enabled = false;
+            textBoxMKTS.Enabled = false;
+            radioButtonHDTS.Enabled = false;
+            radioButtonKhoaTS.Enabled = false;
+            dataGridViewTS.Enabled = true;
+
+            buttonThemTS.Enabled = true;
+            buttonLuuTS.Enabled = false;
+            buttonSuaTS.Enabled = false;
+            buttonXoaTS.Enabled = false;
+
+            textBoxEmailTS.Focus();
+        }
+        public bool IsValid(string emailaddress)// check rule email
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

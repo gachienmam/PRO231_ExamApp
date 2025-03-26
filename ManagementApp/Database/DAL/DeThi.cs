@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ManagementApp.Database;
+using System.Collections;
 
 
 namespace ServerDatabaseLibrary.Database.DAL
@@ -21,95 +22,26 @@ namespace ServerDatabaseLibrary.Database.DAL
 
         public bool InsertDeThi(string examId, string userId, string password, DateTime startTime, DateTime endTime, int status, string examList, string fileLocation)
         {
-            string query = "EXEC sp_InsertDeThi @MaDe, @MaNguoiDung, @MatKhau, @ThoiGianBatDau, @ThoiGianKetThuc, @TrangThai, @DanhSachThi, @ViTriFileDe";
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@MaDe", examId),
-                    new SqlParameter("@MaNguoiDung", userId),
-                    new SqlParameter("@MatKhau", password),
-                    new SqlParameter("@ThoiGianBatDau", startTime),
-                    new SqlParameter("@ThoiGianKetThuc", endTime),
-                    new SqlParameter("@TrangThai", status),
-                    new SqlParameter("@DanhSachThi", examList),
-                    new SqlParameter("@ViTriFileDe", fileLocation)
-                };
-
-                int rowsAffected = _dbHelper.ExecuteNonQuery(query, parameters);
-                return rowsAffected > 0;
-            }
-            catch (Exception ex) 
-            { 
-                Console.WriteLine($"Lỗi thêm đề thi: {ex.Message}"); 
-                return false;
-            }
+            string query = $"EXEC sp_InsertDeThi N'{examId}', N'{userId}', N'{password}', '{startTime}', '{endTime}', N'{status}', N'{examList}, N'{fileLocation}";
+            return (int)_dbHelper.ExecuteSqlScalarAsync(query);
         }
         public bool UpdateDeThi(string examId, string userId, string password, DateTime startTime, DateTime endTime, int status, string examList, string fileLocation)
         {
-            string query = "EXEC sp_UpdateDeThi @MaDe, @MaNguoiDung, @MatKhau, @ThoiGianBatDau, @ThoiGianKetThuc, @TrangThai, @DanhSachThi, @ViTriFileDe";
+            string query = $"EXEC sp_UpdateDeThi N'{examId}', N'{userId}', N'{password}', '{startTime}', '{endTime}', N'{status}', N'{examList}, N'{fileLocation}";
 
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-                    new SqlParameter("@MaDe", examId),
-                    new SqlParameter("@MaNguoiDung", userId),
-                    new SqlParameter("@MatKhau", password),
-                    new SqlParameter("@ThoiGianBatDau", startTime),
-                    new SqlParameter("@ThoiGianKetThuc", endTime),
-                    new SqlParameter("@TrangThai", status),
-                    new SqlParameter("@DanhSachThi", examList),
-                    new SqlParameter("@ViTriFileDe", fileLocation)
-                };
-
-                int rowsAffected = _dbHelper.ExecuteNonQuery(query, parameters);
-                return rowsAffected > 0; 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi cập nhật đề thi: {ex.Message}");
-                return false; 
-            }
+            return (int)_dbHelper.ExecuteSqlScalarAsync(query);
         }
 
         public bool DeleteDeThi(string examId)
         {
-            string query = "EXEC sp_DeleteDeThi @MaDe";
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-            new SqlParameter("@MaDe", examId)
-                };
-
-                _dbHelper.ExecuteNonQuery(query, parameters);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi xóa đề thi: {ex.Message}");
-                return false;
-            }
-            return true;
+            string query = $"EXEC sp_DeleteDeThi {examId}";
+            return (int)_dbHelper.ExecuteSqlScalarAsync(query);
         }
 
-        public DataTable GetNguoiDungByVaiTro(string vaiTro)
+        public DataTable Getdethi(string MaDe)
         {
-            string query = "EXEC sp_DanhSachNguoiDung @VaiTro";
-            try
-            {
-                SqlParameter[] parameters = new SqlParameter[]
-                {
-            new SqlParameter("@VaiTro", vaiTro)
-                };
-
-                return _dbHelper.ExecuteQuery(query, parameters);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi lấy danh sách người dùng: {ex.Message}");
-                return null;
-            }
+            string query = $"EXEC sp_DanhSachDeThi {MaDe}";
+            return (int)_dbHelper.ExecuteSqlScalarAsync(query);
         }
 
     }

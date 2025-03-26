@@ -14,5 +14,25 @@ namespace ServerDatabaseLibrary.Database.BUS
         {
             _DAL_ThiSinh = ThiSinh;
         }
+        public bool InsertThiSinh(DTO.ThiSinh ThiSinh)
+        {
+            _DAL_ThiSinh.InsertThiSinh(ThiSinh.MaThiSinh, ThiSinh.HoTen, ThiSinh.Email, ThiSinh.MatKhau, ThiSinh.NgaySinh.ToDateTime(TimeOnly.MinValue), ThiSinh.SoDienThoai, ThiSinh.TrangThai);
+            return true;
+        }
+        public bool UpdateThiSinh(DTO.ThiSinh ThiSinh)
+        {
+            _DAL_ThiSinh.UpdateThiSinh(ThiSinh.MaThiSinh, ThiSinh.HoTen, ThiSinh.Email, ThiSinh.MatKhau, ThiSinh.NgaySinh.ToDateTime(TimeOnly.MinValue), ThiSinh.SoDienThoai, ThiSinh.TrangThai);
+            return true;
+        }
+        public bool DeleteThiSinh(DTO.ThiSinh ThiSinh)
+        {
+            _DAL_ThiSinh.DeleteThiSinh(ThiSinh.MaThiSinh);
+            return true;
+        }
+        public bool GetDanhSachThiSinh(DTO.ThiSinh ThiSinh)
+        {
+            _DAL_ThiSinh.GetDanhSachThiSinh(ThiSinh.MaThiSinh) ;
+            return true;
+        }
     }
 }

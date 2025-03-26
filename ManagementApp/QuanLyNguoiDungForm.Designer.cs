@@ -159,7 +159,7 @@
             crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(381, 168);
             crownTitle6.Name = "crownTitle6";
-            crownTitle6.Size = new Size(62, 15);
+            crownTitle6.Size = new Size(63, 15);
             crownTitle6.TabIndex = 75;
             crownTitle6.Text = "Trạng thái:";
             // 
@@ -312,10 +312,10 @@
             radioButtonGV.Location = new Point(6, 27);
             radioButtonGV.Margin = new Padding(3, 2, 3, 2);
             radioButtonGV.Name = "radioButtonGV";
-            radioButtonGV.Size = new Size(74, 19);
+            radioButtonGV.Size = new Size(81, 19);
             radioButtonGV.TabIndex = 50;
             radioButtonGV.TabStop = true;
-            radioButtonGV.Text = "Giáo viên";
+            radioButtonGV.Text = "Giảng viên";
             // 
             // radioButtonAdmin
             // 

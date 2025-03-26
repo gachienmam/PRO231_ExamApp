@@ -105,9 +105,9 @@ namespace ManagementApp
             int TrangThai = 0;//Không hoạt đọng
             if (radioButtonHD.Checked)
                 TrangThai = 1;// hoạt đọng
-            int VaiTro = 0;//GV
+            string VaiTro = "GiangVien";//GV
             if (radioButtonAdmin.Checked)
-                VaiTro = 1;// Admin
+                VaiTro = "Admin";// Admin
 
             if (textBoxEmailND.Text.Trim().Length == 0)// kiem tra phai nhap email
             {
@@ -151,33 +151,23 @@ namespace ManagementApp
             {
                 try
                 {
-                    var request = new CommandRequest()
-                    {
-                        RequestCode = (int)RemoteCommandType.SQL,
-                        Command = ""
-                    };
+                    var sql = string.Format("EXEC sp_InsertNguoiDung N'{0}', N'{1}', N'{2}', N'{3}', N'{4}' ,N'{5}'",
+                        textBoxMaND.Text.Trim(),
+                        textBoxHoTenND.Text.Trim(),
+                        textBoxEmailND.Text.Trim(),
+                        textBoxMKND.Text.Trim(),
+                        VaiTro,TrangThai); 
 
-                    var response = _client.ExecuteRemoteCommand(request, _headers);
-
-                    if (response.ResponseCode == (int)HttpStatusCode.OK)
-                    {
-                        DataTable dataTable = JsonConvert.DeserializeObject<DataTable>(response.ResponseMessage);
-                        //DataTable dataTable = ConvertToDataTable(response.ResponseMessage);
-                        if (dataTable == null)
-                        {
-                            CrownMessageBox.ShowError($"Lỗi khi hiển thị bảng: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        }
-                        dataGridViewNguoiDung.DataSource = dataTable;
-                    }
-                    else
-                    {
-                        CrownMessageBox.ShowError($"Lỗi: {response.ResponseMessage}", "Lỗi chạy SQL", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
+                    _dbHelper.ExecuteSqlNonQuery(sql);
+                    LoadDataGridView();
+                    tabControl1.SelectedIndex = 1;
+                    CrownMessageBox.ShowInformation("Đã tạo người dùng mới", "Tạo thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
                     CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
+
             }
         }
 

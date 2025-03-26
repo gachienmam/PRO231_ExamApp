@@ -407,6 +407,7 @@
             examTreeView.Size = new Size(173, 367);
             examTreeView.TabIndex = 3;
             examTreeView.Text = "crownTreeView1";
+            examTreeView.Click += examTreeView_Click;
             // 
             // sectionPanelTreeView
             // 

@@ -17,17 +17,7 @@ namespace ServerDatabaseLibrary.Database.DAL
         {
             _dbHelper = dbHelper;
         }
-        public DataTable GetBangDiem(string maDe)
-        {
-            string query = "EXEC sp_BangDiem @MaDe";
-
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-                new SqlParameter("@MaDe", maDe)
-            };
-
-            return _dbHelper.ExecuteQuery(query, parameters);
-        }
+        
         public bool InsertKetQuaThi(string maThiSinh, string maDe, float diem, DateTime thoiGianBatDau, DateTime thoiGianKetThuc, bool daHoanThanh)
         {
             string query = "EXEC sp_InsertKetQuaThi @MaThiSinh, @MaDe, @Diem, @ThoiGianBatDau, @ThoiGianKetThuc, @DaHoanThanh";

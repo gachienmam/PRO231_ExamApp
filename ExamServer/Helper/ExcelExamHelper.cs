@@ -22,13 +22,13 @@ namespace ManagementServer.Helper
             //string cell_MaDe = "C5"; // Example: Read cell C5
             //string cell_MaGiangVien = "C8";
             //Paper paper = 
-            return new Paper()
+            return new Paper("name", "", "", "", 3600, null, false)
             {
-                Mark = ReadMarkInfo(excelFileName),
+                //Mark = ReadMarkInfo(excelFileName),
                 Duration = ReadDurationInfo(excelFileName),
-                ExamImage = ReadImagesFromExcel(excelFileName, "Thong Tin"),
-                option_ShuffleMultipleChoice = ReadMultipleChoiceInfo(excelFileName),
-                MultipleChoiceQuestions = ReadMultipleChoiceQuestions(excelFileName),
+                ExamImageBase64 = Convert.ToBase64String(ReadImagesFromExcel(excelFileName, "Thong Tin")),
+                OptionShuffleMultipleChoice = ReadMultipleChoiceInfo(excelFileName),
+                QMultipleChoice = ReadMultipleChoiceQuestions(excelFileName),
             };
         }
 

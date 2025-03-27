@@ -38,8 +38,6 @@
             BUTTONDOIMATKHAU = new ReaLTaiizor.Controls.CrownButton();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
             TEXTBOXMATKHAUMOI = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
-            TEXTBOXMATKHAUHIENTAI = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
@@ -91,8 +89,6 @@
             crownSectionPanel2.Controls.Add(BUTTONDOIMATKHAU);
             crownSectionPanel2.Controls.Add(crownTitle3);
             crownSectionPanel2.Controls.Add(TEXTBOXMATKHAUMOI);
-            crownSectionPanel2.Controls.Add(crownTitle2);
-            crownSectionPanel2.Controls.Add(TEXTBOXMATKHAUHIENTAI);
             crownSectionPanel2.Controls.Add(crownTitle1);
             crownSectionPanel2.Dock = DockStyle.Fill;
             crownSectionPanel2.Location = new Point(392, 0);
@@ -104,8 +100,9 @@
             // 
             // crownTitle4
             // 
+            crownTitle4.Anchor = AnchorStyles.None;
             crownTitle4.AutoSize = true;
-            crownTitle4.Location = new Point(86, 281);
+            crownTitle4.Location = new Point(91, 238);
             crownTitle4.Name = "crownTitle4";
             crownTitle4.Size = new Size(233, 15);
             crownTitle4.TabIndex = 21;
@@ -117,7 +114,7 @@
             BUTTONTHOAT.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             BUTTONTHOAT.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BUTTONTHOAT.ImagePadding = 6;
-            BUTTONTHOAT.Location = new Point(195, 310);
+            BUTTONTHOAT.Location = new Point(200, 267);
             BUTTONTHOAT.Name = "BUTTONTHOAT";
             BUTTONTHOAT.Padding = new Padding(5);
             BUTTONTHOAT.Size = new Size(98, 38);
@@ -129,7 +126,7 @@
             // 
             crownTitle5.Anchor = AnchorStyles.None;
             crownTitle5.AutoSize = true;
-            crownTitle5.Location = new Point(100, 216);
+            crownTitle5.Location = new Point(105, 173);
             crownTitle5.Name = "crownTitle5";
             crownTitle5.Size = new Size(107, 15);
             crownTitle5.TabIndex = 19;
@@ -141,7 +138,7 @@
             TextBoxXNhapLaiMatKhau.BackColor = Color.FromArgb(69, 73, 74);
             TextBoxXNhapLaiMatKhau.BorderStyle = BorderStyle.FixedSingle;
             TextBoxXNhapLaiMatKhau.ForeColor = Color.FromArgb(220, 220, 220);
-            TextBoxXNhapLaiMatKhau.Location = new Point(100, 234);
+            TextBoxXNhapLaiMatKhau.Location = new Point(105, 191);
             TextBoxXNhapLaiMatKhau.Name = "TextBoxXNhapLaiMatKhau";
             TextBoxXNhapLaiMatKhau.Size = new Size(193, 23);
             TextBoxXNhapLaiMatKhau.TabIndex = 17;
@@ -152,7 +149,7 @@
             BUTTONDOIMATKHAU.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             BUTTONDOIMATKHAU.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BUTTONDOIMATKHAU.ImagePadding = 6;
-            BUTTONDOIMATKHAU.Location = new Point(104, 310);
+            BUTTONDOIMATKHAU.Location = new Point(109, 267);
             BUTTONDOIMATKHAU.Name = "BUTTONDOIMATKHAU";
             BUTTONDOIMATKHAU.Padding = new Padding(5);
             BUTTONDOIMATKHAU.Size = new Size(98, 38);
@@ -164,7 +161,7 @@
             // 
             crownTitle3.Anchor = AnchorStyles.None;
             crownTitle3.AutoSize = true;
-            crownTitle3.Location = new Point(100, 154);
+            crownTitle3.Location = new Point(105, 111);
             crownTitle3.Name = "crownTitle3";
             crownTitle3.Size = new Size(84, 15);
             crownTitle3.TabIndex = 15;
@@ -176,31 +173,10 @@
             TEXTBOXMATKHAUMOI.BackColor = Color.FromArgb(69, 73, 74);
             TEXTBOXMATKHAUMOI.BorderStyle = BorderStyle.FixedSingle;
             TEXTBOXMATKHAUMOI.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMATKHAUMOI.Location = new Point(100, 172);
+            TEXTBOXMATKHAUMOI.Location = new Point(105, 129);
             TEXTBOXMATKHAUMOI.Name = "TEXTBOXMATKHAUMOI";
             TEXTBOXMATKHAUMOI.Size = new Size(193, 23);
             TEXTBOXMATKHAUMOI.TabIndex = 14;
-            // 
-            // crownTitle2
-            // 
-            crownTitle2.Anchor = AnchorStyles.None;
-            crownTitle2.AutoSize = true;
-            crownTitle2.Location = new Point(100, 91);
-            crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(102, 15);
-            crownTitle2.TabIndex = 13;
-            crownTitle2.Text = "Mật khẩu hiện tại:";
-            // 
-            // TEXTBOXMATKHAUHIENTAI
-            // 
-            TEXTBOXMATKHAUHIENTAI.Anchor = AnchorStyles.None;
-            TEXTBOXMATKHAUHIENTAI.BackColor = Color.FromArgb(69, 73, 74);
-            TEXTBOXMATKHAUHIENTAI.BorderStyle = BorderStyle.FixedSingle;
-            TEXTBOXMATKHAUHIENTAI.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMATKHAUHIENTAI.Location = new Point(100, 109);
-            TEXTBOXMATKHAUHIENTAI.Name = "TEXTBOXMATKHAUHIENTAI";
-            TEXTBOXMATKHAUHIENTAI.Size = new Size(193, 23);
-            TEXTBOXMATKHAUHIENTAI.TabIndex = 12;
             // 
             // crownTitle1
             // 
@@ -215,8 +191,7 @@
             // 
             // DoiMatKhauForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(784, 380);
             Controls.Add(layoutPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -240,8 +215,6 @@
         private ReaLTaiizor.Controls.CrownButton BUTTONDOIMATKHAU;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
         private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMATKHAUMOI;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle2;
-        private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMATKHAUHIENTAI;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownButton BUTTONTHOAT;

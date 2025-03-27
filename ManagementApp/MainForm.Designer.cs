@@ -78,7 +78,7 @@
             đăngXuấtToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             đăngXuấtToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            đăngXuấtToolStripMenuItem.Size = new Size(170, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(171, 22);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
@@ -88,7 +88,7 @@
             thoátToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
             thoátToolStripMenuItem.ShortcutKeys = Keys.Alt | Keys.F4;
-            thoátToolStripMenuItem.Size = new Size(170, 22);
+            thoátToolStripMenuItem.Size = new Size(171, 22);
             thoátToolStripMenuItem.Text = "Thoát";
             thoátToolStripMenuItem.Click += thoátToolStripMenuItem_Click;
             // 
@@ -142,7 +142,7 @@
             thốngKêToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
             thốngKêToolStripMenuItem.Padding = new Padding(4, 2, 4, 2);
-            thốngKêToolStripMenuItem.Size = new Size(69, 23);
+            thốngKêToolStripMenuItem.Size = new Size(68, 23);
             thốngKêToolStripMenuItem.Text = "&Thống kê";
             // 
             // điểmTheoThíSinhToolStripMenuItem
@@ -192,7 +192,7 @@
             usernameToolStripMenuItem.Name = "usernameToolStripMenuItem";
             usernameToolStripMenuItem.Padding = new Padding(4, 2, 4, 2);
             usernameToolStripMenuItem.RightToLeft = RightToLeft.No;
-            usernameToolStripMenuItem.Size = new Size(204, 23);
+            usernameToolStripMenuItem.Size = new Size(202, 23);
             usernameToolStripMenuItem.Text = "Xin chào, Vũ Thiên Trường (admin)";
             usernameToolStripMenuItem.TextDirection = ToolStripTextDirection.Horizontal;
             // 
@@ -201,7 +201,7 @@
             thôngTinCủaTôiToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             thôngTinCủaTôiToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             thôngTinCủaTôiToolStripMenuItem.Name = "thôngTinCủaTôiToolStripMenuItem";
-            thôngTinCủaTôiToolStripMenuItem.Size = new Size(180, 22);
+            thôngTinCủaTôiToolStripMenuItem.Size = new Size(164, 22);
             thôngTinCủaTôiToolStripMenuItem.Text = "Thông tin của tôi";
             thôngTinCủaTôiToolStripMenuItem.Click += thôngTinCủaTôiToolStripMenuItem_Click;
             // 
@@ -210,7 +210,7 @@
             themeToggleToolStripMenuItem.BackColor = Color.FromArgb(60, 63, 65);
             themeToggleToolStripMenuItem.ForeColor = Color.FromArgb(220, 220, 220);
             themeToggleToolStripMenuItem.Name = "themeToggleToolStripMenuItem";
-            themeToggleToolStripMenuItem.Size = new Size(180, 22);
+            themeToggleToolStripMenuItem.Size = new Size(164, 22);
             themeToggleToolStripMenuItem.Text = "Chế độ tối";
             themeToggleToolStripMenuItem.Click += themeToggleToolStripMenuItem_Click;
             // 
@@ -225,8 +225,7 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(804, 462);
             Controls.Add(formView);
             Controls.Add(mainMenuStrip);

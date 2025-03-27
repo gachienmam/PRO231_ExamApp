@@ -88,12 +88,10 @@ namespace StudentApp
 
             _submitPaper = new SubmitPaper();
 
-            _submitPaper.SubmissionPaper = paper;
+            _submitPaper.SubmissionPaper = (paper);
 
-            _submitPaper.SubmissionPaper.MultipleChoiceQuestions = new List<MultipleChoice>();
-
-            _submitPaper.SubmissionPaper.MultipleChoiceQuestions = _examPaper.MultipleChoiceQuestions;
-            foreach (var question in _submitPaper.SubmissionPaper.MultipleChoiceQuestions)
+            _submitPaper.SubmissionPaper.QMultipleChoice = _examPaper.QMultipleChoice.ToList();
+            foreach (var question in _submitPaper.SubmissionPaper.QMultipleChoice)
             {
                 if (question != null)
                 {
@@ -101,7 +99,7 @@ namespace StudentApp
                 }
             }
 
-            if (_examPaper != null && _examPaper.MultipleChoiceQuestions != null)
+            if (_examPaper != null && _examPaper.QMultipleChoice != null)
             {
 
             }

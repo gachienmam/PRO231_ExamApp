@@ -39,22 +39,33 @@ namespace ManagementServer.Services
 
         public override async Task<AuthResponse> AdminAuthenticateUser(AuthRequest request, ServerCallContext context)
         {
-            //if (request.Email == null)
-            //{
-            //    return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
-            //}
-            //var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByMaNguoiDung(request.Email));
-            //var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
-            //if (user == null || !PasswordEncryption.VerifyPassword(request.Password, user.MatKhau))
-            //{
-            //    return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
-            //}
+            if (request.Email == null)
+            {
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
+            }
+            var userTable = await Task.Run(() => _busNguoiDung.GetNguoiDungByEmail(request.Email));
+            if (userTable.Rows.Count > 0)
+            {
+                var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.NguoiDung>());
+                if (user == null || !PasswordEncryption.VerifyPassword(request.Password, user.MatKhau))
+                {
+                    return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
+                }
 
-            //string token = _jwtHelper.GenerateJwtToken(user); // Implement token generation
+                string token = _jwtHelper.GenerateJwtToken(user); // Implement token generation
 
-            string token = _jwtHelper.GenerateJwtToken(new ServerDatabaseLibrary.Database.DTO.NguoiDung(request.Email, "Joe Biden", "ND001", "Pass", "Admin"));
+                //string token = _jwtHelper.GenerateJwtToken(new ServerDatabaseLibrary.Database.DTO.NguoiDung(request.Email, "Joe Biden", "ND001", "Pass", "Admin"));
 
-            return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
+            }
+            else
+            {
+                return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
+            }
+
+            //string token = _jwtHelper.GenerateJwtToken(new ServerDatabaseLibrary.Database.DTO.NguoiDung(request.Email, "Joe Biden", "ND001", "Pass", "Admin"));
+
+            //return new AuthResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = "Success", AccessToken = token };
         }
 
         [Authorize(Roles = "Admin, GiangVien")]
@@ -62,17 +73,41 @@ namespace ManagementServer.Services
         {
             try
             {
-                string fileName = $"{requestStream.Current.ExamId}.xlsx"; // Generate a unique filename
-                string filePath = Path.Combine(_uploadPath, fileName);
+                _logger.LogInformation("Received UploadExamPaper request from client.");
 
-                using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                string examId = string.Empty; // Initialize examId
+                string fileNamePrefix = $"exam_";
+                string filePath = string.Empty;
+
+                while (await requestStream.MoveNext())
                 {
-                    while (await requestStream.MoveNext())
+                    var request = requestStream.Current;
+                    if (!string.IsNullOrEmpty(request.ExamId))
                     {
-                        await fileStream.WriteAsync(requestStream.Current.Data.ToByteArray());
+                        examId = request.ExamId;
+                        fileNamePrefix = $"exam_{examId}";
+                    }
+
+                    if (request.Data != null)
+                    {
+                        if (string.IsNullOrEmpty(filePath))
+                        {
+                            filePath = Path.Combine(_uploadPath, $"{fileNamePrefix}.xlsx");
+                        }
+                        using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write))
+                        {
+                            var chunk = request.Data.ToByteArray();
+                            _logger.LogDebug($"Received chunk of size: {chunk.Length} bytes for Exam ID: {examId}");
+                            await fileStream.WriteAsync(chunk);
+                        }
+                    }
+                    else
+                    {
+                        _logger.LogWarning("Received null chunk in request stream.");
                     }
                 }
 
+                _logger.LogInformation($"File saved successfully: {fileNamePrefix}");
                 return new UploadResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = filePath };
             }
             catch (RpcException rpcEx)
@@ -89,6 +124,8 @@ namespace ManagementServer.Services
             {
                 _logger.LogInformation("UploadExamPaper request finished.");
             }
+
+
         }
 
         [Authorize(Roles = "Admin, GiangVien")]
@@ -99,7 +136,7 @@ namespace ManagementServer.Services
                 try
                 {
                     int result = await _databaseHelper.ExecuteSqlNonQueryAsync(request.Command);
-                    Console.WriteLine($"SQL_NONQUERY: " + result);
+                    _logger.LogInformation($"SQL_NONQUERY: " + result);
                     return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = result.ToString() };
                 }
                 catch (Exception ex)
@@ -112,7 +149,7 @@ namespace ManagementServer.Services
                 try
                 {
                     object result = await _databaseHelper.ExecuteSqlScalarAsync(request.Command);
-                    Console.WriteLine(result);
+                    _logger.LogInformation("SQL_SCALAR: " + result);
                     return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = (string)result };
                 }
                 catch (Exception ex)
@@ -125,7 +162,7 @@ namespace ManagementServer.Services
                 try
                 {
                     string json = await _databaseHelper.ExecuteSqlReaderAsync(request.Command);
-                    Console.WriteLine(json);
+                    _logger.LogInformation("SQL_READER: " + json);
                     return new CommandResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = json };
                 }
                 catch (Exception ex)

@@ -149,13 +149,13 @@ namespace StudentApp
                 //    examPaperByteArray = memoryStream.ToArray();
                 //}
 
-                ExamData exam = new ExamData();
-                //exam.ExamPaper = ByteString.CopyFrom(examPaperByteArray);
+                //ExamData exam = new ExamData();
+                ////exam.ExamPaper = ByteString.CopyFrom(examPaperByteArray);
 
-                ExamForm examForm = new ExamForm(exam, paper); // Pass the server address
-                this.Hide();
-                examForm.Show();
-                this.Close();
+                //ExamForm examForm = new ExamForm(exam, paper); // Pass the server address
+                //this.Hide();
+                //examForm.Show();
+                //this.Close();
             }
             else
             {

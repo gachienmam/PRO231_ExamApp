@@ -138,7 +138,7 @@ namespace ManagementApp
                         RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
                         Command = textBoxMKND.Text
                     };
-                    var sql = $"EXEC sp_InsertNguoiDung N'{textBoxMaND.Text.Trim()}', HoTen = '{textBoxHoTenND.Text.Trim()}', Email = '{textBoxEmailND.Text.Trim()}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = '{VaiTro}'";
+                    var sql = $"EXEC sp_InsertNguoiDung MaNguoiDung = '{textBoxMaND.Text.Trim()}', HoTen = N'{textBoxHoTenND.Text.Trim()}', Email = '{textBoxEmailND.Text.Trim()}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = N'{VaiTro}'";
 
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
@@ -200,7 +200,7 @@ namespace ManagementApp
                         RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
                         Command = textBoxMKND.Text
                     };
-                    string sql = $"UPDATE NguoiDung SET HoTen = '{textBoxHoTenND.Text}', Email = '{textBoxEmailND.Text}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = '{VaiTro}' WHERE MaNguoiDung = '{textBoxMaND.Text}';";
+                    string sql = $"UPDATE NguoiDung SET HoTen = N'{textBoxHoTenND.Text}', Email = '{textBoxEmailND.Text}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = N'{VaiTro}' WHERE MaNguoiDung = '{textBoxMaND.Text}';";
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;

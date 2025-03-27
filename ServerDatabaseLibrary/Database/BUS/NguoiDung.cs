@@ -23,6 +23,12 @@ namespace ServerDatabaseLibrary.Database.BUS
         {
             return _DAL_NguoiDung.GetNguoiDungByMaNguoiDung(MaNguoiDung);
         }
+
+        public DataTable GetNguoiDungByEmail(string email)
+        {
+            return _DAL_NguoiDung.GetNguoiDungByEmail(email);
+        }
+
         public bool InsertNguoidung(DTO.NguoiDung NguoiDung)
         {
             _DAL_NguoiDung.InsertNguoiDung(NguoiDung.MaNguoiDung, NguoiDung.HoTen, NguoiDung.Email, NguoiDung.MatKhau, NguoiDung.VaiTro);

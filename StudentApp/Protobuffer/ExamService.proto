@@ -37,10 +37,8 @@ message ExamRequest {
 // Exam data response
 message ExamData {
     int32 responseCode = 1; 
-    bytes examPaper = 2; // send exam questions based on custom C# class
-    bytes examForm = 3; // send back the examination client
-    int32 examFormSize = 4; // size of exam client
-    bytes serverInformation = 5; // server information (server name, etc..)
+    string examPaper = 2; // send exam questions based on custom C# class
+    string serverInformation = 3; // server information (server name, etc..)
 }
 
 // Request to submit answer sheet
@@ -66,5 +64,5 @@ message ExamUpdate {
     string examId = 2;
     string recipientId = 3; // If empty, applies to all
     google.protobuf.Timestamp timestamp = 4;
-    bytes responseMessage = 5;
+    string responseMessage = 5;
 }

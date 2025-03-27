@@ -8,29 +8,41 @@ namespace ExamLibrary.Helper
 {
     public class GZip
     {
-        public static byte[] Compress(byte[] raw)
+        public static byte[] CompressJson(string jsonString)
         {
-            byte[] result;
-            try
+            if (string.IsNullOrEmpty(jsonString))
             {
-                MemoryStream memoryStream = new MemoryStream();
-                Stream stream = new GZipStream(memoryStream, CompressionMode.Compress);
-                stream.Write(raw, 0, raw.Length);
-                stream.Close();
-                result = memoryStream.ToArray();
+                return Array.Empty<byte>();
             }
-            catch
+
+            byte[] byteArray = Encoding.UTF8.GetBytes(jsonString);
+            using (var memoryStream = new MemoryStream())
             {
-                result = null;
+                using (var gzipStream = new GZipStream(memoryStream, CompressionMode.Compress))
+                {
+                    gzipStream.Write(byteArray, 0, byteArray.Length);
+                }
+                return memoryStream.ToArray();
             }
-            return result;
         }
 
-        public static byte[] Decompress(byte[] compressedInput, int originSize)
+        public static string DecompressJson(byte[] compressedBytes)
         {
-            byte[] array = new byte[originSize];
-            new GZipStream(new MemoryStream(compressedInput), CompressionMode.Decompress).Read(array, 0, originSize);
-            return array;
+            if (compressedBytes == null || compressedBytes.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            using (var memoryStream = new MemoryStream(compressedBytes))
+            {
+                using (var gzipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+                {
+                    using (var reader = new StreamReader(gzipStream, Encoding.UTF8))
+                    {
+                        return reader.ReadToEnd();
+                    }
+                }
+            }
         }
     }
 }

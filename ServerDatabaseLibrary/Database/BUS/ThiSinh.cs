@@ -30,7 +30,7 @@ namespace ServerDatabaseLibrary.Database.BUS
             _DAL_ThiSinh.DeleteThiSinh(ThiSinh.MaThiSinh);
             return true;
         }
-        public DataTable GetThiSinhBYMaThiSinh(string MaThiSinh)
+        public DataTable GetThiSinhByMaThiSinh(string MaThiSinh)
         {
             return _DAL_ThiSinh.GetThiSinhByMaThiSinh(MaThiSinh);
         }

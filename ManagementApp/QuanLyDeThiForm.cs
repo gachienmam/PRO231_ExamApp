@@ -20,7 +20,6 @@ namespace ManagementApp
     {
         private readonly List<CrownDockContent> _tools = new();
         private readonly TreeViewControl _dockTreeView;
-        private string selectedFilePath = "";
 
         private readonly AdminServiceClient _client;
         private readonly Grpc.Core.Metadata _headers;
@@ -66,16 +65,22 @@ namespace ManagementApp
                     stripProgressBar.Value = 0;
                     statusLabel.Text = "Đã tải: 0%";
                     stripProgressBar.Visible = true;
-                    //lblValidFile.Text = await UploadFileAsync(filePath);
+                    txtViTriFileDe.Text = await UploadFileAsync(filePath);
 
                     // Hide
-                    txtViTriFileDe.Text = ofd.FileName;
+                    //txtViTriFileDe.Text = ofd.FileName;
                     stripProgressBar.Visible = false;
                     stripProgressBar.Value = 0;
                     statusLabel.Text = "Đang đợi";
-                    //lblValidFile.Text = IsValidExamFile(selectedFilePath) ? "Yes" : "No";
-                    txtValidFile.Text = "Yes";
-                    
+                    //txtValidFile.Text = IsValidExamFile(txtViTriFileDe.Text) ? "Yes" : "No";
+                    if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
+                    {
+                        txtValidFile.Text = "Yes";
+                    }
+                    else 
+                    {
+                        txtValidFile.Text = "No";
+                    }
                 }
             }
         }
@@ -102,7 +107,7 @@ namespace ManagementApp
 
                     while ((bytesRead = await fileStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
-                        await call.RequestStream.WriteAsync(new UploadExamFileChunk { Data = Google.Protobuf.ByteString.CopyFrom(buffer, 0, bytesRead) });
+                        await call.RequestStream.WriteAsync(new UploadExamFileChunk { ExamId = txtMaDe.Text, Data = Google.Protobuf.ByteString.CopyFrom(buffer, 0, bytesRead) });
                         bytesUploaded += bytesRead;
 
                         // Cập nhật thanh quá trình
@@ -190,10 +195,17 @@ namespace ManagementApp
                 return;
             }
 
-            _dbHelper.ExecuteSqlNonQuery("EXEC sp_InsertDeThi MaDe, MaNguoiDung, MatKhau, ThoiGianBatDau, ThoiGianKetThuc, TrangThai, DanhSachThi, ViTriFileDe");
-            // Giả lập lưu dữ liệu (Thực tế sẽ lưu vào DB)
-            MessageBox.Show($"Đã lưu đề thi:\nMã đề: {examCode}\nNgười tạo: {creatorCode}\nTrạng thái: {status}\nFile: {selectedFilePath}",
+            int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_InsertDeThi @MaDe = '{examCode}', @MaNguoiDung = '{creatorCode}', @MatKhau = '{password}', @ThoiGianBatDau = '{startTime.ToString("yyyy-MM-dd")}', @ThoiGianKetThuc = '{endTime.ToString("yyyy-MM-dd")}', @TrangThai = '{status}', @DanhSachThi, @ViTriFileDe = '{txtViTriFileDe.Text}'");
+            if (query > 0)
+            {
+                MessageBox.Show($"Đã lưu đề thi:\nMã đề: {examCode}\nNgười tạo: {creatorCode}\nTrạng thái: {status}\nFile: {txtViTriFileDe.Text}",
                 "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"Không thể lưu đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Giả lập lưu dữ liệu (Thực tế sẽ lưu vào DB)
         }
 
         private void btnDeleteExam_Click(object sender, EventArgs e)

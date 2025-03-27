@@ -28,6 +28,18 @@ namespace ServerDatabaseLibrary.Database.DAL
 
             return _dbHelper.ExecuteQuery(query, parameters);
         }
+
+        public DataTable GetNguoiDungByEmail(string Email)
+        {
+            string query = "SELECT * FROM NguoiDung WHERE Email = @Email";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Email", Email)
+            };
+
+            return _dbHelper.ExecuteQuery(query, parameters);
+        }
+
         public bool DeleteNguoiDung(string MaNguoiDung)
         {
             string query = "EXEC sp_DeleteNguoiDung @MaNguoiDung";

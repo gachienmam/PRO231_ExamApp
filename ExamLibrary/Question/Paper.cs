@@ -5,200 +5,61 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 using ProtoBuf;
+using System.Linq;
 
 namespace ExamLibrary.Question
 {
-    //[ProtoContract]
-    public class Paper
+    public class Paper : ICloneable
     {
-        public Paper()
-        {
-            _examCode = string.Empty;
-            _testName = string.Empty;
-            _testImage = new byte[0];
-            _listAudio = new List<Data.Audio>();
-            _notes = string.Empty;
-            _mark = 0;
-            _listenCode = string.Empty;
-            _option_shuffleMultipleChoice = true;
-            _q_multipleChoice = new List<Types.MultipleChoice>();
-            _duration = 600;
-        }
-
-        // Tên đề thi
-        //[ProtoMember(1)]
-        public string TestName
-        {
-            get
-            {
-                return _testName;
-            }
-            set
-            {
-                _testName = value;
-            }
-        }
-
-        // Ảnh đề thi
-        //[ProtoMember(2)]
-        public byte[] ExamImage
-        {
-            get
-            {
-                return _testImage;
-            }
-            set
-            {
-                _testImage = value;
-            }
-        }
-
-        // Thời gian thi (tính bằng giây)
-        //[ProtoMember(3)]
-        public int Duration
-        {
-            get
-            {
-                return _duration;
-            }
-            set
-            {
-                _duration = value;
-            }
-        }
-
-        // Ghi chú từ giảng viên
-        //[ProtoMember(4)]
-        public string ExamNotes
-        {
-            get
-            {
-                return _notes;
-            }
-            set
-            {
-                _notes = value;
-            }
-        }
-
-        // Mã đề
-        //[ProtoMember(5)]
-        public string ExamCode
-        {
-            get
-            {
-                return _examCode;
-            }
-            set
-            {
-                _examCode = value;
-            }
-        }
-
-        // Số câu cần trả lời đúng để Pass
-        //[ProtoMember(6)]
-        public int Mark
-        {
-            get
-            {
-                return _mark;
-            }
-            set
-            {
-                _mark = value;
-            }
-        }
-
-        // Số lượng câu hỏi
-        //[ProtoMember(7)]
-        public int NoOfQuestion
-        {
-            get
-            {
-                return _noOfQuestions;
-            }
-            set
-            {
-                _noOfQuestions = value;
-            }
-        }
-
-        // Tùy chọn: Có xáo trộn câu hỏi MultipleChoice hay không?
-        //[ProtoMember(8)]
-        public bool option_ShuffleMultipleChoice
-        {
-            get
-            {
-                return _option_shuffleMultipleChoice;
-            }
-            set
-            {
-                _option_shuffleMultipleChoice = value;
-            }
-        }
-
-        // Danh sách câu hỏi MultipleChoice
-        //[ProtoMember(9)]
-        public List<Types.MultipleChoice> MultipleChoiceQuestions // in seconds
-        {
-            get
-            {
-                return _q_multipleChoice;
-            }
-            set
-            {
-                _q_multipleChoice = value;
-            }
-        }
-
-        // Chưa dùng
-        //[ProtoMember(10)]
-        public string ListenCode
-        {
-            get
-            {
-                return _listenCode;
-            }
-            set
-            {
-                _listenCode = value;
-            }
-        }
-
-        // Chưa dùng
-        //[ProtoMember(11)]
-        public List<Data.Audio> ListAudio
-        {
-            get
-            {
-                return _listAudio;
-            }
-            set
-            {
-                _listAudio = value;
-            }
-        }
-
         private string _testName;
-
-        private byte[] _testImage;
-
         private string _examCode;
-
+        private string _examImageBase64;
         private string _notes;
-
-        private int _duration; // in seconds
-
-        private int _mark; // số câu
-
-        private int _noOfQuestions;
-
+        private int _duration; // giây
         private List<Types.MultipleChoice> _q_multipleChoice;
-
         private bool _option_shuffleMultipleChoice;
+        //private string _listenCode;
+        //private List<Data.Audio> _listAudio;
 
-        private string _listenCode;
+        public string TestName { get => _testName; set => _testName = value; }
+        public string ExamCode { get => _examCode; set => _examCode = value; }
+        public string ExamImageBase64 { get => _examImageBase64; set => _examImageBase64 = value; }
+        public string Notes { get => _notes; set => _notes = value; }
+        public int Duration { get => _duration; set => _duration = value; }
+        public List<Types.MultipleChoice> QMultipleChoice { get => _q_multipleChoice; set => _q_multipleChoice = value?.Select(mc => (Types.MultipleChoice)mc.Clone()).ToList(); }
+        public bool OptionShuffleMultipleChoice { get => _option_shuffleMultipleChoice; set => _option_shuffleMultipleChoice = value; }
+        //public string ListenCode { get => _listenCode; set => _listenCode = value; }
+        //public List<Data.Audio> ListAudio { get => _listAudio; set => _listAudio = value?.Select(audio => (Data.Audio)audio.Clone()).ToList(); }
 
-        private List<Data.Audio> _listAudio;
+        public Paper(string testName, string examCode, string examImageBase64, string notes, int duration, List<Types.MultipleChoice> q_multipleChoice, bool option_shuffleMultipleChoice)
+        {
+            _testName = testName;
+            _examCode = examCode;
+            _examImageBase64 = examImageBase64;
+            _notes = notes;
+            _duration = duration;
+            _q_multipleChoice = q_multipleChoice?.Select(mc => (Types.MultipleChoice)mc.Clone()).ToList(); // Tạo bản sao
+            _option_shuffleMultipleChoice = option_shuffleMultipleChoice;
+            //_listenCode = listenCode;
+            //_listAudio = listAudio?.Select(audio => (Data.Audio)audio.Clone()).ToList(); // Tạo bản sao
+        }
+
+        private Paper(Paper other)
+        {
+            _testName = other._testName;
+            _examCode = other._examCode;
+            _examImageBase64 = other._examImageBase64;
+            _notes = other._notes;
+            _duration = other._duration;
+            _q_multipleChoice = other._q_multipleChoice?.Select(mc => (Types.MultipleChoice)mc.Clone()).ToList(); // Tạo bản sao
+            _option_shuffleMultipleChoice = other._option_shuffleMultipleChoice;
+            //_listenCode = other._listenCode;
+            //_listAudio = other._listAudio?.Select(audio => (Data.Audio)audio.Clone()).ToList(); // Tạo bản sao
+        }
+
+        public object Clone()
+        {
+            return new Paper(this);
+        }
     }
 }

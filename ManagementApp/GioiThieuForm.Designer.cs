@@ -138,8 +138,7 @@
             // 
             // GioiThieuForm
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
-            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(501, 277);
             Controls.Add(foreverForm1);
             FormBorderStyle = FormBorderStyle.None;

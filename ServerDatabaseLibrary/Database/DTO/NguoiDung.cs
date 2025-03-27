@@ -9,6 +9,14 @@ namespace ServerDatabaseLibrary.Database.DTO
 {
     public class NguoiDung
     {
+        public NguoiDung()
+        {
+            MaNguoiDung = "";
+            HoTen = "";
+            Email = "";
+            MatKhau = "";
+            VaiTro = "GiangVien";
+        }
         public NguoiDung(string maNguoiDung, string hoTen, string email, string matKhau, string vaiTro)
         {
             MaNguoiDung = maNguoiDung;

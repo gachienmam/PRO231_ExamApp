@@ -220,6 +220,7 @@
             checkBoxConfirmFinish.Size = new Size(262, 23);
             checkBoxConfirmFinish.TabIndex = 19;
             checkBoxConfirmFinish.Text = "Tôi muốn hoàn thành bài kiểm tra này";
+            checkBoxConfirmFinish.CheckedChanged += checkBoxConfirmFinish_CheckedChanged;
             // 
             // pictureAnhDeThi
             // 
@@ -366,7 +367,6 @@
             Name = "ExamForm";
             Text = "ExamForm";
             TopMost = true;
-            WindowState = FormWindowState.Maximized;
             Load += ExamForm_Load;
             crownSectionPanel1.ResumeLayout(false);
             crownSectionPanel1.PerformLayout();

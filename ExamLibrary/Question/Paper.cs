@@ -4,9 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
+using ProtoBuf;
 
 namespace ExamLibrary.Question
 {
+    //[ProtoContract]
     public class Paper
     {
         public Paper()
@@ -24,6 +26,7 @@ namespace ExamLibrary.Question
         }
 
         // Tên đề thi
+        //[ProtoMember(1)]
         public string TestName
         {
             get
@@ -37,6 +40,7 @@ namespace ExamLibrary.Question
         }
 
         // Ảnh đề thi
+        //[ProtoMember(2)]
         public byte[] ExamImage
         {
             get
@@ -50,6 +54,7 @@ namespace ExamLibrary.Question
         }
 
         // Thời gian thi (tính bằng giây)
+        //[ProtoMember(3)]
         public int Duration
         {
             get
@@ -63,6 +68,7 @@ namespace ExamLibrary.Question
         }
 
         // Ghi chú từ giảng viên
+        //[ProtoMember(4)]
         public string ExamNotes
         {
             get
@@ -76,6 +82,7 @@ namespace ExamLibrary.Question
         }
 
         // Mã đề
+        //[ProtoMember(5)]
         public string ExamCode
         {
             get
@@ -89,6 +96,7 @@ namespace ExamLibrary.Question
         }
 
         // Số câu cần trả lời đúng để Pass
+        //[ProtoMember(6)]
         public int Mark
         {
             get
@@ -102,6 +110,7 @@ namespace ExamLibrary.Question
         }
 
         // Số lượng câu hỏi
+        //[ProtoMember(7)]
         public int NoOfQuestion
         {
             get
@@ -115,6 +124,7 @@ namespace ExamLibrary.Question
         }
 
         // Tùy chọn: Có xáo trộn câu hỏi MultipleChoice hay không?
+        //[ProtoMember(8)]
         public bool option_ShuffleMultipleChoice
         {
             get
@@ -128,6 +138,7 @@ namespace ExamLibrary.Question
         }
 
         // Danh sách câu hỏi MultipleChoice
+        //[ProtoMember(9)]
         public List<Types.MultipleChoice> MultipleChoiceQuestions // in seconds
         {
             get
@@ -141,6 +152,7 @@ namespace ExamLibrary.Question
         }
 
         // Chưa dùng
+        //[ProtoMember(10)]
         public string ListenCode
         {
             get
@@ -154,6 +166,7 @@ namespace ExamLibrary.Question
         }
 
         // Chưa dùng
+        //[ProtoMember(11)]
         public List<Data.Audio> ListAudio
         {
             get

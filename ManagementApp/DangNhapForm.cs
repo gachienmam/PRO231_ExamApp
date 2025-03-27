@@ -72,7 +72,7 @@ namespace ManagementApp
                             {
                                 { "Authorization", $"Bearer {Shared.AccessToken}" }
                             };
-                        MainForm mainForm = new MainForm(_client, headers); // Pass the server address
+                        MainForm mainForm = new MainForm(_client, headers, TEXTBOX_EMAIL.Text); // Pass the server address
                         this.Hide();
                         mainForm.ShowDialog();
                         if (!Shared.IsExiting)

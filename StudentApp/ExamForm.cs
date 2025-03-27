@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Drawing.Text;
+using System.Runtime.ConstrainedExecution;
+using static ReaLTaiizor.Helper.CrownHelper;
 
 namespace StudentApp
 {
@@ -49,6 +51,68 @@ namespace StudentApp
         // Câu hỏi hiện tại đếm từ 1 (MultipleChoice)
         private int _multipleChoice_currentQuestion;
 
+        public ExamForm(ExamData data, Paper paper)
+        {
+            InitializeComponent();
+
+            // MONKE Anticheat: Giấu cửa sổ thi khỏi phần mềm quay fim
+            ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
+            _data = data;
+
+            // Deserialize ServerInformation
+            //using (var memoryStream = new MemoryStream(data.ServerInformation.ToByteArray()))
+            //{
+            //    try
+            //    {
+            //        _serverInfo = Serializer.Deserialize<ServerInformation>(memoryStream);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        CrownMessageBox.ShowError($"Lỗi khi xử lý dữ liệu thông tin máy chủ: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+            //        Application.Exit();
+            //    }
+            //}
+            //using (var memoryStream = new MemoryStream(data.ExamPaper.ToByteArray()))
+            //{
+            //    try
+            //    {
+            //        _examPaper = Serializer.Deserialize<ExamLibrary.Question.>(memoryStream);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        CrownMessageBox.ShowError($"Lỗi khi xử lý dữ liệu thi: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+            //        Application.Exit();
+            //    }
+            //}
+            _examPaper = paper;
+
+            _submitPaper = new SubmitPaper();
+
+            _submitPaper.SubmissionPaper = paper;
+
+            _submitPaper.SubmissionPaper.MultipleChoiceQuestions = new List<MultipleChoice>();
+
+            _submitPaper.SubmissionPaper.MultipleChoiceQuestions = _examPaper.MultipleChoiceQuestions;
+            foreach (var question in _submitPaper.SubmissionPaper.MultipleChoiceQuestions)
+            {
+                if (question != null)
+                {
+                    question.QuestionAnswers = new List<string>();
+                }
+            }
+
+            if (_examPaper != null && _examPaper.MultipleChoiceQuestions != null)
+            {
+
+            }
+            else
+            {
+                Console.WriteLine("Lỗi khi nhập đáp án.");
+            }
+
+            _timeLeft = _examPaper.Duration;
+        }
+
         public ExamForm(ExamService.ExamServiceClient client, Grpc.Core.Metadata headers, ExamData data)
         {
             InitializeComponent();
@@ -70,7 +134,7 @@ namespace StudentApp
                 catch (Exception ex)
                 {
                     CrownMessageBox.ShowError($"Lỗi khi xử lý dữ liệu thông tin máy chủ: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    Application.Exit();
+                    //Application.Exit();
                 }
             }
             using (var memoryStream = new MemoryStream(data.ExamPaper.ToByteArray()))
@@ -82,18 +146,18 @@ namespace StudentApp
                 catch (Exception ex)
                 {
                     CrownMessageBox.ShowError($"Lỗi khi xử lý dữ liệu thi: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    Application.Exit();
+                    //Application.Exit();
                 }
             }
 
-            _submitPaper = new SubmitPaper()
+            _submitPaper = new SubmitPaper();
+
+            _submitPaper.SubmissionPaper.MultipleChoiceQuestions = _examPaper.MultipleChoiceQuestions.Select(q => new MultipleChoice
             {
-                MultipleChoiceQuestions = _examPaper.MultipleChoiceQuestions.Select(q => new MultipleChoice
-                {
-                    QuestionID = q.QuestionID,
-                    QuestionAnswers = new List<string>(q.QuestionAnswers) // Create a new list with the contents of the original
-                }).ToList()
-            };
+                QuestionID = q.QuestionID,
+                QuestionAnswers = new List<string>() // Để trống đáp án
+            }).ToList();
+
             _timeLeft = _examPaper.Duration;
         }
 
@@ -107,21 +171,35 @@ namespace StudentApp
 
             // Load Server Info
             textBoxMachine.Text = Environment.MachineName;
-            textBoxServer.Text = _serverInfo.ServerName;
+            //textBoxServer.Text = _serverInfo.ServerName;
+            textBoxServer.Text = "ggMrBit";
             textBoxExamCode.Text = _examPaper.ExamCode;
             textBoxStudent.Text = Environment.MachineName;
-            pictureAnhDeThi.Image = ByteArrayToImage(_examPaper.ExamImage);
+            //pictureAnhDeThi.Image = ByteArrayToImage(_examPaper.ExamImage);
 
             // Fullscreen
-            EnterFullScreenMode(this);
+            //EnterFullScreenMode(this);
 
             // Load đề thi
+            //timerExam.Start();
             AddQuestionButtonsToPanel(_examPaper.NoOfQuestion);
             DisplayMultipleChoice(0);
         }
         #endregion
 
         #region Control Action Events
+        private void checkBoxConfirmFinish_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxConfirmFinish.Checked)
+            {
+                buttonFinish.Enabled = true;
+            }
+            else
+            {
+                buttonFinish.Enabled = false;
+            }
+        }
+
         private void crownButtonFinish_Click(object sender, EventArgs e)
         {
             if (_userFinishedExam)
@@ -143,10 +221,12 @@ namespace StudentApp
         private void buttonNext_Click(object sender, EventArgs e)
         {
             _multipleChoice_currentQuestion += 1;
-            if(_multipleChoice_currentQuestion > _examPaper.MultipleChoiceQuestions.Count)
+            if (_multipleChoice_currentQuestion > _examPaper.MultipleChoiceQuestions.Count)
             {
                 _multipleChoice_currentQuestion = 1;
             }
+            SaveAnswerToSubmissionPaper(_multipleChoice_currentQuestion - 1);
+            UpdateAnsweredQuestionButtons();
             DisplayMultipleChoice(_multipleChoice_currentQuestion - 1);
         }
 
@@ -155,14 +235,16 @@ namespace StudentApp
             CrownButton button = (CrownButton)sender;
             int num = Convert.ToInt32(button.Text);
             _multipleChoice_currentQuestion = num;
-            DisplayMultipleChoice(num - 1);
+            SaveAnswerToSubmissionPaper(_multipleChoice_currentQuestion - 1);
+            UpdateAnsweredQuestionButtons();
+            DisplayMultipleChoice(_multipleChoice_currentQuestion - 1);
         }
         #endregion
 
         #region Function
         private void SaveAnswerToSubmissionPaper(int questionIndex)
         {
-            var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.MultipleChoiceQuestions.Where(q => q.QuestionID == questionIndex).FirstOrDefault();
+            var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.MultipleChoiceQuestions.Where(q => q.QuestionID == questionIndex + 1).FirstOrDefault();
             if (currentQuestionSubmitPaper != null)
             {
                 List<string> answers = new List<string>();
@@ -190,7 +272,24 @@ namespace StudentApp
         {
             for (int i = 1; i < _submitPaper.SubmissionPaper.MultipleChoiceQuestions.Count; i++)
             {
-                if( question.QuestionAnswers.
+                Color color;
+                if (_submitPaper.SubmissionPaper.MultipleChoiceQuestions[i].QuestionAnswers.Count > 0)
+                {
+                    color = Color.Lime;
+                }
+                else
+                {
+                    color = ThemeProvider.Theme.Colors.GreyBackground;
+                }
+                foreach (object obj in this.panelDanhSachCauHoi.Controls)
+                {
+                    CrownButton button = (CrownButton)obj;
+                    int num = Convert.ToInt32(button.Text);
+                    if (i == num)
+                    {
+                        button.BackColor = color;
+                    }
+                }
             }
         }
 
@@ -208,6 +307,7 @@ namespace StudentApp
             for (int i = 1; i <= n; i++)
             {
                 CrownButton button = new CrownButton();
+                button.Name = "buttonQuestion" + i;
                 button.Text = i.ToString();
                 button.Width = 30;
                 button.Height = 20;
@@ -234,7 +334,11 @@ namespace StudentApp
             var currentQuestionExam = _examPaper.MultipleChoiceQuestions[questionOrder];
             var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.MultipleChoiceQuestions[questionOrder];
             panelCauHoiHienTai.SectionHeader = $"Câu hỏi ({questionOrder}/{_examPaper.MultipleChoiceQuestions.Count})";
-            labelQuestion.Text = currentQuestionExam.QuestionText;
+            labelQuestion.Text = currentQuestionExam.QuestionText + $"\r\n\r\n" +
+                $"A. {currentQuestionExam.QuestionAnswerTextA}\r\n" +
+                $"B. {currentQuestionExam.QuestionAnswerTextB}\r\n" +
+                $"C. {currentQuestionExam.QuestionAnswerTextC}\r\n" +
+                $"D. {currentQuestionExam.QuestionAnswerTextD}\r\n";
 
             checkBoxDapAnA.Checked = false;
             checkBoxDapAnB.Checked = false;
@@ -275,11 +379,11 @@ namespace StudentApp
                 // MONKE Anticheat: Tự động tắt app hiện trước màn hình thi
                 int foregroundWindow = Win32.GetForegroundWindow();
                 // Kiểm tra cửa sổ hiện tại được focus
-                if (base.Handle.ToInt32() != foregroundWindow)
-                {
-                    Win32.SendMessage(foregroundWindow, 274U, 61472, 0);
-                }
-                Win32.SetActiveWindow(base.Handle.ToInt32());
+                //if (base.Handle.ToInt32() != foregroundWindow)
+                //{
+                //    Win32.SendMessage(foregroundWindow, 274U, 61472, 0);
+                //}
+                //Win32.SetActiveWindow(base.Handle.ToInt32());
             }
             else
             {

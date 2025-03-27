@@ -18,8 +18,6 @@ message AuthRequest {
     google.protobuf.Timestamp timestamp = 1;
     string thiSinhId = 2; // dual purpose: OAuth or normal username and password
     string password = 3; 
-    string examCode = 4; // Current computer name
-    string examPassword = 5;
 }
 
 // Response for authentication
@@ -32,6 +30,8 @@ message AuthResponse {
 // Request an exam
 message ExamRequest {
     string examId = 1; // the requesting exam id
+    string examCode = 2; // Current computer name
+    string examPassword = 3;
 }
 
 // Exam data response

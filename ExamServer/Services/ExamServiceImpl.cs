@@ -68,7 +68,7 @@ namespace ExamServer.Services
             }
             var userTable = await Task.Run(() => _dalThiSinh.GetThiSinhByMaThiSinh(request.ThiSinhId));
             var user = await Task.Run(() => JArray.FromObject(userTable)[0].ToObject<ServerDatabaseLibrary.Database.DTO.ThiSinh>());
-            if (user == null)
+            if (user == null || PasswordEncryption.VerifyPassword(request.Password, user.MatKhau))
             {
                 return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }

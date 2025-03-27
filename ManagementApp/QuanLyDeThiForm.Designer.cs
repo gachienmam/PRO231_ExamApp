@@ -33,32 +33,32 @@
             statusStrip = new ReaLTaiizor.Controls.CrownStatusStrip();
             splitter1 = new Splitter();
             sectionPanelEditor = new ReaLTaiizor.Controls.CrownSectionPanel();
+            btnThemDe = new ReaLTaiizor.Controls.CrownButton();
             btnDeleteExam = new ReaLTaiizor.Controls.CrownButton();
             btnSelectFile = new ReaLTaiizor.Controls.CrownButton();
-            lblValidFile = new ReaLTaiizor.Controls.CrownTextBox();
+            txtValidFile = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle10 = new ReaLTaiizor.Controls.CrownTitle();
-            txtFilePath = new ReaLTaiizor.Controls.CrownTextBox();
+            txtViTriFileDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle9 = new ReaLTaiizor.Controls.CrownTitle();
             parrotGradientPanel2 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownTitle8 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle7 = new ReaLTaiizor.Controls.CrownTitle();
             cbStatus = new ReaLTaiizor.Controls.CrownDropDownList();
-            dtpEndTime = new DateTimePicker();
+            dtpThoiGianKetThuc = new DateTimePicker();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
-            dtpStartTime = new DateTimePicker();
+            dtpThoiGianBatDau = new DateTimePicker();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
-            txtExamPassword = new ReaLTaiizor.Controls.CrownTextBox();
+            txtMatKhauDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
-            txtCreatorCode = new ReaLTaiizor.Controls.CrownTextBox();
+            txtMaNguoiDung = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
-            txtExamCode = new ReaLTaiizor.Controls.CrownTextBox();
+            txtMaDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             btnSaveExam = new ReaLTaiizor.Controls.CrownButton();
             examTreeView = new ReaLTaiizor.Controls.CrownTreeView();
             sectionPanelTreeView = new ReaLTaiizor.Controls.CrownSectionPanel();
-            btnThemDe = new ReaLTaiizor.Controls.CrownButton();
             statusStrip.SuspendLayout();
             sectionPanelEditor.SuspendLayout();
             sectionPanelTreeView.SuspendLayout();
@@ -106,23 +106,23 @@
             sectionPanelEditor.Controls.Add(btnThemDe);
             sectionPanelEditor.Controls.Add(btnDeleteExam);
             sectionPanelEditor.Controls.Add(btnSelectFile);
-            sectionPanelEditor.Controls.Add(lblValidFile);
+            sectionPanelEditor.Controls.Add(txtValidFile);
             sectionPanelEditor.Controls.Add(crownTitle10);
-            sectionPanelEditor.Controls.Add(txtFilePath);
+            sectionPanelEditor.Controls.Add(txtViTriFileDe);
             sectionPanelEditor.Controls.Add(crownTitle9);
             sectionPanelEditor.Controls.Add(parrotGradientPanel2);
             sectionPanelEditor.Controls.Add(crownTitle8);
             sectionPanelEditor.Controls.Add(crownTitle7);
             sectionPanelEditor.Controls.Add(cbStatus);
-            sectionPanelEditor.Controls.Add(dtpEndTime);
+            sectionPanelEditor.Controls.Add(dtpThoiGianKetThuc);
             sectionPanelEditor.Controls.Add(crownTitle6);
-            sectionPanelEditor.Controls.Add(dtpStartTime);
+            sectionPanelEditor.Controls.Add(dtpThoiGianBatDau);
             sectionPanelEditor.Controls.Add(crownTitle5);
-            sectionPanelEditor.Controls.Add(txtExamPassword);
+            sectionPanelEditor.Controls.Add(txtMatKhauDe);
             sectionPanelEditor.Controls.Add(crownTitle4);
-            sectionPanelEditor.Controls.Add(txtCreatorCode);
+            sectionPanelEditor.Controls.Add(txtMaNguoiDung);
             sectionPanelEditor.Controls.Add(crownTitle3);
-            sectionPanelEditor.Controls.Add(txtExamCode);
+            sectionPanelEditor.Controls.Add(txtMaDe);
             sectionPanelEditor.Controls.Add(crownTitle2);
             sectionPanelEditor.Controls.Add(parrotGradientPanel1);
             sectionPanelEditor.Controls.Add(crownTitle1);
@@ -134,6 +134,17 @@
             sectionPanelEditor.SectionHeader = "Chỉnh sửa đề:";
             sectionPanelEditor.Size = new Size(621, 393);
             sectionPanelEditor.TabIndex = 6;
+            // 
+            // btnThemDe
+            // 
+            btnThemDe.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnThemDe.Location = new Point(546, 0);
+            btnThemDe.Name = "btnThemDe";
+            btnThemDe.Padding = new Padding(5);
+            btnThemDe.Size = new Size(75, 23);
+            btnThemDe.TabIndex = 124;
+            btnThemDe.Text = "Thêm đề";
+            btnThemDe.Click += btnThemDe_Click;
             // 
             // btnDeleteExam
             // 
@@ -157,16 +168,16 @@
             btnSelectFile.Text = "Chọn đề";
             btnSelectFile.Click += btnSelectFile_Click;
             // 
-            // lblValidFile
+            // txtValidFile
             // 
-            lblValidFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblValidFile.BackColor = Color.FromArgb(69, 73, 74);
-            lblValidFile.BorderStyle = BorderStyle.FixedSingle;
-            lblValidFile.ForeColor = Color.FromArgb(220, 220, 220);
-            lblValidFile.Location = new Point(106, 352);
-            lblValidFile.Name = "lblValidFile";
-            lblValidFile.Size = new Size(126, 23);
-            lblValidFile.TabIndex = 120;
+            txtValidFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtValidFile.BackColor = Color.FromArgb(69, 73, 74);
+            txtValidFile.BorderStyle = BorderStyle.FixedSingle;
+            txtValidFile.ForeColor = Color.FromArgb(220, 220, 220);
+            txtValidFile.Location = new Point(106, 352);
+            txtValidFile.Name = "txtValidFile";
+            txtValidFile.Size = new Size(126, 23);
+            txtValidFile.TabIndex = 120;
             // 
             // crownTitle10
             // 
@@ -179,16 +190,16 @@
             crownTitle10.TabIndex = 119;
             crownTitle10.Text = "Đề hợp lệ?";
             // 
-            // txtFilePath
+            // txtViTriFileDe
             // 
-            txtFilePath.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtFilePath.BackColor = Color.FromArgb(69, 73, 74);
-            txtFilePath.BorderStyle = BorderStyle.FixedSingle;
-            txtFilePath.ForeColor = Color.FromArgb(220, 220, 220);
-            txtFilePath.Location = new Point(106, 323);
-            txtFilePath.Name = "txtFilePath";
-            txtFilePath.Size = new Size(126, 23);
-            txtFilePath.TabIndex = 118;
+            txtViTriFileDe.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtViTriFileDe.BackColor = Color.FromArgb(69, 73, 74);
+            txtViTriFileDe.BorderStyle = BorderStyle.FixedSingle;
+            txtViTriFileDe.ForeColor = Color.FromArgb(220, 220, 220);
+            txtViTriFileDe.Location = new Point(106, 323);
+            txtViTriFileDe.Name = "txtViTriFileDe";
+            txtViTriFileDe.Size = new Size(126, 23);
+            txtViTriFileDe.TabIndex = 118;
             // 
             // crownTitle9
             // 
@@ -251,16 +262,16 @@
             cbStatus.TabIndex = 113;
             cbStatus.Text = "crownDropDownList1";
             // 
-            // dtpEndTime
+            // dtpThoiGianKetThuc
             // 
-            dtpEndTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dtpEndTime.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
-            dtpEndTime.Format = DateTimePickerFormat.Custom;
-            dtpEndTime.Location = new Point(404, 111);
-            dtpEndTime.Name = "dtpEndTime";
-            dtpEndTime.Size = new Size(199, 23);
-            dtpEndTime.TabIndex = 112;
-            dtpEndTime.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
+            dtpThoiGianKetThuc.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dtpThoiGianKetThuc.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
+            dtpThoiGianKetThuc.Format = DateTimePickerFormat.Custom;
+            dtpThoiGianKetThuc.Location = new Point(404, 111);
+            dtpThoiGianKetThuc.Name = "dtpThoiGianKetThuc";
+            dtpThoiGianKetThuc.Size = new Size(199, 23);
+            dtpThoiGianKetThuc.TabIndex = 112;
+            dtpThoiGianKetThuc.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
             // 
             // crownTitle6
             // 
@@ -273,16 +284,16 @@
             crownTitle6.TabIndex = 111;
             crownTitle6.Text = "Thời gian kết thúc";
             // 
-            // dtpStartTime
+            // dtpThoiGianBatDau
             // 
-            dtpStartTime.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dtpStartTime.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
-            dtpStartTime.Format = DateTimePickerFormat.Custom;
-            dtpStartTime.Location = new Point(404, 82);
-            dtpStartTime.Name = "dtpStartTime";
-            dtpStartTime.Size = new Size(199, 23);
-            dtpStartTime.TabIndex = 110;
-            dtpStartTime.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
+            dtpThoiGianBatDau.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            dtpThoiGianBatDau.CustomFormat = "yyyy/mm/dd hh:mm:ss tt";
+            dtpThoiGianBatDau.Format = DateTimePickerFormat.Custom;
+            dtpThoiGianBatDau.Location = new Point(404, 82);
+            dtpThoiGianBatDau.Name = "dtpThoiGianBatDau";
+            dtpThoiGianBatDau.Size = new Size(199, 23);
+            dtpThoiGianBatDau.TabIndex = 110;
+            dtpThoiGianBatDau.Value = new DateTime(2025, 3, 15, 15, 1, 0, 0);
             // 
             // crownTitle5
             // 
@@ -295,16 +306,16 @@
             crownTitle5.TabIndex = 109;
             crownTitle5.Text = "Thời gian bất đầu";
             // 
-            // txtExamPassword
+            // txtMatKhauDe
             // 
-            txtExamPassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtExamPassword.BackColor = Color.FromArgb(69, 73, 74);
-            txtExamPassword.BorderStyle = BorderStyle.FixedSingle;
-            txtExamPassword.ForeColor = Color.FromArgb(220, 220, 220);
-            txtExamPassword.Location = new Point(106, 140);
-            txtExamPassword.Name = "txtExamPassword";
-            txtExamPassword.Size = new Size(126, 23);
-            txtExamPassword.TabIndex = 108;
+            txtMatKhauDe.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtMatKhauDe.BackColor = Color.FromArgb(69, 73, 74);
+            txtMatKhauDe.BorderStyle = BorderStyle.FixedSingle;
+            txtMatKhauDe.ForeColor = Color.FromArgb(220, 220, 220);
+            txtMatKhauDe.Location = new Point(106, 140);
+            txtMatKhauDe.Name = "txtMatKhauDe";
+            txtMatKhauDe.Size = new Size(126, 23);
+            txtMatKhauDe.TabIndex = 108;
             // 
             // crownTitle4
             // 
@@ -316,16 +327,16 @@
             crownTitle4.TabIndex = 107;
             crownTitle4.Text = "Mật khẩu đề";
             // 
-            // txtCreatorCode
+            // txtMaNguoiDung
             // 
-            txtCreatorCode.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtCreatorCode.BackColor = Color.FromArgb(69, 73, 74);
-            txtCreatorCode.BorderStyle = BorderStyle.FixedSingle;
-            txtCreatorCode.ForeColor = Color.FromArgb(220, 220, 220);
-            txtCreatorCode.Location = new Point(106, 111);
-            txtCreatorCode.Name = "txtCreatorCode";
-            txtCreatorCode.Size = new Size(126, 23);
-            txtCreatorCode.TabIndex = 106;
+            txtMaNguoiDung.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtMaNguoiDung.BackColor = Color.FromArgb(69, 73, 74);
+            txtMaNguoiDung.BorderStyle = BorderStyle.FixedSingle;
+            txtMaNguoiDung.ForeColor = Color.FromArgb(220, 220, 220);
+            txtMaNguoiDung.Location = new Point(106, 111);
+            txtMaNguoiDung.Name = "txtMaNguoiDung";
+            txtMaNguoiDung.Size = new Size(126, 23);
+            txtMaNguoiDung.TabIndex = 106;
             // 
             // crownTitle3
             // 
@@ -337,16 +348,16 @@
             crownTitle3.TabIndex = 105;
             crownTitle3.Text = "Mã người tạo";
             // 
-            // txtExamCode
+            // txtMaDe
             // 
-            txtExamCode.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtExamCode.BackColor = Color.FromArgb(69, 73, 74);
-            txtExamCode.BorderStyle = BorderStyle.FixedSingle;
-            txtExamCode.ForeColor = Color.FromArgb(220, 220, 220);
-            txtExamCode.Location = new Point(106, 82);
-            txtExamCode.Name = "txtExamCode";
-            txtExamCode.Size = new Size(126, 23);
-            txtExamCode.TabIndex = 104;
+            txtMaDe.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtMaDe.BackColor = Color.FromArgb(69, 73, 74);
+            txtMaDe.BorderStyle = BorderStyle.FixedSingle;
+            txtMaDe.ForeColor = Color.FromArgb(220, 220, 220);
+            txtMaDe.Location = new Point(106, 82);
+            txtMaDe.Name = "txtMaDe";
+            txtMaDe.Size = new Size(126, 23);
+            txtMaDe.TabIndex = 104;
             // 
             // crownTitle2
             // 
@@ -409,6 +420,7 @@
             examTreeView.Size = new Size(173, 367);
             examTreeView.TabIndex = 3;
             examTreeView.Text = "crownTreeView1";
+            examTreeView.Click += examTreeView_Click;
             // 
             // sectionPanelTreeView
             // 
@@ -420,17 +432,6 @@
             sectionPanelTreeView.SectionHeader = "Danh sách đề thi";
             sectionPanelTreeView.Size = new Size(175, 393);
             sectionPanelTreeView.TabIndex = 7;
-            // 
-            // btnThemDe
-            // 
-            btnThemDe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnThemDe.Location = new Point(546, 0);
-            btnThemDe.Name = "btnThemDe";
-            btnThemDe.Padding = new Padding(5);
-            btnThemDe.Size = new Size(75, 23);
-            btnThemDe.TabIndex = 124;
-            btnThemDe.Text = "Thêm đề";
-            btnThemDe.Click += btnThemDe_Click;
             // 
             // QuanLyDeThiForm
             // 
@@ -465,23 +466,23 @@
         private ReaLTaiizor.Controls.CrownSectionPanel sectionPanelEditor;
         private ReaLTaiizor.Controls.CrownButton btnDeleteExam;
         private ReaLTaiizor.Controls.CrownButton btnSelectFile;
-        private ReaLTaiizor.Controls.CrownTextBox lblValidFile;
+        private ReaLTaiizor.Controls.CrownTextBox txtValidFile;
         private ReaLTaiizor.Controls.CrownTitle crownTitle10;
-        private ReaLTaiizor.Controls.CrownTextBox txtFilePath;
+        private ReaLTaiizor.Controls.CrownTextBox txtViTriFileDe;
         private ReaLTaiizor.Controls.CrownTitle crownTitle9;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle8;
         private ReaLTaiizor.Controls.CrownTitle crownTitle7;
         private ReaLTaiizor.Controls.CrownDropDownList cbStatus;
-        private DateTimePicker dtpEndTime;
+        private DateTimePicker dtpThoiGianKetThuc;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
-        private DateTimePicker dtpStartTime;
+        private DateTimePicker dtpThoiGianBatDau;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
-        private ReaLTaiizor.Controls.CrownTextBox txtExamPassword;
+        private ReaLTaiizor.Controls.CrownTextBox txtMatKhauDe;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
-        private ReaLTaiizor.Controls.CrownTextBox txtCreatorCode;
+        private ReaLTaiizor.Controls.CrownTextBox txtMaNguoiDung;
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
-        private ReaLTaiizor.Controls.CrownTextBox txtExamCode;
+        private ReaLTaiizor.Controls.CrownTextBox txtMaDe;
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;

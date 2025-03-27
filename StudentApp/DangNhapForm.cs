@@ -6,6 +6,9 @@ using ReaLTaiizor.Controls;
 using System.Net;
 using Google.Protobuf.WellKnownTypes;
 using System.Security.Principal;
+using Google.Protobuf;
+using ProtoBuf;
+using ExamLibrary.Question;
 
 namespace StudentApp
 {
@@ -67,46 +70,92 @@ namespace StudentApp
 
             if (email != string.Empty || password != string.Empty || examid != string.Empty || exampass != string.Empty)
             {
-                try
-                {
-                    // Bước 1: Đăng nhập để lấy token
-                    var authRequest = new AuthRequest { ThiSinhId = email, Password = password, ExamCode = examid, Timestamp = Timestamp.FromDateTime(DateTime.UtcNow) };
-                    var authResponse = _client.ExamAuthenticateUser(authRequest);
+                //try
+                //{
+                //    // Bước 1: Đăng nhập để lấy token
+                //    var authRequest = new AuthRequest { ThiSinhId = email, Password = password, ExamCode = examid, Timestamp = Timestamp.FromDateTime(DateTime.UtcNow) };
+                //    var authResponse = _client.ExamAuthenticateUser(authRequest);
 
-                    if (authResponse.ResponseCode == (int)HttpStatusCode.OK)
-                    {
-                        // Bước 2: Lấy dữ liệu thi sau khi đăng nhập
-                        var examRequest = new ExamRequest { ExamId = examid };
-                        var headers = new Grpc.Core.Metadata
-                        {
-                            { "Authorization", $"Bearer {authResponse.AccessToken}" }
-                        };
-                        var examResponse = _client.GetExamData(examRequest, headers);
-                        if (examResponse.ResponseCode == (int)HttpStatusCode.OK)
-                        {
-                            ExamForm examForm = new ExamForm(_client, headers, examResponse); // Pass the server address
-                            this.Hide();
-                            examForm.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            CrownMessageBox.ShowError("Không thể lấy đề thi từ hệ thống. Xin hãy liên lạc với giám thị.", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                        }
-                    }
-                    else
-                    {
-                        CrownMessageBox.ShowError("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                    }
-                }
-                catch (Grpc.Core.RpcException ex)
+                //    if (authResponse.ResponseCode == (int)HttpStatusCode.OK)
+                //    {
+                //        // Bước 2: Lấy dữ liệu thi sau khi đăng nhập
+                //        var examRequest = new ExamRequest { ExamId = examid };
+                //        var headers = new Grpc.Core.Metadata
+                //        {
+                //            { "Authorization", $"Bearer {authResponse.AccessToken}" }
+                //        };
+                //        var examResponse = _client.GetExamData(examRequest, headers);
+                //        if (examResponse.ResponseCode == (int)HttpStatusCode.OK)
+                //        {
+                //            ExamForm examForm = new ExamForm(_client, headers, examResponse); // Pass the server address
+                //            this.Hide();
+                //            examForm.Show();
+                //            this.Close();
+                //        }
+                //        else
+                //        {
+                //            CrownMessageBox.ShowError("Không thể lấy đề thi từ hệ thống. Xin hãy liên lạc với giám thị.", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        CrownMessageBox.ShowError("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //    }
+                //}
+                //catch (Grpc.Core.RpcException ex)
+                //{
+                //    CrownMessageBox.ShowError($"Server Error: {ex.Status.Detail}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //}
+                //catch (Exception ex)
+                //{
+                //    CrownMessageBox.ShowError($"Error: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                //}
+
+                Paper paper = new Paper();
+                paper.Duration = 3600;
+                paper.Mark = 10;
+                paper.ExamCode = examid;
+                paper.MultipleChoiceQuestions.Add(new ExamLibrary.Question.Types.MultipleChoice
                 {
-                    CrownMessageBox.ShowError($"Server Error: {ex.Status.Detail}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                }
-                catch (Exception ex)
+                    QuestionID = 1,
+                    QuestionText = "Văn thành có bình thường không?",
+                    QuestionAnswerTextA = "Có",
+                    QuestionAnswerTextB = "no",
+                    QuestionAnswerTextC = "yes",
+                    QuestionAnswerTextD = "skibidi dop dop",
+                    QuestionAnswers = new List<string>
+                    {
+                        "A",
+                    }
+                });
+                paper.MultipleChoiceQuestions.Add(new ExamLibrary.Question.Types.MultipleChoice
                 {
-                    CrownMessageBox.ShowError($"Error: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
-                }
+                    QuestionID = 2,
+                    QuestionText = "Văn thành có noob k?",
+                    QuestionAnswerTextA = "Có",
+                    QuestionAnswerTextB = "no",
+                    QuestionAnswerTextC = "yes",
+                    QuestionAnswerTextD = "skibidi dop dop",
+                    QuestionAnswers = new List<string>
+                    {
+                        "A",
+                    }
+                });
+
+                //byte[] examPaperByteArray;
+                //using (var memoryStream = new MemoryStream())
+                //{
+                //    Serializer.Serialize(memoryStream, paper);
+                //    examPaperByteArray = memoryStream.ToArray();
+                //}
+
+                ExamData exam = new ExamData();
+                //exam.ExamPaper = ByteString.CopyFrom(examPaperByteArray);
+
+                ExamForm examForm = new ExamForm(exam, paper); // Pass the server address
+                this.Hide();
+                examForm.Show();
+                this.Close();
             }
             else
             {

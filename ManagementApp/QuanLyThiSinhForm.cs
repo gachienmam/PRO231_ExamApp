@@ -130,11 +130,16 @@ namespace ManagementApp
             {
                 try
                 {
+                    var requestPassword = new CommandRequest
+                    {
+                        RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
+                        Command = textBoxMKTS.Text
+                    };
                     var sql = string.Format("EXEC sp_InsertThiSinh N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}', {6}",
                             textBoxMaTS.Text.Trim(),
                             textBoxHoTenTS.Text.Trim(),
                             textBoxEmailTS.Text.Trim(),
-                            textBoxMKTS.Text.Trim(),
+                            _client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage,
                             dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd"),
                             textBoxSDTTS.Text.Trim(),
                             trangThai);
@@ -241,7 +246,12 @@ namespace ManagementApp
             {
                 try
                 {
-                    string sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text}', N'{textBoxHoTenTS.Text}', N'{textBoxEmailTS.Text}', N'{textBoxMKTS.Text}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text}', {trangThai}";
+                    var requestPassword = new CommandRequest
+                    {
+                        RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
+                        Command = textBoxMKTS.Text
+                    };
+                    string sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text.Trim()}', N'{textBoxHoTenTS.Text.Trim()}', N'{textBoxEmailTS.Text.Trim()}', N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text.Trim()}', {trangThai}";
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;

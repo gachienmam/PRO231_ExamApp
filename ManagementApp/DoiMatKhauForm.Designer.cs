@@ -223,6 +223,7 @@
             MinimumSize = new Size(800, 419);
             Name = "DoiMatKhauForm";
             Text = "PolyTest Manager - Đổi mật khẩu";
+            Load += DoiMatKhauForm_Load;
             layoutPanel.ResumeLayout(false);
             crownSectionPanel2.ResumeLayout(false);
             crownSectionPanel2.PerformLayout();

@@ -34,6 +34,8 @@ namespace ManagementApp
         private readonly string _serverAddress;
         private readonly Grpc.Core.Metadata _headers;
 
+        private string _currentUserEmail;
+
         private QuanLyDeThiForm quanLyDeThiForm;
         private QuanLyThiSinhForm quanLyThiSinhForm;
         private QuanLyNguoiDungForm quanLyNguoiDungForm;
@@ -47,13 +49,15 @@ namespace ManagementApp
             Application.AddMessageFilter(new ControlScrollFilter());
         }
 
-        public MainForm(AdminServiceClient client, Grpc.Core.Metadata headers)
+        public MainForm(AdminServiceClient client, Grpc.Core.Metadata headers, string currentUserEmail)
         {
             InitializeComponent();
 
             // Đăng nhập vào máy chủ dùng thông tin đăng nhập từ cái DangNhapForm
             _client = client;
             _headers = headers;
+
+            _currentUserEmail = currentUserEmail;
 
             quanLyDeThiForm = new QuanLyDeThiForm(_client, _headers);
             quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _headers);
@@ -128,6 +132,18 @@ namespace ManagementApp
             // TODO: Cho lệnh log out ở giữa
             Shared.IsExiting = true;
             this.Close();
+        }
+
+        private void vềPolyTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GioiThieuForm gioiThieuForm = new GioiThieuForm();
+            gioiThieuForm.ShowDialog();
+        }
+
+        private void thôngTinCủaTôiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoiMatKhauForm doiMatKhauForm = new DoiMatKhauForm(_client, _headers, _currentUserEmail);
+            doiMatKhauForm.ShowDialog();
         }
         #endregion
 
@@ -245,17 +261,5 @@ namespace ManagementApp
             }
         }
         #endregion
-
-        private void vềPolyTestToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GioiThieuForm gioiThieuForm = new GioiThieuForm();
-            gioiThieuForm.ShowDialog();
-        }
-
-        private void thôngTinCủaTôiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DoiMatKhauForm doiMatKhauForm = new DoiMatKhauForm(_client, _headers);
-            doiMatKhauForm.ShowDialog();
-        }
     }
 }

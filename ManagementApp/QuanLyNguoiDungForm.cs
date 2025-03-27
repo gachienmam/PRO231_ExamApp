@@ -133,12 +133,12 @@ namespace ManagementApp
             {
                 try
                 {
-                    var sql = string.Format("EXEC sp_InsertNguoiDung N'{0}', N'{1}', N'{2}', N'{3}', N'{4}'",
-                        textBoxMaND.Text.Trim(),
-                        textBoxHoTenND.Text.Trim(),
-                        textBoxEmailND.Text.Trim(),
-                        textBoxMKND.Text.Trim(),
-                        VaiTro);
+                    var requestPassword = new CommandRequest
+                    {
+                        RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
+                        Command = textBoxMKND.Text
+                    };
+                    var sql = $"EXEC sp_InsertNguoiDung N'{textBoxMaND.Text.Trim()}', HoTen = '{textBoxHoTenND.Text.Trim()}', Email = '{textBoxEmailND.Text.Trim()}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = '{VaiTro}'";
 
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
@@ -195,7 +195,12 @@ namespace ManagementApp
             {
                 try
                 {
-                    string sql = $"UPDATE NguoiDung SET HoTen = '{textBoxHoTenND.Text}', Email = '{textBoxEmailND.Text}', MatKhau = '{textBoxMKND.Text}', VaiTro = '{VaiTro}' WHERE MaNguoiDung = '{textBoxMaND.Text}';";
+                    var requestPassword = new CommandRequest
+                    {
+                        RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
+                        Command = textBoxMKND.Text
+                    };
+                    string sql = $"UPDATE NguoiDung SET HoTen = '{textBoxHoTenND.Text}', Email = '{textBoxEmailND.Text}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = '{VaiTro}' WHERE MaNguoiDung = '{textBoxMaND.Text}';";
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
@@ -352,10 +357,5 @@ namespace ManagementApp
             }
         }
         #endregion
-
-        private void crownGroupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

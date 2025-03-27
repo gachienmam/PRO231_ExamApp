@@ -25,6 +25,7 @@ namespace ManagementApp
         private readonly AdminServiceClient _client;
         private readonly Grpc.Core.Metadata _headers;
 
+        private DataTable _dataTable;
         private CrownTreeView _tree;
         private GrpcDatabaseHelper _dbHelper;
 
@@ -47,9 +48,9 @@ namespace ManagementApp
 
         private void LoadStatusComboBox()
         {
-            cbStatus.Items.Clear();
-            cbStatus.Items.Add(new CrownDropDownItem("Được thi"));
+            cbStatus.Items.Clear(); 
             cbStatus.Items.Add(new CrownDropDownItem("Không được thi"));
+            cbStatus.Items.Add(new CrownDropDownItem("Được thi"));
             cbStatus.SelectedItem = cbStatus.Items[0];
         }
 
@@ -57,7 +58,7 @@ namespace ManagementApp
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "PDF Files|*.pdf|Word Files|*.docx|All Files|*.*";
+                ofd.Filter = "Excel|*.xlsx|All Files|*.*";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = ofd.FileName;
@@ -65,13 +66,16 @@ namespace ManagementApp
                     stripProgressBar.Value = 0;
                     statusLabel.Text = "Đã tải: 0%";
                     stripProgressBar.Visible = true;
-                    lblValidFile.Text = await UploadFileAsync(filePath);
+                    //lblValidFile.Text = await UploadFileAsync(filePath);
 
                     // Hide
-                    stripProgressBar.Visible = false; 
+                    txtViTriFileDe.Text = ofd.FileName;
+                    stripProgressBar.Visible = false;
                     stripProgressBar.Value = 0;
                     statusLabel.Text = "Đang đợi";
-                    lblValidFile.Text = IsValidExamFile(selectedFilePath) ? "Hợp lệ" : "Không hợp lệ";
+                    //lblValidFile.Text = IsValidExamFile(selectedFilePath) ? "Yes" : "No";
+                    txtValidFile.Text = "Yes";
+                    
                 }
             }
         }
@@ -91,7 +95,7 @@ namespace ManagementApp
 
                 using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    var call = _client.UploadExamPaper();
+                    var call = _client.UploadExamPaper(_headers);
 
                     byte[] buffer = new byte[4096]; // Buffer
                     int bytesRead;
@@ -160,13 +164,13 @@ namespace ManagementApp
 
         private void btnSaveExam_Click(object sender, EventArgs e)
         {
-            string examCode = txtExamCode.Text;
-            string creatorCode = txtCreatorCode.Text;
-            string password = txtExamPassword.Text;
-            DateTime startTime = dtpStartTime.Value;
-            DateTime endTime = dtpEndTime.Value;
-            string status = cbStatus.SelectedItem.ToString();
-            bool isValidFile = lblValidFile.Text == "Hợp lệ";
+            string examCode = txtMaDe.Text;
+            string creatorCode = txtMaNguoiDung.Text;
+            string password = txtMatKhauDe.Text;
+            DateTime startTime = dtpThoiGianBatDau.Value;
+            DateTime endTime = dtpThoiGianKetThuc.Value;
+            int status = cbStatus.Items.IndexOf(cbStatus.SelectedItem);
+            bool isValidFile = txtValidFile.Text == "Yes";
 
             if (string.IsNullOrWhiteSpace(examCode) || string.IsNullOrWhiteSpace(creatorCode) || string.IsNullOrWhiteSpace(password))
             {
@@ -180,12 +184,13 @@ namespace ManagementApp
                 return;
             }
 
-            if (string.IsNullOrEmpty(selectedFilePath) || !isValidFile)
+            if (string.IsNullOrEmpty(txtValidFile.Text) || !isValidFile)
             {
                 MessageBox.Show("File đề thi không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            _dbHelper.ExecuteSqlNonQuery("EXEC sp_InsertDeThi MaDe, MaNguoiDung, MatKhau, ThoiGianBatDau, ThoiGianKetThuc, TrangThai, DanhSachThi, ViTriFileDe");
             // Giả lập lưu dữ liệu (Thực tế sẽ lưu vào DB)
             MessageBox.Show($"Đã lưu đề thi:\nMã đề: {examCode}\nNgười tạo: {creatorCode}\nTrạng thái: {status}\nFile: {selectedFilePath}",
                 "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -205,25 +210,25 @@ namespace ManagementApp
 
         private void ResetValues()
         {
-            txtExamCode.Clear();
-            txtCreatorCode.Clear();
-            txtExamPassword.Clear();
-            txtFilePath.Clear();
-            lblValidFile.Text = "Chưa chọn";
-            dtpStartTime.Value = DateTime.Now;
-            dtpEndTime.Value = DateTime.Now.AddHours(1);
+            txtMaDe.Clear();
+            txtMaNguoiDung.Clear();
+            txtMatKhauDe.Clear();
+            txtViTriFileDe.Clear();
+            txtValidFile.Text = "Chưa chọn";
+            dtpThoiGianBatDau.Value = DateTime.Now;
+            dtpThoiGianKetThuc.Value = DateTime.Now.AddHours(1);
             cbStatus.SelectedItem = cbStatus.Items[0];
         }
 
         private async Task LoadTreeViewDataAsync()
         {
-            DataTable dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM DeThi");
+            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM DeThi");
 
             examTreeView.Nodes.Clear();
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            for (int i = 0; i < _dataTable.Rows.Count; i++)
             {
-                CrownTreeNode node = new(dataTable.Rows[0]["MaDe"].ToString())
+                CrownTreeNode node = new(_dataTable.Rows[i]["MaDe"].ToString())
                 {
                     Icon = Properties.Resources.document_16xLG
                 };
@@ -235,13 +240,13 @@ namespace ManagementApp
         }
         private void LoadTreeViewData()
         {
-            DataTable dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM DeThi");
+            _dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM DeThi");
 
             examTreeView.Nodes.Clear();
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            for (int i = 0; i < _dataTable.Rows.Count; i++)
             {
-                CrownTreeNode node = new(dataTable.Rows[0]["MaDe"].ToString())
+                CrownTreeNode node = new(_dataTable.Rows[i]["MaDe"].ToString())
                 {
                     Icon = Properties.Resources.document_16xLG
                 };
@@ -250,6 +255,37 @@ namespace ManagementApp
             }
 
             _tree = examTreeView;
+        }
+
+        private void examTreeView_Click(object sender, EventArgs e)
+        {
+            if(_dataTable != null)
+            {
+                foreach (DataRow row in _dataTable.Rows)
+                {
+                    try
+                    {
+                        if (examTreeView.SelectedNodes[0].Text == row["MaDe"].ToString())
+                        {
+                            txtMaDe.Text = row["MaDe"].ToString();
+                            txtMaNguoiDung.Text = row["MaNguoiDung"].ToString();
+                            txtMatKhauDe.Text = row["MatKhau"].ToString();
+                            dtpThoiGianBatDau.Value = DateTime.Parse(row["ThoiGianBatDau"].ToString());
+                            dtpThoiGianKetThuc.Value = DateTime.Parse(row["ThoiGianKetThuc"].ToString());
+                            cbStatus.SelectedItem = cbStatus.Items[int.Parse(row["TrangThai"].ToString())];
+                            txtViTriFileDe.Text = row["ViTriFileDe"].ToString();
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                CrownMessageBox.ShowWarning("Xin đợi dữ liệu tải trước khi chọn!", "Đang tải dữ liệu đề thi");
+            }
         }
     }
 }

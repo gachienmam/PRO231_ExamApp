@@ -1,4 +1,6 @@
-﻿using ManagementApp.Database;
+﻿using ExamLibrary.Enum;
+using ManagementApp.AdminProto;
+using ManagementApp.Database;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
@@ -18,16 +20,25 @@ namespace ManagementApp
         private readonly AdminServiceClient _client;
         private readonly Grpc.Core.Metadata _headers;
 
+        private string _currentUserEmail;
+
         private GrpcDatabaseHelper _dbHelper;
 
-        public DoiMatKhauForm(AdminServiceClient client, Grpc.Core.Metadata headers)
+        public DoiMatKhauForm(AdminServiceClient client, Grpc.Core.Metadata headers, string currentUserEmail)
         {
             InitializeComponent();
 
             _client = client;
             _headers = headers;
 
+            _currentUserEmail = currentUserEmail;
+
             _dbHelper = new GrpcDatabaseHelper(_client, _headers);
+        }
+
+        private void DoiMatKhauForm_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void BUTTONDOIMATKHAU_Click(object sender, EventArgs e)
@@ -62,7 +73,12 @@ namespace ManagementApp
                 {
                     try
                     {
-                        string sql = $"UPDATE NguoiDung SET  MatKhau = '{TextBoxXNhapLaiMatKhau.Text}';";
+                        var requestPassword = new CommandRequest
+                        {
+                            RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
+                            Command = TEXTBOXMATKHAUMOI.Text
+                        };
+                        string sql = $"UPDATE NguoiDung SET MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}' WHERE Email = '{_currentUserEmail}';";
                         _dbHelper.ExecuteSqlNonQuery(sql);
                         CrownMessageBox.ShowInformation("Đã sửa người dùng", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                     }

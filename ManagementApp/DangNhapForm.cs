@@ -56,6 +56,7 @@ namespace ManagementApp
         {
             string email = TEXTBOX_EMAIL.Text;
             string password = TEXTBOX_MATKHAU.Text;
+            string role = "Admin";
 
             if (email != string.Empty || password != string.Empty)
             {
@@ -72,7 +73,10 @@ namespace ManagementApp
                             {
                                 { "Authorization", $"Bearer {Shared.AccessToken}" }
                             };
-                        MainForm mainForm = new MainForm(_client, headers, TEXTBOX_EMAIL.Text); // Pass the server address
+
+                        if (TEXTBOX_EMAIL.Text == "thanhcute@gmail.com") role = "GiangVien";
+
+                        MainForm mainForm = new MainForm(_client, headers, TEXTBOX_EMAIL.Text, role); // Pass the server address
                         this.Hide();
                         mainForm.ShowDialog();
                         if (!Shared.IsExiting)
@@ -86,21 +90,21 @@ namespace ManagementApp
                     }
                     else
                     {
-                        CrownMessageBox.ShowError("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        MessageBox.Show("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập vào hệ thống", MessageBoxButtons.OK);
                     }
                 }
                 catch (Grpc.Core.RpcException ex)
                 {
-                    CrownMessageBox.ShowError($"Server Error: {ex.Status.Detail}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    MessageBox.Show($"Server Error: {ex.Status.Detail}", "Lỗi hệ thống", MessageBoxButtons.OK);
                 }
                 catch (Exception ex)
                 {
-                    CrownMessageBox.ShowError($"Error: {ex.Message}", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    MessageBox.Show($"Error: {ex.Message}", "Lỗi hệ thống", MessageBoxButtons.OK);
                 }
             }
             else
             {
-                CrownMessageBox.ShowError("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                MessageBox.Show("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập", MessageBoxButtons.OK);
             }
         }
     }

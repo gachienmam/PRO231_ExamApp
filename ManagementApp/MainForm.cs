@@ -35,6 +35,7 @@ namespace ManagementApp
         private readonly Grpc.Core.Metadata _headers;
 
         private string _currentUserEmail;
+        private string _currentUserRole;
 
         private QuanLyDeThiForm quanLyDeThiForm;
         private QuanLyThiSinhForm quanLyThiSinhForm;
@@ -49,7 +50,7 @@ namespace ManagementApp
             Application.AddMessageFilter(new ControlScrollFilter());
         }
 
-        public MainForm(AdminServiceClient client, Grpc.Core.Metadata headers, string currentUserEmail)
+        public MainForm(AdminServiceClient client, Grpc.Core.Metadata headers, string currentUserEmail, string currentUserRole)
         {
             InitializeComponent();
 
@@ -58,6 +59,7 @@ namespace ManagementApp
             _headers = headers;
 
             _currentUserEmail = currentUserEmail;
+            _currentUserRole = currentUserRole;
 
             quanLyDeThiForm = new QuanLyDeThiForm(_client, _headers);
             quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _headers);
@@ -83,6 +85,14 @@ namespace ManagementApp
                 // Checked => Light, Unchecked => Dark
                 ChangeTheme(themeToggleToolStripMenuItem.Checked);
             }
+
+            if(_currentUserRole == "GiangVien")
+            {
+                thíSinhToolStripMenuItem.Visible = false;
+                ngườiDùngToolStripMenuItem.Visible = false;
+            }
+
+            usernameToolStripMenuItem.Text = $"Xin chào {_currentUserEmail} ({_currentUserRole})";
         }
         #endregion
 

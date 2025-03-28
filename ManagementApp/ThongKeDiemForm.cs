@@ -158,5 +158,50 @@ namespace ManagementApp
             dataGridView1.DataSource = _dataTable;
         }
         #endregion
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void crownSectionPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ButtonTimKiemTheoDe_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string maDe = TextBoxTimKimTheoDe.Text.Trim();
+                if (string.IsNullOrEmpty(maDe))
+                {
+                    MessageBox.Show("Vui lòng nhập mã sinh viên để tìm kiếm.");
+                    return;
+                }
+
+                DataTable dt = _dataTable;
+                dataGridView1.DataSource = _dataTable;
+                if (dt != null)
+                {
+                    DataView dv = new DataView(dt);
+                    dv.RowFilter = $"MaDe = '{maDe}'";
+                    dataGridView1.DataSource = dv;
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu để tìm kiếm.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}");
+            }
+        }
+
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

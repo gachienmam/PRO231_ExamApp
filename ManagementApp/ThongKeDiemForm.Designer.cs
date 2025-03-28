@@ -39,6 +39,8 @@ namespace ManagementApp
             textBoxTimKiem = new ReaLTaiizor.Controls.CrownTextBox();
             buttonTimKiem = new ReaLTaiizor.Controls.CrownButton();
             dataGridView1 = new DataGridView();
+            TextBoxTimKimTheoDe = new ReaLTaiizor.Controls.CrownTextBox();
+            ButtonTimKiemTheoDe = new ReaLTaiizor.Controls.CrownButton();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -46,6 +48,8 @@ namespace ManagementApp
             // 
             // crownSectionPanel1
             // 
+            crownSectionPanel1.Controls.Add(ButtonTimKiemTheoDe);
+            crownSectionPanel1.Controls.Add(TextBoxTimKimTheoDe);
             crownSectionPanel1.Controls.Add(crownGroupBox1);
             crownSectionPanel1.Controls.Add(BUTTON_XUATDS);
             crownSectionPanel1.Controls.Add(BUTTON_XEMDS);
@@ -55,17 +59,17 @@ namespace ManagementApp
             crownSectionPanel1.Location = new Point(0, 0);
             crownSectionPanel1.Name = "crownSectionPanel1";
             crownSectionPanel1.SectionHeader = "Thống kê";
-            crownSectionPanel1.Size = new Size(800, 125);
+            crownSectionPanel1.Size = new Size(800, 135);
             crownSectionPanel1.TabIndex = 0;
+            crownSectionPanel1.Paint += crownSectionPanel1_Paint;
             // 
             // crownGroupBox1
             // 
-            crownGroupBox1.Anchor = AnchorStyles.None;
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(btnLocDuLieu);
             crownGroupBox1.Controls.Add(CheckBoxRot);
             crownGroupBox1.Controls.Add(CheckBoxDau);
-            crownGroupBox1.Location = new Point(675, 28);
+            crownGroupBox1.Location = new Point(679, 28);
             crownGroupBox1.Name = "crownGroupBox1";
             crownGroupBox1.Size = new Size(121, 81);
             crownGroupBox1.TabIndex = 19;
@@ -102,8 +106,7 @@ namespace ManagementApp
             // 
             // BUTTON_XUATDS
             // 
-            BUTTON_XUATDS.Anchor = AnchorStyles.None;
-            BUTTON_XUATDS.Location = new Point(454, 28);
+            BUTTON_XUATDS.Location = new Point(454, 26);
             BUTTON_XUATDS.Name = "BUTTON_XUATDS";
             BUTTON_XUATDS.Padding = new Padding(5);
             BUTTON_XUATDS.Size = new Size(215, 32);
@@ -113,8 +116,7 @@ namespace ManagementApp
             // 
             // BUTTON_XEMDS
             // 
-            BUTTON_XEMDS.Anchor = AnchorStyles.None;
-            BUTTON_XEMDS.Location = new Point(12, 28);
+            BUTTON_XEMDS.Location = new Point(12, 25);
             BUTTON_XEMDS.Name = "BUTTON_XEMDS";
             BUTTON_XEMDS.Padding = new Padding(5);
             BUTTON_XEMDS.Size = new Size(215, 33);
@@ -124,22 +126,21 @@ namespace ManagementApp
             // 
             // textBoxTimKiem
             // 
-            textBoxTimKiem.Anchor = AnchorStyles.None;
             textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Font = new Font("Segoe UI", 9F);
             textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxTimKiem.Location = new Point(12, 80);
+            textBoxTimKiem.Location = new Point(12, 63);
             textBoxTimKiem.Multiline = true;
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.PlaceholderText = "Tìm kiếm theo mã thí sinh";
             textBoxTimKiem.Size = new Size(519, 29);
             textBoxTimKiem.TabIndex = 15;
+            textBoxTimKiem.TextChanged += textBoxTimKiem_TextChanged;
             // 
             // buttonTimKiem
             // 
-            buttonTimKiem.Anchor = AnchorStyles.None;
-            buttonTimKiem.Location = new Point(537, 79);
+            buttonTimKiem.Location = new Point(537, 62);
             buttonTimKiem.Name = "buttonTimKiem";
             buttonTimKiem.Padding = new Padding(5);
             buttonTimKiem.Size = new Size(132, 29);
@@ -151,13 +152,37 @@ namespace ManagementApp
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 125);
+            dataGridView1.Location = new Point(0, 135);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(800, 325);
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridView1.Size = new Size(800, 315);
             dataGridView1.TabIndex = 9;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // TextBoxTimKimTheoDe
+            // 
+            TextBoxTimKimTheoDe.BackColor = Color.FromArgb(69, 73, 74);
+            TextBoxTimKimTheoDe.BorderStyle = BorderStyle.FixedSingle;
+            TextBoxTimKimTheoDe.Font = new Font("Segoe UI", 9F);
+            TextBoxTimKimTheoDe.ForeColor = Color.FromArgb(220, 220, 220);
+            TextBoxTimKimTheoDe.Location = new Point(12, 98);
+            TextBoxTimKimTheoDe.Multiline = true;
+            TextBoxTimKimTheoDe.Name = "TextBoxTimKimTheoDe";
+            TextBoxTimKimTheoDe.PlaceholderText = "Tìm kiếm theo mã thí sinh";
+            TextBoxTimKimTheoDe.Size = new Size(519, 29);
+            TextBoxTimKimTheoDe.TabIndex = 20;
+            // 
+            // ButtonTimKiemTheoDe
+            // 
+            ButtonTimKiemTheoDe.Location = new Point(537, 100);
+            ButtonTimKiemTheoDe.Name = "ButtonTimKiemTheoDe";
+            ButtonTimKiemTheoDe.Padding = new Padding(5);
+            ButtonTimKiemTheoDe.Size = new Size(132, 29);
+            ButtonTimKiemTheoDe.TabIndex = 21;
+            ButtonTimKiemTheoDe.Text = "Tìm kiếm";
+            ButtonTimKiemTheoDe.Click += ButtonTimKiemTheoDe_Click;
             // 
             // ThongKeDiemForm
             // 
@@ -190,5 +215,7 @@ namespace ManagementApp
         private ReaLTaiizor.Controls.CrownCheckBox CheckBoxRot;
         private ReaLTaiizor.Controls.CrownCheckBox CheckBoxDau;
         private DataGridView dataGridView1;
+        private ReaLTaiizor.Controls.CrownTextBox TextBoxTimKimTheoDe;
+        private ReaLTaiizor.Controls.CrownButton ButtonTimKiemTheoDe;
     }
 }

@@ -27,9 +27,9 @@ message AuthResponse {
     string accessToken = 3; // send back a token if successful
 }
 
-// Request an exam
+// Request an examd
 message ExamRequest {
-    string examId = 1; // the requesting exam id
+    string thiSinhId = 1;
     string examCode = 2; // Current computer name
     string examPassword = 3;
 }
@@ -37,14 +37,16 @@ message ExamRequest {
 // Exam data response
 message ExamData {
     int32 responseCode = 1; 
-    string examPaper = 2; // send exam questions based on custom C# class
+    bytes examPaper = 2; // send exam questions based on custom C# class
     string serverInformation = 3; // server information (server name, etc..)
 }
 
 // Request to submit answer sheet
 message PaperSubmission {
     int32 submissionType = 1; // types: "final submission: Student complete exam", "submission: Student saves current copy of answers"
-    bytes studentSubmitPaper = 2; // the submission paper (copy of answers)
+    string thiSinhId = 2; // MaThiSinh in database
+    string examCode = 3;
+    bytes studentSubmitPaper = 4; // the submission paper (copy of answers)
 }
 
 // Response to submission of answer sheet
@@ -55,13 +57,13 @@ message PaperSubmissionResponse {
 
 // Request real-time exam updates
 message ExamUpdateRequest {
-    string examId = 1;
+    string examCode = 1;
 }
 
 // Real-time exam updates for clients
 message ExamUpdate {
     int32 responseCode = 1;
-    string examId = 2;
+    string examCode = 2;
     string recipientId = 3; // If empty, applies to all
     google.protobuf.Timestamp timestamp = 4;
     string responseMessage = 5;

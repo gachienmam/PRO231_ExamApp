@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>81a6a46a-7555-441c-93b3-60a264d79115</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <RepositoryUrl>https://github.com/gachienmam/PRO231_ExamApp.git</RepositoryUrl>
+    <AssemblyVersion></AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

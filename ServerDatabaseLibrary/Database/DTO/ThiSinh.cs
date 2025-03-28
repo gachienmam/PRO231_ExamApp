@@ -9,7 +9,7 @@ namespace ServerDatabaseLibrary.Database.DTO
 {
     public class ThiSinh
     {
-        public ThiSinh(string maThiSinh, string hoTen, string email, string matKhau, DateOnly ngaySinh, string soDienThoai, int trangThai)
+        public ThiSinh(string maThiSinh, string hoTen, string email, string matKhau, DateTime ngaySinh, string soDienThoai, int trangThai)
         {
             MaThiSinh = maThiSinh;
             HoTen = hoTen;
@@ -32,7 +32,7 @@ namespace ServerDatabaseLibrary.Database.DTO
         [MaxLength(255)]
         public string MatKhau { get; set; }
 
-        public DateOnly NgaySinh {  get; set; }
+        public DateTime NgaySinh {  get; set; }
 
         [MaxLength(15)]
         public string SoDienThoai {  get; set; }

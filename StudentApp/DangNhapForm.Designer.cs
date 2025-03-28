@@ -34,8 +34,8 @@
             buttonSettings = new ReaLTaiizor.Controls.CrownButton();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
-            textBoxMatKhauEmail = new ReaLTaiizor.Controls.CrownTextBox();
-            textBoxEmail = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxMatKhauThiSinh = new ReaLTaiizor.Controls.CrownTextBox();
+            textBoxThiSinhId = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
             btnDangNhap = new ReaLTaiizor.Controls.CrownButton();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
@@ -89,8 +89,8 @@
             crownSectionPanel2.Controls.Add(buttonSettings);
             crownSectionPanel2.Controls.Add(crownTitle6);
             crownSectionPanel2.Controls.Add(crownTitle5);
-            crownSectionPanel2.Controls.Add(textBoxMatKhauEmail);
-            crownSectionPanel2.Controls.Add(textBoxEmail);
+            crownSectionPanel2.Controls.Add(textBoxMatKhauThiSinh);
+            crownSectionPanel2.Controls.Add(textBoxThiSinhId);
             crownSectionPanel2.Controls.Add(crownTitle4);
             crownSectionPanel2.Controls.Add(btnDangNhap);
             crownSectionPanel2.Controls.Add(crownTitle3);
@@ -137,27 +137,27 @@
             crownTitle5.TabIndex = 8;
             crownTitle5.Text = "Tên thí sinh:";
             // 
-            // textBoxMatKhauEmail
+            // textBoxMatKhauThiSinh
             // 
-            textBoxMatKhauEmail.Anchor = AnchorStyles.None;
-            textBoxMatKhauEmail.BackColor = Color.FromArgb(69, 73, 74);
-            textBoxMatKhauEmail.BorderStyle = BorderStyle.FixedSingle;
-            textBoxMatKhauEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxMatKhauEmail.Location = new Point(106, 335);
-            textBoxMatKhauEmail.Name = "textBoxMatKhauEmail";
-            textBoxMatKhauEmail.Size = new Size(193, 23);
-            textBoxMatKhauEmail.TabIndex = 7;
+            textBoxMatKhauThiSinh.Anchor = AnchorStyles.None;
+            textBoxMatKhauThiSinh.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxMatKhauThiSinh.BorderStyle = BorderStyle.FixedSingle;
+            textBoxMatKhauThiSinh.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxMatKhauThiSinh.Location = new Point(106, 335);
+            textBoxMatKhauThiSinh.Name = "textBoxMatKhauThiSinh";
+            textBoxMatKhauThiSinh.Size = new Size(193, 23);
+            textBoxMatKhauThiSinh.TabIndex = 7;
             // 
-            // textBoxEmail
+            // textBoxThiSinhId
             // 
-            textBoxEmail.Anchor = AnchorStyles.None;
-            textBoxEmail.BackColor = Color.FromArgb(69, 73, 74);
-            textBoxEmail.BorderStyle = BorderStyle.FixedSingle;
-            textBoxEmail.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxEmail.Location = new Point(106, 276);
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(193, 23);
-            textBoxEmail.TabIndex = 6;
+            textBoxThiSinhId.Anchor = AnchorStyles.None;
+            textBoxThiSinhId.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxThiSinhId.BorderStyle = BorderStyle.FixedSingle;
+            textBoxThiSinhId.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxThiSinhId.Location = new Point(106, 276);
+            textBoxThiSinhId.Name = "textBoxThiSinhId";
+            textBoxThiSinhId.Size = new Size(193, 23);
+            textBoxThiSinhId.TabIndex = 6;
             // 
             // crownTitle4
             // 
@@ -265,8 +265,8 @@
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownButton btnDangNhap;
-        private ReaLTaiizor.Controls.CrownTextBox textBoxMatKhauEmail;
-        private ReaLTaiizor.Controls.CrownTextBox textBoxEmail;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxMatKhauThiSinh;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxThiSinhId;
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
         private ReaLTaiizor.Controls.CrownButton buttonSettings;

@@ -30,7 +30,7 @@ namespace ServerDatabaseLibrary.Database.DAL
                     new SqlParameter("@MaDe", maDe),
                     new SqlParameter("@Diem", diem),
                     new SqlParameter("@ThoiGianBatDau", thoiGianBatDau),
-                    new SqlParameter("@ThoiGianKetThuc", thoiGianKetThuc),
+                    new SqlParameter("@ThoiGianKetThuc", thoiGianKetThuc.ToString("yyyy-MM-dd HH:mm:ss")),
                     new SqlParameter("@DaHoanThanh", daHoanThanh)
                 };
 
@@ -43,20 +43,19 @@ namespace ServerDatabaseLibrary.Database.DAL
                 return false;
             }
         }
-        public bool UpdateKetQuaThi(int maKetQua, string maThiSinh, string maDe, float diem, DateTime thoiGianBatDau, DateTime thoiGianKetThuc, bool daHoanThanh)
+
+        public bool UpdateKetQuaThi(string maThiSinh, string maDe, float diem, DateTime thoiGianKetThuc, bool daHoanThanh)
         {
-            string query = "EXEC sp_UpdateKetQuaThi @MaKetQua, @MaThiSinh, @MaDe, @Diem, @ThoiGianBatDau, @ThoiGianKetThuc, @DaHoanThanh";
+            string query = "UPDATE KetQuaThi SET Diem = @Diem, ThoiGianKetThuc = @ThoiGianKetThuc, DaHoanThanh = @DaHoanThanh WHERE MaDe = @MaDe AND MaThiSinh = @MaThiSinh;";
 
             try
             {
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-                    new SqlParameter("@MaKetQua", maKetQua),
                     new SqlParameter("@MaThiSinh", maThiSinh),
                     new SqlParameter("@MaDe", maDe),
                     new SqlParameter("@Diem", diem),
-                    new SqlParameter("@ThoiGianBatDau", thoiGianBatDau),
-                    new SqlParameter("@ThoiGianKetThuc", thoiGianKetThuc),
+                    new SqlParameter("@ThoiGianKetThuc", thoiGianKetThuc.ToString("yyyy-MM-dd HH:mm:ss")),
                     new SqlParameter("@DaHoanThanh", daHoanThanh)
                 };
 
@@ -69,6 +68,7 @@ namespace ServerDatabaseLibrary.Database.DAL
                 return false;
             }
         }
+
         public DataTable GetBangDiemTheoMaDe(string maDe)  // Đổi tên phương thức
         {
             string query = "EXEC sp_BangDiem @MaDe";

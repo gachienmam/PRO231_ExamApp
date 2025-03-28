@@ -61,7 +61,7 @@ namespace ManagementApp
             _currentUserEmail = currentUserEmail;
             _currentUserRole = currentUserRole;
 
-            quanLyDeThiForm = new QuanLyDeThiForm(_client, _headers);
+            quanLyDeThiForm = new QuanLyDeThiForm(_client, _headers, _currentUserEmail);
             quanLyNguoiDungForm = new QuanLyNguoiDungForm(_client, _headers);
             quanLyThiSinhForm = new QuanLyThiSinhForm(_client, _headers);
             thongKeDiemForm = new ThongKeDiemForm(_client, _headers);
@@ -257,7 +257,7 @@ namespace ManagementApp
         {
             if (clearAllForms)
             {
-                quanLyDeThiForm = new(_client, _headers);
+                quanLyDeThiForm = new(_client, _headers, _currentUserEmail);
                 quanLyNguoiDungForm = new(_client, _headers);
                 quanLyThiSinhForm = new(_client, _headers);
 

@@ -33,6 +33,13 @@
             statusStrip = new ReaLTaiizor.Controls.CrownStatusStrip();
             splitter1 = new Splitter();
             sectionPanelEditor = new ReaLTaiizor.Controls.CrownSectionPanel();
+            txtDanhSachThi = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTitle11 = new ReaLTaiizor.Controls.CrownTitle();
+            btnSelectDanhSachThi = new ReaLTaiizor.Controls.CrownButton();
+            txtViTriDanhSachThi = new ReaLTaiizor.Controls.CrownTextBox();
+            crownTitle12 = new ReaLTaiizor.Controls.CrownTitle();
+            parrotGradientPanel3 = new ReaLTaiizor.Controls.ParrotGradientPanel();
+            crownTitle13 = new ReaLTaiizor.Controls.CrownTitle();
             btnThemDe = new ReaLTaiizor.Controls.CrownButton();
             btnDeleteExam = new ReaLTaiizor.Controls.CrownButton();
             btnSelectFile = new ReaLTaiizor.Controls.CrownButton();
@@ -59,12 +66,6 @@
             btnSaveExam = new ReaLTaiizor.Controls.CrownButton();
             examTreeView = new ReaLTaiizor.Controls.CrownTreeView();
             sectionPanelTreeView = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTextBox1 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTitle11 = new ReaLTaiizor.Controls.CrownTitle();
-            crownTextBox2 = new ReaLTaiizor.Controls.CrownTextBox();
-            crownTitle12 = new ReaLTaiizor.Controls.CrownTitle();
-            parrotGradientPanel3 = new ReaLTaiizor.Controls.ParrotGradientPanel();
-            crownTitle13 = new ReaLTaiizor.Controls.CrownTitle();
             statusStrip.SuspendLayout();
             sectionPanelEditor.SuspendLayout();
             sectionPanelTreeView.SuspendLayout();
@@ -109,9 +110,10 @@
             // 
             // sectionPanelEditor
             // 
-            sectionPanelEditor.Controls.Add(crownTextBox1);
+            sectionPanelEditor.Controls.Add(txtDanhSachThi);
             sectionPanelEditor.Controls.Add(crownTitle11);
-            sectionPanelEditor.Controls.Add(crownTextBox2);
+            sectionPanelEditor.Controls.Add(btnSelectDanhSachThi);
+            sectionPanelEditor.Controls.Add(txtViTriDanhSachThi);
             sectionPanelEditor.Controls.Add(crownTitle12);
             sectionPanelEditor.Controls.Add(parrotGradientPanel3);
             sectionPanelEditor.Controls.Add(crownTitle13);
@@ -147,10 +149,98 @@
             sectionPanelEditor.Size = new Size(621, 393);
             sectionPanelEditor.TabIndex = 6;
             // 
+            // txtDanhSachThi
+            // 
+            txtDanhSachThi.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            txtDanhSachThi.BackColor = Color.FromArgb(69, 73, 74);
+            txtDanhSachThi.BorderStyle = BorderStyle.FixedSingle;
+            txtDanhSachThi.ForeColor = Color.FromArgb(220, 220, 220);
+            txtDanhSachThi.Location = new Point(106, 249);
+            txtDanhSachThi.MaxLength = 999999999;
+            txtDanhSachThi.Name = "txtDanhSachThi";
+            txtDanhSachThi.ReadOnly = true;
+            txtDanhSachThi.Size = new Size(126, 23);
+            txtDanhSachThi.TabIndex = 133;
+            // 
+            // crownTitle11
+            // 
+            crownTitle11.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            crownTitle11.AutoSize = true;
+            crownTitle11.Font = new Font("Segoe UI", 9F);
+            crownTitle11.Location = new Point(56, 253);
+            crownTitle11.Name = "crownTitle11";
+            crownTitle11.Size = new Size(44, 15);
+            crownTitle11.TabIndex = 132;
+            crownTitle11.Text = "Dữ liệu";
+            // 
+            // btnSelectDanhSachThi
+            // 
+            btnSelectDanhSachThi.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSelectDanhSachThi.Location = new Point(499, 249);
+            btnSelectDanhSachThi.Name = "btnSelectDanhSachThi";
+            btnSelectDanhSachThi.Padding = new Padding(5);
+            btnSelectDanhSachThi.Size = new Size(102, 23);
+            btnSelectDanhSachThi.TabIndex = 131;
+            btnSelectDanhSachThi.Text = "Chọn danh sách";
+            btnSelectDanhSachThi.Click += btnSelectDanhSachThi_Click;
+            // 
+            // txtViTriDanhSachThi
+            // 
+            txtViTriDanhSachThi.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            txtViTriDanhSachThi.BackColor = Color.FromArgb(69, 73, 74);
+            txtViTriDanhSachThi.BorderStyle = BorderStyle.FixedSingle;
+            txtViTriDanhSachThi.ForeColor = Color.FromArgb(220, 220, 220);
+            txtViTriDanhSachThi.Location = new Point(106, 220);
+            txtViTriDanhSachThi.Name = "txtViTriDanhSachThi";
+            txtViTriDanhSachThi.ReadOnly = true;
+            txtViTriDanhSachThi.Size = new Size(126, 23);
+            txtViTriDanhSachThi.TabIndex = 128;
+            // 
+            // crownTitle12
+            // 
+            crownTitle12.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            crownTitle12.AutoSize = true;
+            crownTitle12.Font = new Font("Segoe UI", 9F);
+            crownTitle12.Location = new Point(12, 222);
+            crownTitle12.Name = "crownTitle12";
+            crownTitle12.Size = new Size(88, 15);
+            crownTitle12.TabIndex = 127;
+            crownTitle12.Text = "Vị trí danh sách";
+            // 
+            // parrotGradientPanel3
+            // 
+            parrotGradientPanel3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            parrotGradientPanel3.BottomLeft = Color.Black;
+            parrotGradientPanel3.BottomRight = Color.Fuchsia;
+            parrotGradientPanel3.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            parrotGradientPanel3.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            parrotGradientPanel3.Location = new Point(213, 190);
+            parrotGradientPanel3.Name = "parrotGradientPanel3";
+            parrotGradientPanel3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            parrotGradientPanel3.PrimerColor = Color.White;
+            parrotGradientPanel3.Size = new Size(388, 4);
+            parrotGradientPanel3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            parrotGradientPanel3.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
+            parrotGradientPanel3.TabIndex = 126;
+            parrotGradientPanel3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            parrotGradientPanel3.TopLeft = Color.DeepSkyBlue;
+            parrotGradientPanel3.TopRight = Color.Fuchsia;
+            // 
+            // crownTitle13
+            // 
+            crownTitle13.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            crownTitle13.AutoSize = true;
+            crownTitle13.Font = new Font("Segoe UI", 16F);
+            crownTitle13.Location = new Point(22, 176);
+            crownTitle13.Name = "crownTitle13";
+            crownTitle13.Size = new Size(178, 30);
+            crownTitle13.TabIndex = 125;
+            crownTitle13.Text = "File danh sách thi";
+            // 
             // btnThemDe
             // 
             btnThemDe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnThemDe.Location = new Point(437, 350);
+            btnThemDe.Location = new Point(437, 352);
             btnThemDe.Name = "btnThemDe";
             btnThemDe.Padding = new Padding(5);
             btnThemDe.Size = new Size(75, 23);
@@ -161,7 +251,7 @@
             // btnDeleteExam
             // 
             btnDeleteExam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnDeleteExam.Location = new Point(437, 317);
+            btnDeleteExam.Location = new Point(437, 319);
             btnDeleteExam.Name = "btnDeleteExam";
             btnDeleteExam.Padding = new Padding(5);
             btnDeleteExam.Size = new Size(84, 23);
@@ -172,7 +262,7 @@
             // btnSelectFile
             // 
             btnSelectFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSelectFile.Location = new Point(527, 317);
+            btnSelectFile.Location = new Point(527, 319);
             btnSelectFile.Name = "btnSelectFile";
             btnSelectFile.Padding = new Padding(5);
             btnSelectFile.Size = new Size(75, 23);
@@ -186,7 +276,7 @@
             txtValidFile.BackColor = Color.FromArgb(69, 73, 74);
             txtValidFile.BorderStyle = BorderStyle.FixedSingle;
             txtValidFile.ForeColor = Color.FromArgb(220, 220, 220);
-            txtValidFile.Location = new Point(106, 352);
+            txtValidFile.Location = new Point(106, 354);
             txtValidFile.Name = "txtValidFile";
             txtValidFile.Size = new Size(126, 23);
             txtValidFile.TabIndex = 120;
@@ -196,7 +286,7 @@
             crownTitle10.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             crownTitle10.AutoSize = true;
             crownTitle10.Font = new Font("Segoe UI", 9F);
-            crownTitle10.Location = new Point(38, 354);
+            crownTitle10.Location = new Point(38, 356);
             crownTitle10.Name = "crownTitle10";
             crownTitle10.Size = new Size(62, 15);
             crownTitle10.TabIndex = 119;
@@ -208,7 +298,7 @@
             txtViTriFileDe.BackColor = Color.FromArgb(69, 73, 74);
             txtViTriFileDe.BorderStyle = BorderStyle.FixedSingle;
             txtViTriFileDe.ForeColor = Color.FromArgb(220, 220, 220);
-            txtViTriFileDe.Location = new Point(106, 323);
+            txtViTriFileDe.Location = new Point(106, 325);
             txtViTriFileDe.Name = "txtViTriFileDe";
             txtViTriFileDe.Size = new Size(126, 23);
             txtViTriFileDe.TabIndex = 118;
@@ -218,7 +308,7 @@
             crownTitle9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             crownTitle9.AutoSize = true;
             crownTitle9.Font = new Font("Segoe UI", 9F);
-            crownTitle9.Location = new Point(53, 325);
+            crownTitle9.Location = new Point(53, 327);
             crownTitle9.Name = "crownTitle9";
             crownTitle9.Size = new Size(47, 15);
             crownTitle9.TabIndex = 117;
@@ -231,7 +321,7 @@
             parrotGradientPanel2.BottomRight = Color.Fuchsia;
             parrotGradientPanel2.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             parrotGradientPanel2.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
-            parrotGradientPanel2.Location = new Point(169, 291);
+            parrotGradientPanel2.Location = new Point(169, 293);
             parrotGradientPanel2.Name = "parrotGradientPanel2";
             parrotGradientPanel2.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             parrotGradientPanel2.PrimerColor = Color.White;
@@ -248,7 +338,7 @@
             crownTitle8.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             crownTitle8.AutoSize = true;
             crownTitle8.Font = new Font("Segoe UI", 16F);
-            crownTitle8.Location = new Point(22, 277);
+            crownTitle8.Location = new Point(22, 279);
             crownTitle8.Name = "crownTitle8";
             crownTitle8.Size = new Size(77, 30);
             crownTitle8.TabIndex = 115;
@@ -347,6 +437,7 @@
             txtMaNguoiDung.ForeColor = Color.FromArgb(220, 220, 220);
             txtMaNguoiDung.Location = new Point(106, 111);
             txtMaNguoiDung.Name = "txtMaNguoiDung";
+            txtMaNguoiDung.ReadOnly = true;
             txtMaNguoiDung.Size = new Size(126, 23);
             txtMaNguoiDung.TabIndex = 106;
             // 
@@ -413,7 +504,7 @@
             // btnSaveExam
             // 
             btnSaveExam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSaveExam.Location = new Point(518, 350);
+            btnSaveExam.Location = new Point(518, 352);
             btnSaveExam.Name = "btnSaveExam";
             btnSaveExam.Padding = new Padding(5);
             btnSaveExam.Size = new Size(84, 23);
@@ -444,80 +535,6 @@
             sectionPanelTreeView.SectionHeader = "Danh sách đề thi";
             sectionPanelTreeView.Size = new Size(175, 393);
             sectionPanelTreeView.TabIndex = 7;
-            // 
-            // crownTextBox1
-            // 
-            crownTextBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            crownTextBox1.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox1.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox1.Location = new Point(106, 247);
-            crownTextBox1.Name = "crownTextBox1";
-            crownTextBox1.Size = new Size(126, 23);
-            crownTextBox1.TabIndex = 130;
-            // 
-            // crownTitle11
-            // 
-            crownTitle11.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            crownTitle11.AutoSize = true;
-            crownTitle11.Font = new Font("Segoe UI", 9F);
-            crownTitle11.Location = new Point(38, 249);
-            crownTitle11.Name = "crownTitle11";
-            crownTitle11.Size = new Size(62, 15);
-            crownTitle11.TabIndex = 129;
-            crownTitle11.Text = "Đề hợp lệ?";
-            // 
-            // crownTextBox2
-            // 
-            crownTextBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            crownTextBox2.BackColor = Color.FromArgb(69, 73, 74);
-            crownTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            crownTextBox2.ForeColor = Color.FromArgb(220, 220, 220);
-            crownTextBox2.Location = new Point(106, 218);
-            crownTextBox2.Name = "crownTextBox2";
-            crownTextBox2.Size = new Size(126, 23);
-            crownTextBox2.TabIndex = 128;
-            // 
-            // crownTitle12
-            // 
-            crownTitle12.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            crownTitle12.AutoSize = true;
-            crownTitle12.Font = new Font("Segoe UI", 9F);
-            crownTitle12.Location = new Point(53, 220);
-            crownTitle12.Name = "crownTitle12";
-            crownTitle12.Size = new Size(47, 15);
-            crownTitle12.TabIndex = 127;
-            crownTitle12.Text = "Vị trí đề";
-            // 
-            // parrotGradientPanel3
-            // 
-            parrotGradientPanel3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            parrotGradientPanel3.BottomLeft = Color.Black;
-            parrotGradientPanel3.BottomRight = Color.Fuchsia;
-            parrotGradientPanel3.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            parrotGradientPanel3.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
-            parrotGradientPanel3.Location = new Point(213, 186);
-            parrotGradientPanel3.Name = "parrotGradientPanel3";
-            parrotGradientPanel3.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            parrotGradientPanel3.PrimerColor = Color.White;
-            parrotGradientPanel3.Size = new Size(388, 4);
-            parrotGradientPanel3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            parrotGradientPanel3.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
-            parrotGradientPanel3.TabIndex = 126;
-            parrotGradientPanel3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            parrotGradientPanel3.TopLeft = Color.DeepSkyBlue;
-            parrotGradientPanel3.TopRight = Color.Fuchsia;
-            // 
-            // crownTitle13
-            // 
-            crownTitle13.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            crownTitle13.AutoSize = true;
-            crownTitle13.Font = new Font("Segoe UI", 16F);
-            crownTitle13.Location = new Point(22, 172);
-            crownTitle13.Name = "crownTitle13";
-            crownTitle13.Size = new Size(178, 30);
-            crownTitle13.TabIndex = 125;
-            crownTitle13.Text = "File danh sách thi";
             // 
             // QuanLyDeThiForm
             // 
@@ -575,11 +592,12 @@
         private ReaLTaiizor.Controls.CrownTreeView examTreeView;
         private ReaLTaiizor.Controls.CrownSectionPanel sectionPanelTreeView;
         private ReaLTaiizor.Controls.CrownButton btnThemDe;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox1;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle11;
-        private ReaLTaiizor.Controls.CrownTextBox crownTextBox2;
+        private ReaLTaiizor.Controls.CrownTextBox txtViTriDanhSachThi;
         private ReaLTaiizor.Controls.CrownTitle crownTitle12;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel3;
         private ReaLTaiizor.Controls.CrownTitle crownTitle13;
+        private ReaLTaiizor.Controls.CrownButton btnSelectDanhSachThi;
+        private ReaLTaiizor.Controls.CrownTextBox txtDanhSachThi;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle11;
     }
 }

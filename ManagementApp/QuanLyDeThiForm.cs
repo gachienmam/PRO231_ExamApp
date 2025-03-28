@@ -1,6 +1,8 @@
 ﻿using ManagementApp.AdminProto;
 using ManagementApp.CustomControls;
 using ManagementApp.Database;
+using MiniExcelLibs;
+using Newtonsoft.Json;
 using ReaLTaiizor.Child.Crown;
 using ReaLTaiizor.Controls;
 using ReaLTaiizor.Docking.Crown;
@@ -18,8 +20,8 @@ namespace ManagementApp
 {
     public partial class QuanLyDeThiForm : Form
     {
-        private readonly List<CrownDockContent> _tools = new();
-        private readonly TreeViewControl _dockTreeView;
+        //private readonly List<CrownDockContent> _tools = new();
+        //private readonly TreeViewControl _dockTreeView;
 
         private readonly AdminServiceClient _client;
         private readonly Grpc.Core.Metadata _headers;
@@ -28,11 +30,18 @@ namespace ManagementApp
         private CrownTreeView _tree;
         private GrpcDatabaseHelper _dbHelper;
 
-        public QuanLyDeThiForm(AdminServiceClient client, Grpc.Core.Metadata headers)
+        private bool _isEditingExam;
+
+        private string _currentUserEmail;
+        private string _currentMaNguoiDung;
+
+        public QuanLyDeThiForm(AdminServiceClient client, Grpc.Core.Metadata headers, string currentUserEmail)
         {
             InitializeComponent();
             _client = client;
             _headers = headers;
+
+            _currentUserEmail = currentUserEmail;
 
             _dbHelper = new GrpcDatabaseHelper(_client, _headers);
             // Thêm bộ lọc sự kiện cuộn chuột
@@ -41,16 +50,10 @@ namespace ManagementApp
 
         private async void QuanLyDeThiForm_Load(object sender, EventArgs e)
         {
+            _currentMaNguoiDung = _dbHelper.ExecuteSqlReader($"SELECT * FROM NguoiDung WHERE Email = '{_currentUserEmail}'").Rows[0]["MaNguoiDung"].ToString();
             await LoadTreeViewDataAsync();
             LoadStatusComboBox();
-        }
-
-        private void LoadStatusComboBox()
-        {
-            cbStatus.Items.Clear(); 
-            cbStatus.Items.Add(new CrownDropDownItem("Không được thi"));
-            cbStatus.Items.Add(new CrownDropDownItem("Được thi"));
-            cbStatus.SelectedItem = cbStatus.Items[0];
+            ResetValues();
         }
 
         private async void btnSelectFile_Click(object sender, EventArgs e)
@@ -60,29 +63,233 @@ namespace ManagementApp
                 ofd.Filter = "Excel|*.xlsx|All Files|*.*";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = ofd.FileName;
-                    stripProgressBar.Visible = false;
-                    stripProgressBar.Value = 0;
-                    statusLabel.Text = "Đã tải: 0%";
-                    stripProgressBar.Visible = true;
-                    txtViTriFileDe.Text = await UploadFileAsync(filePath);
+                    if (ofd.SafeFileName == $"{txtMaDe.Text}.xlsx")
+                    {
+                        string filePath = ofd.FileName;
+                        stripProgressBar.Visible = false;
+                        stripProgressBar.Value = 0;
+                        statusLabel.Text = "Đã tải: 0%";
+                        stripProgressBar.Visible = true;
+                        txtViTriFileDe.Text = await UploadFileAsync(filePath);
 
-                    // Hide
-                    //txtViTriFileDe.Text = ofd.FileName;
-                    stripProgressBar.Visible = false;
-                    stripProgressBar.Value = 0;
-                    statusLabel.Text = "Đang đợi";
-                    //txtValidFile.Text = IsValidExamFile(txtViTriFileDe.Text) ? "Yes" : "No";
-                    if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
-                    {
-                        txtValidFile.Text = "Yes";
+                        // Hide
+                        //txtViTriFileDe.Text = ofd.FileName;
+                        stripProgressBar.Visible = false;
+                        stripProgressBar.Value = 0;
+                        statusLabel.Text = "Đang đợi";
+                        //txtValidFile.Text = IsValidExamFile(txtViTriFileDe.Text) ? "Yes" : "No";
+                        if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
+                        {
+                            txtValidFile.Text = "Yes";
+                        }
+                        else
+                        {
+                            txtValidFile.Text = "No";
+                        }
                     }
-                    else 
+                    else
                     {
-                        txtValidFile.Text = "No";
+                        MessageBox.Show("Tên tệp tin đề phải trùng với mã đề!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+
+        private void btnSelectDanhSachThi_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Excel|*.xlsx|All Files|*.*";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    if (ofd.SafeFileName == $"DST_{txtMaDe.Text}.xlsx")
+                    {
+                        string filePath = ofd.FileName;
+                        txtViTriDanhSachThi.Text = ofd.SafeFileName;
+                        var dsMaThiSinh = MiniExcel.Query(filePath, useHeaderRow: true).ToList();
+                        txtDanhSachThi.Text = JsonConvert.SerializeObject(dsMaThiSinh);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tên tệp tin đề phải được đặt như sau: DST_(mã đề).xlsx", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void btnSaveExam_Click(object sender, EventArgs e)
+        {
+            string examCode = txtMaDe.Text;
+            string creatorCode = txtMaNguoiDung.Text;
+            string password = txtMatKhauDe.Text;
+            string danhSachThi = txtDanhSachThi.Text;
+            DateTime startTime = dtpThoiGianBatDau.Value;
+            DateTime endTime = dtpThoiGianKetThuc.Value;
+            int status = cbStatus.Items.IndexOf(cbStatus.SelectedItem);
+            bool isValidFile = txtValidFile.Text == "Yes";
+
+            if (string.IsNullOrWhiteSpace(examCode) || string.IsNullOrWhiteSpace(creatorCode) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(danhSachThi))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đề thi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (startTime >= endTime)
+            {
+                MessageBox.Show("Thời gian kết thúc phải lớn hơn thời gian bắt đầu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtValidFile.Text) || !isValidFile)
+            {
+                MessageBox.Show("File đề thi không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (_isEditingExam)
+            {
+                int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_UpdateDeThi @MaDe = '{examCode}', @MaNguoiDung = '{creatorCode}', @MatKhau = '{password}', @ThoiGianBatDau = '{startTime.ToString("yyyy-MM-dd HH:mm:ss")}', @ThoiGianKetThuc = '{endTime.ToString("yyyy-MM-dd HH:mm:ss")}', @TrangThai = '{status}', @DanhSachThi = '{danhSachThi}', @ViTriFileDe = '{txtViTriFileDe.Text}'");
+                if (query > 0)
+                {
+                    MessageBox.Show($"Đã sửa đề thi:\nMã đề: {examCode}\nNgười tạo: {creatorCode}\nTrạng thái: {status}\nFile: {txtViTriFileDe.Text}",
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Không thể lưu đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_InsertDeThi @MaDe = '{examCode}', @MaNguoiDung = '{creatorCode}', @MatKhau = '{password}', @ThoiGianBatDau = '{startTime.ToString("yyyy-MM-dd HH:mm:ss")}', @ThoiGianKetThuc = '{endTime.ToString("yyyy-MM-dd HH:mm:ss")}', @TrangThai = '{status}', @DanhSachThi = '{danhSachThi}', @ViTriFileDe = '{txtViTriFileDe.Text}'");
+                if (query > 0)
+                {
+                    MessageBox.Show($"Đã lưu đề thi:\nMã đề: {examCode}\nNgười tạo: {creatorCode}\nTrạng thái: {status}\nFile: {txtViTriFileDe.Text}",
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Không thể lưu đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+            LoadTreeViewData();
+            // Giả lập lưu dữ liệu (Thực tế sẽ lưu vào DB)
+        }
+
+        private void btnDeleteExam_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+
+            MessageBox.Show("Đã xóa thông tin đề thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnThemDe_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+        }
+
+        private void examTreeView_Click(object sender, EventArgs e)
+        {
+            if (_dataTable != null)
+            {
+                foreach (DataRow row in _dataTable.Rows)
+                {
+                    try
+                    {
+                        if (examTreeView.SelectedNodes[0].Text == row["MaDe"].ToString())
+                        {
+                            _isEditingExam = true;
+                            txtMaDe.Text = row["MaDe"].ToString();
+                            txtMaNguoiDung.Text = row["MaNguoiDung"].ToString();
+                            txtMatKhauDe.Text = row["MatKhau"].ToString();
+                            dtpThoiGianBatDau.Value = DateTime.Parse(row["ThoiGianBatDau"].ToString());
+                            dtpThoiGianKetThuc.Value = DateTime.Parse(row["ThoiGianKetThuc"].ToString());
+                            txtDanhSachThi.Text = row["DanhSachThi"].ToString();
+                            cbStatus.SelectedItem = cbStatus.Items[int.Parse(row["TrangThai"].ToString())];
+                            txtViTriFileDe.Text = row["ViTriFileDe"].ToString();
+                            if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
+                            {
+                                txtValidFile.Text = "Yes";
+                            }
+                            else
+                            {
+                                txtValidFile.Text = "Chưa chọn";
+                            }
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                CrownMessageBox.ShowWarning("Xin đợi dữ liệu tải trước khi chọn!", "Đang tải dữ liệu đề thi");
+                _isEditingExam = false;
+            }
+        }
+
+        #region Function
+        private void LoadStatusComboBox()
+        {
+            cbStatus.Items.Clear();
+            cbStatus.Items.Add(new CrownDropDownItem("Không được thi"));
+            cbStatus.Items.Add(new CrownDropDownItem("Được thi"));
+            cbStatus.SelectedItem = cbStatus.Items[0];
+        }
+
+        private void ResetValues()
+        {
+            _isEditingExam = false;
+            txtMaDe.Clear();
+            txtMaNguoiDung.Text = _currentMaNguoiDung;
+            txtMatKhauDe.Clear();
+            txtViTriFileDe.Clear();
+            txtValidFile.Text = "Chưa chọn";
+            txtViTriDanhSachThi.Clear();
+            txtDanhSachThi.Clear();
+            dtpThoiGianBatDau.Value = DateTime.Now;
+            dtpThoiGianKetThuc.Value = DateTime.Now.AddHours(1);
+            cbStatus.SelectedItem = cbStatus.Items[0];
+        }
+
+        private async Task LoadTreeViewDataAsync()
+        {
+            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM DeThi");
+
+            examTreeView.Nodes.Clear();
+
+            for (int i = 0; i < _dataTable.Rows.Count; i++)
+            {
+                CrownTreeNode node = new(_dataTable.Rows[i]["MaDe"].ToString())
+                {
+                    Icon = Properties.Resources.document_16xLG
+                };
+
+                examTreeView.Nodes.Add(node);
+            }
+
+            _tree = examTreeView;
+        }
+        private void LoadTreeViewData()
+        {
+            _dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM DeThi");
+
+            examTreeView.Nodes.Clear();
+
+            for (int i = 0; i < _dataTable.Rows.Count; i++)
+            {
+                CrownTreeNode node = new(_dataTable.Rows[i]["MaDe"].ToString())
+                {
+                    Icon = Properties.Resources.document_16xLG
+                };
+
+                examTreeView.Nodes.Add(node);
+            }
+
+            _tree = examTreeView;
         }
 
         private async Task<string> UploadFileAsync(string filePath)
@@ -166,138 +373,6 @@ namespace ManagementApp
         {
             return File.Exists(filePath) && (filePath.EndsWith(".pdf") || filePath.EndsWith(".docx"));
         }
-
-        private void btnSaveExam_Click(object sender, EventArgs e)
-        {
-            string examCode = txtMaDe.Text;
-            string creatorCode = txtMaNguoiDung.Text;
-            string password = txtMatKhauDe.Text;
-            DateTime startTime = dtpThoiGianBatDau.Value;
-            DateTime endTime = dtpThoiGianKetThuc.Value;
-            int status = cbStatus.Items.IndexOf(cbStatus.SelectedItem);
-            bool isValidFile = txtValidFile.Text == "Yes";
-
-            if (string.IsNullOrWhiteSpace(examCode) || string.IsNullOrWhiteSpace(creatorCode) || string.IsNullOrWhiteSpace(password))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đề thi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (startTime >= endTime)
-            {
-                MessageBox.Show("Thời gian kết thúc phải lớn hơn thời gian bắt đầu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtValidFile.Text) || !isValidFile)
-            {
-                MessageBox.Show("File đề thi không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_InsertDeThi @MaDe = '{examCode}', @MaNguoiDung = '{creatorCode}', @MatKhau = '{password}', @ThoiGianBatDau = '{startTime.ToString("yyyy-MM-dd")}', @ThoiGianKetThuc = '{endTime.ToString("yyyy-MM-dd")}', @TrangThai = '{status}', @DanhSachThi, @ViTriFileDe = '{txtViTriFileDe.Text}'");
-            if (query > 0)
-            {
-                MessageBox.Show($"Đã lưu đề thi:\nMã đề: {examCode}\nNgười tạo: {creatorCode}\nTrạng thái: {status}\nFile: {txtViTriFileDe.Text}",
-                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show($"Không thể lưu đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // Giả lập lưu dữ liệu (Thực tế sẽ lưu vào DB)
-        }
-
-        private void btnDeleteExam_Click(object sender, EventArgs e)
-        {
-            ResetValues();
-
-            MessageBox.Show("Đã xóa thông tin đề thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void btnThemDe_Click(object sender, EventArgs e)
-        {
-            ResetValues();
-        }
-
-        private void ResetValues()
-        {
-            txtMaDe.Clear();
-            txtMaNguoiDung.Clear();
-            txtMatKhauDe.Clear();
-            txtViTriFileDe.Clear();
-            txtValidFile.Text = "Chưa chọn";
-            dtpThoiGianBatDau.Value = DateTime.Now;
-            dtpThoiGianKetThuc.Value = DateTime.Now.AddHours(1);
-            cbStatus.SelectedItem = cbStatus.Items[0];
-        }
-
-        private async Task LoadTreeViewDataAsync()
-        {
-            _dataTable = await _dbHelper.ExecuteSqlReaderAsync("SELECT * FROM DeThi");
-
-            examTreeView.Nodes.Clear();
-
-            for (int i = 0; i < _dataTable.Rows.Count; i++)
-            {
-                CrownTreeNode node = new(_dataTable.Rows[i]["MaDe"].ToString())
-                {
-                    Icon = Properties.Resources.document_16xLG
-                };
-
-                examTreeView.Nodes.Add(node);
-            }
-
-            _tree = examTreeView;
-        }
-        private void LoadTreeViewData()
-        {
-            _dataTable = _dbHelper.ExecuteSqlReader("SELECT * FROM DeThi");
-
-            examTreeView.Nodes.Clear();
-
-            for (int i = 0; i < _dataTable.Rows.Count; i++)
-            {
-                CrownTreeNode node = new(_dataTable.Rows[i]["MaDe"].ToString())
-                {
-                    Icon = Properties.Resources.document_16xLG
-                };
-
-                examTreeView.Nodes.Add(node);
-            }
-
-            _tree = examTreeView;
-        }
-
-        private void examTreeView_Click(object sender, EventArgs e)
-        {
-            if(_dataTable != null)
-            {
-                foreach (DataRow row in _dataTable.Rows)
-                {
-                    try
-                    {
-                        if (examTreeView.SelectedNodes[0].Text == row["MaDe"].ToString())
-                        {
-                            txtMaDe.Text = row["MaDe"].ToString();
-                            txtMaNguoiDung.Text = row["MaNguoiDung"].ToString();
-                            txtMatKhauDe.Text = row["MatKhau"].ToString();
-                            dtpThoiGianBatDau.Value = DateTime.Parse(row["ThoiGianBatDau"].ToString());
-                            dtpThoiGianKetThuc.Value = DateTime.Parse(row["ThoiGianKetThuc"].ToString());
-                            cbStatus.SelectedItem = cbStatus.Items[int.Parse(row["TrangThai"].ToString())];
-                            txtViTriFileDe.Text = row["ViTriFileDe"].ToString();
-                        }
-                    }
-                    catch
-                    {
-
-                    }
-                }
-            }
-            else
-            {
-                CrownMessageBox.ShowWarning("Xin đợi dữ liệu tải trước khi chọn!", "Đang tải dữ liệu đề thi");
-            }
-        }
+        #endregion
     }
 }

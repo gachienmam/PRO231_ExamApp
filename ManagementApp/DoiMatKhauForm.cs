@@ -43,13 +43,7 @@ namespace ManagementApp
 
         private void BUTTONDOIMATKHAU_Click(object sender, EventArgs e)
         {
-            if (TEXTBOXMATKHAUHIENTAI.Text.Trim().Length == 0)// kiem tra phai nhap data
-            {
-                MessageBox.Show("Bạn phải nhập mật khẩu cũ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                TEXTBOXMATKHAUHIENTAI.Focus();
-                return;
-            }
-            else if (TEXTBOXMATKHAUMOI.Text.Trim().Length == 0)
+            if (TEXTBOXMATKHAUMOI.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mật khẩu mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TEXTBOXMATKHAUMOI.Focus();
@@ -90,7 +84,6 @@ namespace ManagementApp
                 else
                 {
                     //do something if NO
-                    TEXTBOXMATKHAUHIENTAI.Text = null;
                     TEXTBOXMATKHAUMOI.Text = null;
                     TextBoxXNhapLaiMatKhau.Text = null;
                 }

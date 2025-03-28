@@ -26,6 +26,7 @@ namespace ExamServer.Helper
                 new Claim(JwtRegisteredClaimNames.PhoneNumber, user.SoDienThoai),
                 new Claim(JwtRegisteredClaimNames.Birthdate, user.NgaySinh.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("MaThiSinh", user.MaThiSinh)
                 //new Claim(ClaimTypes.Role, user.VaiTro) // Add user role
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[$"Jwt:Key"] ?? "DefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKeyDefaultPolyTestExamServerKey"));

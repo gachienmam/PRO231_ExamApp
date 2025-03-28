@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
+            labelInfo = new ReaLTaiizor.Controls.CrownTitle();
             panel1 = new Panel();
             panelCauHoiHienTai = new ReaLTaiizor.Controls.CrownSectionPanel();
             labelQuestion = new ReaLTaiizor.Controls.CrownTitle();
@@ -64,7 +64,7 @@
             // 
             // crownSectionPanel1
             // 
-            crownSectionPanel1.Controls.Add(crownTitle2);
+            crownSectionPanel1.Controls.Add(labelInfo);
             crownSectionPanel1.Controls.Add(panel1);
             crownSectionPanel1.Controls.Add(checkBoxConfirmFinish);
             crownSectionPanel1.Controls.Add(pictureAnhDeThi);
@@ -87,15 +87,15 @@
             crownSectionPanel1.Size = new Size(868, 591);
             crownSectionPanel1.TabIndex = 0;
             // 
-            // crownTitle2
+            // labelInfo
             // 
-            crownTitle2.AutoSize = true;
-            crownTitle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            crownTitle2.Location = new Point(12, 201);
-            crownTitle2.Name = "crownTitle2";
-            crownTitle2.Size = new Size(438, 21);
-            crownTitle2.TabIndex = 62;
-            crownTitle2.Text = "Bài của bạn chưa được lưu, xin hãy báo giám thị và tiếp tục thi.";
+            labelInfo.AutoSize = true;
+            labelInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelInfo.Location = new Point(12, 201);
+            labelInfo.Name = "labelInfo";
+            labelInfo.Size = new Size(438, 21);
+            labelInfo.TabIndex = 62;
+            labelInfo.Text = "Bài của bạn chưa được lưu, xin hãy báo giám thị và tiếp tục thi.";
             // 
             // panel1
             // 
@@ -230,6 +230,7 @@
             pictureAnhDeThi.Size = new Size(128, 128);
             pictureAnhDeThi.TabIndex = 18;
             pictureAnhDeThi.TabStop = false;
+            pictureAnhDeThi.Click += pictureAnhDeThi_Click;
             // 
             // crownTitle1
             // 
@@ -413,7 +414,7 @@
         private ReaLTaiizor.Controls.CrownCheckBox checkBoxDapAnA;
         private ReaLTaiizor.Controls.CrownButton buttonNext;
         private ReaLTaiizor.Controls.CrownSectionPanel panelDanhSachCauHoi;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle2;
+        private ReaLTaiizor.Controls.CrownTitle labelInfo;
         private System.Windows.Forms.Timer timerExam;
     }
 }

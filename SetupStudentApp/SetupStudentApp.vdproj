@@ -13,6 +13,18 @@
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_5BF7E5E47A5E4B25ADB45BA3E5650046"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_95263A71CE4F433FAD5FFD6B45147935"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -108,6 +120,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5BF7E5E47A5E4B25ADB45BA3E5650046"
+            {
+            "SourcePath" = "8:D:\\polytest.ico"
+            "TargetName" = "8:polytest.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_52FAF144DEA74E6DA241101B229D085E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -146,6 +178,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_52FAF144DEA74E6DA241101B229D085E"
+                    {
+                    "Name" = "8:Resources"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_1C02DA744FB54F96B9DDB751DBBE34F8"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_8E1BF72E0B7E4E37A761FB44A0C82E1B"
@@ -296,20 +339,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2BDEFCC13B8F4E3DB2070349B6F5FA6F"
-            {
-            "Name" = "8:PolyTest Client"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:"
-            "Folder" = "8:_8E1BF72E0B7E4E37A761FB44A0C82E1B"
-            "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_43D78F09B0E146C8AFE17DA42BB6971E"
             {
             "Name" = "8:PolyTest Client"
@@ -322,6 +351,20 @@
             "Folder" = "8:_D75874D16FC744639C49EA3D0FD286C5"
             "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
             "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E7D7D81929CD4E9780880EF4409361BF"
+            {
+            "Name" = "8:PolyTest Student"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_95263A71CE4F433FAD5FFD6B45147935"
+            "Folder" = "8:_8E1BF72E0B7E4E37A761FB44A0C82E1B"
+            "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
+            "Icon" = "8:_5BF7E5E47A5E4B25ADB45BA3E5650046"
             "Feature" = "8:"
             }
         }
@@ -723,6 +766,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_95263A71CE4F433FAD5FFD6B45147935"
+            {
+            "SourcePath" = "8:..\\StudentApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItems"
+            "OutputProjectGuid" = "8:{41B2C648-85EA-4E44-88B5-71F7E3FBE4FC}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
         }
     }
 }

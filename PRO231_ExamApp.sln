@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExamServer", "ExamServer\Ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagementServer", "ManagementServer\ManagementServer.csproj", "{F1C9619B-4DFC-4C42-A4FD-876FF74ABBF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerDatabaseLibrary", "ServerDatabaseLibrary\ServerDatabaseLibrary.csproj", "{14227681-2A73-4D8E-A70F-C2723C8F8C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerDatabaseLibrary", "ServerDatabaseLibrary\ServerDatabaseLibrary.csproj", "{14227681-2A73-4D8E-A70F-C2723C8F8C9C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupManagementApp", "SetupManagementApp\SetupManagementApp.vdproj", "{D09F7E42-3AB6-40CB-A33A-32FC67C8FE1E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupStudentApp", "SetupStudentApp\SetupStudentApp.vdproj", "{2012774D-D822-42A5-937A-29099786C6B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{14227681-2A73-4D8E-A70F-C2723C8F8C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14227681-2A73-4D8E-A70F-C2723C8F8C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14227681-2A73-4D8E-A70F-C2723C8F8C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09F7E42-3AB6-40CB-A33A-32FC67C8FE1E}.Debug|Any CPU.ActiveCfg = Debug
+		{D09F7E42-3AB6-40CB-A33A-32FC67C8FE1E}.Debug|Any CPU.Build.0 = Debug
+		{D09F7E42-3AB6-40CB-A33A-32FC67C8FE1E}.Release|Any CPU.ActiveCfg = Release
+		{D09F7E42-3AB6-40CB-A33A-32FC67C8FE1E}.Release|Any CPU.Build.0 = Release
+		{2012774D-D822-42A5-937A-29099786C6B3}.Debug|Any CPU.ActiveCfg = Debug
+		{2012774D-D822-42A5-937A-29099786C6B3}.Debug|Any CPU.Build.0 = Debug
+		{2012774D-D822-42A5-937A-29099786C6B3}.Release|Any CPU.ActiveCfg = Release
+		{2012774D-D822-42A5-937A-29099786C6B3}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

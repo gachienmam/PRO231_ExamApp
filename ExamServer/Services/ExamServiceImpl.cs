@@ -42,7 +42,6 @@ namespace ExamServer.Services
         private DatabaseHelper _databaseHelper;
 
         // Cho server
-        private ServerDatabaseLibrary.Database.BUS.ThiSinh _busThiSinh;
         private ServerDatabaseLibrary.Database.DAL.DeThi _dalDeThi;
         private ServerDatabaseLibrary.Database.DAL.ThiSinh _dalThiSinh;
         private ServerDatabaseLibrary.Database.DAL.KetQuaThi _dalKetQuaThi;
@@ -59,7 +58,6 @@ namespace ExamServer.Services
             _dalDeThi = new ServerDatabaseLibrary.Database.DAL.DeThi(_databaseHelper);
 
             _dalThiSinh = new ServerDatabaseLibrary.Database.DAL.ThiSinh(_databaseHelper);
-            _busThiSinh = new ServerDatabaseLibrary.Database.BUS.ThiSinh(_dalThiSinh);
 
             _dalKetQuaThi = new ServerDatabaseLibrary.Database.DAL.KetQuaThi(_databaseHelper);
 
@@ -86,7 +84,7 @@ namespace ExamServer.Services
             {
                 return new AuthResponse { ResponseCode = (int)HttpStatusCode.Unauthorized, ResponseMessage = "Invalid credentials" };
             }
-            var userTable = await Task.Run(() => _busThiSinh.GetThiSinhByMaThiSinh(request.ThiSinhId));
+            var userTable = await Task.Run(() => _dalThiSinh.GetThiSinhByMaThiSinh(request.ThiSinhId));
             if (userTable.Rows.Count > 0)
             {
                 if (userTable.Rows[0]["TrangThai"].ToString().Trim() == "1")

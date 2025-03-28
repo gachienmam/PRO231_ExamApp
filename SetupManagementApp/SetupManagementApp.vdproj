@@ -13,6 +13,24 @@
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_312E32C4C72040C1A4661C2100294737"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_61E0558A464B4AA69F1A07CEAF8841AB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ECDF2CCF9EAC41C88F8847D5B75507E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -110,6 +128,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_312E32C4C72040C1A4661C2100294737"
+            {
+            "SourcePath" = "8:D:\\logoImage.png"
+            "TargetName" = "8:logoImage.png"
+            "Tag" = "8:"
+            "Folder" = "8:_152F2DF7235A4F23B8E991F696507B30"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61E0558A464B4AA69F1A07CEAF8841AB"
+            {
+            "SourcePath" = "8:D:\\polytest.ico"
+            "TargetName" = "8:polytest.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_152F2DF7235A4F23B8E991F696507B30"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -148,6 +206,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_152F2DF7235A4F23B8E991F696507B30"
+                    {
+                    "Name" = "8:Resources"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_F7DA5EB61AE048009CBD1AE7391DD870"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -165,7 +234,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SetupManagementApp"
+        "ProductName" = "8:PolyTest Manager"
         "ProductCode" = "8:{9237EA3C-0D4D-4FFA-9BAF-8CA38C72B99B}"
         "PackageCode" = "8:{47049716-C4DE-4805-9120-18D3726D8448}"
         "UpgradeCode" = "8:{3EAE5A32-1B9C-452B-A319-19ACED1AD4F9}"
@@ -175,15 +244,15 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Admin"
+        "Manufacturer" = "8:PolyTest"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SetupManagementApp"
+        "Title" = "8:PolyTest Manager"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Admin"
+        "ARPCONTACT" = "8:PolyTest"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:"
+        "ARPURLINFOABOUT" = "8:https://github.com/gachienmam/PRO231_ExamApp"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -287,7 +356,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0966E8BDCE754308B96EE4DB18ECA9E2"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E5780230FAFD4952A98436355E383E1C"
             {
             "Name" = "8:PolyTest Manager"
             "Arguments" = "8:"
@@ -295,10 +364,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_ECDF2CCF9EAC41C88F8847D5B75507E0"
             "Folder" = "8:_C9890E0A5FA847078DB891B4600C76FD"
             "WorkingFolder" = "8:_DD9B135B1F694B4186226A9F88402A03"
-            "Icon" = "8:"
+            "Icon" = "8:_61E0558A464B4AA69F1A07CEAF8841AB"
             "Feature" = "8:"
             }
         }
@@ -700,6 +769,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ECDF2CCF9EAC41C88F8847D5B75507E0"
+            {
+            "SourcePath" = "8:..\\ManagementApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_DD9B135B1F694B4186226A9F88402A03"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItems"
+            "OutputProjectGuid" = "8:{00884BE9-9F1B-49C0-BF11-5C8324A96CFE}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
         }
     }
 }

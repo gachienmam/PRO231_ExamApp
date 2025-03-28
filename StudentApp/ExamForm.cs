@@ -48,7 +48,6 @@ namespace StudentApp
 
         // Mã thí sinh
         private string _maThiSinh;
-        private int _submissionId;
 
         // Kiểm tra người dùng đã hoàn thành bài thi hay chưa (cho nút Finish)
         private bool _userFinishedExam;
@@ -77,7 +76,6 @@ namespace StudentApp
             _data = data;
 
             _maThiSinh = maThiSinh;
-            _submissionId = _data.SubmissionId;
 
             // Deserialize ServerInformation
             try
@@ -264,7 +262,7 @@ namespace StudentApp
                     paperSubmission = new PaperSubmission
                     {
                         SubmissionType = (int)PaperSubmitResponse.SUBMIT_FINAL,
-                        KetQuaId = _submissionId,
+                        ThiSinhId = _maThiSinh,
                         ExamCode = _examPaper.ExamCode,
                         StudentSubmitPaper = ByteString.CopyFrom(GZip.CompressJson(JsonConvert.SerializeObject(_submitPaper)))
                     };
@@ -274,7 +272,7 @@ namespace StudentApp
                     paperSubmission = new PaperSubmission
                     {
                         SubmissionType = (int)PaperSubmitResponse.SUBMIT_CONTINUE,
-                        KetQuaId = _submissionId,
+                        ThiSinhId = _maThiSinh,
                         ExamCode = _examPaper.ExamCode,
                         StudentSubmitPaper = ByteString.CopyFrom(GZip.CompressJson(JsonConvert.SerializeObject(_submitPaper)))
                     };

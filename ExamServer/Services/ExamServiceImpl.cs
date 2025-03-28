@@ -121,7 +121,12 @@ namespace ExamServer.Services
             string examCacheKey = $"Exam_{request.ExamCode}";
             string danhSachThiCacheKey = $"DanhSachThi_{request.ExamCode}";
             var examDataTable = await Task.Run(() => _dalDeThi.GetDeThiByMaDe(request.ExamCode));
-            var ketQuaThi = await Task.Run(() => _dalKetQuaThi.GetBangDiemTheoMaDe(request.ExamCode));
+            var ketQuaThi = await Task.Run(() => _dalKetQuaThi.GetBangDiemTheoMaDeAndMaThiSinh(request.ExamCode, request.ThiSinhId));
+
+            //if (ketQuaThi != null || ketQuaThi.Rows.Count > 0)
+            //{
+            //    return new ExamData { ResponseCode = (int)HttpStatusCode.Conflict };
+            //}
 
             // Kiểm tra bài có tồn tại hay không
             if (examDataTable != null || examDataTable.Rows.Count > 0)
@@ -236,9 +241,10 @@ namespace ExamServer.Services
                 _logger.LogInformation($"PaperSubmit CONTINUE DATA: KetQuaId: {GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray())}");
                 if (examPaper != null && submitPaper != null)
                 {
-                    float points = (ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice)) / examPaper.QMultipleChoice.Count)*10;
+                    int correctAnswers = ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice));
+                    float points = ((float)correctAnswers / (float)examPaper.QMultipleChoice.Count) * 10;
                     _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, false);
-                    _logger.LogInformation($"PaperSubmit CONTINUE: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.##}");
+                    _logger.LogInformation($"PaperSubmit CONTINUE: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.##}, Correct: {correctAnswers}");
                 }
 
                 return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_CONTINUE, ResponseMessage = "Submission received" };
@@ -250,9 +256,10 @@ namespace ExamServer.Services
                 SubmitPaper submitPaper = JsonConvert.DeserializeObject<SubmitPaper>(GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray()));
                 if (examPaper != null && submitPaper != null)
                 {
-                    float points = (ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice)) / examPaper.QMultipleChoice.Count)*10;
+                    int correctAnswers = ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice));
+                    float points = ((float)correctAnswers / (float)examPaper.QMultipleChoice.Count)*10;
                     _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, true);
-                    _logger.LogInformation($"PaperSubmit FINAL: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.##}, FinalTime: {DateTime.Now}");
+                    _logger.LogInformation($"PaperSubmit FINAL: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.##}, Correct: {correctAnswers}, FinalTime: {DateTime.Now}");
                 }
 
                 return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_FINAL, ResponseMessage = "Submission received. End exam" };

@@ -124,7 +124,7 @@ namespace ManagementApp
         {
             try
             {
-                string maSV = textBoxTimKiem.Text.Trim();
+                string maSV = textBoxTimKiemTheoMaThiSinh.Text.Trim();
                 if (string.IsNullOrEmpty(maSV))
                 {
                     MessageBox.Show("Vui lòng nhập mã sinh viên để tìm kiếm.");
@@ -173,7 +173,7 @@ namespace ManagementApp
         {
             try
             {
-                string maDe = TextBoxTimKimTheoDe.Text.Trim();
+                string maDe = textBoxTimKiemTheoMaDe.Text.Trim();
                 if (string.IsNullOrEmpty(maDe))
                 {
                     MessageBox.Show("Vui lòng nhập mã sinh viên để tìm kiếm.");

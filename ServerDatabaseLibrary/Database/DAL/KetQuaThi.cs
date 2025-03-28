@@ -89,6 +89,25 @@ namespace ServerDatabaseLibrary.Database.DAL
             }
         }
 
+        public DataTable GetBangDiemTheoMaDeAndMaThiSinh(string maDe, string maThiSinh)  // Đổi tên phương thức
+        {
+            string query = "SELECT * FROM KetQuaThi WHERE MaDe = @MaDe AND MaThiSinh = @MaThiSinh";
 
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@MaDe", maDe),
+                    new SqlParameter("@MaThiSinh", maThiSinh)
+                };
+
+                return _dbHelper.ExecuteQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi lấy bảng điểm: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

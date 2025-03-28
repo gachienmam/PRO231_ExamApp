@@ -41,7 +41,7 @@ namespace ManagementApp
             textBoxTimKiemTheoMaThiSinh = new ReaLTaiizor.Controls.CrownTextBox();
             buttonTimKiem = new ReaLTaiizor.Controls.CrownButton();
             dataGridView1 = new DataGridView();
-            buttonGuiMailChoThiSinh = new ReaLTaiizor.Controls.CrownButton();
+            buttonGuiMail = new ReaLTaiizor.Controls.CrownButton();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -49,7 +49,7 @@ namespace ManagementApp
             // 
             // crownSectionPanel1
             // 
-            crownSectionPanel1.Controls.Add(buttonGuiMailChoThiSinh);
+            crownSectionPanel1.Controls.Add(buttonGuiMail);
             crownSectionPanel1.Controls.Add(ButtonTimKiemTheoDe);
             crownSectionPanel1.Controls.Add(textBoxTimKiemTheoMaDe);
             crownSectionPanel1.Controls.Add(crownGroupBox1);
@@ -67,6 +67,7 @@ namespace ManagementApp
             // 
             // ButtonTimKiemTheoDe
             // 
+            ButtonTimKiemTheoDe.Anchor = AnchorStyles.None;
             ButtonTimKiemTheoDe.Location = new Point(529, 100);
             ButtonTimKiemTheoDe.Name = "ButtonTimKiemTheoDe";
             ButtonTimKiemTheoDe.Padding = new Padding(5);
@@ -77,6 +78,7 @@ namespace ManagementApp
             // 
             // textBoxTimKiemTheoMaDe
             // 
+            textBoxTimKiemTheoMaDe.Anchor = AnchorStyles.None;
             textBoxTimKiemTheoMaDe.BackColor = Color.FromArgb(69, 73, 74);
             textBoxTimKiemTheoMaDe.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiemTheoMaDe.Font = new Font("Segoe UI", 9F);
@@ -90,6 +92,7 @@ namespace ManagementApp
             // 
             // crownGroupBox1
             // 
+            crownGroupBox1.Anchor = AnchorStyles.None;
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(btnLocDuLieu);
             crownGroupBox1.Controls.Add(CheckBoxRot);
@@ -131,6 +134,7 @@ namespace ManagementApp
             // 
             // BUTTON_XUATDS
             // 
+            BUTTON_XUATDS.Anchor = AnchorStyles.None;
             BUTTON_XUATDS.Location = new Point(529, 28);
             BUTTON_XUATDS.Name = "BUTTON_XUATDS";
             BUTTON_XUATDS.Padding = new Padding(5);
@@ -141,6 +145,7 @@ namespace ManagementApp
             // 
             // BUTTON_XEMDS
             // 
+            BUTTON_XEMDS.Anchor = AnchorStyles.None;
             BUTTON_XEMDS.Location = new Point(13, 27);
             BUTTON_XEMDS.Name = "BUTTON_XEMDS";
             BUTTON_XEMDS.Padding = new Padding(5);
@@ -151,6 +156,7 @@ namespace ManagementApp
             // 
             // textBoxTimKiemTheoMaThiSinh
             // 
+            textBoxTimKiemTheoMaThiSinh.Anchor = AnchorStyles.None;
             textBoxTimKiemTheoMaThiSinh.BackColor = Color.FromArgb(69, 73, 74);
             textBoxTimKiemTheoMaThiSinh.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiemTheoMaThiSinh.Font = new Font("Segoe UI", 9F);
@@ -161,10 +167,10 @@ namespace ManagementApp
             textBoxTimKiemTheoMaThiSinh.PlaceholderText = "Tìm kiếm theo mã thí sinh";
             textBoxTimKiemTheoMaThiSinh.Size = new Size(510, 29);
             textBoxTimKiemTheoMaThiSinh.TabIndex = 15;
-            textBoxTimKiemTheoMaThiSinh.TextChanged += textBoxTimKiem_TextChanged;
             // 
             // buttonTimKiem
             // 
+            buttonTimKiem.Anchor = AnchorStyles.None;
             buttonTimKiem.Location = new Point(529, 65);
             buttonTimKiem.Name = "buttonTimKiem";
             buttonTimKiem.Padding = new Padding(5);
@@ -186,19 +192,20 @@ namespace ManagementApp
             dataGridView1.TabIndex = 9;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // buttonGuiMailChoThiSinh
+            // buttonGuiMail
             // 
-            buttonGuiMailChoThiSinh.Location = new Point(384, 28);
-            buttonGuiMailChoThiSinh.Name = "buttonGuiMailChoThiSinh";
-            buttonGuiMailChoThiSinh.Padding = new Padding(5);
-            buttonGuiMailChoThiSinh.Size = new Size(139, 32);
-            buttonGuiMailChoThiSinh.TabIndex = 22;
-            buttonGuiMailChoThiSinh.Text = "Gửi mail cho thí sinh";
+            buttonGuiMail.Anchor = AnchorStyles.None;
+            buttonGuiMail.Location = new Point(384, 28);
+            buttonGuiMail.Name = "buttonGuiMail";
+            buttonGuiMail.Padding = new Padding(5);
+            buttonGuiMail.Size = new Size(139, 32);
+            buttonGuiMail.TabIndex = 22;
+            buttonGuiMail.Text = "Gửi mail cho thí sinh";
+            buttonGuiMail.Click += buttonGuiMail_Click;
             // 
             // ThongKeDiemForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(800, 450);
             Controls.Add(dataGridView1);
             Controls.Add(crownSectionPanel1);
@@ -228,6 +235,6 @@ namespace ManagementApp
         private DataGridView dataGridView1;
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiemTheoMaDe;
         private ReaLTaiizor.Controls.CrownButton ButtonTimKiemTheoDe;
-        private ReaLTaiizor.Controls.CrownButton buttonGuiMailChoThiSinh;
+        private ReaLTaiizor.Controls.CrownButton buttonGuiMail;
     }
 }

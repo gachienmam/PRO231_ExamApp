@@ -73,8 +73,7 @@ namespace ManagementApp
                             {
                                 { "Authorization", $"Bearer {Shared.AccessToken}" }
                             };
-
-                        if (TEXTBOX_EMAIL.Text == "thanhcute@gmail.com") role = "GiangVien";
+                        role = response.ResponseMessage;
 
                         MainForm mainForm = new MainForm(_client, headers, TEXTBOX_EMAIL.Text, role); // Pass the server address
                         this.Hide();

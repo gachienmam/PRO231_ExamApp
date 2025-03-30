@@ -221,12 +221,16 @@ namespace ExamServer.Services
                     Port = 50051
                 };
 
+                exam.ExamCode = request.ExamCode;
+
                 examData = new ExamData
                 {
                     ResponseCode = (int)HttpStatusCode.OK,
                     ExamPaper = ByteString.CopyFrom(GZip.CompressJson(JsonConvert.SerializeObject(exam))),
                     ServerInformation = JsonConvert.SerializeObject(serverInfo)
                 };
+
+                _logger.LogInformation(JsonConvert.SerializeObject(exam));
 
                 // Lưu trong bộ nhớ tạm trong thời gian thi
                 _cache.Set(examCacheKey, examData, TimeSpan.FromSeconds(120));
@@ -242,7 +246,7 @@ namespace ExamServer.Services
                     int correctAnswers = ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice));
                     float points = ((float)correctAnswers / (float)examPaper.QMultipleChoice.Count) * 10;
                     _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, false);
-                    _logger.LogInformation($"PaperSubmit CONTINUE: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.##}, Correct: {correctAnswers}");
+                    _logger.LogInformation($"PaperSubmit CONTINUE: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}");
                 }
 
                 return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_CONTINUE, ResponseMessage = "Submission received" };
@@ -257,7 +261,7 @@ namespace ExamServer.Services
                     int correctAnswers = ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice));
                     float points = ((float)correctAnswers / (float)examPaper.QMultipleChoice.Count)*10;
                     _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, true);
-                    _logger.LogInformation($"PaperSubmit FINAL: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.##}, Correct: {correctAnswers}, FinalTime: {DateTime.Now}");
+                    _logger.LogInformation($"PaperSubmit FINAL: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}, FinalTime: {DateTime.Now}");
                 }
 
                 return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_FINAL, ResponseMessage = "Submission received. End exam" };

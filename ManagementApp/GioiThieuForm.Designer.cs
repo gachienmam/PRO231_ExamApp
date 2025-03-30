@@ -92,9 +92,9 @@
             foreverLabel3.ForeColor = Color.LightGray;
             foreverLabel3.Location = new Point(328, 79);
             foreverLabel3.Name = "foreverLabel3";
-            foreverLabel3.Size = new Size(60, 13);
+            foreverLabel3.Size = new Size(58, 13);
             foreverLabel3.TabIndex = 14;
-            foreverLabel3.Text = "v23032025";
+            foreverLabel3.Text = "v31032025";
             // 
             // foreverLabel2
             // 

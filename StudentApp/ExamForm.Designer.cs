@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            examContainerPanel = new ReaLTaiizor.Controls.CrownSectionPanel();
             labelInfo = new ReaLTaiizor.Controls.CrownTitle();
             panel1 = new Panel();
             panelCauHoiHienTai = new ReaLTaiizor.Controls.CrownSectionPanel();
@@ -55,37 +55,37 @@
             textBoxMachine = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitleMachine = new ReaLTaiizor.Controls.CrownTitle();
             timerExam = new System.Windows.Forms.Timer(components);
-            crownSectionPanel1.SuspendLayout();
+            examContainerPanel.SuspendLayout();
             panel1.SuspendLayout();
             panelCauHoiHienTai.SuspendLayout();
             panelChonDapAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).BeginInit();
             SuspendLayout();
             // 
-            // crownSectionPanel1
+            // examContainerPanel
             // 
-            crownSectionPanel1.Controls.Add(labelInfo);
-            crownSectionPanel1.Controls.Add(panel1);
-            crownSectionPanel1.Controls.Add(checkBoxConfirmFinish);
-            crownSectionPanel1.Controls.Add(pictureAnhDeThi);
-            crownSectionPanel1.Controls.Add(crownTitle1);
-            crownSectionPanel1.Controls.Add(textBoxServer);
-            crownSectionPanel1.Controls.Add(textBoxExamCode);
-            crownSectionPanel1.Controls.Add(textBoxStudent);
-            crownSectionPanel1.Controls.Add(textBoxTime);
-            crownSectionPanel1.Controls.Add(crownTitleServer);
-            crownSectionPanel1.Controls.Add(crownTitleExamCode);
-            crownSectionPanel1.Controls.Add(crownTitleStudent);
-            crownSectionPanel1.Controls.Add(buttonFinish);
-            crownSectionPanel1.Controls.Add(textBoxMachine);
-            crownSectionPanel1.Controls.Add(crownTitleMachine);
-            crownSectionPanel1.Dock = DockStyle.Fill;
-            crownSectionPanel1.Font = new Font("Segoe UI", 10F);
-            crownSectionPanel1.Location = new Point(0, 0);
-            crownSectionPanel1.Name = "crownSectionPanel1";
-            crownSectionPanel1.SectionHeader = "PolyTest Exam Client - Hôm nay: 24/3/2025";
-            crownSectionPanel1.Size = new Size(868, 591);
-            crownSectionPanel1.TabIndex = 0;
+            examContainerPanel.Controls.Add(labelInfo);
+            examContainerPanel.Controls.Add(panel1);
+            examContainerPanel.Controls.Add(checkBoxConfirmFinish);
+            examContainerPanel.Controls.Add(pictureAnhDeThi);
+            examContainerPanel.Controls.Add(crownTitle1);
+            examContainerPanel.Controls.Add(textBoxServer);
+            examContainerPanel.Controls.Add(textBoxExamCode);
+            examContainerPanel.Controls.Add(textBoxStudent);
+            examContainerPanel.Controls.Add(textBoxTime);
+            examContainerPanel.Controls.Add(crownTitleServer);
+            examContainerPanel.Controls.Add(crownTitleExamCode);
+            examContainerPanel.Controls.Add(crownTitleStudent);
+            examContainerPanel.Controls.Add(buttonFinish);
+            examContainerPanel.Controls.Add(textBoxMachine);
+            examContainerPanel.Controls.Add(crownTitleMachine);
+            examContainerPanel.Dock = DockStyle.Fill;
+            examContainerPanel.Font = new Font("Segoe UI", 10F);
+            examContainerPanel.Location = new Point(0, 0);
+            examContainerPanel.Name = "examContainerPanel";
+            examContainerPanel.SectionHeader = "PolyTest Exam Client - Hôm nay: 24/3/2025";
+            examContainerPanel.Size = new Size(868, 591);
+            examContainerPanel.TabIndex = 0;
             // 
             // labelInfo
             // 
@@ -359,7 +359,7 @@
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             ClientSize = new Size(868, 591);
-            Controls.Add(crownSectionPanel1);
+            Controls.Add(examContainerPanel);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
@@ -369,8 +369,8 @@
             Text = "ExamForm";
             TopMost = true;
             Load += ExamForm_Load;
-            crownSectionPanel1.ResumeLayout(false);
-            crownSectionPanel1.PerformLayout();
+            examContainerPanel.ResumeLayout(false);
+            examContainerPanel.PerformLayout();
             panel1.ResumeLayout(false);
             panelCauHoiHienTai.ResumeLayout(false);
             panelCauHoiHienTai.PerformLayout();
@@ -382,7 +382,7 @@
 
         #endregion
 
-        private ReaLTaiizor.Controls.CrownSectionPanel crownSectionPanel1;
+        private ReaLTaiizor.Controls.CrownSectionPanel examContainerPanel;
         private ReaLTaiizor.Controls.CrownButton crownButton2;
         private ReaLTaiizor.Controls.CrownRadioButton crownRadioButton1;
         private ReaLTaiizor.Controls.CrownButton buttonFinish;

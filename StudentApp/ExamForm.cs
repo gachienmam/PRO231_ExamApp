@@ -133,6 +133,8 @@ namespace StudentApp
             //pictureAnhDeThi.Image = ByteArrayToImage(_examPaper.ExamImage);
             buttonFinish.Enabled = false;
 
+            examContainerPanel.SectionHeader = "PolyTest Exam Client - Hôm nay: " + DateTime.Now.ToString("dd/MM/yyyy");
+
             // Fullscreen
             //EnterFullScreenMode(this);
 
@@ -359,7 +361,7 @@ namespace StudentApp
         private void AddQuestionButtonsToPanel(int n)
         {
             // Vị trí ban đầu của nút
-            int x_pos = 10;
+            int x_pos = 5;
             int y_pos = 30;
             for (int i = 1; i <= n; i++)
             {
@@ -373,7 +375,7 @@ namespace StudentApp
                 x_pos++;
                 if (button.Left + button.Width >= this.panelDanhSachCauHoi.Width - button.Width)
                 {
-                    x_pos = 10;
+                    x_pos = 5;
                     button.Left = button.Width * x_pos;
                     y_pos = y_pos + button.Height + 5;
                     button.Top = y_pos;
@@ -486,6 +488,7 @@ namespace StudentApp
         }
         #endregion
 
+        // Debug
         private void pictureAnhDeThi_Click(object sender, EventArgs e)
         {
             MessageBox.Show(_isSavingExamToServer.ToString());

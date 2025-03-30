@@ -140,9 +140,10 @@
             TEXTBOX_MATKHAU.ForeColor = Color.FromArgb(220, 220, 220);
             TEXTBOX_MATKHAU.Location = new Point(106, 234);
             TEXTBOX_MATKHAU.Name = "TEXTBOX_MATKHAU";
-            TEXTBOX_MATKHAU.PlaceholderText = "Email";
+            TEXTBOX_MATKHAU.PlaceholderText = "Password";
             TEXTBOX_MATKHAU.Size = new Size(193, 23);
             TEXTBOX_MATKHAU.TabIndex = 3;
+            TEXTBOX_MATKHAU.UseSystemPasswordChar = true;
             // 
             // crownTitle2
             // 

@@ -8,7 +8,8 @@ option csharp_namespace = "ManagementServer.AdminProto";
 
 service AdminService {
     rpc AdminAuthenticateUser (AuthRequest) returns (AuthResponse);
-    rpc UploadExamPaper (stream UploadExamFileChunk) returns (UploadResponse);
+    rpc UploadExamPaper (stream UploadRequest) returns (UploadResponse);
+    rpc DownloadExamPaper (DownloadRequest) returns (stream DownloadResponse);
     rpc ExecuteRemoteCommand (CommandRequest) returns (CommandResponse);
 }
 
@@ -28,7 +29,7 @@ message AuthResponse {
     string accessToken = 3; // send back a token if successful
 }
 
-message UploadExamFileChunk {
+message UploadRequest {
     string examId = 1;
     bytes data = 2;
 }
@@ -36,6 +37,15 @@ message UploadExamFileChunk {
 message UploadResponse {
     int32 responseCode = 1;
     string responseMessage = 2;
+}
+
+message DownloadRequest {
+    string examId = 1;
+}
+
+message DownloadResponse {
+    int32 responseCode = 1;
+    bytes data = 2;
 }
 
 // Admin command request

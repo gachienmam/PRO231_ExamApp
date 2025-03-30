@@ -13,7 +13,7 @@ namespace ManagementServer.Services
     public class AdminServiceImpl : AdminService.AdminServiceBase
     {
         #region Constructor
-        private readonly string _uploadPath = "ExamPapers/";
+        private readonly string _defaultPath_ExamPapers = "ExamPapers/";
 
         private readonly IConfiguration _configuration;
         private readonly ILogger<AdminServiceImpl> _logger;
@@ -67,7 +67,7 @@ namespace ManagementServer.Services
         }
 
         [Authorize(Roles = "Admin, GiangVien")]
-        public override async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadExamFileChunk> requestStream, ServerCallContext context)
+        public override async Task<UploadResponse> UploadExamPaper(IAsyncStreamReader<UploadRequest> requestStream, ServerCallContext context)
         {
             try
             {
@@ -90,12 +90,12 @@ namespace ManagementServer.Services
                     {
                         if (string.IsNullOrEmpty(filePath))
                         {
-                            filePath = Path.Combine(_uploadPath, $"{fileNamePrefix}.xlsx");
+                            filePath = Path.Combine(_configuration["Directory:ExamPapers"] ?? _defaultPath_ExamPapers, $"{fileNamePrefix}.xlsx");
                         }
                         using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write))
                         {
                             var chunk = request.Data.ToByteArray();
-                            _logger.LogDebug($"Received chunk of size: {chunk.Length} bytes for Exam ID: {examId}");
+                            _logger.LogDebug($"Received chunk of size: {chunk.Length} bytes for ExamID: {examId}");
                             await fileStream.WriteAsync(chunk);
                         }
                     }
@@ -122,8 +122,37 @@ namespace ManagementServer.Services
             {
                 _logger.LogInformation("UploadExamPaper request finished.");
             }
+        }
 
+        [Authorize(Roles = "Admin, GiangVien")]
+        public override async Task DownloadExamPaper(DownloadRequest request, IServerStreamWriter<DownloadResponse> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                string fileName = "exam_" + request.ExamId + ".xlsx";
+                string filePath = Path.Combine(_configuration["Directory:ExamPapers"] ?? _defaultPath_ExamPapers, fileName);
 
+                if (!File.Exists(filePath))
+                {
+                    throw new RpcException(new Status(StatusCode.NotFound, $"File '{fileName}' not found."));
+                }
+
+                using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                {
+                    byte[] buffer = new byte[4096]; // Adjust buffer size as needed
+                    int bytesRead;
+
+                    while ((bytesRead = await fileStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    {
+                        await responseStream.WriteAsync(new DownloadResponse { Data = Google.Protobuf.ByteString.CopyFrom(buffer, 0, bytesRead) });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error serving file: {ex.Message}");
+                throw new RpcException(new Status(StatusCode.Internal, "Internal server error."));
+            }
         }
 
         [Authorize(Roles = "Admin, GiangVien")]

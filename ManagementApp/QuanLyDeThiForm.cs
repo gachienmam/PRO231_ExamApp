@@ -1,4 +1,6 @@
-﻿using ManagementApp.AdminProto;
+﻿using Grpc.Core;
+using Grpc.Net.Client;
+using ManagementApp.AdminProto;
 using ManagementApp.CustomControls;
 using ManagementApp.Database;
 using MiniExcelLibs;
@@ -117,6 +119,28 @@ namespace ManagementApp
             }
         }
 
+        private async void btnDownloadFile_Click(object sender, EventArgs e)
+        {
+            string examCode = txtMaDe.Text;
+            if (string.IsNullOrWhiteSpace(examCode))
+            {
+                MessageBox.Show("Không có mã đề thi để tải!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            btnDownloadFile.Enabled = false;
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel|*.xlsx|All Files|*.*";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    await DownloadFileAsync(examCode, sfd.FileName);
+                }
+            }
+            btnDownloadFile.Enabled = true;
+            MessageBox.Show("Đã tải file đề thi về máy!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void btnSaveExam_Click(object sender, EventArgs e)
         {
             string examCode = txtMaDe.Text;
@@ -172,21 +196,39 @@ namespace ManagementApp
                     MessageBox.Show($"Không thể lưu đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
+
             LoadTreeViewData();
-            // Giả lập lưu dữ liệu (Thực tế sẽ lưu vào DB)
         }
 
         private void btnDeleteExam_Click(object sender, EventArgs e)
         {
-            ResetValues();
+            string examCode = txtMaDe.Text;
 
-            MessageBox.Show("Đã xóa thông tin đề thi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (string.IsNullOrWhiteSpace(examCode))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin đề thi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_DeleteDeThi @MaDe = '{examCode}'");
+            if (query > 0)
+            {
+                MessageBox.Show($"Đã xóa đề thi:\nMã đề: {examCode}",
+                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"Không thể xóa đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            ResetValues();
+            LoadTreeViewData();
         }
 
         private void btnThemDe_Click(object sender, EventArgs e)
         {
             ResetValues();
+            _isEditingExam = false;
         }
 
         private void examTreeView_Click(object sender, EventArgs e)
@@ -314,7 +356,7 @@ namespace ManagementApp
 
                     while ((bytesRead = await fileStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                     {
-                        await call.RequestStream.WriteAsync(new UploadExamFileChunk { ExamId = txtMaDe.Text, Data = Google.Protobuf.ByteString.CopyFrom(buffer, 0, bytesRead) });
+                        await call.RequestStream.WriteAsync(new UploadRequest { ExamId = txtMaDe.Text, Data = Google.Protobuf.ByteString.CopyFrom(buffer, 0, bytesRead) });
                         bytesUploaded += bytesRead;
 
                         // Cập nhật thanh quá trình
@@ -337,13 +379,39 @@ namespace ManagementApp
             }
             catch (Grpc.Core.RpcException ex)
             {
-                MessageBox.Show($"gRPC Error during upload: {ex.Status.Detail}", "gRPC Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"gRPC Error: {ex.Status.Detail}", "gRPC Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return string.Empty;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred during upload: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Đã có một lỗi xảy ra: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return string.Empty;
+            }
+        }
+
+        private async Task DownloadFileAsync(string examId, string destinationFilePath)
+        {
+            try
+            {
+                var request = new DownloadRequest { ExamId = examId };
+                using (var response = _client.DownloadExamPaper(request, _headers))
+                {
+                    using (FileStream fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write))
+                    {
+                        await foreach (var responseChunk in response.ResponseStream.ReadAllAsync())
+                        {
+                            fileStream.Write(responseChunk.Data.ToByteArray());
+                        }
+                    }
+                }
+            }
+            catch (RpcException ex)
+            {
+                MessageBox.Show($"gRPC Error: {ex.Status.Detail}", "gRPC Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã có một lỗi xảy ra: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -367,11 +435,6 @@ namespace ManagementApp
                     statusLabel.Text = "Đang đợi";
                 }
             }
-        }
-
-        private bool IsValidExamFile(string filePath)
-        {
-            return File.Exists(filePath) && (filePath.EndsWith(".pdf") || filePath.EndsWith(".docx"));
         }
         #endregion
     }

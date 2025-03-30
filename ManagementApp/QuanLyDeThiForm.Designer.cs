@@ -66,6 +66,7 @@
             btnSaveExam = new ReaLTaiizor.Controls.CrownButton();
             examTreeView = new ReaLTaiizor.Controls.CrownTreeView();
             sectionPanelTreeView = new ReaLTaiizor.Controls.CrownSectionPanel();
+            btnDownloadFile = new ReaLTaiizor.Controls.CrownButton();
             statusStrip.SuspendLayout();
             sectionPanelEditor.SuspendLayout();
             sectionPanelTreeView.SuspendLayout();
@@ -110,6 +111,7 @@
             // 
             // sectionPanelEditor
             // 
+            sectionPanelEditor.Controls.Add(btnDownloadFile);
             sectionPanelEditor.Controls.Add(txtDanhSachThi);
             sectionPanelEditor.Controls.Add(crownTitle11);
             sectionPanelEditor.Controls.Add(btnSelectDanhSachThi);
@@ -240,10 +242,10 @@
             // btnThemDe
             // 
             btnThemDe.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnThemDe.Location = new Point(437, 352);
+            btnThemDe.Location = new Point(428, 325);
             btnThemDe.Name = "btnThemDe";
             btnThemDe.Padding = new Padding(5);
-            btnThemDe.Size = new Size(75, 23);
+            btnThemDe.Size = new Size(84, 23);
             btnThemDe.TabIndex = 124;
             btnThemDe.Text = "Thêm đề";
             btnThemDe.Click += btnThemDe_Click;
@@ -251,7 +253,7 @@
             // btnDeleteExam
             // 
             btnDeleteExam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnDeleteExam.Location = new Point(437, 319);
+            btnDeleteExam.Location = new Point(428, 352);
             btnDeleteExam.Name = "btnDeleteExam";
             btnDeleteExam.Padding = new Padding(5);
             btnDeleteExam.Size = new Size(84, 23);
@@ -261,8 +263,8 @@
             // 
             // btnSelectFile
             // 
-            btnSelectFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSelectFile.Location = new Point(527, 319);
+            btnSelectFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSelectFile.Location = new Point(238, 325);
             btnSelectFile.Name = "btnSelectFile";
             btnSelectFile.Padding = new Padding(5);
             btnSelectFile.Size = new Size(75, 23);
@@ -504,10 +506,10 @@
             // btnSaveExam
             // 
             btnSaveExam.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSaveExam.Location = new Point(518, 352);
+            btnSaveExam.Location = new Point(518, 325);
             btnSaveExam.Name = "btnSaveExam";
             btnSaveExam.Padding = new Padding(5);
-            btnSaveExam.Size = new Size(84, 23);
+            btnSaveExam.Size = new Size(84, 50);
             btnSaveExam.TabIndex = 122;
             btnSaveExam.Text = "Lưu thay đổi";
             btnSaveExam.Click += btnSaveExam_Click;
@@ -535,6 +537,17 @@
             sectionPanelTreeView.SectionHeader = "Danh sách đề thi";
             sectionPanelTreeView.Size = new Size(175, 393);
             sectionPanelTreeView.TabIndex = 7;
+            // 
+            // btnDownloadFile
+            // 
+            btnDownloadFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDownloadFile.Location = new Point(238, 354);
+            btnDownloadFile.Name = "btnDownloadFile";
+            btnDownloadFile.Padding = new Padding(5);
+            btnDownloadFile.Size = new Size(75, 23);
+            btnDownloadFile.TabIndex = 134;
+            btnDownloadFile.Text = "Tải file đề";
+            btnDownloadFile.Click += btnDownloadFile_Click;
             // 
             // QuanLyDeThiForm
             // 
@@ -599,5 +612,6 @@
         private ReaLTaiizor.Controls.CrownButton btnSelectDanhSachThi;
         private ReaLTaiizor.Controls.CrownTextBox txtDanhSachThi;
         private ReaLTaiizor.Controls.CrownTitle crownTitle11;
+        private ReaLTaiizor.Controls.CrownButton btnDownloadFile;
     }
 }

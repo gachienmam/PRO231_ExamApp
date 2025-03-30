@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using ReaLTaiizor.Controls;
 using ManagementApp.Database;
 using ManagementApp.Helper;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ManagementApp
 {
@@ -202,12 +203,25 @@ namespace ManagementApp
 
         private void buttonGuiMail_Click(object sender, EventArgs e)
         {
-            foreach(DataRow row in ((DataTable)dataGridView1.DataSource).Rows)
+            if(dataGridView1.DataSource.GetType() == typeof(DataView))
             {
-                float diem = float.Parse(row["Diem"].ToString());
-                bool isPassed = diem > 5;
-                SendMailToThiSinh(row["MaDe"].ToString(), _dbHelper.ExecuteSqlReader($"SELECT Email FROM ThiSinh WHERE MaThiSinh = '{row["MaThiSinh"]}'").Rows[0]["Email"].ToString(), diem, isPassed);
+                foreach (DataRow row in ((DataView)dataGridView1.DataSource).ToTable().Rows)
+                {
+                    float diem = float.Parse(row["Diem"].ToString());
+                    bool isPassed = diem > 5;
+                    SendMailToThiSinh(row["MaDe"].ToString(), _dbHelper.ExecuteSqlReader($"SELECT Email FROM ThiSinh WHERE MaThiSinh = '{row["MaThiSinh"]}'").Rows[0]["Email"].ToString(), diem, isPassed);
+                }
             }
+            else
+            {
+                foreach (DataRow row in ((DataTable)dataGridView1.DataSource).Rows)
+                {
+                    float diem = float.Parse(row["Diem"].ToString());
+                    bool isPassed = diem > 5;
+                    SendMailToThiSinh(row["MaDe"].ToString(), _dbHelper.ExecuteSqlReader($"SELECT Email FROM ThiSinh WHERE MaThiSinh = '{row["MaThiSinh"]}'").Rows[0]["Email"].ToString(), diem, isPassed);
+                }
+            }
+            
         }
 
         private void SendMailToThiSinh(string maDe, string email, float diem, bool isPassed)

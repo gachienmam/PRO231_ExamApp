@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E27708EFE3734F1C87AF021003D15196"
+        "MsmKey" = "8:_609F68151F21424D950CD0A7EB03E732"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -180,7 +180,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_3C4E8955126542AFAB1DD89F1D8B479C"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -227,22 +227,22 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:SetupAuthClient"
+        "ProductName" = "8:PolyTest Student"
         "ProductCode" = "8:{E1DC6B4E-AD7B-4F90-8EA3-FCE1822AF7CC}"
         "PackageCode" = "8:{67783C88-ECB9-44C5-A17A-B68B46228554}"
         "UpgradeCode" = "8:{A10DAE9E-CB8D-41AD-8756-754CE9F57F37}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Admin"
+        "Manufacturer" = "8:PolyTest"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SetupAuthClient"
+        "Title" = "8:PolyTest Student"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Admin"
+        "ARPCONTACT" = "8:PolyTest"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -250,7 +250,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -349,21 +349,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_43D78F09B0E146C8AFE17DA42BB6971E"
-            {
-            "Name" = "8:PolyTest Client"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:"
-            "Folder" = "8:_D75874D16FC744639C49EA3D0FD286C5"
-            "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E2D2ECD84E154690ADBDC0D636B00A48"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_BA2C85AE1BA44531A1B58B6D8E9A3118"
             {
             "Name" = "8:PolyTest Student"
             "Arguments" = "8:"
@@ -371,7 +357,21 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_E27708EFE3734F1C87AF021003D15196"
+            "Target" = "8:_609F68151F21424D950CD0A7EB03E732"
+            "Folder" = "8:_D75874D16FC744639C49EA3D0FD286C5"
+            "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DBCC4086B88D477AB89609C300642C9E"
+            {
+            "Name" = "8:PolyTest Student"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_609F68151F21424D950CD0A7EB03E732"
             "Folder" = "8:_8E1BF72E0B7E4E37A761FB44A0C82E1B"
             "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
             "Icon" = "8:"
@@ -776,9 +776,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E27708EFE3734F1C87AF021003D15196"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_609F68151F21424D950CD0A7EB03E732"
             {
-            "SourcePath" = "8:..\\StudentApp\\obj\\Release\\net8.0-windows\\StudentApp.dll"
+            "SourcePath" = "8:..\\StudentApp\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
@@ -797,7 +797,7 @@
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
+            "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{41B2C648-85EA-4E44-88B5-71F7E3FBE4FC}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"

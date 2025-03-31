@@ -94,7 +94,7 @@ namespace ManagementApp
                                 txtValidFile.Text = "No";
                                 btnDownloadFile.Enabled = false;
                             }
-                            MessageBox.Show("Tên tệp tin đề phải trùng với mã đề!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Đã tải lên thành công!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {

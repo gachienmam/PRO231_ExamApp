@@ -25,6 +25,7 @@ using Newtonsoft.Json;
 using System.IO;
 using ExamLibrary.Helper;
 using ExamLibrary.Enum;
+using System.Net;
 
 namespace StudentApp
 {
@@ -69,7 +70,7 @@ namespace StudentApp
             InitializeComponent();
 
             // MONKE Anticheat: Giấu cửa sổ thi khỏi phần mềm quay fim
-            ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
+            //ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
 
             _client = client;
             _headers = headers;
@@ -130,7 +131,20 @@ namespace StudentApp
             //textBoxServer.Text = "ggMrBit";
             textBoxExamCode.Text = _examPaper.ExamCode;
             textBoxStudent.Text = _maThiSinh;
-            //pictureAnhDeThi.Image = ByteArrayToImage(_examPaper.ExamImage);
+
+            if (string.IsNullOrWhiteSpace(_examPaper.ExamImageLink))
+            {
+                pictureAnhDeThi.Visible = false;
+            }
+            else
+            {
+                pictureAnhDeThi.Visible = true;
+
+                //pictureAnhDeThi.Load(_examPaper.ExamImageLink);
+                pictureAnhDeThi.Image = GetImageFromCacheOrDownload(_examPaper.ExamImageLink, _examPaper.ExamCode + "DisplayImage");
+                //pictureBoxQuestionImage.Width = pictureBoxQuestionImage.Image.Width;
+            }
+
             buttonFinish.Enabled = false;
 
             examContainerPanel.SectionHeader = "PolyTest Exam Client - Hôm nay: " + DateTime.Now.ToString("dd/MM/yyyy");
@@ -222,6 +236,11 @@ namespace StudentApp
             _multipleChoice_currentQuestion = num;
             UpdateAnsweredQuestionButtons();
             DisplayMultipleChoice(_multipleChoice_currentQuestion - 1);
+        }
+
+        private void numericQuestionFontSize_ValueChanged(object sender, EventArgs e)
+        {
+            labelQuestion.Font = new Font("Segoe UI", (float)numericQuestionFontSize.Value, FontStyle.Regular);
         }
         #endregion
 
@@ -351,17 +370,17 @@ namespace StudentApp
             }
         }
 
-        private Image ByteArrayToImage(byte[] data)
-        {
-            MemoryStream ms = new MemoryStream(data);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
+        //private Image ByteArrayToImage(byte[] data)
+        //{
+        //    MemoryStream ms = new MemoryStream(data);
+        //    Image returnImage = Image.FromStream(ms);
+        //    return returnImage;
+        //}
 
         private void AddQuestionButtonsToPanel(int n)
         {
             // Vị trí ban đầu của nút
-            int x_pos = 5;
+            int x_pos = 1;
             int y_pos = 30;
             for (int i = 1; i <= n; i++)
             {
@@ -375,7 +394,7 @@ namespace StudentApp
                 x_pos++;
                 if (button.Left + button.Width >= this.panelDanhSachCauHoi.Width - button.Width)
                 {
-                    x_pos = 5;
+                    x_pos = 1;
                     button.Left = button.Width * x_pos;
                     y_pos = y_pos + button.Height + 5;
                     button.Top = y_pos;
@@ -392,11 +411,27 @@ namespace StudentApp
             var currentQuestionExam = _examPaper.QMultipleChoice[questionOrder];
             var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.QMultipleChoice[questionOrder];
             panelCauHoiHienTai.SectionHeader = $"Câu hỏi ({questionOrder + 1}/{_examPaper.QMultipleChoice.Count})";
-            labelQuestion.Text = currentQuestionExam.QuestionText + $"\r\n\r\n" +
+            labelQuestion.Text = $"(Chọn {currentQuestionExam.QuestionAnswers.Count} đáp án)\r\n" +
+                $"{currentQuestionExam.QuestionText} \r\n\r\n" +
                 $"A. {currentQuestionExam.QuestionAnswerTextA}\r\n" +
                 $"B. {currentQuestionExam.QuestionAnswerTextB}\r\n" +
                 $"C. {currentQuestionExam.QuestionAnswerTextC}\r\n" +
                 $"D. {currentQuestionExam.QuestionAnswerTextD}\r\n";
+
+            if (string.IsNullOrWhiteSpace(currentQuestionExam.QuestionImageLink))
+            {
+                pictureBoxQuestionImage.Visible = false;
+                splitterQuestionImage.Visible = false;
+            }
+            else
+            {
+                pictureBoxQuestionImage.Visible = true;
+                splitterQuestionImage.Visible = true;
+
+                pictureBoxQuestionImage.Image = GetImageFromCacheOrDownload(currentQuestionExam.QuestionImageLink, currentQuestionExam.QuestionID.ToString());
+                //pictureBoxQuestionImage.Load(currentQuestionExam.QuestionImageLink);
+                //pictureBoxQuestionImage.Width = pictureBoxQuestionImage.Image.Width;
+            }
 
             checkBoxDapAnA.Checked = false;
             checkBoxDapAnB.Checked = false;
@@ -421,10 +456,80 @@ namespace StudentApp
             }
         }
 
+        // Nếu không có ảnh sẵn thì tải về và lưu lại làm bộ nhớ tạm
+        private Image GetImageFromCacheOrDownload(string imageLink, string fileName)
+        {
+            if (string.IsNullOrEmpty(imageLink))
+            {
+                return null;
+            }
+
+            string tempDirectory = Path.Combine(Path.GetTempPath(), "PolyTestExamClient");
+            if (!Directory.Exists(tempDirectory))
+            {
+                Directory.CreateDirectory(tempDirectory);
+            }
+
+            string fileName1 = Path.GetFileName(new Uri(imageLink).AbsolutePath); // Lấy tên file từ link ảnh
+            string filePath = Path.Combine(tempDirectory, fileName1);
+
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    return Image.FromFile(filePath);
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ảnh bị fake
+                    labelInfo.Text = $"GetImage: Lỗi khi tải ảnh về máy: {ex.Message}";
+                    File.Delete(filePath); // Xóa ảnh lỗi
+                    return DownloadAndCacheImage(imageLink, filePath); // Tải lại ảnh
+                }
+
+            }
+            else
+            {
+                return DownloadAndCacheImage(imageLink, filePath);
+            }
+        }
+
+        private Image DownloadAndCacheImage(string imageLink, string filePath)
+        {
+            WebClient webClient = new WebClient();
+            try
+            {
+                byte[] imageBytes = webClient.DownloadData(imageLink);
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    Image image = Image.FromStream(ms);
+                    image.Save(filePath); // Lưu vô thư mục tạm
+                    return image;
+                }
+            }
+            catch (WebException wex)
+            {
+                // Xử lý ảnh bị fake
+                labelInfo.Text = $"DLWebException: Lỗi khi tải ảnh về máy: {wex.Message}";
+                return null;
+            }
+            catch (Exception ex)
+            {
+                labelInfo.Text = $"DLException: Lỗi khi tải ảnh về máy: {ex.Message}";
+                return null;
+            }
+            finally
+            {
+                webClient?.Dispose();
+            }
+        }
+
         private void FinishExam()
         {
             timerExam.Stop();
             panel1.Hide();
+            numericQuestionFontSize.Hide();
+            labelQuestionFontSize.Hide();
             LeaveFullScreenMode(this);
             _userFinishedExam = true;
             checkBoxConfirmFinish.Enabled = false;
@@ -488,11 +593,12 @@ namespace StudentApp
         }
         #endregion
 
-        // Debug
+        #region Debug Button
         private void pictureAnhDeThi_Click(object sender, EventArgs e)
         {
             MessageBox.Show(_isSavingExamToServer.ToString());
         }
+        #endregion
     }
     internal class Win32
     {

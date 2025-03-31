@@ -11,7 +11,7 @@ namespace ExamLibrary.Question.Types
 
         }
 
-        public MultipleChoice(int questionID, string questionText, string questionAnswerTextA, string questionAnswerTextB, string questionAnswerTextC, string questionAnswerTextD, List<string> questionAnswers)
+        public MultipleChoice(int questionID, string questionText, string questionAnswerTextA, string questionAnswerTextB, string questionAnswerTextC, string questionAnswerTextD, List<string> questionAnswers, string questionImageLink)
         {
             QuestionID = questionID;
             QuestionText = questionText;
@@ -20,6 +20,7 @@ namespace ExamLibrary.Question.Types
             QuestionAnswerTextC = questionAnswerTextC;
             QuestionAnswerTextD = questionAnswerTextD;
             QuestionAnswers = questionAnswers != null ? new List<string>(questionAnswers) : null; // Deep copy of the list
+            QuestionImageLink = questionImageLink;
         }
 
         private MultipleChoice(MultipleChoice other)
@@ -31,6 +32,7 @@ namespace ExamLibrary.Question.Types
             QuestionAnswerTextC = other.QuestionAnswerTextC;
             QuestionAnswerTextD = other.QuestionAnswerTextD;
             QuestionAnswers = other.QuestionAnswers != null ? new List<string>(other.QuestionAnswers) : null; // Deep copy of the list
+            QuestionImageLink = other.QuestionImageLink;
         }
 
         public int QuestionID { get; set; }
@@ -40,6 +42,7 @@ namespace ExamLibrary.Question.Types
         public string QuestionAnswerTextC { get; set; }
         public string QuestionAnswerTextD { get; set; }
         public List<string> QuestionAnswers { get; set; }
+        public string QuestionImageLink { get; set; }
 
         public object Clone()
         {

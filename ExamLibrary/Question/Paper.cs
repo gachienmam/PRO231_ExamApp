@@ -13,7 +13,7 @@ namespace ExamLibrary.Question
     {
         private string _testName;
         private string _examCode;
-        private string _examImageBase64;
+        private string _examImageLink;
         private string _notes;
         private int _duration; // giây
         private List<Types.MultipleChoice> _q_multipleChoice;
@@ -23,7 +23,7 @@ namespace ExamLibrary.Question
 
         public string TestName { get => _testName; set => _testName = value; }
         public string ExamCode { get => _examCode; set => _examCode = value; }
-        public string ExamImageBase64 { get => _examImageBase64; set => _examImageBase64 = value; }
+        public string ExamImageLink { get => _examImageLink; set => _examImageLink = value; }
         public string Notes { get => _notes; set => _notes = value; }
         public int Duration { get => _duration; set => _duration = value; }
         public List<Types.MultipleChoice> QMultipleChoice { get => _q_multipleChoice; set => _q_multipleChoice = value?.Select(mc => (Types.MultipleChoice)mc.Clone()).ToList(); }
@@ -35,7 +35,7 @@ namespace ExamLibrary.Question
         {
             _testName = testName;
             _examCode = examCode;
-            _examImageBase64 = examImageBase64;
+            _examImageLink = examImageBase64;
             _notes = notes;
             _duration = duration;
             _q_multipleChoice = q_multipleChoice?.Select(mc => (Types.MultipleChoice)mc.Clone()).ToList(); // Tạo bản sao
@@ -48,7 +48,7 @@ namespace ExamLibrary.Question
         {
             _testName = other._testName;
             _examCode = other._examCode;
-            _examImageBase64 = other._examImageBase64;
+            _examImageLink = other._examImageLink;
             _notes = other._notes;
             _duration = other._duration;
             _q_multipleChoice = other._q_multipleChoice?.Select(mc => (Types.MultipleChoice)mc.Clone()).ToList(); // Tạo bản sao

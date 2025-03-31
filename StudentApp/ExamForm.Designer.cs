@@ -30,9 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             examContainerPanel = new ReaLTaiizor.Controls.CrownSectionPanel();
+            labelQuestionFontSize = new ReaLTaiizor.Controls.CrownTitle();
+            numericQuestionFontSize = new ReaLTaiizor.Controls.CrownNumeric();
             labelInfo = new ReaLTaiizor.Controls.CrownTitle();
             panel1 = new Panel();
             panelCauHoiHienTai = new ReaLTaiizor.Controls.CrownSectionPanel();
+            splitterQuestionImage = new Splitter();
+            pictureBoxQuestionImage = new PictureBox();
             labelQuestion = new ReaLTaiizor.Controls.CrownTitle();
             panelChonDapAn = new ReaLTaiizor.Controls.CrownSectionPanel();
             checkBoxDapAnD = new ReaLTaiizor.Controls.CrownCheckBox();
@@ -56,14 +60,18 @@
             crownTitleMachine = new ReaLTaiizor.Controls.CrownTitle();
             timerExam = new System.Windows.Forms.Timer(components);
             examContainerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericQuestionFontSize).BeginInit();
             panel1.SuspendLayout();
             panelCauHoiHienTai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxQuestionImage).BeginInit();
             panelChonDapAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).BeginInit();
             SuspendLayout();
             // 
             // examContainerPanel
             // 
+            examContainerPanel.Controls.Add(labelQuestionFontSize);
+            examContainerPanel.Controls.Add(numericQuestionFontSize);
             examContainerPanel.Controls.Add(labelInfo);
             examContainerPanel.Controls.Add(panel1);
             examContainerPanel.Controls.Add(checkBoxConfirmFinish);
@@ -87,20 +95,42 @@
             examContainerPanel.Size = new Size(868, 591);
             examContainerPanel.TabIndex = 0;
             // 
+            // labelQuestionFontSize
+            // 
+            labelQuestionFontSize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelQuestionFontSize.AutoSize = true;
+            labelQuestionFontSize.Location = new Point(756, 204);
+            labelQuestionFontSize.Name = "labelQuestionFontSize";
+            labelQuestionFontSize.Size = new Size(55, 19);
+            labelQuestionFontSize.TabIndex = 65;
+            labelQuestionFontSize.Text = "Cỡ chữ:";
+            // 
+            // numericQuestionFontSize
+            // 
+            numericQuestionFontSize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            numericQuestionFontSize.Increment = new decimal(new int[] { 2, 0, 0, 0 });
+            numericQuestionFontSize.Location = new Point(817, 201);
+            numericQuestionFontSize.Maximum = new decimal(new int[] { 24, 0, 0, 0 });
+            numericQuestionFontSize.Minimum = new decimal(new int[] { 8, 0, 0, 0 });
+            numericQuestionFontSize.Name = "numericQuestionFontSize";
+            numericQuestionFontSize.Size = new Size(39, 25);
+            numericQuestionFontSize.TabIndex = 64;
+            numericQuestionFontSize.Value = new decimal(new int[] { 12, 0, 0, 0 });
+            numericQuestionFontSize.ValueChanged += numericQuestionFontSize_ValueChanged;
+            // 
             // labelInfo
             // 
-            labelInfo.Anchor = AnchorStyles.None;
             labelInfo.AutoSize = true;
             labelInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelInfo.Location = new Point(12, 201);
             labelInfo.Name = "labelInfo";
-            labelInfo.Size = new Size(438, 21);
+            labelInfo.Size = new Size(84, 21);
             labelInfo.TabIndex = 62;
-            labelInfo.Text = "Bài của bạn chưa được lưu, xin hãy báo giám thị và tiếp tục thi.";
+            labelInfo.Text = "Bất đầu thi";
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.None;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(panelCauHoiHienTai);
             panel1.Controls.Add(panelChonDapAn);
             panel1.Controls.Add(panelDanhSachCauHoi);
@@ -112,6 +142,8 @@
             // panelCauHoiHienTai
             // 
             panelCauHoiHienTai.AutoScroll = true;
+            panelCauHoiHienTai.Controls.Add(splitterQuestionImage);
+            panelCauHoiHienTai.Controls.Add(pictureBoxQuestionImage);
             panelCauHoiHienTai.Controls.Add(labelQuestion);
             panelCauHoiHienTai.Dock = DockStyle.Fill;
             panelCauHoiHienTai.Font = new Font("Segoe UI", 9F);
@@ -120,6 +152,24 @@
             panelCauHoiHienTai.SectionHeader = "Câu hỏi (1/20)";
             panelCauHoiHienTai.Size = new Size(725, 244);
             panelCauHoiHienTai.TabIndex = 68;
+            // 
+            // splitterQuestionImage
+            // 
+            splitterQuestionImage.Dock = DockStyle.Right;
+            splitterQuestionImage.Location = new Point(346, 25);
+            splitterQuestionImage.Name = "splitterQuestionImage";
+            splitterQuestionImage.Size = new Size(3, 218);
+            splitterQuestionImage.TabIndex = 63;
+            splitterQuestionImage.TabStop = false;
+            // 
+            // pictureBoxQuestionImage
+            // 
+            pictureBoxQuestionImage.Dock = DockStyle.Right;
+            pictureBoxQuestionImage.Location = new Point(349, 25);
+            pictureBoxQuestionImage.Name = "pictureBoxQuestionImage";
+            pictureBoxQuestionImage.Size = new Size(375, 218);
+            pictureBoxQuestionImage.TabIndex = 62;
+            pictureBoxQuestionImage.TabStop = false;
             // 
             // labelQuestion
             // 
@@ -229,6 +279,7 @@
             pictureAnhDeThi.Location = new Point(717, 45);
             pictureAnhDeThi.Name = "pictureAnhDeThi";
             pictureAnhDeThi.Size = new Size(128, 128);
+            pictureAnhDeThi.SizeMode = PictureBoxSizeMode.Zoom;
             pictureAnhDeThi.TabIndex = 18;
             pictureAnhDeThi.TabStop = false;
             pictureAnhDeThi.Click += pictureAnhDeThi_Click;
@@ -372,9 +423,11 @@
             Load += ExamForm_Load;
             examContainerPanel.ResumeLayout(false);
             examContainerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericQuestionFontSize).EndInit();
             panel1.ResumeLayout(false);
             panelCauHoiHienTai.ResumeLayout(false);
             panelCauHoiHienTai.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxQuestionImage).EndInit();
             panelChonDapAn.ResumeLayout(false);
             panelChonDapAn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureAnhDeThi).EndInit();
@@ -417,5 +470,9 @@
         private ReaLTaiizor.Controls.CrownSectionPanel panelDanhSachCauHoi;
         private ReaLTaiizor.Controls.CrownTitle labelInfo;
         private System.Windows.Forms.Timer timerExam;
+        private Splitter splitterQuestionImage;
+        private PictureBox pictureBoxQuestionImage;
+        private ReaLTaiizor.Controls.CrownTitle labelQuestionFontSize;
+        private ReaLTaiizor.Controls.CrownNumeric numericQuestionFontSize;
     }
 }

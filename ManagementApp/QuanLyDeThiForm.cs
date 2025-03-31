@@ -94,7 +94,7 @@ namespace ManagementApp
                                 txtValidFile.Text = "No";
                                 btnDownloadFile.Enabled = false;
                             }
-                            MessageBox.Show("Đã tải lên thành công!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Đã tải lên thành công!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {

@@ -91,6 +91,13 @@ namespace ManagementServer.Services
                         if (string.IsNullOrEmpty(filePath))
                         {
                             filePath = Path.Combine(_configuration["Directory:ExamPapers"] ?? _defaultPath_ExamPapers, $"{fileNamePrefix}.xlsx");
+
+                            // Xóa file cũ
+                            if (File.Exists(filePath))
+                            {
+                                _logger.LogInformation($"File already exists. Deleting: {filePath}");
+                                File.Delete(filePath);
+                            }
                         }
 
                         using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write))

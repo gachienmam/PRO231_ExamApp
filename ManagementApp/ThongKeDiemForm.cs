@@ -221,7 +221,7 @@ namespace ManagementApp
                     SendMailToThiSinh(row["MaDe"].ToString(), _dbHelper.ExecuteSqlReader($"SELECT Email FROM ThiSinh WHERE MaThiSinh = '{row["MaThiSinh"]}'").Rows[0]["Email"].ToString(), diem, isPassed);
                 }
             }
-            
+            MessageBox.Show("Đã gửi mail cho tất cả thí sinh trong danh sách!", "Đã gửi thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void SendMailToThiSinh(string maDe, string email, float diem, bool isPassed)

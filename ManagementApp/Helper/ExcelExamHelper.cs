@@ -19,8 +19,7 @@ namespace ManagementApp.Helper
             //string cell_MaGiangVien = "C8";
             Paper paper = new Paper("name", "", "", "", 3600, null, false);
             paper.Duration = Convert.ToInt32(ReadFirstValueFromExcel(excelFileName, "Thong Tin", "ThoiGianLamBai"));
-            //ExamImageBase64 = Convert.ToBase64String(ReadImagesFromExcel(excelFileName, "Thong Tin")),
-            paper.ExamImageBase64 = "";
+            paper.ExamImageLink = (string)ReadFirstValueFromExcel(excelFileName, "Thong Tin", "LinkAnhDeThi");
             paper.OptionShuffleMultipleChoice = (string)ReadFirstValueFromExcel(excelFileName, "Option MultipleChoice", "XaoTronCauHoi") == "Yes" ? true : false;
             paper.QMultipleChoice = ReadMultipleChoiceQuestions(excelFileName, "MultipleChoice");
             return;
@@ -76,7 +75,8 @@ namespace ManagementApp.Helper
                                 QuestionAnswerTextD = dictRow["QuestionAnswerTextD"]?.ToString(),
                                 QuestionAnswers = dictRow.ContainsKey("QuestionAnswers") && dictRow["QuestionAnswers"] != null
                                     ? dictRow["QuestionAnswers"].ToString().Split(';').ToList()
-                                    : new List<string>() // Handle null or missing QuestionAnswers.
+                                    : new List<string>(),// Xử lý danh sách đáp án là null hoặc để trống
+                                QuestionImageLink = dictRow["QuestionImageLink"]?.ToString()
                             };
                             questions.Add(question);
                         }

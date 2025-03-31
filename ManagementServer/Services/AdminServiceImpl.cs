@@ -92,6 +92,7 @@ namespace ManagementServer.Services
                         {
                             filePath = Path.Combine(_configuration["Directory:ExamPapers"] ?? _defaultPath_ExamPapers, $"{fileNamePrefix}.xlsx");
                         }
+
                         using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write))
                         {
                             var chunk = request.Data.ToByteArray();
@@ -106,7 +107,7 @@ namespace ManagementServer.Services
                 }
 
                 _logger.LogInformation($"File saved successfully: {fileNamePrefix}");
-                return new UploadResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = filePath };
+                return new UploadResponse { ResponseCode = (int)HttpStatusCode.OK, ResponseMessage = $"ExamPapers/{fileNamePrefix}.xlsx" };
             }
             catch (RpcException rpcEx)
             {

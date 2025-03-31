@@ -25,8 +25,7 @@ namespace ManagementServer.Helper
             //string cell_MaGiangVien = "C8";
             Paper paper = new Paper("name", "", "", "", 3600, null, false);
             paper.Duration = Convert.ToInt32(ReadFirstValueFromExcel(excelFileName, "Thong Tin", "ThoiGianLamBai"));
-            //ExamImageBase64 = Convert.ToBase64String(ReadImagesFromExcel(excelFileName, "Thong Tin")),
-            paper.ExamImageBase64 = "";
+            paper.ExamImageLink = (string)ReadFirstValueFromExcel(excelFileName, "Thong Tin", "LinkAnhDeThi");
             paper.OptionShuffleMultipleChoice = (string)ReadFirstValueFromExcel(excelFileName, "Option MultipleChoice", "XaoTronCauHoi") == "Yes" ? true : false;
             paper.QMultipleChoice = ReadMultipleChoiceQuestions(excelFileName, "MultipleChoice");
             return paper;
@@ -82,7 +81,8 @@ namespace ManagementServer.Helper
                                 QuestionAnswerTextD = dictRow["QuestionAnswerTextD"]?.ToString(),
                                 QuestionAnswers = dictRow.ContainsKey("QuestionAnswers") && dictRow["QuestionAnswers"] != null
                                     ? dictRow["QuestionAnswers"].ToString().Split(';').ToList()
-                                    : new List<string>() // Handle null or missing QuestionAnswers.
+                                    : new List<string>(),// Xử lý danh sách đáp án là null hoặc để trống
+                                QuestionImageLink = dictRow["QuestionImageLink"]?.ToString()
                             };
                             questions.Add(question);
                         }
@@ -96,44 +96,44 @@ namespace ManagementServer.Helper
             return questions;
         }
 
-        private static byte[] ReadImagesFromExcel(string filePath, string sheetName)
-        {
-            try
-            {
-                using (var workbook = new XLWorkbook(filePath))
-                {
-                    var worksheet = workbook.Worksheet(sheetName);
+        //private static byte[] ReadImagesFromExcel(string filePath, string sheetName)
+        //{
+        //    try
+        //    {
+        //        using (var workbook = new XLWorkbook(filePath))
+        //        {
+        //            var worksheet = workbook.Worksheet(sheetName);
 
-                    foreach (var drawing in worksheet.Pictures)
-                    {
-                        Console.WriteLine($"Found Image From {filePath}/{sheetName}: {drawing.ImageStream}");
+        //            foreach (var drawing in worksheet.Pictures)
+        //            {
+        //                Console.WriteLine($"Found Image From {filePath}/{sheetName}: {drawing.ImageStream}");
 
-                        //string imageName = $"extracted_image_{Guid.NewGuid()}.{drawing.Name.Split('/').Last()}";
-                        //string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), imageName);
+        //                //string imageName = $"extracted_image_{Guid.NewGuid()}.{drawing.Name.Split('/').Last()}";
+        //                //string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), imageName);
 
-                        try
-                        {
-                            return drawing.ImageStream.ToArray();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Error saving image '{drawing.Name}': {ex.Message}");
-                            return null;
-                        }
-                    }
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine($"Error: File not found.");
-                return null;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-                return null;
-            }
-            return null;
-        }
+        //                try
+        //                {
+        //                    return drawing.ImageStream.ToArray();
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    Console.WriteLine($"Error saving image '{drawing.Name}': {ex.Message}");
+        //                    return null;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (FileNotFoundException)
+        //    {
+        //        Console.WriteLine($"Error: File not found.");
+        //        return null;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"An error occurred: {ex.Message}");
+        //        return null;
+        //    }
+        //    return null;
+        //}
     }
 }

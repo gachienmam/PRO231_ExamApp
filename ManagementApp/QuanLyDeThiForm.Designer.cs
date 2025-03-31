@@ -33,6 +33,7 @@
             statusStrip = new ReaLTaiizor.Controls.CrownStatusStrip();
             splitter1 = new Splitter();
             sectionPanelEditor = new ReaLTaiizor.Controls.CrownSectionPanel();
+            btnDownloadFile = new ReaLTaiizor.Controls.CrownButton();
             txtDanhSachThi = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle11 = new ReaLTaiizor.Controls.CrownTitle();
             btnSelectDanhSachThi = new ReaLTaiizor.Controls.CrownButton();
@@ -66,7 +67,6 @@
             btnSaveExam = new ReaLTaiizor.Controls.CrownButton();
             examTreeView = new ReaLTaiizor.Controls.CrownTreeView();
             sectionPanelTreeView = new ReaLTaiizor.Controls.CrownSectionPanel();
-            btnDownloadFile = new ReaLTaiizor.Controls.CrownButton();
             statusStrip.SuspendLayout();
             sectionPanelEditor.SuspendLayout();
             sectionPanelTreeView.SuspendLayout();
@@ -83,6 +83,7 @@
             // 
             stripProgressBar.Name = "stripProgressBar";
             stripProgressBar.Size = new Size(150, 12);
+            stripProgressBar.Visible = false;
             // 
             // statusStrip
             // 
@@ -150,6 +151,17 @@
             sectionPanelEditor.SectionHeader = "Chỉnh sửa đề:";
             sectionPanelEditor.Size = new Size(621, 393);
             sectionPanelEditor.TabIndex = 6;
+            // 
+            // btnDownloadFile
+            // 
+            btnDownloadFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDownloadFile.Location = new Point(238, 354);
+            btnDownloadFile.Name = "btnDownloadFile";
+            btnDownloadFile.Padding = new Padding(5);
+            btnDownloadFile.Size = new Size(75, 23);
+            btnDownloadFile.TabIndex = 134;
+            btnDownloadFile.Text = "Tải file đề";
+            btnDownloadFile.Click += btnDownloadFile_Click;
             // 
             // txtDanhSachThi
             // 
@@ -537,17 +549,6 @@
             sectionPanelTreeView.SectionHeader = "Danh sách đề thi";
             sectionPanelTreeView.Size = new Size(175, 393);
             sectionPanelTreeView.TabIndex = 7;
-            // 
-            // btnDownloadFile
-            // 
-            btnDownloadFile.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnDownloadFile.Location = new Point(238, 354);
-            btnDownloadFile.Name = "btnDownloadFile";
-            btnDownloadFile.Padding = new Padding(5);
-            btnDownloadFile.Size = new Size(75, 23);
-            btnDownloadFile.TabIndex = 134;
-            btnDownloadFile.Text = "Tải file đề";
-            btnDownloadFile.Click += btnDownloadFile_Click;
             // 
             // QuanLyDeThiForm
             // 

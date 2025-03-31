@@ -3,6 +3,7 @@ using Grpc.Net.Client;
 using ManagementApp.AdminProto;
 using ManagementApp.CustomControls;
 using ManagementApp.Database;
+using ManagementApp.Helper;
 using MiniExcelLibs;
 using Newtonsoft.Json;
 using ReaLTaiizor.Child.Crown;
@@ -62,37 +63,48 @@ namespace ManagementApp
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Excel|*.xlsx|All Files|*.*";
-                if (ofd.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    if (ofd.SafeFileName == $"{txtMaDe.Text}.xlsx")
+                    ofd.Filter = "Excel|*.xlsx|All Files|*.*";
+                    if (ofd.ShowDialog() == DialogResult.OK)
                     {
-                        string filePath = ofd.FileName;
-                        stripProgressBar.Visible = false;
-                        stripProgressBar.Value = 0;
-                        statusLabel.Text = "Đã tải: 0%";
-                        stripProgressBar.Visible = true;
-                        txtViTriFileDe.Text = await UploadFileAsync(filePath);
-
-                        // Hide
-                        //txtViTriFileDe.Text = ofd.FileName;
-                        stripProgressBar.Visible = false;
-                        stripProgressBar.Value = 0;
-                        statusLabel.Text = "Đang đợi";
-                        //txtValidFile.Text = IsValidExamFile(txtViTriFileDe.Text) ? "Yes" : "No";
-                        if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
+                        if (ofd.SafeFileName == $"{txtMaDe.Text}.xlsx")
                         {
-                            txtValidFile.Text = "Yes";
+                            ExcelExamHelper.TestReadFromFileIntoPaper(ofd.FileName);
+                            string filePath = ofd.FileName;
+                            stripProgressBar.Visible = false;
+                            stripProgressBar.Value = 0;
+                            statusLabel.Text = "Đã tải: 0%";
+                            stripProgressBar.Visible = true;
+                            txtViTriFileDe.Text = await UploadFileAsync(filePath);
+
+                            // Hide
+                            //txtViTriFileDe.Text = ofd.FileName;
+                            stripProgressBar.Visible = false;
+                            stripProgressBar.Value = 0;
+                            statusLabel.Text = "Đang đợi";
+                            //txtValidFile.Text = IsValidExamFile(txtViTriFileDe.Text) ? "Yes" : "No";
+                            if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
+                            {
+                                txtValidFile.Text = "Yes";
+                                btnDownloadFile.Enabled = true;
+                            }
+                            else
+                            {
+                                txtValidFile.Text = "No";
+                                btnDownloadFile.Enabled = false;
+                            }
+                            MessageBox.Show("Tên tệp tin đề phải trùng với mã đề!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
-                            txtValidFile.Text = "No";
+                            MessageBox.Show("Tên tệp tin đề phải trùng với mã đề!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Tên tệp tin đề phải trùng với mã đề!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Tệp tin đề thi của bạn không hợp lệ!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -101,20 +113,32 @@ namespace ManagementApp
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Excel|*.xlsx|All Files|*.*";
-                if (ofd.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    if (ofd.SafeFileName == $"DST_{txtMaDe.Text}.xlsx")
+                    ofd.Filter = "Excel|*.xlsx|All Files|*.*";
+                    if (ofd.ShowDialog() == DialogResult.OK)
                     {
-                        string filePath = ofd.FileName;
-                        txtViTriDanhSachThi.Text = ofd.SafeFileName;
-                        var dsMaThiSinh = MiniExcel.Query(filePath, useHeaderRow: true).ToList();
-                        txtDanhSachThi.Text = JsonConvert.SerializeObject(dsMaThiSinh);
+                        if (ofd.SafeFileName == $"DST_{txtMaDe.Text}.xlsx")
+                        {
+                            string filePath = ofd.FileName;
+                            if((string)ExcelExamHelper.ReadFirstValueFromExcel(filePath, "Thong Tin", "MaThiSinh") == null)
+                            {
+                                MessageBox.Show("Tệp tin danh sách thi của bạn không hợp lệ!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                            txtViTriDanhSachThi.Text = ofd.SafeFileName;
+                            var dsMaThiSinh = MiniExcel.Query(filePath, useHeaderRow: true).ToList();
+                            txtDanhSachThi.Text = JsonConvert.SerializeObject(dsMaThiSinh);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tên tệp tin đề phải được đặt như sau: DST_(mã đề).xlsx", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Tên tệp tin đề phải được đặt như sau: DST_(mã đề).xlsx", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Tệp tin danh sách thi của bạn không hợp lệ!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -155,6 +179,12 @@ namespace ManagementApp
             if (string.IsNullOrWhiteSpace(examCode) || string.IsNullOrWhiteSpace(creatorCode) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(danhSachThi))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin đề thi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(startTime < DateTime.Now)
+            {
+                MessageBox.Show("Thời gian bất đầu phải lớn hơn thời gian hiện tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -247,16 +277,19 @@ namespace ManagementApp
                             txtMatKhauDe.Text = row["MatKhau"].ToString();
                             dtpThoiGianBatDau.Value = DateTime.Parse(row["ThoiGianBatDau"].ToString());
                             dtpThoiGianKetThuc.Value = DateTime.Parse(row["ThoiGianKetThuc"].ToString());
+                            txtViTriDanhSachThi.Text = string.IsNullOrWhiteSpace(row["DanhSachThi"].ToString()) ? "Chưa có danh sách" : "Danh sách tồn tại";
                             txtDanhSachThi.Text = row["DanhSachThi"].ToString();
                             cbStatus.SelectedItem = cbStatus.Items[int.Parse(row["TrangThai"].ToString())];
                             txtViTriFileDe.Text = row["ViTriFileDe"].ToString();
                             if (!string.IsNullOrWhiteSpace(txtViTriFileDe.Text))
                             {
                                 txtValidFile.Text = "Yes";
+                                btnDownloadFile.Enabled = true;
                             }
                             else
                             {
                                 txtValidFile.Text = "Chưa chọn";
+                                btnDownloadFile.Enabled = false;
                             }
                         }
                     }
@@ -290,6 +323,7 @@ namespace ManagementApp
             txtMatKhauDe.Clear();
             txtViTriFileDe.Clear();
             txtValidFile.Text = "Chưa chọn";
+            btnDownloadFile.Enabled = false;
             txtViTriDanhSachThi.Clear();
             txtDanhSachThi.Clear();
             dtpThoiGianBatDau.Value = DateTime.Now;

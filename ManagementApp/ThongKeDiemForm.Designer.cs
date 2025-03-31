@@ -30,6 +30,7 @@ namespace ManagementApp
         private void InitializeComponent()
         {
             crownSectionPanel1 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            buttonGuiMail = new ReaLTaiizor.Controls.CrownButton();
             ButtonTimKiemTheoDe = new ReaLTaiizor.Controls.CrownButton();
             textBoxTimKiemTheoMaDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
@@ -41,7 +42,6 @@ namespace ManagementApp
             textBoxTimKiemTheoMaThiSinh = new ReaLTaiizor.Controls.CrownTextBox();
             buttonTimKiem = new ReaLTaiizor.Controls.CrownButton();
             dataGridView1 = new DataGridView();
-            buttonGuiMail = new ReaLTaiizor.Controls.CrownButton();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -64,6 +64,17 @@ namespace ManagementApp
             crownSectionPanel1.Size = new Size(800, 135);
             crownSectionPanel1.TabIndex = 0;
             crownSectionPanel1.Paint += crownSectionPanel1_Paint;
+            // 
+            // buttonGuiMail
+            // 
+            buttonGuiMail.Anchor = AnchorStyles.None;
+            buttonGuiMail.Location = new Point(384, 28);
+            buttonGuiMail.Name = "buttonGuiMail";
+            buttonGuiMail.Padding = new Padding(5);
+            buttonGuiMail.Size = new Size(139, 32);
+            buttonGuiMail.TabIndex = 22;
+            buttonGuiMail.Text = "Gửi mail cho thí sinh";
+            buttonGuiMail.Click += buttonGuiMail_Click;
             // 
             // ButtonTimKiemTheoDe
             // 
@@ -185,23 +196,13 @@ namespace ManagementApp
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 135);
+            dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView1.Size = new Size(800, 315);
             dataGridView1.TabIndex = 9;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // buttonGuiMail
-            // 
-            buttonGuiMail.Anchor = AnchorStyles.None;
-            buttonGuiMail.Location = new Point(384, 28);
-            buttonGuiMail.Name = "buttonGuiMail";
-            buttonGuiMail.Padding = new Padding(5);
-            buttonGuiMail.Size = new Size(139, 32);
-            buttonGuiMail.TabIndex = 22;
-            buttonGuiMail.Text = "Gửi mail cho thí sinh";
-            buttonGuiMail.Click += buttonGuiMail_Click;
             // 
             // ThongKeDiemForm
             // 

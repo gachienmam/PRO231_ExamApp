@@ -390,7 +390,9 @@
             dataGridViewTS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTS.Dock = DockStyle.Fill;
             dataGridViewTS.Location = new Point(3, 3);
+            dataGridViewTS.MultiSelect = false;
             dataGridViewTS.Name = "dataGridViewTS";
+            dataGridViewTS.ReadOnly = true;
             dataGridViewTS.Size = new Size(786, 382);
             dataGridViewTS.TabIndex = 0;
             dataGridViewTS.CellContentClick += dataGridViewTS_CellContentClick;

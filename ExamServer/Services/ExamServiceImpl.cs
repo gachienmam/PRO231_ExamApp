@@ -116,19 +116,21 @@ namespace ExamServer.Services
         [Authorize]
         public override async Task<ExamData> GetExamData(ExamRequest request, ServerCallContext context)
         {
-            string examCacheKey = $"Exam_{request.ExamCode}";
-            string danhSachThiCacheKey = $"DanhSachThi_{request.ExamCode}";
+            //string danhSachThiCacheKey = $"DanhSachThi_{request.ExamCode}";
             var examDataTable = await Task.Run(() => _dalDeThi.GetDeThiByMaDe(request.ExamCode));
             var ketQuaThi = await Task.Run(() => _dalKetQuaThi.GetBangDiemTheoMaDeAndMaThiSinh(request.ExamCode, request.ThiSinhId));
 
-            //if (ketQuaThi != null || ketQuaThi.Rows.Count > 0)
-            //{
-            //    return new ExamData { ResponseCode = (int)HttpStatusCode.Conflict };
-            //}
+            if (ketQuaThi.Rows.Count > 0 && ketQuaThi.Rows[0]["MaThiSinh"].ToString() == request.ThiSinhId)
+            {
+                return new ExamData { ResponseCode = (int)HttpStatusCode.Conflict };
+            }
 
             // Kiểm tra bài có tồn tại hay không
             if (examDataTable != null || examDataTable.Rows.Count > 0)
             {
+                // Để chìa khóa lưu giữ bộ nhớ tạm
+                string examCacheKey = $"Exam_{request.ExamCode}_{examDataTable.Rows[0]["ThoiGianBatDau"].ToString()}";
+
                 // Kiểm tra thí sinh có trong danh sách thi hay không
                 if (!string.IsNullOrWhiteSpace(examDataTable.Rows[0]["DanhSachThi"].ToString().Trim()))
                 {
@@ -147,7 +149,7 @@ namespace ExamServer.Services
                         // Load bài thi nếu không tồn tại trong bộ nhớ tạm
                         if (!_cache.TryGetValue(examCacheKey, out ExamData examData))
                         {
-                            //Load DeThi.ViTriFileDe from excel into usable type to return to client
+                            //Lấy file từ DeThi.ViTriFileDe đưa từ excel sang dữ liệu thi
                             var exam = ExcelExamHelper.ReadFromFileIntoPaper(examDataTable.Rows[0]["ViTriFileDe"].ToString());
                             if (exam == null)
                             {
@@ -173,7 +175,7 @@ namespace ExamServer.Services
 
                             _logger.LogInformation(JsonConvert.SerializeObject(exam));
 
-                            // Lưu trong bộ nhớ tạm trong 2 phút
+                            // Lưu trong bộ nhớ tạm trong thời gian thi + 4 phút (đề phòng thí sinh không lưu bài kịp)
                             _cache.Set(examCacheKey, examData, TimeSpan.FromSeconds(120));
                         }
                         // Tạo kết quả thi ban đầu
@@ -203,70 +205,73 @@ namespace ExamServer.Services
         [Authorize]
         public override async Task<PaperSubmissionResponse> SubmitPaper(PaperSubmission request, ServerCallContext context)
         {
-            string examCacheKey = $"Exam_{request.ExamCode}";
-            if (!_cache.TryGetValue(examCacheKey, out ExamData examData))
+            var examDataTable = await Task.Run(() => _dalDeThi.GetDeThiByMaDe(request.ExamCode));
+            // Kiểm tra bài có tồn tại hay không
+            if (examDataTable != null || examDataTable.Rows.Count > 0)
             {
-                var examDataTable = await Task.Run(() => _dalDeThi.GetDeThiByMaDe(request.ExamCode));
-                //Load DeThi.ViTriFileDe from excel into usable type to return to client
-                var exam = ExcelExamHelper.ReadFromFileIntoPaper(examDataTable.Rows[0]["ViTriFileDe"].ToString());
-                if (examDataTable != null || examDataTable.Rows.Count > 0)
+                string examCacheKey = $"Exam_{request.ExamCode}_{examDataTable.Rows[0]["ThoiGianBatDau"].ToString()}";
+                // Load bài thi nếu không tồn tại trong bộ nhớ tạm
+                if (!_cache.TryGetValue(examCacheKey, out ExamData examData))
                 {
-                    return new PaperSubmissionResponse { ResponseCode = (int)HttpStatusCode.NotFound, ResponseMessage = "Exam not found" }; // Not Found
+                    //Lấy file từ DeThi.ViTriFileDe đưa từ excel sang dữ liệu thi
+                    var exam = ExcelExamHelper.ReadFromFileIntoPaper(examDataTable.Rows[0]["ViTriFileDe"].ToString());
+                    if (exam == null)
+                    {
+                        return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_FAILED, ResponseMessage = "Exam not found" }; // Not Found
+                    }
+
+                    exam.ExamCode = request.ExamCode;
+
+                    ServerInformation serverInfo = new ServerInformation()
+                    {
+                        IP = "192.168.110.1",
+                        ServerName = Environment.MachineName,
+                        Port = 50051,
+                        Version = "Ilovegainhatban"
+                    };
+
+                    examData = new ExamData
+                    {
+                        ResponseCode = (int)HttpStatusCode.OK,
+                        ExamPaper = ByteString.CopyFrom(GZip.CompressJson(JsonConvert.SerializeObject(exam))),
+                        ServerInformation = JsonConvert.SerializeObject(serverInfo)
+                    };
+
+                    _logger.LogInformation(JsonConvert.SerializeObject(exam));
+
+                    // Lưu trong bộ nhớ tạm 30s để dành thời gian chấm bài (đề phòng máy chủ bị quá tải)
+                    _cache.Set(examCacheKey, examData, TimeSpan.FromSeconds(30));
                 }
 
-                ServerInformation serverInfo = new ServerInformation()
-                {
-                    IP = "192.168.110.1",
-                    ServerName = Environment.MachineName,
-                    Port = 50051
-                };
-
-                exam.ExamCode = request.ExamCode;
-
-                examData = new ExamData
-                {
-                    ResponseCode = (int)HttpStatusCode.OK,
-                    ExamPaper = ByteString.CopyFrom(GZip.CompressJson(JsonConvert.SerializeObject(exam))),
-                    ServerInformation = JsonConvert.SerializeObject(serverInfo)
-                };
-
-                _logger.LogInformation(JsonConvert.SerializeObject(exam));
-
-                // Lưu trong bộ nhớ tạm trong thời gian thi
-                _cache.Set(examCacheKey, examData, TimeSpan.FromSeconds(120));
-            }
-
-            if (request.SubmissionType == (int)PaperSubmitResponse.SUBMIT_CONTINUE)
-            {
                 Paper examPaper = JsonConvert.DeserializeObject<Paper>(GZip.DecompressJson(examData.ExamPaper.ToByteArray()));
                 SubmitPaper submitPaper = JsonConvert.DeserializeObject<SubmitPaper>(GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray()));
-                _logger.LogInformation($"PaperSubmit CONTINUE DATA: KetQuaId: {GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray())}");
                 if (examPaper != null && submitPaper != null)
                 {
                     int correctAnswers = ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice));
                     float points = ((float)correctAnswers / (float)examPaper.QMultipleChoice.Count) * 10;
-                    _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, false);
-                    _logger.LogInformation($"PaperSubmit CONTINUE: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}");
+
+                    if (request.SubmissionType == (int)PaperSubmitResponse.SUBMIT_CONTINUE)
+                    {
+                        _logger.LogInformation($"PaperSubmit CONTINUE RECEIVED DATA: {GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray())}");
+                        _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, false);
+                        _logger.LogInformation($"PaperSubmit CONTINUE SUBMITTED: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}");
+                        return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_CONTINUE, ResponseMessage = "Submission received" };
+                    }
+
+                    if (request.SubmissionType == (int)PaperSubmitResponse.SUBMIT_FINAL)
+                    {
+                        _logger.LogInformation($"PaperSubmit FINAL RECEIVED DATA: {GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray())}");
+                        _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, true);
+                        _logger.LogInformation($"PaperSubmit FINAL SUBMITTED: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}, FinalTime: {DateTime.Now}");
+                        return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_FINAL, ResponseMessage = "Submission received. End exam" };
+                    }
+
+                    _logger.LogInformation($"PaperSubmit FAILED (Invalid submission type): ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}, Time: {DateTime.Now}");
+                    return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_FAILED, ResponseMessage = "Exam data not loaded for grading gg mr bit" };
                 }
-
-                return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_CONTINUE, ResponseMessage = "Submission received" };
             }
-
-            if (request.SubmissionType == (int)PaperSubmitResponse.SUBMIT_FINAL)
-            {
-                Paper examPaper = JsonConvert.DeserializeObject<Paper>(GZip.DecompressJson(examData.ExamPaper.ToByteArray()));
-                SubmitPaper submitPaper = JsonConvert.DeserializeObject<SubmitPaper>(GZip.DecompressJson(request.StudentSubmitPaper.ToByteArray()));
-                if (examPaper != null && submitPaper != null)
-                {
-                    int correctAnswers = ExamGrader.GetCorrectAnswersFromGradeExamResult(ExamGrader.GradeExam(examPaper.QMultipleChoice, submitPaper.SubmissionPaper.QMultipleChoice));
-                    float points = ((float)correctAnswers / (float)examPaper.QMultipleChoice.Count)*10;
-                    _dalKetQuaThi.UpdateKetQuaThi(request.ThiSinhId, request.ExamCode, points, DateTime.Now, true);
-                    _logger.LogInformation($"PaperSubmit FINAL: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: {points:0.0##}, Correct: {correctAnswers}, FinalTime: {DateTime.Now}");
-                }
-
-                return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_SUCCESS_FINAL, ResponseMessage = "Submission received. End exam" };
-            }
-            return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_FAILED, ResponseMessage = "GG" };
+            _logger.LogInformation($"PaperSubmit FAILED to load exam data: ThiSinhId: {request.ThiSinhId}, ExamCode: {request.ExamCode}, Points: NONE, Correct: NONE, Time: {DateTime.Now}");
+            return new PaperSubmissionResponse { ResponseCode = (int)PaperSubmitResponse.SUBMIT_FAILED, ResponseMessage = "Exam data not loaded for grading gg mr bit" };
         }
 
         [Authorize]

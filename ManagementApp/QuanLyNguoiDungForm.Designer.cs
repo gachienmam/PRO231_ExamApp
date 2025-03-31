@@ -396,7 +396,9 @@
             dataGridViewNguoiDung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewNguoiDung.Dock = DockStyle.Fill;
             dataGridViewNguoiDung.Location = new Point(3, 3);
+            dataGridViewNguoiDung.MultiSelect = false;
             dataGridViewNguoiDung.Name = "dataGridViewNguoiDung";
+            dataGridViewNguoiDung.ReadOnly = true;
             dataGridViewNguoiDung.Size = new Size(786, 382);
             dataGridViewNguoiDung.TabIndex = 0;
             dataGridViewNguoiDung.Click += dataGridViewNguoiDung_Click;

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -26,6 +27,9 @@ namespace ManagementApp
         private DataTable _dataTable;
         private GrpcDatabaseHelper _dbHelper;
 
+        // Để kiểm tra có thay đổi mật khẩu không
+        private string _originalPassword;
+
         public QuanLyThiSinhForm(AdminServiceClient client, Grpc.Core.Metadata headers)
         {
             InitializeComponent();
@@ -42,11 +46,11 @@ namespace ManagementApp
 
         private void buttonThemTS_Click(object sender, EventArgs e)
         {
-            textBoxMaTS.Text = null;
-            textBoxHoTenTS.Text = null;
-            textBoxSDTTS.Text = null;
-            textBoxEmailTS.Text = null;
-            textBoxMKTS.Text = null;
+            textBoxMaTS.Text = string.Empty;
+            textBoxHoTenTS.Text = string.Empty;
+            textBoxSDTTS.Text = string.Empty;
+            textBoxEmailTS.Text = string.Empty;
+            textBoxMKTS.Text = string.Empty;
             radioButtonHDTS.Checked = true;
             radioButtonKhoaTS.Checked = true;
 
@@ -55,6 +59,7 @@ namespace ManagementApp
             textBoxSDTTS.Enabled = true;
             textBoxEmailTS.Enabled = true;
             textBoxMKTS.Enabled = true;
+            _originalPassword = string.Empty;
             radioButtonHDTS.Enabled = true;
             radioButtonKhoaTS.Enabled = true;
 
@@ -246,12 +251,20 @@ namespace ManagementApp
             {
                 try
                 {
-                    var requestPassword = new CommandRequest
+                    string sql = string.Empty;
+                    if(_originalPassword != textBoxMKTS.Text)
                     {
-                        RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
-                        Command = textBoxMKTS.Text
-                    };
-                    string sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text.Trim()}', N'{textBoxHoTenTS.Text.Trim()}', N'{textBoxEmailTS.Text.Trim()}', N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text.Trim()}', {trangThai}";
+                        var requestPassword = new CommandRequest
+                        {
+                            RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
+                            Command = textBoxMKTS.Text
+                        };
+                        sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text.Trim()}', N'{textBoxHoTenTS.Text.Trim()}', N'{textBoxEmailTS.Text.Trim()}', N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text.Trim()}', {trangThai}";
+                    }
+                    else
+                    {
+                        sql = $"UPDATE ThiSinh SET HoTen = N'{textBoxHoTenTS.Text.Trim()}', Email = N'{textBoxEmailTS.Text.Trim()}', NgaySinh = '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', SoDienThoai = N'{textBoxSDTTS.Text.Trim()}', {trangThai} WHERE MaThiSinh = N'{textBoxMaTS.Text.Trim()}'";
+                    }
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
@@ -347,6 +360,7 @@ namespace ManagementApp
                 textBoxHoTenTS.Text = dataGridViewTS.CurrentRow.Cells[1].Value.ToString();
                 textBoxEmailTS.Text = dataGridViewTS.CurrentRow.Cells[2].Value.ToString();
                 textBoxMKTS.Text = dataGridViewTS.CurrentRow.Cells[3].Value.ToString();
+                _originalPassword = textBoxMKTS.Text;
                 dateTimePickerNgaySinhTS.Text = dataGridViewTS.CurrentRow.Cells[4].Value.ToString();
                 textBoxSDTTS.Text = dataGridViewTS.CurrentRow.Cells[5].Value.ToString();
                 string TrangThai = dataGridViewTS.CurrentRow.Cells[6].Value.ToString();

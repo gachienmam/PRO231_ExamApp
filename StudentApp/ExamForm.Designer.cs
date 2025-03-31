@@ -89,6 +89,7 @@
             // 
             // labelInfo
             // 
+            labelInfo.Anchor = AnchorStyles.None;
             labelInfo.AutoSize = true;
             labelInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelInfo.Location = new Point(12, 201);
@@ -99,7 +100,7 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Anchor = AnchorStyles.None;
             panel1.Controls.Add(panelCauHoiHienTai);
             panel1.Controls.Add(panelChonDapAn);
             panel1.Controls.Add(panelDanhSachCauHoi);

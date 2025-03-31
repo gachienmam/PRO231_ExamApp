@@ -91,6 +91,10 @@ namespace StudentApp
                             this.Hide();
                             examForm.ShowDialog();
                         }
+                        else if (examResponse.ResponseCode == (int)HttpStatusCode.Conflict)
+                        {
+                            CrownMessageBox.ShowError("Tài khoản của bạn đã thi đề thi này! Xin hãy liên lạc với giám thị", "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        }
                         else
                         {
                             CrownMessageBox.ShowError("Không thể lấy đề thi từ hệ thống. Xin hãy liên lạc với giám thị.", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);

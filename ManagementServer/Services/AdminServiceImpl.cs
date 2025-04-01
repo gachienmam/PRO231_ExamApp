@@ -98,6 +98,30 @@ namespace ManagementServer.Services
                                 _logger.LogInformation($"File already exists. Deleting: {filePath}");
                                 File.Delete(filePath);
                             }
+
+                            // Kiểm tra thư mục có tồn tại hay không
+                            if (!Directory.Exists(_configuration["Directory:ExamPapers"] ?? _defaultPath_ExamPapers))
+                            {
+                                try
+                                {
+                                    Directory.CreateDirectory(_configuration["Directory:ExamPapers"] ?? _defaultPath_ExamPapers);
+                                }
+                                catch (IOException ex)
+                                {
+                                    // Lỗi quyền tạo, lỗi đĩa...
+                                    _logger.LogError($"Error creating directory: {ex.Message}");
+                                    // Optionally, re-throw or return an error code.
+                                }
+                                catch (UnauthorizedAccessException ex)
+                                {
+                                    // Lỗi quyền tạo thư mục
+                                    _logger.LogError($"Unauthorized access to create directory: {ex.Message}");
+                                }
+                                catch (Exception ex)
+                                {
+                                    _logger.LogError($"Unexpected error creating directory: {ex.Message}");
+                                }
+                            }
                         }
 
                         using (var fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write))

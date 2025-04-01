@@ -1,6 +1,7 @@
 ﻿using ExamLibrary.Enum;
 using ManagementApp.AdminProto;
 using ManagementApp.Database;
+using ManagementApp.Helper;
 using Newtonsoft.Json;
 using ReaLTaiizor.Controls;
 using System;
@@ -150,6 +151,7 @@ namespace ManagementApp
                             trangThai);
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
+                    SendMailToThiSinh(true, textBoxEmailTS.Text, textBoxMKTS.Text);
                     tabControl1.SelectedIndex = 1;
                     CrownMessageBox.ShowInformation("Đã tạo thí sính mới", "Tạo thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
@@ -260,6 +262,7 @@ namespace ManagementApp
                             Command = textBoxMKTS.Text
                         };
                         sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text.Trim()}', N'{textBoxHoTenTS.Text.Trim()}', N'{textBoxEmailTS.Text.Trim()}', N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text.Trim()}', {trangThai}";
+                        SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
                     }
                     else
                     {
@@ -463,6 +466,20 @@ namespace ManagementApp
             catch (FormatException)
             {
                 return false;
+            }
+        }
+
+        private void SendMailToThiSinh(bool isNewUser, string email, string newPass)
+        {
+            if (isNewUser)
+            {
+                string emailBody = $"<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>N2 PolyTest PRO231</title>\r\n    <style>\r\n        body {{\r\n            font-family: Segoe UI, sans-serif;\r\n            margin: 0;\r\n            padding: 0;\r\n            background-color: #f4f4f4;\r\n        }}\r\n        .container {{\r\n            width: 100%;\r\n            max-width: 600px;\r\n            margin: 0 auto;\r\n            background-color: #ffffff;\r\n            padding: 20px;\r\n            border-radius: 8px;\r\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n        }}\r\n        .header {{\r\n            text-align: center;\r\n            padding: 20px 0;\r\n            background-color: #007BFF;\r\n            color: #ffffff;\r\n            border-radius: 8px 8px 0 0;\r\n        }}\r\n        .headerImage {{\r\n            text-align: center\r\n        }}\r\n\t.headerImage img{{\r\n            padding: 20px;            \r\n            border-radius: 128px;\r\n            width: 256px;\r\n\t}}\r\n        .header h1 {{\r\n            margin: 0;\r\n        }}\r\n        .content {{\r\n            padding: 20px;\r\n            color: #333333;\r\n        }}\r\n        .content p {{\r\n            line-height: 1.6;\r\n        }}\r\n        .content .password-block {{\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n        }}\r\n        .footer {{\r\n            text-align: center;\r\n            padding: 10px 0;\r\n            background-color: #f4f4f4;\r\n            color: #777777;\r\n            border-radius: 0 0 8px 8px;\r\n        }}\r\n        .footer p {{\r\n            margin: 0;\r\n        }}\r\n        .password {{\r\n            display: inline-block;\r\n            padding: 10px 20px;\r\n            margin: 20px 0;\r\n            background-color: #007BFF;\r\n            color: #ffffff;\r\n            text-decoration: none;\r\n            border-radius: 5px;\r\n        }}\r\n    </style>\r\n</head>\r\n<body>\r\n    <div class=\"container\">\r\n        <div class=\"headerImage\">\r\n           <img class=\"headerImage\" src=\"cid:logoImage\"/>\r\n        </div>\r\n        <div class=\"header\">\r\n            <h1>PolyTest System</h1>\r\n            <h2>By Pupu và những người bạn (Nhóm 2) </h2>\r\n        </div>\r\n        <div class=\"content\">\r\n            <p>Xin chào {email},</p>\r\n            <p>Bạn đã được đăng ký một tài khoản mới vào hệ thống PolyTest.</p>\r\n            <p>Ở dưới là mật khẩu mới của bạn:</p>\r\n            <div class=\"password-block\">\r\n              <p class=\"password\">{newPass}</p>\r\n            </div>\r\n            <p>Bạn sẽ sử dụng email của mình và mật khẩu trên để đăng nhập cho những lần thi sắp tới.</p>\r\n            <p>Trân trọng,<br>PolyTest</p>\r\n        </div>\r\n        <div class=\"footer\">\r\n            <p>&copy; 2025 Nhóm 2. Bảo lưu mọi quyền. Trộm thì ra đường gặp nhiều xui xẻo</p>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>";
+                EmailHelper.SendMail(email, $"Chào mừng thí sinh mới", emailBody);
+            }
+            else
+            {
+                string emailBody = $"<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>N2 PolyTest PRO231</title>\r\n    <style>\r\n        body {{\r\n            font-family: Segoe UI, sans-serif;\r\n            margin: 0;\r\n            padding: 0;\r\n            background-color: #f4f4f4;\r\n        }}\r\n        .container {{\r\n            width: 100%;\r\n            max-width: 600px;\r\n            margin: 0 auto;\r\n            background-color: #ffffff;\r\n            padding: 20px;\r\n            border-radius: 8px;\r\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n        }}\r\n        .header {{\r\n            text-align: center;\r\n            padding: 20px 0;\r\n            background-color: #007BFF;\r\n            color: #ffffff;\r\n            border-radius: 8px 8px 0 0;\r\n        }}\r\n        .headerImage {{\r\n            text-align: center\r\n        }}\r\n\t.headerImage img{{\r\n            padding: 20px;            \r\n            border-radius: 128px;\r\n            width: 256px;\r\n\t}}\r\n        .header h1 {{\r\n            margin: 0;\r\n        }}\r\n        .content {{\r\n            padding: 20px;\r\n            color: #333333;\r\n        }}\r\n        .content p {{\r\n            line-height: 1.6;\r\n        }}\r\n        .content .password-block {{\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n        }}\r\n        .footer {{\r\n            text-align: center;\r\n            padding: 10px 0;\r\n            background-color: #f4f4f4;\r\n            color: #777777;\r\n            border-radius: 0 0 8px 8px;\r\n        }}\r\n        .footer p {{\r\n            margin: 0;\r\n        }}\r\n        .password {{\r\n            display: inline-block;\r\n            padding: 10px 20px;\r\n            margin: 20px 0;\r\n            background-color: #007BFF;\r\n            color: #ffffff;\r\n            text-decoration: none;\r\n            border-radius: 5px;\r\n        }}\r\n    </style>\r\n</head>\r\n<body>\r\n    <div class=\"container\">\r\n        <div class=\"headerImage\">\r\n           <img class=\"headerImage\" src=\"cid:logoImage\"/>\r\n        </div>\r\n        <div class=\"header\">\r\n            <h1>PolyTest System</h1>\r\n            <h2>By Pupu và những người bạn (Nhóm 2) </h2>\r\n        </div>\r\n        <div class=\"content\">\r\n            <p>Xin chào {email},</p>\r\n            <p>Bạn đã được cấp mật khẩu mới cho tài khoản thí sinh của bạn.</p>\r\n            <p>Ở dưới là mật khẩu mới của bạn:</p>\r\n            <div class=\"password-block\">\r\n              <p class=\"password\">{newPass}</p>\r\n            </div>\r\n            <p>Hãy sử dụng mật khẩu trên cho lần thi tiếp theo của mình.</p>\r\n            <p>Trân trọng,<br>PolyTest</p>\r\n        </div>\r\n        <div class=\"footer\">\r\n            <p>&copy; 2025 Nhóm 2. Bảo lưu mọi quyền. Trộm thì ra đường gặp nhiều xui xẻo</p>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>";
+                EmailHelper.SendMail(email, $"Bạn đã được đổi mật khẩu", emailBody);
             }
         }
         #endregion

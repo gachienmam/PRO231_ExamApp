@@ -189,6 +189,11 @@ namespace StudentApp
                 {
                     return;
                 }
+                if (_answerChanged)
+                {
+                    SaveAnswerToSubmissionPaper(_multipleChoice_currentQuestion - 1);
+                    _answerChanged = false;
+                }
                 await SendCurrentSubmissionPaperToServer(true);
             }
         }
@@ -240,7 +245,7 @@ namespace StudentApp
 
         private void numericQuestionFontSize_ValueChanged(object sender, EventArgs e)
         {
-            labelQuestion.Font = new Font("Segoe UI", (float)numericQuestionFontSize.Value, FontStyle.Regular);
+            textBoxQuestion.Font = new Font("Segoe UI", (float)numericQuestionFontSize.Value, FontStyle.Regular);
         }
         #endregion
 
@@ -411,7 +416,7 @@ namespace StudentApp
             var currentQuestionExam = _examPaper.QMultipleChoice[questionOrder];
             var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.QMultipleChoice[questionOrder];
             panelCauHoiHienTai.SectionHeader = $"Câu hỏi ({questionOrder + 1}/{_examPaper.QMultipleChoice.Count})";
-            labelQuestion.Text = $"(Chọn {currentQuestionExam.QuestionAnswers.Count} đáp án)\r\n" +
+            textBoxQuestion.Text = $"(Chọn {currentQuestionExam.QuestionAnswers.Count} đáp án)\r\n" +
                 $"{currentQuestionExam.QuestionText} \r\n\r\n" +
                 $"A. {currentQuestionExam.QuestionAnswerTextA}\r\n" +
                 $"B. {currentQuestionExam.QuestionAnswerTextB}\r\n" +
@@ -420,11 +425,14 @@ namespace StudentApp
 
             if (string.IsNullOrWhiteSpace(currentQuestionExam.QuestionImageLink))
             {
+                panelQuestionImageContainer.Visible = false;
                 pictureBoxQuestionImage.Visible = false;
                 splitterQuestionImage.Visible = false;
             }
             else
             {
+                panelQuestionImageContainer.Size = new Size(322, 1);
+                panelQuestionImageContainer.Visible = true;
                 pictureBoxQuestionImage.Visible = true;
                 splitterQuestionImage.Visible = true;
 
@@ -527,7 +535,7 @@ namespace StudentApp
         private void FinishExam()
         {
             timerExam.Stop();
-            panel1.Hide();
+            panelQuestionContainer.Hide();
             numericQuestionFontSize.Hide();
             labelQuestionFontSize.Hide();
             LeaveFullScreenMode(this);
@@ -562,19 +570,17 @@ namespace StudentApp
             {
                 ((System.Windows.Forms.Timer)sender).Stop();
                 textBoxTime.Text = "00:00";
-                _userFinishedExam = true;
                 checkBoxConfirmFinish.Checked = true;
                 buttonFinish.Enabled = true;
                 buttonFinish.PerformClick();
             }
-
-            if (_userFinishedExam)
-            {
-                ((System.Windows.Forms.Timer)sender).Stop();
-                checkBoxConfirmFinish.Checked = true;
-                buttonFinish.Enabled = true;
-                buttonFinish.PerformClick();
-            }
+            //if (_userFinishedExam)
+            //{
+            //    ((System.Windows.Forms.Timer)sender).Stop();
+            //    checkBoxConfirmFinish.Checked = true;
+            //    buttonFinish.Enabled = true;
+            //    buttonFinish.PerformClick();
+            //}
         }
         #endregion
 

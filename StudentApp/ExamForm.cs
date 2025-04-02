@@ -252,7 +252,7 @@ namespace StudentApp
         #region Function
         private void SaveAnswerToSubmissionPaper(int questionIndex)
         {
-            var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.QMultipleChoice.Where(q => q.QuestionID == questionIndex + 1).FirstOrDefault();
+            var currentQuestionSubmitPaper = _submitPaper.SubmissionPaper.QMultipleChoice.Where(q => q.QuestionID == _submitPaper.SubmissionPaper.QMultipleChoice[questionIndex].QuestionID).FirstOrDefault();
             if (currentQuestionSubmitPaper != null)
             {
                 List<string> answers = new List<string>();
@@ -602,7 +602,7 @@ namespace StudentApp
         #region Debug Button
         private void pictureAnhDeThi_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(_isSavingExamToServer.ToString());
+            //MessageBox.Show(_isSavingExamToServer.ToString());
         }
         #endregion
     }

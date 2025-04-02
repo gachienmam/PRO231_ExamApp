@@ -26,6 +26,11 @@ using ExamLibrary.Enum;
 using Newtonsoft.Json;
 using ExamLibrary.Helper;
 using System.Text.Json.Nodes;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using System.Runtime.InteropServices;
+using ExamLibrary.Question.Types;
+using DocumentFormat.OpenXml.Drawing;
+using DocumentFormat.OpenXml.Drawing.Charts;
 
 namespace ExamServer.Services
 {
@@ -166,6 +171,19 @@ namespace ExamServer.Services
                                 Version = "Ilovegainhatban"
                             };
 
+                            // Xáo trộn câu hỏi
+                            if(exam.OptionShuffleMultipleChoice == true)
+                            {
+                                Random random = new Random();
+                                for (var i = exam.QMultipleChoice.Count - 1; i > 0; i--)
+                                {
+                                    var randomIndex = random.Next(i + 1); //maxValue (i + 1) is EXCLUSIVE
+                                    var temp = exam.QMultipleChoice[i];
+                                    exam.QMultipleChoice[i] = exam.QMultipleChoice[randomIndex];
+                                    exam.QMultipleChoice[randomIndex] = temp;
+                                }
+                            }
+
                             examData = new ExamData
                             {
                                 ResponseCode = (int)HttpStatusCode.OK,
@@ -229,6 +247,19 @@ namespace ExamServer.Services
                         Port = 50051,
                         Version = "Ilovegainhatban"
                     };
+
+                    // Xáo trộn câu hỏi
+                    if (exam.OptionShuffleMultipleChoice == true)
+                    {
+                        Random random = new Random();
+                        for (var i = exam.QMultipleChoice.Count - 1; i > 0; i--)
+                        {
+                            var randomIndex = random.Next(i + 1); //random từ 0 < randomIndex < i
+                            var temp = exam.QMultipleChoice[i];
+                            exam.QMultipleChoice[i] = exam.QMultipleChoice[randomIndex];
+                            exam.QMultipleChoice[randomIndex] = temp;
+                        }
+                    }
 
                     examData = new ExamData
                     {

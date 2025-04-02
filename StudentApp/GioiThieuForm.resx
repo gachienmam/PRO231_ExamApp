@@ -117,7 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBoxIntroduction.Text" xml:space="preserve">
-    <value>PolyTest EOS Manager (Exam Online System) là một phần mềm quản lý thi trắc nghiệm trực tuyến, giúp tổ chức và quản lý các kỳ thi một cách dễ dàng, hiệu quả. Phần mềm cho phép tạo đề thi, quản lý ngân hàng câu hỏi, tổ chức thi và chấm điểm tự động, giúp giảm tải công việc cho giáo viên và nâng cao trải nghiệm người dùng.</value>
-  </data>
 </root>

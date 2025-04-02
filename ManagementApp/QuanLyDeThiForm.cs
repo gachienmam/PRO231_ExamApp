@@ -104,7 +104,7 @@ namespace ManagementApp
                 }
                 catch
                 {
-                    MessageBox.Show("Tệp tin đề thi của bạn không hợp lệ!", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Tệp tin đề thi của bạn không hợp lệ! Hãy kiểm tra lại file đề có chứa đủ dữ liệu cần thiết hay không.", "Lỗi chọn file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -240,15 +240,18 @@ namespace ManagementApp
                 return;
             }
 
-            int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_DeleteDeThi @MaDe = '{examCode}'");
-            if (query > 0)
+            if(MessageBox.Show($"Bạn có muốn xóa đề thi {examCode} không?", "Xác nhận xóa", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                MessageBox.Show($"Đã xóa đề thi:\nMã đề: {examCode}",
-                "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show($"Không thể xóa đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                int query = _dbHelper.ExecuteSqlNonQuery($"EXEC sp_DeleteDeThi @MaDe = '{examCode}'");
+                if (query > 0)
+                {
+                    MessageBox.Show($"Đã xóa đề thi:\nMã đề: {examCode}",
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Không thể xóa đề thi. Dữ liệu chưa đuọc lưu vào hệ thống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             ResetValues();

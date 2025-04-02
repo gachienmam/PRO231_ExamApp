@@ -43,6 +43,7 @@
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             textBoxMaDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            buttonGioiThieu = new ReaLTaiizor.Controls.CrownButton();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
             SuspendLayout();
@@ -86,6 +87,7 @@
             // 
             // crownSectionPanel2
             // 
+            crownSectionPanel2.Controls.Add(buttonGioiThieu);
             crownSectionPanel2.Controls.Add(buttonSettings);
             crownSectionPanel2.Controls.Add(crownTitle6);
             crownSectionPanel2.Controls.Add(crownTitle5);
@@ -109,7 +111,8 @@
             // buttonSettings
             // 
             buttonSettings.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonSettings.Location = new Point(325, 396);
+            buttonSettings.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            buttonSettings.Location = new Point(324, 2);
             buttonSettings.Name = "buttonSettings";
             buttonSettings.Padding = new Padding(5);
             buttonSettings.Size = new Size(75, 23);
@@ -238,6 +241,18 @@
             crownTitle1.TabIndex = 0;
             crownTitle1.Text = "Thi trắc nghiệm";
             // 
+            // buttonGioiThieu
+            // 
+            buttonGioiThieu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonGioiThieu.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            buttonGioiThieu.Location = new Point(254, 2);
+            buttonGioiThieu.Name = "buttonGioiThieu";
+            buttonGioiThieu.Padding = new Padding(5);
+            buttonGioiThieu.Size = new Size(75, 23);
+            buttonGioiThieu.TabIndex = 11;
+            buttonGioiThieu.Text = "Giới thiệu";
+            buttonGioiThieu.Click += buttonGioiThieu_Click;
+            // 
             // DangNhapForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -270,5 +285,6 @@
         private ReaLTaiizor.Controls.CrownTitle crownTitle6;
         private ReaLTaiizor.Controls.CrownTitle crownTitle5;
         private ReaLTaiizor.Controls.CrownButton buttonSettings;
+        private ReaLTaiizor.Controls.CrownButton buttonGioiThieu;
     }
 }

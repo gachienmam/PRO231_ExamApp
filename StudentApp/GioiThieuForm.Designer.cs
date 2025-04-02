@@ -1,4 +1,4 @@
-﻿namespace ManagementApp
+﻿namespace StudentApp
 {
     partial class GioiThieuForm
     {
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GioiThieuForm));
             foreverForm1 = new ReaLTaiizor.Forms.ForeverForm();
             foreverLabel5 = new ReaLTaiizor.Controls.ForeverLabel();
             foreverLabel4 = new ReaLTaiizor.Controls.ForeverLabel();
@@ -66,9 +65,9 @@
             foreverForm1.Name = "foreverForm1";
             foreverForm1.Padding = new Padding(1, 51, 1, 1);
             foreverForm1.Sizable = true;
-            foreverForm1.Size = new Size(501, 360);
+            foreverForm1.Size = new Size(501, 340);
             foreverForm1.TabIndex = 0;
-            foreverForm1.Text = "Giới thiệu PolyTest Manager";
+            foreverForm1.Text = "Giới thiệu PolyTest Student";
             foreverForm1.TextColor = Color.FromArgb(234, 234, 234);
             foreverForm1.TextLight = Color.SeaGreen;
             // 
@@ -108,7 +107,7 @@
             textBoxAuthors.Multiline = true;
             textBoxAuthors.Name = "textBoxAuthors";
             textBoxAuthors.ReadOnly = true;
-            textBoxAuthors.Size = new Size(225, 192);
+            textBoxAuthors.Size = new Size(225, 172);
             textBoxAuthors.TabIndex = 16;
             textBoxAuthors.Text = "ds";
             textBoxAuthors.TextAlign = HorizontalAlignment.Left;
@@ -126,9 +125,9 @@
             textBoxIntroduction.Multiline = true;
             textBoxIntroduction.Name = "textBoxIntroduction";
             textBoxIntroduction.ReadOnly = true;
-            textBoxIntroduction.Size = new Size(227, 192);
+            textBoxIntroduction.Size = new Size(227, 172);
             textBoxIntroduction.TabIndex = 15;
-            textBoxIntroduction.Text = resources.GetString("textBoxIntroduction.Text");
+            textBoxIntroduction.Text = "PolyTest EOS (Exam Online System) là một phần mềm thi trắc nghiệm trực tuyến, giúp tổ chức và quản lý các kỳ thi một cách dễ dàng, hiệu quả.";
             textBoxIntroduction.TextAlign = HorizontalAlignment.Left;
             textBoxIntroduction.UseSystemPasswordChar = false;
             // 
@@ -138,7 +137,7 @@
             foreverLabel3.BackColor = Color.Transparent;
             foreverLabel3.Font = new Font("Segoe UI Semilight", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             foreverLabel3.ForeColor = Color.LightGray;
-            foreverLabel3.Location = new Point(328, 79);
+            foreverLabel3.Location = new Point(339, 79);
             foreverLabel3.Name = "foreverLabel3";
             foreverLabel3.Size = new Size(58, 13);
             foreverLabel3.TabIndex = 14;
@@ -180,14 +179,14 @@
             foreverLabel1.ForeColor = Color.LightGray;
             foreverLabel1.Location = new Point(21, 66);
             foreverLabel1.Name = "foreverLabel1";
-            foreverLabel1.Size = new Size(314, 30);
+            foreverLabel1.Size = new Size(319, 30);
             foreverLabel1.TabIndex = 11;
-            foreverLabel1.Text = "PolyTest EOS Management App";
+            foreverLabel1.Text = "PolyTest EOS Student Exam App";
             // 
             // GioiThieuForm
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(501, 360);
+            ClientSize = new Size(501, 340);
             Controls.Add(foreverForm1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "GioiThieuForm";

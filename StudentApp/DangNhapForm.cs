@@ -100,7 +100,7 @@ namespace StudentApp
                             CrownMessageBox.ShowError("Không thể lấy đề thi từ hệ thống. Xin hãy liên lạc với giám thị.", "Lỗi hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                         }
                     }
-                    else if(authResponse.ResponseCode == (int)HttpStatusCode.Locked)
+                    else if (authResponse.ResponseCode == (int)HttpStatusCode.Locked)
                     {
                         CrownMessageBox.ShowError(authResponse.ResponseMessage, "Lỗi đăng nhập vào hệ thống", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                     }
@@ -141,5 +141,11 @@ namespace StudentApp
             return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
         }
         #endregion
+
+        private void buttonGioiThieu_Click(object sender, EventArgs e)
+        {
+            GioiThieuForm gioiThieuForm = new GioiThieuForm();
+            gioiThieuForm.ShowDialog();
+        }
     }
 }

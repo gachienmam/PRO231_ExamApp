@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationHighDpiMode>DpiUnaware</ApplicationHighDpiMode>
     <ForceDesignerDPIUnaware>true</ForceDesignerDPIUnaware>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>

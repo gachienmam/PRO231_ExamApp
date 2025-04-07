@@ -123,6 +123,7 @@
             // 
             // textBoxMaTS
             // 
+            textBoxMaTS.Anchor = AnchorStyles.None;
             textBoxMaTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxMaTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaTS.ForeColor = Color.FromArgb(220, 220, 220);
@@ -134,6 +135,7 @@
             // 
             // textBoxHoTenTS
             // 
+            textBoxHoTenTS.Anchor = AnchorStyles.None;
             textBoxHoTenTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxHoTenTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxHoTenTS.ForeColor = Color.FromArgb(220, 220, 220);
@@ -145,6 +147,7 @@
             // 
             // textBoxSDTTS
             // 
+            textBoxSDTTS.Anchor = AnchorStyles.None;
             textBoxSDTTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxSDTTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxSDTTS.ForeColor = Color.FromArgb(220, 220, 220);
@@ -156,6 +159,7 @@
             // 
             // textBoxEmailTS
             // 
+            textBoxEmailTS.Anchor = AnchorStyles.None;
             textBoxEmailTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxEmailTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxEmailTS.ForeColor = Color.FromArgb(220, 220, 220);
@@ -167,6 +171,7 @@
             // 
             // crownGroupBox1
             // 
+            crownGroupBox1.Anchor = AnchorStyles.None;
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(radioButtonKhoaTS);
             crownGroupBox1.Controls.Add(radioButtonHDTS);
@@ -202,6 +207,7 @@
             // 
             // crownTitle7
             // 
+            crownTitle7.Anchor = AnchorStyles.None;
             crownTitle7.AutoSize = true;
             crownTitle7.Font = new Font("Segoe UI", 9F);
             crownTitle7.Location = new Point(466, 39);
@@ -212,6 +218,7 @@
             // 
             // crownTitle6
             // 
+            crownTitle6.Anchor = AnchorStyles.None;
             crownTitle6.AutoSize = true;
             crownTitle6.Font = new Font("Segoe UI", 9F);
             crownTitle6.Location = new Point(118, 89);
@@ -222,6 +229,7 @@
             // 
             // crownTitle5
             // 
+            crownTitle5.Anchor = AnchorStyles.None;
             crownTitle5.AutoSize = true;
             crownTitle5.Font = new Font("Segoe UI", 9F);
             crownTitle5.Location = new Point(445, 83);
@@ -232,6 +240,7 @@
             // 
             // crownTitle4
             // 
+            crownTitle4.Anchor = AnchorStyles.None;
             crownTitle4.AutoSize = true;
             crownTitle4.Font = new Font("Segoe UI", 9F);
             crownTitle4.Location = new Point(100, 135);
@@ -242,6 +251,7 @@
             // 
             // crownTitle3
             // 
+            crownTitle3.Anchor = AnchorStyles.None;
             crownTitle3.AutoSize = true;
             crownTitle3.Font = new Font("Segoe UI", 9F);
             crownTitle3.Location = new Point(441, 126);
@@ -252,6 +262,7 @@
             // 
             // crownTitle2
             // 
+            crownTitle2.Anchor = AnchorStyles.None;
             crownTitle2.AutoSize = true;
             crownTitle2.Font = new Font("Segoe UI", 9F);
             crownTitle2.Location = new Point(117, 179);
@@ -262,6 +273,7 @@
             // 
             // crownTitle1
             // 
+            crownTitle1.Anchor = AnchorStyles.None;
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI", 9F);
             crownTitle1.Location = new Point(137, 45);
@@ -272,6 +284,7 @@
             // 
             // textBoxMKTS
             // 
+            textBoxMKTS.Anchor = AnchorStyles.None;
             textBoxMKTS.BackColor = Color.FromArgb(69, 73, 74);
             textBoxMKTS.BorderStyle = BorderStyle.FixedSingle;
             textBoxMKTS.ForeColor = Color.FromArgb(220, 220, 220);
@@ -283,6 +296,7 @@
             // 
             // buttonThemTS
             // 
+            buttonThemTS.Anchor = AnchorStyles.Bottom;
             buttonThemTS.Location = new Point(322, 337);
             buttonThemTS.Margin = new Padding(3, 2, 3, 2);
             buttonThemTS.Name = "buttonThemTS";
@@ -294,6 +308,7 @@
             // 
             // dateTimePickerNgaySinhTS
             // 
+            dateTimePickerNgaySinhTS.Anchor = AnchorStyles.None;
             dateTimePickerNgaySinhTS.Location = new Point(510, 124);
             dateTimePickerNgaySinhTS.Name = "dateTimePickerNgaySinhTS";
             dateTimePickerNgaySinhTS.Size = new Size(200, 23);
@@ -301,6 +316,7 @@
             // 
             // buttonLuuTS
             // 
+            buttonLuuTS.Anchor = AnchorStyles.Bottom;
             buttonLuuTS.Location = new Point(586, 337);
             buttonLuuTS.Name = "buttonLuuTS";
             buttonLuuTS.Padding = new Padding(4);
@@ -311,6 +327,7 @@
             // 
             // buttonDanhSachTS
             // 
+            buttonDanhSachTS.Anchor = AnchorStyles.Bottom;
             buttonDanhSachTS.Location = new Point(185, 337);
             buttonDanhSachTS.Name = "buttonDanhSachTS";
             buttonDanhSachTS.Padding = new Padding(4);
@@ -321,6 +338,7 @@
             // 
             // buttonXoaTS
             // 
+            buttonXoaTS.Anchor = AnchorStyles.Bottom;
             buttonXoaTS.Location = new Point(498, 337);
             buttonXoaTS.Name = "buttonXoaTS";
             buttonXoaTS.Padding = new Padding(4);
@@ -331,6 +349,7 @@
             // 
             // buttonSuaTS
             // 
+            buttonSuaTS.Anchor = AnchorStyles.Bottom;
             buttonSuaTS.Location = new Point(410, 337);
             buttonSuaTS.Name = "buttonSuaTS";
             buttonSuaTS.Padding = new Padding(4);
@@ -363,18 +382,20 @@
             // 
             // textBoxTimKiem
             // 
+            textBoxTimKiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBoxTimKiem.BackColor = Color.FromArgb(69, 73, 74);
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.ForeColor = Color.FromArgb(220, 220, 220);
             textBoxTimKiem.Location = new Point(0, 1);
             textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
             textBoxTimKiem.Name = "textBoxTimKiem";
-            textBoxTimKiem.PlaceholderText = "Tìm kiếm thí sinh theo số điện thoại";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm thí sinh theo mã thí sinh, họ tên, hoặc Email";
             textBoxTimKiem.Size = new Size(680, 23);
             textBoxTimKiem.TabIndex = 73;
             // 
             // crownButtonTimKiem
             // 
+            crownButtonTimKiem.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             crownButtonTimKiem.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             crownButtonTimKiem.Location = new Point(679, 1);
             crownButtonTimKiem.Margin = new Padding(3, 2, 3, 2);

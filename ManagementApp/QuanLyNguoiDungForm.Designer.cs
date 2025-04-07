@@ -375,7 +375,7 @@
             textBoxTimKiem.Location = new Point(0, 1);
             textBoxTimKiem.Margin = new Padding(3, 2, 3, 2);
             textBoxTimKiem.Name = "textBoxTimKiem";
-            textBoxTimKiem.PlaceholderText = "Tìm kiếm người dùng theo email";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm người dùng theo mã người dùng, họ tên, hoặc Email";
             textBoxTimKiem.Size = new Size(680, 23);
             textBoxTimKiem.TabIndex = 73;
             // 

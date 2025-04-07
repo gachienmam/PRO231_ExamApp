@@ -287,36 +287,38 @@ namespace ManagementApp
             LoadDataGridView();
         }
 
-
-
         private void crownButtonTimKiem_Click(object sender, EventArgs e)
         {
+            string search = textBoxTimKiem.Text.Trim();
+
+            if (string.IsNullOrEmpty(search))
+            {
+                MessageBox.Show("Vui lòng nhập mã thí sinh hoặc địa chỉ email hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxTimKiem.Focus();
+                return;
+            }
+
+            DataTable dataTable = new DataTable();
+            // Gọi phương thức tìm kiếm
             try
             {
-                string maSV = textBoxTimKiem.Text.Trim();
-                if (string.IsNullOrEmpty(maSV))
+                string sql = $"SELECT * FROM ThiSinh WHERE MaThiSinh LIKE '%{search}%' OR HoTen LIKE '%{search}%' OR Email LIKE '%{search}%';";
+                dataTable = _dbHelper.ExecuteSqlReader(sql);
+                if (dataTable.Rows.Count > 0)
                 {
-                    MessageBox.Show("Vui lòng nhập mã sinh viên để tìm kiếm.");
-                    return;
-                }
-
-                DataTable dt = (DataTable)dataGridViewTS.DataSource;
-                if (dt != null)
-                {
-                    DataView dv = new DataView(dt);
-                    dv.RowFilter = $"MaThiSinh = '{maSV}'";
-                    dataGridViewTS.DataSource = dv;
+                    dataGridViewTS.DataSource = dataTable;
+                    tabControl1.SelectedIndex = 1;
                 }
                 else
                 {
-                    MessageBox.Show("Không có dữ liệu để tìm kiếm.");
+                    MessageBox.Show("Không tìm thấy thí sinh nào phù hợp tiêu chí tìm kiếm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textBoxTimKiem.Focus();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi: {ex.Message}");
+                CrownMessageBox.ShowError($"Lỗi: {ex.Message}", "Lỗi kết nối", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
             }
-
 
             ResetValues();
         }

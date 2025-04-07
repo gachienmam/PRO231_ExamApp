@@ -225,6 +225,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 419);
             Controls.Add(layoutPanel);
+            MinimumSize = new Size(816, 458);
             Name = "DangNhapForm";
             Text = "PolyTest Manager - Đăng nhập";
             Load += DangNhapForm_Load;

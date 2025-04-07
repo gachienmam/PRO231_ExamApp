@@ -262,12 +262,11 @@ namespace ManagementApp
 
         private void crownButtonTimKiem_Click(object sender, EventArgs e)
         {
-            string email = textBoxTimKiem.Text.Trim();
+            string search = textBoxTimKiem.Text.Trim();
 
-            // Kiểm tra tính hợp lệ của địa chỉ email
-            if (string.IsNullOrEmpty(email) || !IsValidEmail(email))
+            if (string.IsNullOrEmpty(search))
             {
-                MessageBox.Show("Vui lòng nhập địa chỉ email hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập mã người dùng hoặc địa chỉ email hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxTimKiem.Focus();
                 return;
             }
@@ -276,7 +275,7 @@ namespace ManagementApp
             // Gọi phương thức tìm kiếm
             try
             {
-                string sql = $"SELECT * FROM NguoiDung WHERE MaNguoiDung = '{textBoxMaND.Text}';";
+                string sql = $"SELECT * FROM NguoiDung WHERE MaNguoiDung LIKE '%{search}%' OR HoTen LIKE '%{search}%' OR Email LIKE '%{search}%';";
                 dataTable = _dbHelper.ExecuteSqlReader(sql);
             }
             catch (Exception ex)

@@ -53,6 +53,7 @@ namespace ManagementApp
             {
                 buttonLuuND.Enabled = false;
                 textBoxMaND.Focus();
+                textBoxMaND.Enabled = false;
                 textBoxHoTenND.Enabled = true;
                 textBoxEmailND.Enabled = true;
                 textBoxMKND.Enabled = true;
@@ -80,6 +81,7 @@ namespace ManagementApp
 
         private void buttonThemND_Click(object sender, EventArgs e)
         {
+            textBoxMaND.Enabled = true;
             textBoxHoTenND.Text = string.Empty;
             textBoxHoTenND.Enabled = true;
             textBoxMKND.Text = string.Empty;
@@ -146,7 +148,7 @@ namespace ManagementApp
                         RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
                         Command = textBoxMKND.Text
                     };
-                    var sql = $"EXEC sp_InsertNguoiDung MaNguoiDung = '{textBoxMaND.Text.Trim()}', HoTen = N'{textBoxHoTenND.Text.Trim()}', Email = '{textBoxEmailND.Text.Trim()}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = N'{VaiTro}'";
+                    var sql = $"EXEC sp_InsertNguoiDung @MaNguoiDung = '{textBoxMaND.Text.Trim()}', @HoTen = N'{textBoxHoTenND.Text.Trim()}', @Email = '{textBoxEmailND.Text.Trim()}', @MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', @VaiTro = N'{VaiTro}'";
 
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
@@ -241,7 +243,7 @@ namespace ManagementApp
                 try
                 {
                     string sql = string.Format("EXEC sp_DeleteNguoiDung " + textBoxMaND.Text);
-                    var result = Task.Run(async () => await _dbHelper.ExecuteSqlNonQueryAsync(sql));
+                    var result = _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
                     CrownMessageBox.ShowInformation("Đã xóa người dùng", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);

@@ -142,7 +142,7 @@ namespace ManagementApp
                         RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
                         Command = textBoxMKTS.Text
                     };
-                    var sql = string.Format("EXEC sp_InsertThiSinh @MaThiSinh = N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}', {6}",
+                    var sql = string.Format("EXEC sp_InsertThiSinh @MaThiSinh = N'{0}', @HoTen = N'{1}', @Email = N'{2}', @MatKhau = N'{3}', @NgaySinh = '{4}', @SoDienThoai = '{5}', @TrangThai = {6}",
                             textBoxMaTS.Text.Trim(),
                             textBoxHoTenTS.Text.Trim(),
                             textBoxEmailTS.Text.Trim(),
@@ -262,12 +262,12 @@ namespace ManagementApp
                             RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
                             Command = textBoxMKTS.Text
                         };
-                        sql = $"EXEC sp_UpdateThiSinh N'{textBoxMaTS.Text.Trim()}', N'{textBoxHoTenTS.Text.Trim()}', N'{textBoxEmailTS.Text.Trim()}', N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', N'{textBoxSDTTS.Text.Trim()}', {trangThai}";
+                        sql = $"EXEC sp_UpdateThiSinh @MaThiSinh = N'{textBoxMaTS.Text.Trim()}', @HoTen = N'{textBoxHoTenTS.Text.Trim()}', @Email = N'{textBoxEmailTS.Text.Trim()}', @MatKhau = N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', @NgaySinh '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', @SoDienThoai = N'{textBoxSDTTS.Text.Trim()}', @TrangThai = {trangThai}";
                         SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
                     }
                     else
                     {
-                        sql = $"UPDATE ThiSinh SET HoTen = N'{textBoxHoTenTS.Text.Trim()}', Email = N'{textBoxEmailTS.Text.Trim()}', NgaySinh = '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', SoDienThoai = N'{textBoxSDTTS.Text.Trim()}', {trangThai} WHERE MaThiSinh = N'{textBoxMaTS.Text.Trim()}'";
+                        sql = $"UPDATE ThiSinh SET HoTen = N'{textBoxHoTenTS.Text.Trim()}', Email = N'{textBoxEmailTS.Text.Trim()}', NgaySinh = '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', SoDienThoai = N'{textBoxSDTTS.Text.Trim()}', TrangThai = {trangThai} WHERE MaThiSinh = N'{textBoxMaTS.Text.Trim()}'";
                     }
                     _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();

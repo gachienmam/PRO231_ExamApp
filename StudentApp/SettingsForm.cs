@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grpc.Net.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -36,6 +37,8 @@ namespace StudentApp
             }
             Invalidate();
             Refresh();
+
+            textBoxServerAddress.Text = ConfigurationManager.AppSettings["ServerAddress"] ?? "http://localhost:50051";
         }
         #endregion
 
@@ -75,12 +78,31 @@ namespace StudentApp
         {
             this.Close();
         }
+
+        private void buttonChangeIP_Click(object sender, EventArgs e)
+        {
+            string serverAddress = textBoxServerAddress.Text;
+            try
+            {
+                var handler = new HttpClientHandler();
+                var channel = GrpcChannel.ForAddress(serverAddress,
+                    new GrpcChannelOptions { HttpHandler = handler });
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["ServerAddress"].Value = serverAddress;
+                config.Save(ConfigurationSaveMode.Modified);
+                MessageBox.Show("Đã sửa địa chỉ thành công!", "Đổi thành công", MessageBoxButtons.OK);
+            }
+            catch
+            {
+                MessageBox.Show("Địa chỉ không hợp lệ!", "Đổi thất bại", MessageBoxButtons.OK);
+            }
+        }
         #endregion
 
         #region Events
         private void radioLightTheme_CheckedChanged(object sender, EventArgs e)
         {
-            if(radioLightTheme.Checked)
+            if (radioLightTheme.Checked)
             {
                 ChangeThemeGlobal(true);
             }

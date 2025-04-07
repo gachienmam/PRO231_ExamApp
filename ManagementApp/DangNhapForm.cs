@@ -120,21 +120,19 @@ namespace ManagementApp
                     new GrpcChannelOptions { HttpHandler = handler });
                 _client = new AdminServiceClient(channel);
                 _serverAddress = serverAddress;
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["ServerAddress"].Value = serverAddress;
+                config.Save(ConfigurationSaveMode.Modified);
+
+                MessageBox.Show("Đã sửa địa chỉ thành công!", "Đổi thành công", MessageBoxButtons.OK);
+
+                textBoxIPAddress.Text = serverAddress;
+                this.Text = $"PolyTest Manager - Đăng nhập (Máy chủ: {serverAddress})";
             }
             catch
             {
                 MessageBox.Show("Địa chỉ không hợp lệ!", "Đổi thất bại", MessageBoxButtons.OK);
-                serverAddress = _serverAddress;
             }
-
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["ServerAddress"].Value = serverAddress;
-            config.Save(ConfigurationSaveMode.Modified);
-
-            MessageBox.Show("Đã sửa địa chỉ thành công!", "Đổi thành công", MessageBoxButtons.OK);
-
-            textBoxIPAddress.Text = serverAddress;
-            this.Text = $"PolyTest Manager - Đăng nhập (Máy chủ: {serverAddress})";
         }
     }
 }

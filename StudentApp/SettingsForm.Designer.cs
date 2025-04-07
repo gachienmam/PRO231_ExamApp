@@ -34,7 +34,11 @@
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             btnSaveSettings = new ReaLTaiizor.Controls.CrownButton();
+            crownGroupBox2 = new ReaLTaiizor.Controls.CrownGroupBox();
+            buttonChangeIP = new ReaLTaiizor.Controls.CrownButton();
+            textBoxServerAddress = new ReaLTaiizor.Controls.CrownTextBox();
             crownGroupBox1.SuspendLayout();
+            crownGroupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // crownGroupBox1
@@ -42,7 +46,7 @@
             crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
             crownGroupBox1.Controls.Add(radioDarkTheme);
             crownGroupBox1.Controls.Add(radioLightTheme);
-            crownGroupBox1.Location = new Point(12, 71);
+            crownGroupBox1.Location = new Point(12, 52);
             crownGroupBox1.Name = "crownGroupBox1";
             crownGroupBox1.Size = new Size(234, 77);
             crownGroupBox1.TabIndex = 0;
@@ -110,11 +114,45 @@
             btnSaveSettings.Text = "Lưu";
             btnSaveSettings.Click += buttonSaveSettings_Click;
             // 
+            // crownGroupBox2
+            // 
+            crownGroupBox2.BorderColor = Color.FromArgb(51, 51, 51);
+            crownGroupBox2.Controls.Add(buttonChangeIP);
+            crownGroupBox2.Controls.Add(textBoxServerAddress);
+            crownGroupBox2.Location = new Point(12, 135);
+            crownGroupBox2.Name = "crownGroupBox2";
+            crownGroupBox2.Size = new Size(234, 53);
+            crownGroupBox2.TabIndex = 105;
+            crownGroupBox2.TabStop = false;
+            crownGroupBox2.Text = "Địa chỉ Server";
+            // 
+            // buttonChangeIP
+            // 
+            buttonChangeIP.Location = new Point(176, 22);
+            buttonChangeIP.Name = "buttonChangeIP";
+            buttonChangeIP.Padding = new Padding(5);
+            buttonChangeIP.Size = new Size(52, 23);
+            buttonChangeIP.TabIndex = 107;
+            buttonChangeIP.Text = "Đổi";
+            buttonChangeIP.Click += buttonChangeIP_Click;
+            // 
+            // textBoxServerAddress
+            // 
+            textBoxServerAddress.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxServerAddress.BorderStyle = BorderStyle.FixedSingle;
+            textBoxServerAddress.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxServerAddress.Location = new Point(6, 22);
+            textBoxServerAddress.Name = "textBoxServerAddress";
+            textBoxServerAddress.PlaceholderText = "IP";
+            textBoxServerAddress.Size = new Size(164, 23);
+            textBoxServerAddress.TabIndex = 106;
+            // 
             // SettingsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(258, 229);
+            Controls.Add(crownGroupBox2);
             Controls.Add(btnSaveSettings);
             Controls.Add(parrotGradientPanel1);
             Controls.Add(crownTitle1);
@@ -124,6 +162,8 @@
             Load += SettingsForm_Load;
             crownGroupBox1.ResumeLayout(false);
             crownGroupBox1.PerformLayout();
+            crownGroupBox2.ResumeLayout(false);
+            crownGroupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,5 +176,8 @@
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
         private ReaLTaiizor.Controls.CrownRadioButton radioDarkTheme;
         private ReaLTaiizor.Controls.CrownButton btnSaveSettings;
+        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox2;
+        private ReaLTaiizor.Controls.CrownButton buttonChangeIP;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxServerAddress;
     }
 }

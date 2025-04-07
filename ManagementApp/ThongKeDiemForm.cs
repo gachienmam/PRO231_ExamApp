@@ -205,6 +205,11 @@ namespace ManagementApp
         {
             if(dataGridView1.DataSource.GetType() == typeof(DataView))
             {
+                if (((DataView)dataGridView1.DataSource).ToTable().Rows.Count == 0)
+                {
+                    MessageBox.Show("Không có thí sinh nào trong danh sách để gửi mail!", "Lỗi gửi mail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 foreach (DataRow row in ((DataView)dataGridView1.DataSource).ToTable().Rows)
                 {
                     float diem = float.Parse(row["Diem"].ToString());
@@ -214,6 +219,11 @@ namespace ManagementApp
             }
             else
             {
+                if (((DataTable)dataGridView1.DataSource).Rows.Count == 0)
+                {
+                    MessageBox.Show("Không có thí sinh nào trong danh sách để gửi mail!", "Lỗi gửi mail", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 foreach (DataRow row in ((DataTable)dataGridView1.DataSource).Rows)
                 {
                     float diem = float.Parse(row["Diem"].ToString());

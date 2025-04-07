@@ -16,7 +16,7 @@ namespace ManagementApp
             ApplicationConfiguration.Initialize();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.CurrentCulture = new(CultureInfo.CurrentCulture.TextInfo.CultureName);
-            Application.Run(new DangNhapForm(ConfigurationManager.AppSettings["ServerAddress"] ?? "http://localhost:5001"));
+            Application.Run(new DangNhapForm(ConfigurationManager.AppSettings["ServerAddress"] ?? "http://localhost:50052"));
         }
     }
 }

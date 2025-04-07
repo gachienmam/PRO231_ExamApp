@@ -11,13 +11,14 @@ namespace ManagementApp
 {
     public partial class DangNhapForm : Form
     {
-        private readonly AdminServiceClient _client;
-        private readonly string _serverAddress;
+        private AdminServiceClient _client;
+        private string _serverAddress;
 
         #region Constructor
         public DangNhapForm()
         {
             InitializeComponent();
+            textBoxIPAddress.Text = ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:50052";
         }
 
         public DangNhapForm(string serverAddress)
@@ -29,7 +30,9 @@ namespace ManagementApp
             //handler.ServerCertificateCustomValidationCallback =
             //    HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
 
-            var channel = GrpcChannel.ForAddress(ConfigurationManager.AppSettings["ServerAddress"] ?? "https://localhost:50052",
+            textBoxIPAddress.Text = _serverAddress;
+
+            var channel = GrpcChannel.ForAddress(_serverAddress,
                 new GrpcChannelOptions { HttpHandler = handler });
             _client = new AdminServiceClient(channel);
         }
@@ -105,6 +108,33 @@ namespace ManagementApp
             {
                 MessageBox.Show("Tên đăng nhập và mật khẩu không hợp lệ.", "Lỗi đăng nhập", MessageBoxButtons.OK);
             }
+        }
+
+        private void buttonChangeIP_Click(object sender, EventArgs e)
+        {
+            string serverAddress = textBoxIPAddress.Text;
+            try
+            {
+                var handler = new HttpClientHandler();
+                var channel = GrpcChannel.ForAddress(serverAddress,
+                    new GrpcChannelOptions { HttpHandler = handler });
+                _client = new AdminServiceClient(channel);
+                _serverAddress = serverAddress;
+            }
+            catch
+            {
+                MessageBox.Show("Địa chỉ không hợp lệ!", "Đổi thất bại", MessageBoxButtons.OK);
+                serverAddress = _serverAddress;
+            }
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["ServerAddress"].Value = serverAddress;
+            config.Save(ConfigurationSaveMode.Modified);
+
+            MessageBox.Show("Đã sửa địa chỉ thành công!", "Đổi thành công", MessageBoxButtons.OK);
+
+            textBoxIPAddress.Text = serverAddress;
+            this.Text = $"PolyTest Manager - Đăng nhập (Máy chủ: {serverAddress})";
         }
     }
 }

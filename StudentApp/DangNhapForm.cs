@@ -132,6 +132,11 @@ namespace StudentApp
             Refresh();
         }
 
+        private void buttonGioiThieu_Click(object sender, EventArgs e)
+        {
+            GioiThieuForm gioiThieuForm = new GioiThieuForm();
+            gioiThieuForm.ShowDialog();
+        }
 
         #region Function
         private bool IsAdministrator()
@@ -141,11 +146,5 @@ namespace StudentApp
             return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
         }
         #endregion
-
-        private void buttonGioiThieu_Click(object sender, EventArgs e)
-        {
-            GioiThieuForm gioiThieuForm = new GioiThieuForm();
-            gioiThieuForm.ShowDialog();
-        }
     }
 }

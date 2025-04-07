@@ -19,7 +19,6 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using ExamServer.ExamProto;
 using ManagementServer.Helper;
-using ProtoBuf;
 using ExamLibrary.Question;
 using ExamLibrary.Remote;
 using ExamLibrary.Enum;

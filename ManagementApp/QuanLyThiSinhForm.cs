@@ -43,6 +43,7 @@ namespace ManagementApp
         private async void QuanLyThiSinhForm_Load(object sender, EventArgs e)
         {
             await LoadDataGridViewAsync();
+            buttonThemTS.PerformClick();
         }
 
         private void buttonThemTS_Click(object sender, EventArgs e)
@@ -350,6 +351,7 @@ namespace ManagementApp
             {
                 buttonLuuTS.Enabled = false;
                 textBoxMaTS.Focus();
+                textBoxMaTS.Enabled = false;
                 textBoxHoTenTS.Enabled = true;
                 textBoxSDTTS.Enabled = true;
                 textBoxEmailTS.Enabled = true;

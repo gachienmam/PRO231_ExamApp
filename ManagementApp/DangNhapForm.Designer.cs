@@ -38,8 +38,12 @@
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             TEXTBOX_EMAIL = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
+            textBoxIPAddress = new ReaLTaiizor.Controls.CrownTextBox();
+            buttonChangeIP = new ReaLTaiizor.Controls.CrownButton();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
+            crownGroupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // layoutPanel
@@ -81,6 +85,7 @@
             // 
             // crownSectionPanel2
             // 
+            crownSectionPanel2.Controls.Add(crownGroupBox1);
             crownSectionPanel2.Controls.Add(crownTitle4);
             crownSectionPanel2.Controls.Add(BUTTON_DANGNHAP);
             crownSectionPanel2.Controls.Add(crownTitle3);
@@ -101,7 +106,7 @@
             crownTitle4.Anchor = AnchorStyles.None;
             crownTitle4.AutoSize = true;
             crownTitle4.Font = new Font("Segoe UI Semilight", 8.2F);
-            crownTitle4.Location = new Point(123, 126);
+            crownTitle4.Location = new Point(123, 107);
             crownTitle4.MinimumSize = new Size(163, 15);
             crownTitle4.Name = "crownTitle4";
             crownTitle4.Size = new Size(163, 15);
@@ -114,7 +119,7 @@
             BUTTON_DANGNHAP.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             BUTTON_DANGNHAP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BUTTON_DANGNHAP.ImagePadding = 6;
-            BUTTON_DANGNHAP.Location = new Point(146, 287);
+            BUTTON_DANGNHAP.Location = new Point(146, 268);
             BUTTON_DANGNHAP.Name = "BUTTON_DANGNHAP";
             BUTTON_DANGNHAP.Padding = new Padding(5);
             BUTTON_DANGNHAP.Size = new Size(113, 28);
@@ -126,7 +131,7 @@
             // 
             crownTitle3.Anchor = AnchorStyles.None;
             crownTitle3.AutoSize = true;
-            crownTitle3.Location = new Point(106, 216);
+            crownTitle3.Location = new Point(106, 197);
             crownTitle3.Name = "crownTitle3";
             crownTitle3.Size = new Size(57, 15);
             crownTitle3.TabIndex = 4;
@@ -138,7 +143,7 @@
             TEXTBOX_MATKHAU.BackColor = Color.FromArgb(69, 73, 74);
             TEXTBOX_MATKHAU.BorderStyle = BorderStyle.FixedSingle;
             TEXTBOX_MATKHAU.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOX_MATKHAU.Location = new Point(106, 234);
+            TEXTBOX_MATKHAU.Location = new Point(106, 215);
             TEXTBOX_MATKHAU.Name = "TEXTBOX_MATKHAU";
             TEXTBOX_MATKHAU.PlaceholderText = "Password";
             TEXTBOX_MATKHAU.Size = new Size(193, 23);
@@ -149,7 +154,7 @@
             // 
             crownTitle2.Anchor = AnchorStyles.None;
             crownTitle2.AutoSize = true;
-            crownTitle2.Location = new Point(106, 154);
+            crownTitle2.Location = new Point(106, 135);
             crownTitle2.Name = "crownTitle2";
             crownTitle2.Size = new Size(36, 15);
             crownTitle2.TabIndex = 2;
@@ -161,7 +166,7 @@
             TEXTBOX_EMAIL.BackColor = Color.FromArgb(69, 73, 74);
             TEXTBOX_EMAIL.BorderStyle = BorderStyle.FixedSingle;
             TEXTBOX_EMAIL.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOX_EMAIL.Location = new Point(106, 172);
+            TEXTBOX_EMAIL.Location = new Point(106, 153);
             TEXTBOX_EMAIL.Name = "TEXTBOX_EMAIL";
             TEXTBOX_EMAIL.PlaceholderText = "Email";
             TEXTBOX_EMAIL.Size = new Size(193, 23);
@@ -172,11 +177,46 @@
             crownTitle1.Anchor = AnchorStyles.None;
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            crownTitle1.Location = new Point(157, 85);
+            crownTitle1.Location = new Point(157, 66);
             crownTitle1.Name = "crownTitle1";
             crownTitle1.Size = new Size(98, 32);
             crownTitle1.TabIndex = 0;
             crownTitle1.Text = "Quản lý";
+            // 
+            // crownGroupBox1
+            // 
+            crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
+            crownGroupBox1.Controls.Add(buttonChangeIP);
+            crownGroupBox1.Controls.Add(textBoxIPAddress);
+            crownGroupBox1.Location = new Point(21, 302);
+            crownGroupBox1.Name = "crownGroupBox1";
+            crownGroupBox1.Size = new Size(358, 60);
+            crownGroupBox1.TabIndex = 6;
+            crownGroupBox1.TabStop = false;
+            crownGroupBox1.Text = "Đổi máy chủ";
+            // 
+            // textBoxIPAddress
+            // 
+            textBoxIPAddress.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxIPAddress.BorderStyle = BorderStyle.FixedSingle;
+            textBoxIPAddress.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxIPAddress.Location = new Point(6, 22);
+            textBoxIPAddress.Name = "textBoxIPAddress";
+            textBoxIPAddress.PlaceholderText = "Địa chỉ";
+            textBoxIPAddress.Size = new Size(259, 23);
+            textBoxIPAddress.TabIndex = 7;
+            // 
+            // buttonChangeIP
+            // 
+            buttonChangeIP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonChangeIP.ImagePadding = 6;
+            buttonChangeIP.Location = new Point(269, 22);
+            buttonChangeIP.Name = "buttonChangeIP";
+            buttonChangeIP.Padding = new Padding(5);
+            buttonChangeIP.Size = new Size(83, 23);
+            buttonChangeIP.TabIndex = 7;
+            buttonChangeIP.Text = "Đổi địa chỉ";
+            buttonChangeIP.Click += buttonChangeIP_Click;
             // 
             // DangNhapForm
             // 
@@ -190,6 +230,8 @@
             layoutPanel.ResumeLayout(false);
             crownSectionPanel2.ResumeLayout(false);
             crownSectionPanel2.PerformLayout();
+            crownGroupBox1.ResumeLayout(false);
+            crownGroupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -205,5 +247,8 @@
         private ReaLTaiizor.Controls.CrownTitle crownTitle2;
         private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownButton BUTTON_DANGNHAP;
+        private ReaLTaiizor.Controls.CrownGroupBox crownGroupBox1;
+        private ReaLTaiizor.Controls.CrownButton buttonChangeIP;
+        private ReaLTaiizor.Controls.CrownTextBox textBoxIPAddress;
     }
 }

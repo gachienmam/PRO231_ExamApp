@@ -44,6 +44,7 @@ namespace ManagementApp
         private async void QuanLyNguoiDungForm_Load(object sender, EventArgs e)
         {
             await LoadDataGridViewAsync();
+            buttonThemND.PerformClick();
         }
 
         private void dataGridViewNguoiDung_Click(object sender, EventArgs e)
@@ -74,6 +75,7 @@ namespace ManagementApp
             {
                 MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            tabControl1.SelectedIndex = 0;
         }
 
         private void buttonThemND_Click(object sender, EventArgs e)

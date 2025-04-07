@@ -150,11 +150,17 @@ namespace ManagementApp
                     };
                     var sql = $"EXEC sp_InsertNguoiDung @MaNguoiDung = '{textBoxMaND.Text.Trim()}', @HoTen = N'{textBoxHoTenND.Text.Trim()}', @Email = '{textBoxEmailND.Text.Trim()}', @MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', @VaiTro = N'{VaiTro}'";
 
-                    _dbHelper.ExecuteSqlNonQuery(sql);
+                    if(_dbHelper.ExecuteSqlNonQuery(sql) >= 1)
+                    {
+                        CrownMessageBox.ShowInformation("Đã tạo người dùng mới", "Tạo thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        SendMailToNguoiDung(false, textBoxEmailND.Text, textBoxMKND.Text);
+                    }
+                    else
+                    {
+                        CrownMessageBox.ShowInformation("Không thể thêm người dùng. Hãy kiểm tra mã, email, số điện thoại có bị trùng hay không?", "Thêm thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    }
                     LoadDataGridView();
-                    SendMailToNguoiDung(false, textBoxEmailND.Text, textBoxMKND.Text);
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã tạo người dùng mới", "Tạo thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -215,18 +221,32 @@ namespace ManagementApp
                             Command = textBoxMKND.Text
                         };
                         sql = $"UPDATE NguoiDung SET HoTen = N'{textBoxHoTenND.Text}', Email = '{textBoxEmailND.Text}', MatKhau = '{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', VaiTro = N'{VaiTro}' WHERE MaNguoiDung = '{textBoxMaND.Text}';";
-                        _dbHelper.ExecuteSqlNonQuery(sql);
-                        SendMailToNguoiDung(false, textBoxEmailND.Text, textBoxMKND.Text);
+                        if(_dbHelper.ExecuteSqlNonQuery(sql) >= 1)
+                        {
+                            CrownMessageBox.ShowInformation("Đã sửa người dùng", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                            SendMailToNguoiDung(false, textBoxEmailND.Text, textBoxMKND.Text);
+                        }
+                        else
+                        {
+                            CrownMessageBox.ShowError("Không thể sửa người dùng. Hãy kiểm tra mã, email, số điện thoại có bị trùng hay không?", "Sửa thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        }
                     }
                     else
                     {
                         sql = $"UPDATE NguoiDung SET HoTen = N'{textBoxHoTenND.Text}', Email = '{textBoxEmailND.Text}', VaiTro = N'{VaiTro}' WHERE MaNguoiDung = '{textBoxMaND.Text}';";
-                        _dbHelper.ExecuteSqlNonQuery(sql);
+                        if (_dbHelper.ExecuteSqlNonQuery(sql) >= 1)
+                        {
+                            CrownMessageBox.ShowInformation("Đã sửa người dùng", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                            SendMailToNguoiDung(false, textBoxEmailND.Text, textBoxMKND.Text);
+                        }
+                        else
+                        {
+                            CrownMessageBox.ShowError("Không thể sửa người dùng. Hãy kiểm tra mã, email, số điện thoại có bị trùng hay không?", "Sửa thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        }
                     }
 
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã sửa người dùng", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -244,9 +264,16 @@ namespace ManagementApp
                 {
                     string sql = string.Format("EXEC sp_DeleteNguoiDung " + textBoxMaND.Text);
                     var result = _dbHelper.ExecuteSqlNonQuery(sql);
+                    if(result >= 1)
+                    {
+                        CrownMessageBox.ShowInformation("Đã xóa người dùng", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    }
+                    else
+                    {
+                        CrownMessageBox.ShowError("Không thể xóa người dùng", "Xóa thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    }
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã xóa người dùng", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {

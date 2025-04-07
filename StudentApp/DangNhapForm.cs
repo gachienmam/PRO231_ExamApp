@@ -60,7 +60,6 @@ namespace StudentApp
         }
         #endregion
 
-
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             string thiSinhId = textBoxThiSinhId.Text;
@@ -85,6 +84,7 @@ namespace StudentApp
                             { "Authorization", $"Bearer {authResponse.AccessToken}" }
                         };
                         var examResponse = _client.GetExamData(examRequest, headers);
+                        //MessageBox.Show(examResponse.ServerInformation, "gg", MessageBoxButtons.OK);
                         if (examResponse.ResponseCode == (int)HttpStatusCode.OK)
                         {
                             ExamForm examForm = new ExamForm(_client, headers, examResponse, thiSinhId); // Pass the server address

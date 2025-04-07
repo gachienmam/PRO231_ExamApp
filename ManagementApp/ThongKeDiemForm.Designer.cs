@@ -42,6 +42,8 @@ namespace ManagementApp
             textBoxTimKiemTheoMaThiSinh = new ReaLTaiizor.Controls.CrownTextBox();
             buttonTimKiem = new ReaLTaiizor.Controls.CrownButton();
             dataGridView1 = new DataGridView();
+            crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
+            crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             crownSectionPanel1.SuspendLayout();
             crownGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -49,6 +51,8 @@ namespace ManagementApp
             // 
             // crownSectionPanel1
             // 
+            crownSectionPanel1.Controls.Add(crownTitle2);
+            crownSectionPanel1.Controls.Add(crownTitle1);
             crownSectionPanel1.Controls.Add(buttonGuiMail);
             crownSectionPanel1.Controls.Add(ButtonTimKiemTheoDe);
             crownSectionPanel1.Controls.Add(textBoxTimKiemTheoMaDe);
@@ -94,11 +98,11 @@ namespace ManagementApp
             textBoxTimKiemTheoMaDe.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiemTheoMaDe.Font = new Font("Segoe UI", 9F);
             textBoxTimKiemTheoMaDe.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxTimKiemTheoMaDe.Location = new Point(13, 100);
+            textBoxTimKiemTheoMaDe.Location = new Point(87, 100);
             textBoxTimKiemTheoMaDe.Multiline = true;
             textBoxTimKiemTheoMaDe.Name = "textBoxTimKiemTheoMaDe";
             textBoxTimKiemTheoMaDe.PlaceholderText = "Tìm kiếm theo mã đề";
-            textBoxTimKiemTheoMaDe.Size = new Size(510, 29);
+            textBoxTimKiemTheoMaDe.Size = new Size(436, 29);
             textBoxTimKiemTheoMaDe.TabIndex = 20;
             // 
             // crownGroupBox1
@@ -172,11 +176,11 @@ namespace ManagementApp
             textBoxTimKiemTheoMaThiSinh.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiemTheoMaThiSinh.Font = new Font("Segoe UI", 9F);
             textBoxTimKiemTheoMaThiSinh.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxTimKiemTheoMaThiSinh.Location = new Point(13, 65);
+            textBoxTimKiemTheoMaThiSinh.Location = new Point(87, 65);
             textBoxTimKiemTheoMaThiSinh.Multiline = true;
             textBoxTimKiemTheoMaThiSinh.Name = "textBoxTimKiemTheoMaThiSinh";
             textBoxTimKiemTheoMaThiSinh.PlaceholderText = "Tìm kiếm theo mã thí sinh";
-            textBoxTimKiemTheoMaThiSinh.Size = new Size(510, 29);
+            textBoxTimKiemTheoMaThiSinh.Size = new Size(436, 29);
             textBoxTimKiemTheoMaThiSinh.TabIndex = 15;
             // 
             // buttonTimKiem
@@ -203,6 +207,24 @@ namespace ManagementApp
             dataGridView1.Size = new Size(800, 315);
             dataGridView1.TabIndex = 9;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // crownTitle1
+            // 
+            crownTitle1.AutoSize = true;
+            crownTitle1.Location = new Point(13, 67);
+            crownTitle1.Name = "crownTitle1";
+            crownTitle1.Size = new Size(66, 15);
+            crownTitle1.TabIndex = 23;
+            crownTitle1.Text = "Mã thí sinh";
+            // 
+            // crownTitle2
+            // 
+            crownTitle2.AutoSize = true;
+            crownTitle2.Location = new Point(13, 99);
+            crownTitle2.Name = "crownTitle2";
+            crownTitle2.Size = new Size(40, 15);
+            crownTitle2.TabIndex = 24;
+            crownTitle2.Text = "Mã đề";
             // 
             // ThongKeDiemForm
             // 
@@ -237,5 +259,7 @@ namespace ManagementApp
         private ReaLTaiizor.Controls.CrownTextBox textBoxTimKiemTheoMaDe;
         private ReaLTaiizor.Controls.CrownButton ButtonTimKiemTheoDe;
         private ReaLTaiizor.Controls.CrownButton buttonGuiMail;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle2;
+        private ReaLTaiizor.Controls.CrownTitle crownTitle1;
     }
 }

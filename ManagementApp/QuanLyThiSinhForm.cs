@@ -150,11 +150,18 @@ namespace ManagementApp
                             dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd"),
                             textBoxSDTTS.Text.Trim(),
                             trangThai);
-                    _dbHelper.ExecuteSqlNonQuery(sql);
+                    if (_dbHelper.ExecuteSqlNonQuery(sql) >= 1)
+                    {
+                        CrownMessageBox.ShowInformation("Đã thêm thí sính", "Thêm thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
+                    }
+                    else
+                    {
+                        CrownMessageBox.ShowError("Không thể thêm thí sinh. Hãy kiểm tra mã, email, số điện thoại có bị trùng hay không?", "Thêm thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    }
                     LoadDataGridView();
                     SendMailToThiSinh(true, textBoxEmailTS.Text, textBoxMKTS.Text);
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã tạo thí sính mới", "Tạo thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -177,9 +184,17 @@ namespace ManagementApp
                 {
                     string sql = string.Format("EXEC sp_DeleteThiSinh " + textBoxMaTS.Text);
                     var result = _dbHelper.ExecuteSqlNonQuery(sql);
+                    if (result >= 1)
+                    {
+                        CrownMessageBox.ShowInformation("Đã xóa thí sính", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
+                    }
+                    else
+                    {
+                        CrownMessageBox.ShowError("Không thể xóa thí sinh.", "Sửa thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                    }
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã xóa thí sính", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
                 }
                 catch (Exception ex)
                 {
@@ -263,16 +278,32 @@ namespace ManagementApp
                             Command = textBoxMKTS.Text
                         };
                         sql = $"EXEC sp_UpdateThiSinh @MaThiSinh = N'{textBoxMaTS.Text.Trim()}', @HoTen = N'{textBoxHoTenTS.Text.Trim()}', @Email = N'{textBoxEmailTS.Text.Trim()}', @MatKhau = N'{_client.ExecuteRemoteCommand(requestPassword, _headers).ResponseMessage}', @NgaySinh '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', @SoDienThoai = N'{textBoxSDTTS.Text.Trim()}', @TrangThai = {trangThai}";
-                        SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
+                        if (_dbHelper.ExecuteSqlNonQuery(sql) >= 1) 
+                        {
+                            CrownMessageBox.ShowInformation("Đã sửa thí sính", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                            SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
+                        }
+                        else
+                        {
+                            CrownMessageBox.ShowError("Không thể sửa thí sinh. Hãy kiểm tra mã, email, số điện thoại có bị trùng hay không?", "Sửa thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        }
                     }
                     else
                     {
                         sql = $"UPDATE ThiSinh SET HoTen = N'{textBoxHoTenTS.Text.Trim()}', Email = N'{textBoxEmailTS.Text.Trim()}', NgaySinh = '{dateTimePickerNgaySinhTS.Value.ToString("yyyy-MM-dd")}', SoDienThoai = N'{textBoxSDTTS.Text.Trim()}', TrangThai = {trangThai} WHERE MaThiSinh = N'{textBoxMaTS.Text.Trim()}'";
+                        if (_dbHelper.ExecuteSqlNonQuery(sql) >= 1)
+                        {
+                            CrownMessageBox.ShowInformation("Đã sửa thí sính", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                            SendMailToThiSinh(false, textBoxEmailTS.Text, textBoxMKTS.Text);
+                        }
+                        else
+                        {
+                            CrownMessageBox.ShowError("Không thể sửa thí sinh. Hãy kiểm tra mã, email, số điện thoại có bị trùng hay không?", "Sửa thất bại", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
+                        }
                     }
-                    _dbHelper.ExecuteSqlNonQuery(sql);
+                    
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
-                    CrownMessageBox.ShowInformation("Đã sửa thí sính", "Sửa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);
 
                 }
                 catch (Exception ex)

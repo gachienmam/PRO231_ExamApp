@@ -31,6 +31,7 @@
             layoutPanel = new TableLayoutPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            buttonGioiThieu = new ReaLTaiizor.Controls.CrownButton();
             buttonSettings = new ReaLTaiizor.Controls.CrownButton();
             crownTitle6 = new ReaLTaiizor.Controls.CrownTitle();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
@@ -43,7 +44,6 @@
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             textBoxMaDe = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            buttonGioiThieu = new ReaLTaiizor.Controls.CrownButton();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
             SuspendLayout();
@@ -108,9 +108,21 @@
             crownSectionPanel2.Size = new Size(400, 419);
             crownSectionPanel2.TabIndex = 2;
             // 
+            // buttonGioiThieu
+            // 
+            buttonGioiThieu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonGioiThieu.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
+            buttonGioiThieu.Location = new Point(254, 2);
+            buttonGioiThieu.Name = "buttonGioiThieu";
+            buttonGioiThieu.Padding = new Padding(5);
+            buttonGioiThieu.Size = new Size(75, 23);
+            buttonGioiThieu.TabIndex = 11;
+            buttonGioiThieu.Text = "Giới thiệu";
+            buttonGioiThieu.Click += buttonGioiThieu_Click;
+            // 
             // buttonSettings
             // 
-            buttonSettings.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonSettings.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonSettings.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
             buttonSettings.Location = new Point(324, 2);
             buttonSettings.Name = "buttonSettings";
@@ -136,9 +148,9 @@
             crownTitle5.AutoSize = true;
             crownTitle5.Location = new Point(106, 258);
             crownTitle5.Name = "crownTitle5";
-            crownTitle5.Size = new Size(70, 15);
+            crownTitle5.Size = new Size(69, 15);
             crownTitle5.TabIndex = 8;
-            crownTitle5.Text = "Tên thí sinh:";
+            crownTitle5.Text = "Mã thí sinh:";
             // 
             // textBoxMatKhauThiSinh
             // 
@@ -240,18 +252,6 @@
             crownTitle1.Size = new Size(185, 32);
             crownTitle1.TabIndex = 0;
             crownTitle1.Text = "Thi trắc nghiệm";
-            // 
-            // buttonGioiThieu
-            // 
-            buttonGioiThieu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonGioiThieu.ButtonStyle = ReaLTaiizor.Enum.Crown.ButtonStyle.Flat;
-            buttonGioiThieu.Location = new Point(254, 2);
-            buttonGioiThieu.Name = "buttonGioiThieu";
-            buttonGioiThieu.Padding = new Padding(5);
-            buttonGioiThieu.Size = new Size(75, 23);
-            buttonGioiThieu.TabIndex = 11;
-            buttonGioiThieu.Text = "Giới thiệu";
-            buttonGioiThieu.Click += buttonGioiThieu_Click;
             // 
             // DangNhapForm
             // 

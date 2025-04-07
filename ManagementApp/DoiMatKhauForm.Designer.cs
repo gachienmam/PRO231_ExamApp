@@ -31,7 +31,6 @@
             layoutPanel = new TableLayoutPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
-            crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
             BUTTONTHOAT = new ReaLTaiizor.Controls.CrownButton();
             crownTitle5 = new ReaLTaiizor.Controls.CrownTitle();
             TextBoxXNhapLaiMatKhau = new ReaLTaiizor.Controls.CrownTextBox();
@@ -82,7 +81,6 @@
             // 
             // crownSectionPanel2
             // 
-            crownSectionPanel2.Controls.Add(crownTitle4);
             crownSectionPanel2.Controls.Add(BUTTONTHOAT);
             crownSectionPanel2.Controls.Add(crownTitle5);
             crownSectionPanel2.Controls.Add(TextBoxXNhapLaiMatKhau);
@@ -97,16 +95,6 @@
             crownSectionPanel2.SectionHeader = "Đổi mật khẩu";
             crownSectionPanel2.Size = new Size(392, 380);
             crownSectionPanel2.TabIndex = 2;
-            // 
-            // crownTitle4
-            // 
-            crownTitle4.Anchor = AnchorStyles.None;
-            crownTitle4.AutoSize = true;
-            crownTitle4.Location = new Point(91, 238);
-            crownTitle4.Name = "crownTitle4";
-            crownTitle4.Size = new Size(233, 15);
-            crownTitle4.TabIndex = 21;
-            crownTitle4.Text = "Lưu ý: Mật khẩu mới phải có ít nhất 8 kí tự.";
             // 
             // BUTTONTHOAT
             // 
@@ -126,7 +114,7 @@
             // 
             crownTitle5.Anchor = AnchorStyles.None;
             crownTitle5.AutoSize = true;
-            crownTitle5.Location = new Point(105, 173);
+            crownTitle5.Location = new Point(101, 198);
             crownTitle5.Name = "crownTitle5";
             crownTitle5.Size = new Size(107, 15);
             crownTitle5.TabIndex = 19;
@@ -138,7 +126,7 @@
             TextBoxXNhapLaiMatKhau.BackColor = Color.FromArgb(69, 73, 74);
             TextBoxXNhapLaiMatKhau.BorderStyle = BorderStyle.FixedSingle;
             TextBoxXNhapLaiMatKhau.ForeColor = Color.FromArgb(220, 220, 220);
-            TextBoxXNhapLaiMatKhau.Location = new Point(105, 191);
+            TextBoxXNhapLaiMatKhau.Location = new Point(101, 216);
             TextBoxXNhapLaiMatKhau.Name = "TextBoxXNhapLaiMatKhau";
             TextBoxXNhapLaiMatKhau.Size = new Size(193, 23);
             TextBoxXNhapLaiMatKhau.TabIndex = 17;
@@ -161,7 +149,7 @@
             // 
             crownTitle3.Anchor = AnchorStyles.None;
             crownTitle3.AutoSize = true;
-            crownTitle3.Location = new Point(105, 111);
+            crownTitle3.Location = new Point(101, 136);
             crownTitle3.Name = "crownTitle3";
             crownTitle3.Size = new Size(84, 15);
             crownTitle3.TabIndex = 15;
@@ -173,7 +161,7 @@
             TEXTBOXMATKHAUMOI.BackColor = Color.FromArgb(69, 73, 74);
             TEXTBOXMATKHAUMOI.BorderStyle = BorderStyle.FixedSingle;
             TEXTBOXMATKHAUMOI.ForeColor = Color.FromArgb(220, 220, 220);
-            TEXTBOXMATKHAUMOI.Location = new Point(105, 129);
+            TEXTBOXMATKHAUMOI.Location = new Point(101, 154);
             TEXTBOXMATKHAUMOI.Name = "TEXTBOXMATKHAUMOI";
             TEXTBOXMATKHAUMOI.Size = new Size(193, 23);
             TEXTBOXMATKHAUMOI.TabIndex = 14;
@@ -183,11 +171,11 @@
             crownTitle1.Anchor = AnchorStyles.None;
             crownTitle1.AutoSize = true;
             crownTitle1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            crownTitle1.Location = new Point(151, 42);
+            crownTitle1.Location = new Point(122, 74);
             crownTitle1.Name = "crownTitle1";
-            crownTitle1.Size = new Size(98, 32);
+            crownTitle1.Size = new Size(162, 32);
             crownTitle1.TabIndex = 11;
-            crownTitle1.Text = "Quản lý";
+            crownTitle1.Text = "Đổi mật khẩu";
             // 
             // DoiMatKhauForm
             // 
@@ -216,7 +204,6 @@
         private ReaLTaiizor.Controls.CrownTitle crownTitle3;
         private ReaLTaiizor.Controls.CrownTextBox TEXTBOXMATKHAUMOI;
         private ReaLTaiizor.Controls.CrownTitle crownTitle1;
-        private ReaLTaiizor.Controls.CrownTitle crownTitle4;
         private ReaLTaiizor.Controls.CrownButton BUTTONTHOAT;
     }
 }

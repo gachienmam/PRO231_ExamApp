@@ -31,6 +31,9 @@
             layoutPanel = new TableLayoutPanel();
             parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
             crownSectionPanel2 = new ReaLTaiizor.Controls.CrownSectionPanel();
+            crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
+            buttonChangeIP = new ReaLTaiizor.Controls.CrownButton();
+            textBoxIPAddress = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle4 = new ReaLTaiizor.Controls.CrownTitle();
             BUTTON_DANGNHAP = new ReaLTaiizor.Controls.CrownButton();
             crownTitle3 = new ReaLTaiizor.Controls.CrownTitle();
@@ -38,9 +41,6 @@
             crownTitle2 = new ReaLTaiizor.Controls.CrownTitle();
             TEXTBOX_EMAIL = new ReaLTaiizor.Controls.CrownTextBox();
             crownTitle1 = new ReaLTaiizor.Controls.CrownTitle();
-            crownGroupBox1 = new ReaLTaiizor.Controls.CrownGroupBox();
-            textBoxIPAddress = new ReaLTaiizor.Controls.CrownTextBox();
-            buttonChangeIP = new ReaLTaiizor.Controls.CrownButton();
             layoutPanel.SuspendLayout();
             crownSectionPanel2.SuspendLayout();
             crownGroupBox1.SuspendLayout();
@@ -100,6 +100,42 @@
             crownSectionPanel2.SectionHeader = "Đăng nhập";
             crownSectionPanel2.Size = new Size(400, 419);
             crownSectionPanel2.TabIndex = 2;
+            // 
+            // crownGroupBox1
+            // 
+            crownGroupBox1.Anchor = AnchorStyles.Bottom;
+            crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
+            crownGroupBox1.Controls.Add(buttonChangeIP);
+            crownGroupBox1.Controls.Add(textBoxIPAddress);
+            crownGroupBox1.Location = new Point(21, 347);
+            crownGroupBox1.Name = "crownGroupBox1";
+            crownGroupBox1.Size = new Size(358, 60);
+            crownGroupBox1.TabIndex = 6;
+            crownGroupBox1.TabStop = false;
+            crownGroupBox1.Text = "Đổi máy chủ";
+            // 
+            // buttonChangeIP
+            // 
+            buttonChangeIP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonChangeIP.ImagePadding = 6;
+            buttonChangeIP.Location = new Point(269, 22);
+            buttonChangeIP.Name = "buttonChangeIP";
+            buttonChangeIP.Padding = new Padding(5);
+            buttonChangeIP.Size = new Size(83, 23);
+            buttonChangeIP.TabIndex = 7;
+            buttonChangeIP.Text = "Đổi địa chỉ";
+            buttonChangeIP.Click += buttonChangeIP_Click;
+            // 
+            // textBoxIPAddress
+            // 
+            textBoxIPAddress.BackColor = Color.FromArgb(69, 73, 74);
+            textBoxIPAddress.BorderStyle = BorderStyle.FixedSingle;
+            textBoxIPAddress.ForeColor = Color.FromArgb(220, 220, 220);
+            textBoxIPAddress.Location = new Point(6, 22);
+            textBoxIPAddress.Name = "textBoxIPAddress";
+            textBoxIPAddress.PlaceholderText = "Địa chỉ";
+            textBoxIPAddress.Size = new Size(259, 23);
+            textBoxIPAddress.TabIndex = 7;
             // 
             // crownTitle4
             // 
@@ -182,41 +218,6 @@
             crownTitle1.Size = new Size(98, 32);
             crownTitle1.TabIndex = 0;
             crownTitle1.Text = "Quản lý";
-            // 
-            // crownGroupBox1
-            // 
-            crownGroupBox1.BorderColor = Color.FromArgb(51, 51, 51);
-            crownGroupBox1.Controls.Add(buttonChangeIP);
-            crownGroupBox1.Controls.Add(textBoxIPAddress);
-            crownGroupBox1.Location = new Point(21, 302);
-            crownGroupBox1.Name = "crownGroupBox1";
-            crownGroupBox1.Size = new Size(358, 60);
-            crownGroupBox1.TabIndex = 6;
-            crownGroupBox1.TabStop = false;
-            crownGroupBox1.Text = "Đổi máy chủ";
-            // 
-            // textBoxIPAddress
-            // 
-            textBoxIPAddress.BackColor = Color.FromArgb(69, 73, 74);
-            textBoxIPAddress.BorderStyle = BorderStyle.FixedSingle;
-            textBoxIPAddress.ForeColor = Color.FromArgb(220, 220, 220);
-            textBoxIPAddress.Location = new Point(6, 22);
-            textBoxIPAddress.Name = "textBoxIPAddress";
-            textBoxIPAddress.PlaceholderText = "Địa chỉ";
-            textBoxIPAddress.Size = new Size(259, 23);
-            textBoxIPAddress.TabIndex = 7;
-            // 
-            // buttonChangeIP
-            // 
-            buttonChangeIP.Font = new Font("Segoe UI Semilight", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonChangeIP.ImagePadding = 6;
-            buttonChangeIP.Location = new Point(269, 22);
-            buttonChangeIP.Name = "buttonChangeIP";
-            buttonChangeIP.Padding = new Padding(5);
-            buttonChangeIP.Size = new Size(83, 23);
-            buttonChangeIP.TabIndex = 7;
-            buttonChangeIP.Text = "Đổi địa chỉ";
-            buttonChangeIP.Click += buttonChangeIP_Click;
             // 
             // DangNhapForm
             // 

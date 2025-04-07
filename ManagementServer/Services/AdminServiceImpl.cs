@@ -190,6 +190,7 @@ namespace ManagementServer.Services
         [Authorize(Roles = "Admin, GiangVien")]
         public override async Task<CommandResponse> ExecuteRemoteCommand(CommandRequest request, ServerCallContext context)
         {
+            _logger.LogInformation($"USER EXECUTED: " + request.Command);
             if (request.RequestCode.Equals((int)RemoteCommandType.SQL_NONQUERY))
             {
                 try

@@ -142,7 +142,7 @@ namespace ManagementApp
                         RequestCode = (int)RemoteCommandType.REQUEST_ENCRYPTEDPASSWORD,
                         Command = textBoxMKTS.Text
                     };
-                    var sql = string.Format("EXEC sp_InsertThiSinh N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}', {6}",
+                    var sql = string.Format("EXEC sp_InsertThiSinh @MaThiSinh = N'{0}', N'{1}', N'{2}', N'{3}', '{4}', '{5}', {6}",
                             textBoxMaTS.Text.Trim(),
                             textBoxHoTenTS.Text.Trim(),
                             textBoxEmailTS.Text.Trim(),
@@ -176,7 +176,7 @@ namespace ManagementApp
                 try
                 {
                     string sql = string.Format("EXEC sp_DeleteThiSinh " + textBoxMaTS.Text);
-                    var result = Task.Run(async () => await _dbHelper.ExecuteSqlNonQueryAsync(sql));
+                    var result = _dbHelper.ExecuteSqlNonQuery(sql);
                     LoadDataGridView();
                     tabControl1.SelectedIndex = 1;
                     CrownMessageBox.ShowInformation("Đã xóa thí sính", "Xóa thành công", ReaLTaiizor.Enum.Crown.DialogButton.Ok);

@@ -276,6 +276,7 @@
             // 
             // panelDanhSachCauHoi
             // 
+            panelDanhSachCauHoi.AutoScroll = true;
             panelDanhSachCauHoi.Dock = DockStyle.Bottom;
             panelDanhSachCauHoi.Font = new Font("Segoe UI", 9F);
             panelDanhSachCauHoi.Location = new Point(0, 244);
@@ -283,6 +284,7 @@
             panelDanhSachCauHoi.SectionHeader = "Danh sách câu hỏi";
             panelDanhSachCauHoi.Size = new Size(844, 81);
             panelDanhSachCauHoi.TabIndex = 69;
+            panelDanhSachCauHoi.Scroll += panelDanhSachCauHoi_Scroll;
             // 
             // checkBoxConfirmFinish
             // 

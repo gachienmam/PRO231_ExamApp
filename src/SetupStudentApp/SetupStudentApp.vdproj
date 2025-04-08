@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_5BF7E5E47A5E4B25ADB45BA3E5650046"
+        "MsmKey" = "8:_609F68151F21424D950CD0A7EB03E732"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_609F68151F21424D950CD0A7EB03E732"
+        "MsmKey" = "8:_B22D5821D35C4F408BE80AB6EAD5A06C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -130,9 +130,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5BF7E5E47A5E4B25ADB45BA3E5650046"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B22D5821D35C4F408BE80AB6EAD5A06C"
             {
-            "SourcePath" = "8:D:\\polytest.ico"
+            "SourcePath" = "8:..\\..\\resources\\Images\\polytest.ico"
             "TargetName" = "8:polytest.ico"
             "Tag" = "8:"
             "Folder" = "8:_52FAF144DEA74E6DA241101B229D085E"
@@ -374,7 +374,7 @@
             "Target" = "8:_609F68151F21424D950CD0A7EB03E732"
             "Folder" = "8:_8E1BF72E0B7E4E37A761FB44A0C82E1B"
             "WorkingFolder" = "8:_3C4E8955126542AFAB1DD89F1D8B479C"
-            "Icon" = "8:_5BF7E5E47A5E4B25ADB45BA3E5650046"
+            "Icon" = "8:_B22D5821D35C4F408BE80AB6EAD5A06C"
             "Feature" = "8:"
             }
         }

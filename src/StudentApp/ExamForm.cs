@@ -70,7 +70,7 @@ namespace StudentApp
             InitializeComponent();
 
             // MONKE Anticheat: Giấu cửa sổ thi khỏi phần mềm quay fim
-            //ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
+            ExamForm.SetWindowDisplayAffinity(base.Handle, 1U);
 
             _client = client;
             _headers = headers;
@@ -128,7 +128,6 @@ namespace StudentApp
             // Load Server Info
             textBoxMachine.Text = Environment.MachineName;
             textBoxServer.Text = _serverInfo.ServerName;
-            //textBoxServer.Text = "ggMrBit";
             textBoxExamCode.Text = _examPaper.ExamCode;
             textBoxStudent.Text = _maThiSinh;
 
@@ -150,7 +149,7 @@ namespace StudentApp
             examContainerPanel.SectionHeader = "PolyTest Exam Client - Hôm nay: " + DateTime.Now.ToString("dd/MM/yyyy");
 
             // Fullscreen
-            //EnterFullScreenMode(this);
+            EnterFullScreenMode(this);
 
             checkBoxDapAnA.Click += checkBoxDapAn_CheckedChanged;
             checkBoxDapAnB.Click += checkBoxDapAn_CheckedChanged;
@@ -246,6 +245,12 @@ namespace StudentApp
         private void numericQuestionFontSize_ValueChanged(object sender, EventArgs e)
         {
             textBoxQuestion.Font = new Font("Segoe UI", (float)numericQuestionFontSize.Value, FontStyle.Regular);
+        }
+
+        private void panelDanhSachCauHoi_Scroll(object sender, ScrollEventArgs e)
+        {
+            panelDanhSachCauHoi.Invalidate();
+            panelDanhSachCauHoi.Refresh();
         }
         #endregion
 
@@ -560,11 +565,11 @@ namespace StudentApp
                 // MONKE Anticheat: Tự động tắt app hiện trước màn hình thi
                 int foregroundWindow = Win32.GetForegroundWindow();
                 // Kiểm tra cửa sổ hiện tại được focus
-                //if (base.Handle.ToInt32() != foregroundWindow)
-                //{
-                //    Win32.SendMessage(foregroundWindow, 274U, 61472, 0);
-                //}
-                //Win32.SetActiveWindow(base.Handle.ToInt32());
+                if (base.Handle.ToInt32() != foregroundWindow)
+                {
+                    Win32.SendMessage(foregroundWindow, 274U, Win32.SC_MINIMIZE, 0);
+                }
+                Win32.SetActiveWindow(base.Handle.ToInt32());
             }
             else
             {

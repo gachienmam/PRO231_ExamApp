@@ -65,7 +65,7 @@
             foreverForm1.Name = "foreverForm1";
             foreverForm1.Padding = new Padding(1, 51, 1, 1);
             foreverForm1.Sizable = true;
-            foreverForm1.Size = new Size(501, 340);
+            foreverForm1.Size = new Size(508, 340);
             foreverForm1.TabIndex = 0;
             foreverForm1.Text = "Giới thiệu PolyTest Student";
             foreverForm1.TextColor = Color.FromArgb(234, 234, 234);
@@ -89,7 +89,7 @@
             foreverLabel4.BackColor = Color.Transparent;
             foreverLabel4.Font = new Font("Segoe UI", 8F);
             foreverLabel4.ForeColor = Color.LightGray;
-            foreverLabel4.Location = new Point(254, 140);
+            foreverLabel4.Location = new Point(262, 140);
             foreverLabel4.Name = "foreverLabel4";
             foreverLabel4.Size = new Size(42, 13);
             foreverLabel4.TabIndex = 17;
@@ -102,7 +102,7 @@
             textBoxAuthors.BorderColor = Color.FromArgb(35, 168, 109);
             textBoxAuthors.FocusOnHover = false;
             textBoxAuthors.ForeColor = Color.FromArgb(192, 192, 192);
-            textBoxAuthors.Location = new Point(254, 156);
+            textBoxAuthors.Location = new Point(262, 156);
             textBoxAuthors.MaxLength = 32767;
             textBoxAuthors.Multiline = true;
             textBoxAuthors.Name = "textBoxAuthors";
@@ -139,9 +139,9 @@
             foreverLabel3.ForeColor = Color.LightGray;
             foreverLabel3.Location = new Point(339, 79);
             foreverLabel3.Name = "foreverLabel3";
-            foreverLabel3.Size = new Size(58, 13);
+            foreverLabel3.Size = new Size(60, 13);
             foreverLabel3.TabIndex = 14;
-            foreverLabel3.Text = "v31032025";
+            foreverLabel3.Text = "v08042025";
             // 
             // foreverLabel2
             // 
@@ -151,9 +151,9 @@
             foreverLabel2.ForeColor = Color.LightGray;
             foreverLabel2.Location = new Point(21, 107);
             foreverLabel2.Name = "foreverLabel2";
-            foreverLabel2.Size = new Size(419, 13);
+            foreverLabel2.Size = new Size(467, 13);
             foreverLabel2.TabIndex = 13;
-            foreverLabel2.Text = "by Pupu và những người bạn (Nhóm 2, SD1802), môn PRO231 tại FPT PolySchool";
+            foreverLabel2.Text = "by Pupu và những người bạn (Nhóm 2, SD1802), môn PRO231 tại FPT PolySchool Đà Nẵng";
             // 
             // foreverClose1
             // 
@@ -163,7 +163,7 @@
             foreverClose1.DefaultLocation = true;
             foreverClose1.DownColor = Color.FromArgb(30, 0, 0, 0);
             foreverClose1.Font = new Font("Marlett", 10F);
-            foreverClose1.Location = new Point(471, 16);
+            foreverClose1.Location = new Point(478, 16);
             foreverClose1.Name = "foreverClose1";
             foreverClose1.OverColor = Color.FromArgb(30, 255, 255, 255);
             foreverClose1.Size = new Size(18, 18);
@@ -186,7 +186,7 @@
             // GioiThieuForm
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(501, 340);
+            ClientSize = new Size(508, 340);
             Controls.Add(foreverForm1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "GioiThieuForm";

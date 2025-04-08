@@ -15,19 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_312E32C4C72040C1A4661C2100294737"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_61E0558A464B4AA69F1A07CEAF8841AB"
+        "MsmKey" = "8:_D9DDA2DC1DFB41BF8507648B7A4CEE8F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_ECDF2CCF9EAC41C88F8847D5B75507E0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F837F18B82564974BD98F0F52AA9D01C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -128,9 +128,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_312E32C4C72040C1A4661C2100294737"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D9DDA2DC1DFB41BF8507648B7A4CEE8F"
             {
-            "SourcePath" = "8:D:\\logoImage.png"
+            "SourcePath" = "8:..\\..\\resources\\Images\\logoImage.png"
             "TargetName" = "8:logoImage.png"
             "Tag" = "8:"
             "Folder" = "8:_152F2DF7235A4F23B8E991F696507B30"
@@ -148,9 +148,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61E0558A464B4AA69F1A07CEAF8841AB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F837F18B82564974BD98F0F52AA9D01C"
             {
-            "SourcePath" = "8:D:\\polytest.ico"
+            "SourcePath" = "8:..\\..\\resources\\Images\\polytest.ico"
             "TargetName" = "8:polytest.ico"
             "Tag" = "8:"
             "Folder" = "8:_152F2DF7235A4F23B8E991F696507B30"
@@ -367,7 +367,7 @@
             "Target" = "8:_ECDF2CCF9EAC41C88F8847D5B75507E0"
             "Folder" = "8:_C9890E0A5FA847078DB891B4600C76FD"
             "WorkingFolder" = "8:_DD9B135B1F694B4186226A9F88402A03"
-            "Icon" = "8:_61E0558A464B4AA69F1A07CEAF8841AB"
+            "Icon" = "8:_F837F18B82564974BD98F0F52AA9D01C"
             "Feature" = "8:"
             }
         }
@@ -771,7 +771,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_ECDF2CCF9EAC41C88F8847D5B75507E0"
             {
-            "SourcePath" = "8:..\\ManagementApp\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\ManagementApp\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DD9B135B1F694B4186226A9F88402A03"

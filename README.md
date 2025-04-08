@@ -1,52 +1,60 @@
 <img src="resources/Images/PolyTest Logo Full Horizontal 500x192.png"/>
 
-Hệ thống phần mềm quản lý và thi trắc nghiệm PolyTest
+[Bấm vào đây để xem bản Tiếng Việt](README_VN.md)
+
+PolyTest Examination Management System
 =====================================================
-***by Nhóm 2 - Dự án cuối môn PRO231 (C#, WinForms)***
-## Công nghệ / Technologies
-- Máy chủ dựa trên **ASP.NET Core** (.NET 8)
-- Liên lạc giữa client và server bằng công nghệ **gRPC**
-- Bảo mật đầu cuối bằng **JWT (Json Web Tokens)** và mã hóa bằng **BCrypt**
-- Sử dụng **SQL Server**, thiết kế dựa trên mô hình 3 lớp
-- Giao diện quản lý và thi bằng **WinForms**
+***by Group 2 - Project for PRO231 (C#, WinForms) at FPT PolySchool***
+## Technologies
+- Server powered by **ASP.NET Core** (.NET 8)
+- Uses **gRPC** for client and server communication
+- Authorization with **JWT (Json Web Tokens)** and password encryption using **BCrypt**
+- Uses **SQL Server** as the database
+- Uses **WinForms** for the user interface
 
-## Sử dụng / Usage
+## Usage
 
-Phần mềm quản lý (ManagementApp)
-----------------
-1. Cài phần mềm bằng file Setup.exe / SetupManagementApp.msi
-2. Vào phần mềm “PolyTest Manager” trên desktop, đăng nhập bằng tài khoản mặc định:
-	- User: vanthanh3045@gmail.com
-	- Pass: fptgg
+### Management Software (ManagementApp)
+1. Install the application using the file ```Setup.exe``` or ```SetupManagementApp.msi```
+2. After installing, click “PolyTest Manager” on the desktop, and login using the default account:
+	- Username: vanthanh3045@gmail.com
+	- Password: fptgg
 
-<b>Nếu gặp lỗi truy cập máy chủ, sửa link kết nối trong cửa sổ đăng nhập.</b>
+<b>If you are deploying the server on another machine, please change the server address on the Login Form.</b>
 
-Phần mềm thi (StudentApp)
-------------
-1. Cài phần mềm bằng file Setup.exe / SetupStudentApp.msi
-2. Vào phần mềm “PolyTest Student” trên desktop, đăng nhập bằng tài khoản và mã đề thi được giảng viên giao.
+---
 
-<b>Nếu gặp lỗi truy cập máy chủ, hãy sửa link kết nối trong cửa sổ cài đặt.</b>
+### Examination Software (StudentApp)
+1. Install the application using the file ```Setup.exe``` or ```SetupStudentApp.msi```
+2. After installing, click “PolyTest Student” on the desktop, and take a test with an account you've created inside the management application.
 
-Máy chủ quản lý (ManagementServer)
----------------
-1. Thiết lập một máy chủ SQL Server gồm cơ sở dữ liệu gốc bằng cách chạy file .SQL đính kèm (cơ sở dữ liệu dùng chung với máy chủ Management)
-2. Giải nén tệp tin chứa máy chủ ExamServer
-3. Trong file "appsettings.json", đổi các thông tin cần thiết:
-	- Jwt:Key -> Đổi chìa khóa sử dụng để tạo key bảo mật giữa thí sinh và máy chủ
-	- ConnectionStrings:ExamDatabase -> Hãy để chuỗi kết nối vào máy chủ SQL Server mà bạn đã thiết lặp với cơ sở dữ liệu*
-4. Bật máy chủ "ExamServer.exe" và thưởng thức
+<b>If you are deploying the server on another machine, please change the server address on the Settings Form.</b>
 
-<b>Chú ý: Cả hai hệ thống máy chủ Management và Exam đều sử dụng chung cơ sở dữ liệu, xin hãy để chuỗi kết nối trùng.</b>
+---
 
-Máy chủ thi (ExamServer)
------------
-1. Thiết lập một máy chủ SQL Server gồm cơ sở dữ liệu gốc bằng cách chạy file .SQL đính kèm (cơ sở dữ liệu dùng chung với máy chủ Exam)
-2. Giải nén tệp tin chứa máy chủ ManagementServer
-3. Trong file "appsettings.json", đổi các thông tin cần thiết:
-	- Directory:ExamPapers -> Hãy đổi vị trí thư mục chứa đề thi (tại thư mục ExamPapers trong thư mục gốc của máy chủ Exam)
-	- Jwt:Key -> Đổi chìa khóa sử dụng để tạo key bảo mật giữa người dùng và máy chủ
-	- ConnectionStrings:ExamDatabase -> Hãy để chuỗi kết nối vào máy chủ SQL Server mà bạn đã thiết lặp với cơ sở dữ liệu*
-4. Bật máy chủ "ManagementServer.exe" và thưởng thức
+### Exam Server (ExamServer)
+1. Set up an external SQL Server with the included database (created by running [this sql file](resources/PolyTest_Database_8-4-2025.sql))
+2. Extract the ExamServer from the archive
+3. In the "appsettings.json" file, change these settings:
+	- ```Jwt:Key``` -> Change this key for better security (must be at least 256 characters in length)
+	- ```ConnectionStrings:ExamDatabase``` -> Put the connection string that points to the SQL Server with the database that you've set up before*.
+4. Run "ExamServer.exe"
+5. (Optional) Ensure port ```50051``` is forwarded (if you're hosting the server on another network)
 
-<b>Chú ý: Cả hai hệ thống máy chủ Management và Exam đều sử dụng chung cơ sở dữ liệu, xin hãy để chuỗi kết nối trùng.</b>
+<b>* Note: Both the Management and Exam server use the same database. Please ensure that the connection string is pointed to the same SQL Server and database.</b>
+
+---
+
+### Management Server (ManagementServer)
+1. Set up an external SQL Server with the included database (created by running [this sql file](resources/PolyTest_Database_8-4-2025.sql))
+2. Extract the ExamServer from the archive
+3. In the ```appsettings.json``` file, change these settings:
+	- ```Directory:ExamPapers``` -> Change this directory to point to the "ExamPapers" directory (inside the base directory of the Exam Server)
+	- ```Jwt:Key``` -> Change this key for better security (must be at least 256 characters in length)
+	- ```ConnectionStrings:ExamDatabase``` -> Put the connection string that points to the SQL Server with the database that you've set up before*.
+4. Run "ManagementServer.exe"
+5. (Optional) Ensure port ```50052``` is forwarded (if you're hosting the server on another network)
+
+<b>* Note: Both the Management and Exam server use the same database. Please ensure that the connection string is pointed to the same SQL Server and database.</b>
+
+---

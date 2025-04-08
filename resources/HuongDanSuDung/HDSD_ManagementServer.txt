@@ -1,0 +1,15 @@
+===========================================================================================
+Hướng dẫn cài hệ thống PolyTest Management Server (by PUPU: Nhóm 2)
+PRO231 - SD1802 (K18)
+
+Dành cho quản lý máy chủ
+---------------------
+1. Thiết lập một máy chủ SQL Server gồm cơ sở dữ liệu gốc bằng cách chạy file .SQL đính kèm (cơ sở dữ liệu dùng chung với máy chủ Exam)
+2. Giải nén tệp tin chứa máy chủ ManagementServer
+3. Trong file "appsettings.json", đổi các thông tin cần thiết:
+- Directory:ExamPapers -> Hãy đổi vị trí thư mục chứa đề thi (tại thư mục ExamPapers trong thư mục gốc của máy chủ Exam)
+- Jwt:Key -> Đổi chìa khóa sử dụng để tạo key bảo mật giữa người dùng và máy chủ
+- ConnectionStrings:ExamDatabase -> Hãy để chuỗi kết nối vào máy chủ SQL Server mà bạn đã thiết lặp với cơ sở dữ liệu*
+4. Bật máy chủ "ManagementServer.exe" và thưởng thức
+
+* Chú ý: Cả hai hệ thống máy chủ Management và Exam đều sử dụng chung cơ sở dữ liệu, xin hãy để chuỗi kết nối trùng.

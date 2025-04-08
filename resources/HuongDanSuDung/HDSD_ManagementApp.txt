@@ -1,0 +1,12 @@
+===========================================================================================
+Hướng dẫn cài phần mềm PolyTest Manager App (by PUPU: Nhóm 2)
+PRO231 - SD1802 (K18)
+
+Dành cho người dùng
+---------------------
+1. Cài phần mềm bằng file Setup.exe / SetupManagementApp.msi
+2. Vào phần mềm “PolyTest Manager” trên desktop, đăng nhập bằng tài khoản mặc định:
+	User: vanthanh3045@gmail.com
+	Pass: fptgg
+
+* Nếu gặp lỗi truy cập máy chủ, sửa link kết nối trong cửa sổ đăng nhập.

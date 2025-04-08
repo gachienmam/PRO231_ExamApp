@@ -1,0 +1,10 @@
+===========================================================================================
+Hướng dẫn cài phần mềm PolyTest Student App (by PUPU: Nhóm 2)
+PRO231 - SD1802 (K18)
+
+Dành cho thí sinh
+---------------------
+1. Cài phần mềm bằng file Setup.exe / SetupStudentApp.msi
+2. Vào phần mềm “PolyTest Student” trên desktop, đăng nhập bằng tài khoản và mã đề thi được giảng viên giao.
+
+* Nếu gặp lỗi truy cập máy chủ, hãy sửa link kết nối trong cửa sổ cài đặt.

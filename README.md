@@ -1,3 +1,5 @@
+<img src="resources/Images/PolyTest Logo Full Horizontal 500x192.png"/>
+
 Hệ thống phần mềm quản lý và thi trắc nghiệm PolyTest
 =====================================================
 ***by Nhóm 2 - Dự án cuối môn PRO231 (C#, WinForms)***

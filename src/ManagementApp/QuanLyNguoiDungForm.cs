@@ -108,6 +108,12 @@ namespace ManagementApp
             if (radioButtonAdmin.Checked)
                 VaiTro = "Admin";// Admin
 
+            if (textBoxMaND.Text.Trim().Length == 0)// kiem tra phai nhap ma nd
+            {
+                MessageBox.Show("Bạn phải nhập mã người dùng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxEmailND.Focus();
+                return;
+            }
             if (textBoxEmailND.Text.Trim().Length == 0)// kiem tra phai nhap email
             {
                 MessageBox.Show("Bạn phải nhập email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

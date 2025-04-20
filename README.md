@@ -9,7 +9,7 @@ PolyTest Examination Management System
 - Server powered by **ASP.NET Core** (.NET 8)
 - Uses **gRPC** for client and server communication
 - Authorization with **JWT (Json Web Tokens)** and password encryption using **BCrypt**
-- Uses **SQL Server** as the database
+- Uses **SQL Server** as the database (<b>The connection string in this repository is useless, the server is already shutdown.</b>)
 - Uses **WinForms** for the user interface
 
 ## Usage
